@@ -1,0 +1,48 @@
+{
+  "experiment": "quiescence single legal move generator",
+  "control_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+  "candidate_sha256": "bb6ab82b95319283e6cdef6bf8a7b20ae3b185125942e041f9ca5352301a3fee",
+  "benchmark_rows": 144,
+  "aggregate": {
+    "positions": 24,
+    "median_fixed_nps_gain": 4.898155675318594,
+    "median_timed_nps_gain": 4.369506020358072,
+    "fixed_nps_regressions": [
+      14,
+      20
+    ],
+    "timed_nps_regressions": [
+      4
+    ],
+    "depth_regressions": [],
+    "fixed_nodes_identical": true,
+    "control": {
+      "mean_completed_depth": 2.6527777777777777,
+      "median_fixed_ms": 65.70566749905993,
+      "p95_fixed_ms": 289.1550799977267,
+      "median_timed_ms": 300.3497640002024,
+      "worst_timed_ms": 301.74136600180645,
+      "minimum_hard_slack_s": -0.0017403660021955147
+    },
+    "candidate": {
+      "mean_completed_depth": 2.7083333333333335,
+      "median_fixed_ms": 63.28347750059038,
+      "p95_fixed_ms": 273.64260100148385,
+      "median_timed_ms": 300.31585350116075,
+      "worst_timed_ms": 303.50594600167824,
+      "minimum_hard_slack_s": -0.003504246000375133
+    }
+  },
+  "paired_gain_percent": {
+    "fixed_depth_nps": {
+      "median": 4.898155675318594,
+      "mean": 3.9395689994422955
+    },
+    "timed_nps": {
+      "median": 4.369506020358072,
+      "mean": 4.4652981651731025
+    }
+  },
+  "screening_threshold_percent": 5.0,
+  "decision": "rejected: paired median throughput gain below the 5 percent screening threshold"
+}

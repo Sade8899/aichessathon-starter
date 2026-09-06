@@ -1,0 +1,56 @@
+diff --git a/agent.py b/agent.py
+index 656b0b6..9d90f45 100644
+--- a/agent.py
++++ b/agent.py
+@@ -742,28 +742,38 @@ class Engine:
+ 
+     def quiesce(self, board: chess.Board, alpha: int, beta: int, ply: int) -> int:
+         self.tick()
+-        check = board.is_check()
+-        moves = list(board.legal_moves) if check else None
+-        if check and not moves:
+-            return -MATE + ply
+-        if self.drawn(board):
+-            return 0
+-        if not check and not any(board.generate_legal_moves()):
+-            return 0
+-        if ply >= MAX_PLY:
+-            return evaluate(board)
+-        if not check:
++        if board.is_check():
++            moves = list(board.legal_moves)
++            if not moves:
++                return -MATE + ply
++            if self.drawn(board):
++                return 0
++            if ply >= MAX_PLY:
++                return evaluate(board)
++        else:
++            if self.drawn(board):
++                return 0
++            # One generator answers the stalemate probe and then supplies the forcing
++            # moves, so a stand pat cutoff never pays for a second full generation.
++            pending = board.generate_legal_moves()
++            first = next(pending, None)
++            if first is None:
++                return 0
++            if ply >= MAX_PLY:
++                return evaluate(board)
+             stand = evaluate(board)
+             if stand >= beta:
+                 return stand
+             alpha = max(alpha, stand)
+             forcing = ply < 3 and (self.pattern.tactical or self.pattern.attack)
++            # gives_check pushes, and so does the loop below, so materialise the
++            # remaining moves before anything touches the board.
++            legal = [first, *pending]
+             moves = [
+                 m
+-                for m in board.legal_moves
++                for m in legal
+                 if board.is_capture(m) or m.promotion or (forcing and board.gives_check(m))
+             ]
+-        assert moves is not None
+         for move in self.order(board, moves, None, ply):
+             board.push(move)
+             key = self.enter(board)

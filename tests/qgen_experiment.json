@@ -1,0 +1,5 @@
+{
+  "control_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+  "candidate_sha256": "bb6ab82b95319283e6cdef6bf8a7b20ae3b185125942e041f9ca5352301a3fee",
+  "candidate_path": "tests/qgen_candidate/bb6ab82b95319283e6cdef6bf8a7b20ae3b185125942e041f9ca5352301a3fee/agent.py"
+}

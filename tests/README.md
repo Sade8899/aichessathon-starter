@@ -1,3 +1,50 @@
+# Quiescence move-generation experiment
+
+See [QGEN.md](QGEN.md) for the single-generator experiment and its rejection.
+`qgen_experiment.json` pins the Numba control and the candidate; `qgen_checks.py`
+loads those frozen sources, so every command below still runs after `agent.py`
+was restored. Raw logs, the per-position report, the decision record and the
+applied diff are in `results/qgen/`. The candidate is
+`bb6ab82b95319283e6cdef6bf8a7b20ae3b185125942e041f9ca5352301a3fee`.
+
+Use the existing `chessathon-scope:test` image and the same runner restrictions.
+
+```powershell
+.\docker-test.ps1 -LogName qgen-lint ruff check .
+.\docker-test.ps1 -LogName qgen-types mypy --strict agent.py tests/qgen_checks.py tests/numba_validation.py tests/numba_arena_summary.py tests/quiet_checks.py tests/quiet_report.py tests/quiet_openings.py tests/quiet_suite.py
+.\docker-test.ps1 -LogName qgen-targeted python tests/qgen_checks.py targeted
+.\docker-test.ps1 -LogName qgen-equality python tests/qgen_checks.py equality
+.\docker-test.ps1 -LogName qgen-benchmark python tests/qgen_checks.py bench --repeats 3
+```
+
+`targeted` compares 552 whole quiescence trees, the ordered move list at every
+quiescence node, stand pat cutoffs that build no list, first-move preservation,
+terminal/draw/ply-cap precedence and board and repetition restoration, including
+after a deadline. `equality` covers the AST scope, 2,400 evaluation comparisons,
+Numba signature stability and exact fixed-depth moves, root scores and nodes on
+the 24 positions. Merge the benchmark into the paired per-position report with:
+
+```powershell
+Get-Content "$env:TEMP/qgen-benchmark.log" | docker run --rm -i --network none --cpus 1 --memory 2g --pids-limit 128 --read-only --tmpfs /tmp:rw,size=256m --mount "type=bind,source=$PWD,target=/workspace,readonly" chessathon-scope:test python tests/qgen_checks.py report *> "$env:TEMP/qgen-report.json"
+```
+
+The paired median throughput gain was +4.90% at fixed depth and +4.37% timed,
+below the 5% screening threshold, so the experiment is rejected and the remaining
+correctness suite and the 20-game smoke were never started. `qgen_checks.py` also
+has `passive`, `timing` and `arena` modes for the gates that were not reached.
+Do not run them to revisit the decision. Search equivalence was exact:
+identical moves, root scores and node counts on all 24 fixed-depth positions.
+
+`agent.py` is the retained Numba baseline
+`59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a`, restored
+byte for byte. Verify with:
+
+```powershell
+(Get-FileHash agent.py -Algorithm SHA256).Hash.ToLower()
+$sha='59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a'
+Compare-Object (Get-Content agent.py) (Get-Content "tests/numba_checkpoint/$sha/agent.py")
+```
+
 # Quiet-check experiment
 
 See [QUIET_CHECKS.md](QUIET_CHECKS.md) for the bounded-check experiment and its

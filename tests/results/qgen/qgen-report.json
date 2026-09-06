@@ -1,0 +1,586 @@
+{
+  "aggregate": {
+    "positions": 24,
+    "median_fixed_nps_gain": 4.898155675318594,
+    "median_timed_nps_gain": 4.369506020358072,
+    "fixed_nps_regressions": [
+      14,
+      20
+    ],
+    "timed_nps_regressions": [
+      4
+    ],
+    "depth_regressions": [],
+    "fixed_nodes_identical": true,
+    "control": {
+      "mean_completed_depth": 2.6527777777777777,
+      "median_fixed_ms": 65.70566749905993,
+      "p95_fixed_ms": 289.1550799977267,
+      "median_timed_ms": 300.3497640002024,
+      "worst_timed_ms": 301.74136600180645,
+      "minimum_hard_slack_s": -0.0017403660021955147
+    },
+    "candidate": {
+      "mean_completed_depth": 2.7083333333333335,
+      "median_fixed_ms": 63.28347750059038,
+      "p95_fixed_ms": 273.64260100148385,
+      "median_timed_ms": 300.31585350116075,
+      "worst_timed_ms": 303.50594600167824,
+      "minimum_hard_slack_s": -0.003504246000375133
+    }
+  },
+  "per_position": [
+    {
+      "position": 0,
+      "control": {
+        "fixed_nps": 17417.413708145978,
+        "fixed_ms": 71.07829099913943,
+        "fixed_nodes": 1238,
+        "timed_nps": 13225.86709919996,
+        "mean_depth": 2,
+        "worst_ms": 301.227886997367
+      },
+      "candidate": {
+        "fixed_nps": 18299.881578434557,
+        "fixed_ms": 67.6507110001694,
+        "fixed_nodes": 1238,
+        "timed_nps": 14203.38957986132,
+        "mean_depth": 2,
+        "worst_ms": 301.1197750020074
+      },
+      "fixed_nps_gain": 5.066583851515549,
+      "timed_nps_gain": 7.390989742521237,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 1,
+      "control": {
+        "fixed_nps": 17031.980106811356,
+        "fixed_ms": 507.39843199698953,
+        "fixed_nodes": 8642,
+        "timed_nps": 15780.933137951964,
+        "mean_depth": 1,
+        "worst_ms": 300.7000679972407
+      },
+      "candidate": {
+        "fixed_nps": 17341.020535564767,
+        "fixed_ms": 498.35590600196156,
+        "fixed_nodes": 8642,
+        "timed_nps": 16626.529258756225,
+        "mean_depth": 1,
+        "worst_ms": 300.59755999900517
+      },
+      "fixed_nps_gain": 1.8144715224850616,
+      "timed_nps_gain": 5.358340431534203,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 2,
+      "control": {
+        "fixed_nps": 14753.004152233018,
+        "fixed_ms": 94.08253299989155,
+        "fixed_nodes": 1388,
+        "timed_nps": 19690.470722811082,
+        "mean_depth": 3,
+        "worst_ms": 300.65304600066156
+      },
+      "candidate": {
+        "fixed_nps": 15556.691148718346,
+        "fixed_ms": 89.22205800263328,
+        "fixed_nodes": 1388,
+        "timed_nps": 20671.842472483433,
+        "mean_depth": 3,
+        "worst_ms": 300.98609299966483
+      },
+      "fixed_nps_gain": 5.44761587668694,
+      "timed_nps_gain": 4.983993341182291,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 3,
+      "control": {
+        "fixed_nps": 21637.83835578931,
+        "fixed_ms": 26.573818999167997,
+        "fixed_nodes": 575,
+        "timed_nps": 15726.8822092515,
+        "mean_depth": 2.6666666666666665,
+        "worst_ms": 300.35630500060506
+      },
+      "candidate": {
+        "fixed_nps": 23113.41010503879,
+        "fixed_ms": 24.877333002223168,
+        "fixed_nodes": 575,
+        "timed_nps": 16467.32930217595,
+        "mean_depth": 3,
+        "worst_ms": 291.94664000169723
+      },
+      "fixed_nps_gain": 6.8194046234506756,
+      "timed_nps_gain": 4.708162006127781,
+      "depth_change": 0.3333333333333335,
+      "nodes_match": true
+    },
+    {
+      "position": 4,
+      "control": {
+        "fixed_nps": 15244.44114922191,
+        "fixed_ms": 79.37319499978912,
+        "fixed_nodes": 1210,
+        "timed_nps": 13691.88460837101,
+        "mean_depth": 2,
+        "worst_ms": 301.4924620001693
+      },
+      "candidate": {
+        "fixed_nps": 15594.627730874237,
+        "fixed_ms": 77.59082299889997,
+        "fixed_nodes": 1210,
+        "timed_nps": 13481.335798400847,
+        "mean_depth": 2,
+        "worst_ms": 301.1765090013796
+      },
+      "fixed_nps_gain": 2.297142796016516,
+      "timed_nps_gain": -1.5377635438253434,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 5,
+      "control": {
+        "fixed_nps": 15667.276369957754,
+        "fixed_ms": 253.20291200114298,
+        "fixed_nodes": 3967,
+        "timed_nps": 15660.18378622715,
+        "mean_depth": 2,
+        "worst_ms": 253.34351099809282
+      },
+      "candidate": {
+        "fixed_nps": 16244.028000947545,
+        "fixed_ms": 244.21282700131997,
+        "fixed_nodes": 3967,
+        "timed_nps": 16192.34557095803,
+        "mean_depth": 2,
+        "worst_ms": 282.52363499996136
+      },
+      "fixed_nps_gain": 3.6812501252337704,
+      "timed_nps_gain": 3.398183520674314,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 6,
+      "control": {
+        "fixed_nps": 11992.918862131492,
+        "fixed_ms": 46.2773079998442,
+        "fixed_nodes": 555,
+        "timed_nps": 16937.292059601466,
+        "mean_depth": 3,
+        "worst_ms": 300.68314200252644
+      },
+      "candidate": {
+        "fixed_nps": 12489.407913073655,
+        "fixed_ms": 44.43765500036534,
+        "fixed_nodes": 555,
+        "timed_nps": 17345.097983001186,
+        "mean_depth": 3,
+        "worst_ms": 301.00867000146536
+      },
+      "fixed_nps_gain": 4.139851662883043,
+      "timed_nps_gain": 2.407739808492826,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 7,
+      "control": {
+        "fixed_nps": 18741.687296267,
+        "fixed_ms": 28.7060599985125,
+        "fixed_nodes": 538,
+        "timed_nps": 15113.62500789755,
+        "mean_depth": 2,
+        "worst_ms": 300.75184800080024
+      },
+      "candidate": {
+        "fixed_nps": 19390.197742630156,
+        "fixed_ms": 27.745978000893956,
+        "fixed_nodes": 538,
+        "timed_nps": 16376.632669425882,
+        "mean_depth": 2,
+        "worst_ms": 300.91656199874706
+      },
+      "fixed_nps_gain": 3.4602564652347567,
+      "timed_nps_gain": 8.35674870104528,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 8,
+      "control": {
+        "fixed_nps": 10761.891881795531,
+        "fixed_ms": 29.36286700060009,
+        "fixed_nodes": 316,
+        "timed_nps": 17351.20427538203,
+        "mean_depth": 3,
+        "worst_ms": 300.93486399709946
+      },
+      "candidate": {
+        "fixed_nps": 11314.660013340483,
+        "fixed_ms": 27.928369003348053,
+        "fixed_nodes": 316,
+        "timed_nps": 19154.867747411125,
+        "mean_depth": 3,
+        "worst_ms": 301.4186059990607
+      },
+      "fixed_nps_gain": 5.136347192634383,
+      "timed_nps_gain": 10.39503335562788,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 9,
+      "control": {
+        "fixed_nps": 22856.265922539395,
+        "fixed_ms": 26.95103400037624,
+        "fixed_nodes": 616,
+        "timed_nps": 15752.632212220462,
+        "mean_depth": 2,
+        "worst_ms": 300.7242450003105
+      },
+      "candidate": {
+        "fixed_nps": 24243.836319973296,
+        "fixed_ms": 25.408519999473356,
+        "fixed_nodes": 616,
+        "timed_nps": 16324.943430602305,
+        "mean_depth": 2,
+        "worst_ms": 300.7667390011193
+      },
+      "fixed_nps_gain": 6.0708534024604965,
+      "timed_nps_gain": 3.6331148386608003,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 10,
+      "control": {
+        "fixed_nps": 15061.071512343577,
+        "fixed_ms": 88.30713000133983,
+        "fixed_nodes": 1330,
+        "timed_nps": 18613.031974257912,
+        "mean_depth": 3,
+        "worst_ms": 300.86446999848704
+      },
+      "candidate": {
+        "fixed_nps": 15565.361551369573,
+        "fixed_ms": 85.44613599951845,
+        "fixed_nodes": 1330,
+        "timed_nps": 19135.20595410115,
+        "mean_depth": 3,
+        "worst_ms": 300.7719500019448
+      },
+      "fixed_nps_gain": 3.348301205612736,
+      "timed_nps_gain": 2.8054213873667244,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 11,
+      "control": {
+        "fixed_nps": 15939.836232825104,
+        "fixed_ms": 49.81230599878472,
+        "fixed_nodes": 794,
+        "timed_nps": 14312.256155468029,
+        "mean_depth": 2.6666666666666665,
+        "worst_ms": 300.84675699981744
+      },
+      "candidate": {
+        "fixed_nps": 16693.747050443988,
+        "fixed_ms": 47.56271899896092,
+        "fixed_nodes": 794,
+        "timed_nps": 15411.037771867967,
+        "mean_depth": 3,
+        "worst_ms": 259.319159998995
+      },
+      "fixed_nps_gain": 4.729727499121639,
+      "timed_nps_gain": 7.677207593717816,
+      "depth_change": 0.3333333333333335,
+      "nodes_match": true
+    },
+    {
+      "position": 12,
+      "control": {
+        "fixed_nps": 14716.034908577054,
+        "fixed_ms": 10.94044700221275,
+        "fixed_nodes": 161,
+        "timed_nps": 16921.261127449634,
+        "mean_depth": 3.6666666666666665,
+        "worst_ms": 301.44497899891576
+      },
+      "candidate": {
+        "fixed_nps": 15173.262641322272,
+        "fixed_ms": 10.610769997583702,
+        "fixed_nodes": 161,
+        "timed_nps": 17362.637127959588,
+        "mean_depth": 4,
+        "worst_ms": 293.29160199995385
+      },
+      "fixed_nps_gain": 3.107003588845303,
+      "timed_nps_gain": 2.6084107867938577,
+      "depth_change": 0.3333333333333335,
+      "nodes_match": true
+    },
+    {
+      "position": 13,
+      "control": {
+        "fixed_nps": 14466.639708866536,
+        "fixed_ms": 38.640624999970896,
+        "fixed_nodes": 559,
+        "timed_nps": 15202.639003382335,
+        "mean_depth": 3,
+        "worst_ms": 258.0875150015345
+      },
+      "candidate": {
+        "fixed_nps": 15241.494667358485,
+        "fixed_ms": 36.67619299812941,
+        "fixed_nodes": 559,
+        "timed_nps": 16241.096306581268,
+        "mean_depth": 3,
+        "worst_ms": 256.1596859995916
+      },
+      "fixed_nps_gain": 5.356150246950886,
+      "timed_nps_gain": 6.830769993077479,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 14,
+      "control": {
+        "fixed_nps": 16178.451348467985,
+        "fixed_ms": 106.93236099905334,
+        "fixed_nodes": 1730,
+        "timed_nps": 17018.727407583898,
+        "mean_depth": 2,
+        "worst_ms": 300.84505600098055
+      },
+      "candidate": {
+        "fixed_nps": 15674.579493087604,
+        "fixed_ms": 110.36978700212785,
+        "fixed_nodes": 1730,
+        "timed_nps": 17704.72678717899,
+        "mean_depth": 2,
+        "worst_ms": 300.93658400073764
+      },
+      "fixed_nps_gain": -3.114462840277321,
+      "timed_nps_gain": 4.030850034588362,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 15,
+      "control": {
+        "fixed_nps": 14544.851896066099,
+        "fixed_ms": 21.79465299923322,
+        "fixed_nodes": 317,
+        "timed_nps": 19741.19991947926,
+        "mean_depth": 3,
+        "worst_ms": 300.69094200007385
+      },
+      "candidate": {
+        "fixed_nps": 15174.063743395684,
+        "fixed_ms": 20.890910000161966,
+        "fixed_nodes": 317,
+        "timed_nps": 20245.083989800096,
+        "mean_depth": 3,
+        "worst_ms": 300.4767640013597
+      },
+      "fixed_nps_gain": 4.326010686294901,
+      "timed_nps_gain": 2.552449052621353,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 16,
+      "control": {
+        "fixed_nps": 13188.72659623212,
+        "fixed_ms": 82.57051900000079,
+        "fixed_nodes": 1089,
+        "timed_nps": 16058.464115716442,
+        "mean_depth": 3,
+        "worst_ms": 223.04450999945402
+      },
+      "candidate": {
+        "fixed_nps": 13878.463225694892,
+        "fixed_ms": 78.46690100268461,
+        "fixed_nodes": 1089,
+        "timed_nps": 16987.325950046765,
+        "mean_depth": 3,
+        "worst_ms": 210.49036199838156
+      },
+      "fixed_nps_gain": 5.229743936460274,
+      "timed_nps_gain": 5.784250770416111,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 17,
+      "control": {
+        "fixed_nps": 14803.625298136267,
+        "fixed_ms": 65.05163300244021,
+        "fixed_nodes": 963,
+        "timed_nps": 17767.89673480762,
+        "mean_depth": 3,
+        "worst_ms": 300.76716899930034
+      },
+      "candidate": {
+        "fixed_nps": 16054.731864378837,
+        "fixed_ms": 59.98231600096915,
+        "fixed_nodes": 963,
+        "timed_nps": 18766.109245216565,
+        "mean_depth": 3,
+        "worst_ms": 300.9680870018201
+      },
+      "fixed_nps_gain": 8.451352564294368,
+      "timed_nps_gain": 5.618067941904625,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 18,
+      "control": {
+        "fixed_nps": 15981.043805408259,
+        "fixed_ms": 289.1550799977267,
+        "fixed_nodes": 4621,
+        "timed_nps": 15999.14966651551,
+        "mean_depth": 1.6666666666666667,
+        "worst_ms": 300.07185800059233
+      },
+      "candidate": {
+        "fixed_nps": 16887.60583852479,
+        "fixed_ms": 273.63263000006555,
+        "fixed_nodes": 4621,
+        "timed_nps": 16847.440505312734,
+        "mean_depth": 2,
+        "worst_ms": 283.480704001704
+      },
+      "fixed_nps_gain": 5.672733547039854,
+      "timed_nps_gain": 5.302099527030513,
+      "depth_change": 0.33333333333333326,
+      "nodes_match": true
+    },
+    {
+      "position": 19,
+      "control": {
+        "fixed_nps": 13662.860508937192,
+        "fixed_ms": 70.40985300045577,
+        "fixed_nodes": 962,
+        "timed_nps": 15516.41157137227,
+        "mean_depth": 3,
+        "worst_ms": 216.63164499841514
+      },
+      "candidate": {
+        "fixed_nps": 14665.688913875767,
+        "fixed_ms": 65.5952819979575,
+        "fixed_nodes": 962,
+        "timed_nps": 16055.470720036275,
+        "mean_depth": 3,
+        "worst_ms": 303.50594600167824
+      },
+      "fixed_nps_gain": 7.3398129497304065,
+      "timed_nps_gain": 3.4741225197878034,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 20,
+      "control": {
+        "fixed_nps": 18636.70323961343,
+        "fixed_ms": 3.6487139987002593,
+        "fixed_nodes": 68,
+        "timed_nps": 21914.558030722943,
+        "mean_depth": 5,
+        "worst_ms": 300.6781840012991
+      },
+      "candidate": {
+        "fixed_nps": 17528.858822619855,
+        "fixed_ms": 3.8793169987911824,
+        "fixed_nodes": 68,
+        "timed_nps": 22502.905178953766,
+        "mean_depth": 5,
+        "worst_ms": 300.9007590007968
+      },
+      "fixed_nps_gain": -5.944422695097629,
+      "timed_nps_gain": 2.6847319823014137,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 21,
+      "control": {
+        "fixed_nps": 19511.35606025545,
+        "fixed_ms": 15.58066999859875,
+        "fixed_nodes": 304,
+        "timed_nps": 21163.540242348856,
+        "mean_depth": 4,
+        "worst_ms": 291.3078020028479
+      },
+      "candidate": {
+        "fixed_nps": 20685.97974694824,
+        "fixed_ms": 14.695944002596661,
+        "fixed_nodes": 304,
+        "timed_nps": 21590.987240243197,
+        "mean_depth": 4,
+        "worst_ms": 287.01092499977676
+      },
+      "fixed_nps_gain": 6.020205274637447,
+      "timed_nps_gain": 2.01973296055169,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 22,
+      "control": {
+        "fixed_nps": 13983.899247835498,
+        "fixed_ms": 65.28937199982465,
+        "fixed_nodes": 913,
+        "timed_nps": 12890.80697801291,
+        "mean_depth": 2,
+        "worst_ms": 301.74136600180645
+      },
+      "candidate": {
+        "fixed_nps": 13986.44892349786,
+        "fixed_ms": 65.27746999927331,
+        "fixed_nodes": 913,
+        "timed_nps": 13583.413474973757,
+        "mean_depth": 2,
+        "worst_ms": 300.79973899773904
+      },
+      "fixed_nps_gain": 0.018232937875017896,
+      "timed_nps_gain": 5.372871521093958,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 23,
+      "control": {
+        "fixed_nps": 14603.178453889726,
+        "fixed_ms": 240.5640670003777,
+        "fixed_nodes": 3513,
+        "timed_nps": 15039.322047766342,
+        "mean_depth": 2,
+        "worst_ms": 233.58865699992748
+      },
+      "candidate": {
+        "fixed_nps": 15490.393037236972,
+        "fixed_ms": 226.785724000365,
+        "fixed_nodes": 3513,
+        "timed_nps": 15236.581960262682,
+        "mean_depth": 2,
+        "worst_ms": 241.19258700011414
+      },
+      "fixed_nps_gain": 6.075489566526016,
+      "timed_nps_gain": 1.3116276908614832,
+      "depth_change": 0,
+      "nodes_match": true
+    }
+  ]
+}

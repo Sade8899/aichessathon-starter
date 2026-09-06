@@ -1,0 +1,27 @@
+INIT {"name": "control", "seconds": 2.124718439998105, "rss_mb": 167.0703125}
+INIT {"name": "candidate", "seconds": 0.8180261529996642, "rss_mb": 177.4453125}
+FIXED {"position": 0, "move": "b8c6", "nodes": 1238, "root_scores": 27, "control_ms": 70.80330600001616, "candidate_ms": 66.97681600053329}
+FIXED {"position": 1, "move": "b7a8q", "nodes": 8642, "root_scores": 41, "control_ms": 514.7651890001725, "candidate_ms": 533.5108969993598}
+FIXED {"position": 2, "move": "d5e3", "nodes": 1388, "root_scores": 36, "control_ms": 92.19378299894743, "candidate_ms": 85.99625200076844}
+FIXED {"position": 3, "move": "g1f3", "nodes": 575, "root_scores": 22, "control_ms": 25.2129660002538, "candidate_ms": 23.607003000506666}
+FIXED {"position": 4, "move": "g8f6", "nodes": 1210, "root_scores": 34, "control_ms": 78.72891200167942, "candidate_ms": 72.77700700069545}
+FIXED {"position": 5, "move": "a7c8", "nodes": 3967, "root_scores": 35, "control_ms": 254.22997300120187, "candidate_ms": 242.00582899720757}
+FIXED {"position": 6, "move": "b8c6", "nodes": 555, "root_scores": 25, "control_ms": 45.32301299695973, "candidate_ms": 43.41831900092075}
+FIXED {"position": 7, "move": "g8f6", "nodes": 538, "root_scores": 19, "control_ms": 28.444395000406075, "candidate_ms": 27.128361001814483}
+FIXED {"position": 8, "move": "c8g4", "nodes": 316, "root_scores": 28, "control_ms": 29.78293100022711, "candidate_ms": 27.565905002120417}
+FIXED {"position": 9, "move": "e2d4", "nodes": 616, "root_scores": 24, "control_ms": 26.8361320013355, "candidate_ms": 25.059451003471622}
+FIXED {"position": 10, "move": "c4c8", "nodes": 1330, "root_scores": 41, "control_ms": 92.88525299780304, "candidate_ms": 84.98434899956919}
+FIXED {"position": 11, "move": "g8f6", "nodes": 794, "root_scores": 22, "control_ms": 52.251216999138705, "candidate_ms": 45.671748001041124}
+FIXED {"position": 12, "move": "f1e2", "nodes": 161, "root_scores": 29, "control_ms": 11.865607000800082, "candidate_ms": 10.273346000758465}
+FIXED {"position": 13, "move": "g8f6", "nodes": 559, "root_scores": 28, "control_ms": 50.42643200067687, "candidate_ms": 59.43865000153892}
+FIXED {"position": 14, "move": "g8f6", "nodes": 1730, "root_scores": 25, "control_ms": 118.40645000120276, "candidate_ms": 97.69054199932725}
+FIXED {"position": 15, "move": "e5e4", "nodes": 317, "root_scores": 27, "control_ms": 21.6003979985544, "candidate_ms": 19.939929003157886}
+FIXED {"position": 16, "move": "h5g4", "nodes": 1089, "root_scores": 31, "control_ms": 82.09075500053586, "candidate_ms": 97.259498998028}
+FIXED {"position": 17, "move": "h2h3", "nodes": 963, "root_scores": 27, "control_ms": 128.66259400107083, "candidate_ms": 63.189731001330074}
+FIXED {"position": 18, "move": "c7a5", "nodes": 4621, "root_scores": 33, "control_ms": 294.5821530011017, "candidate_ms": 277.3303920002945}
+FIXED {"position": 19, "move": "h3f4", "nodes": 962, "root_scores": 21, "control_ms": 71.18874600200797, "candidate_ms": 64.23869699938223}
+FIXED {"position": 20, "move": "f3f4", "nodes": 68, "root_scores": 6, "control_ms": 3.6741429976245854, "candidate_ms": 3.4390209984849207}
+FIXED {"position": 21, "move": "g8f8", "nodes": 304, "root_scores": 20, "control_ms": 15.313029998651473, "candidate_ms": 14.245130001654616}
+FIXED {"position": 22, "move": "d8e7", "nodes": 913, "root_scores": 43, "control_ms": 65.51481699716533, "candidate_ms": 63.094491000811104}
+FIXED {"position": 23, "move": "d1h5", "nodes": 3513, "root_scores": 48, "control_ms": 235.7931139995344, "candidate_ms": 224.7912870006985}
+EQUALITY {"exact_evaluations": 2400, "fixed_depth_positions": 24, "moves_scores_nodes_exact": true, "signatures": {"bit_count": ["(uint64,)"], "first_square": ["(uint64,)"], "numeric_attacks": ["(int64, int64, uint64)"], "numeric_evaluate": ["(uint64, uint64, uint64, uint64, uint64, uint64, uint64, bool)"]}, "sha256": {"control": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a", "candidate": "bb6ab82b95319283e6cdef6bf8a7b20ae3b185125942e041f9ca5352301a3fee"}}
