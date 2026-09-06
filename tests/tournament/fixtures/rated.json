@@ -1,0 +1,17 @@
+{
+  "source": "User-supplied exact round-30 sequence and FENs; clocks reconstructed from official log rounded to 0.1 seconds",
+  "round30_start": "rnbqk1nr/pp3ppp/8/2bp4/8/1N6/PPP2PPP/R1BQKBNR b KQkq - 1 6",
+  "round30_before_bf4": "r1bqk2r/pp2n1pp/1bn2p2/1B1p2B1/3N4/8/PPP2PPP/R2QK1NR w KQkq - 0 10",
+  "round30_fragment": ["Bf4", "Bxd4", "Qxd4", "Qa5+", "Qc3", "Qxb5"],
+  "preceding_move": "9...f6",
+  "clock_before_bf4_ms": 113600,
+  "clock_precision_ms": 100,
+  "prefix_san": ["Bb6", "Nd4", "Nc6", "Bb5", "Ne7", "Bg5", "f6"],
+  "calls": [
+    {"fen": "rnbqk1nr/pp3ppp/1b6/3p4/8/1N6/PPP2PPP/R1BQKBNR w KQkq - 2 7", "clock_ms": 120000, "expected": "b3d4"},
+    {"fen": "r1bqk1nr/pp3ppp/1bn5/3p4/3N4/8/PPP2PPP/R1BQKBNR w KQkq - 4 8", "clock_ms": 118400, "expected": "f1b5"},
+    {"fen": "r1bqk2r/pp2nppp/1bn5/1B1p4/3N4/8/PPP2PPP/R1BQK1NR w KQkq - 6 9", "clock_ms": 116000, "expected": "c1g5"},
+    {"fen": "r1bqk2r/pp2n1pp/1bn2p2/1B1p2B1/3N4/8/PPP2PPP/R2QK1NR w KQkq - 0 10", "clock_ms": 113600, "expected": "g5f4"}
+  ],
+  "second_rated_start": null
+}

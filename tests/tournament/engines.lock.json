@@ -1,0 +1,10 @@
+{
+  "schema": 1,
+  "engines": [
+    {"name": "loki", "url": "https://github.com/BimmerBass/Loki.git", "tag": "v3.0.0", "commit": "6319aec28dd5a3fa6a03f58e953b84edcc8c80de"},
+    {"name": "zagreus231", "url": "https://github.com/Dannyj1/Zagreus.git", "tag": "v2.3.1", "commit": "0a9d8ca47ea8ae2670f2349fede68df9336c4719"},
+    {"name": "zagreus5", "url": "https://github.com/Dannyj1/Zagreus.git", "tag": "v5.0", "commit": "ba018309d4bba6ada7ea5a3beca8dca26a1c3d80"},
+    {"name": "shallowblue", "url": "https://github.com/GunshipPenguin/shallow-blue.git", "tag": "v2.0.0", "commit": "a04fbd9861770c897eb566d83b0d2e3b17aa9fc0"},
+    {"name": "fastchess", "url": "https://github.com/Disservin/fastchess.git", "tag": "v1.8.2-alpha", "commit": "f618e34540f94f4719ad3817950618dabe441318"}
+  ]
+}

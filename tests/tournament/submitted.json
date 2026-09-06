@@ -1,0 +1,7 @@
+{
+  "source_archive": "agent.zip",
+  "archive_sha256": "4cf5c8885c49360f6a60328cdd062aa5a45e697e8ee5122d243639c675640dfd",
+  "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+  "frozen_path": "tests/submitted/4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0/agent.py",
+  "identity": "User confirmed this is the submitted agent. The archive and current source match byte for byte."
+}

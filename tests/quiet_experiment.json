@@ -1,0 +1,5 @@
+{
+  "control_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+  "candidate_sha256": "55ea89aef94b31ab53e026469864bbe04a3c0d50d9362c773306a9001978eddd",
+  "candidate_path": "tests/quiet_candidate/55ea89aef94b31ab53e026469864bbe04a3c0d50d9362c773306a9001978eddd/agent.py"
+}

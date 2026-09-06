@@ -24,6 +24,7 @@ FAST_EVAL = True
 EVAL_CACHE = True
 DEPTH_EVIDENCE = False
 TIGHT_ROOT = False
+QUIET_CHECKS = True
 NORMAL_MARGIN = 15
 WINNING_MARGIN = 8
 SWINDLE_MARGIN = 25
@@ -740,7 +741,9 @@ class Engine:
 
         return sorted(moves, key=priority, reverse=True)
 
-    def quiesce(self, board: chess.Board, alpha: int, beta: int, ply: int) -> int:
+    def quiesce(
+        self, board: chess.Board, alpha: int, beta: int, ply: int, quiet_checks_left: int = 1
+    ) -> int:
         self.tick()
         check = board.is_check()
         moves = list(board.legal_moves) if check else None
@@ -757,7 +760,11 @@ class Engine:
             if stand >= beta:
                 return stand
             alpha = max(alpha, stand)
-            forcing = ply < 3 and (self.pattern.tactical or self.pattern.attack)
+            forcing = (
+                quiet_checks_left > 0
+                if QUIET_CHECKS
+                else ply < 3 and (self.pattern.tactical or self.pattern.attack)
+            )
             moves = [
                 m
                 for m in board.legal_moves
@@ -765,10 +772,19 @@ class Engine:
             ]
         assert moves is not None
         for move in self.order(board, moves, None, ply):
+            remaining = quiet_checks_left
+            if (
+                QUIET_CHECKS
+                and remaining
+                and not board.is_capture(move)
+                and not move.promotion
+                and board.gives_check(move)
+            ):
+                remaining = 0
             board.push(move)
             key = self.enter(board)
             try:
-                score = -self.quiesce(board, -beta, -alpha, ply + 1)
+                score = -self.quiesce(board, -beta, -alpha, ply + 1, remaining)
             finally:
                 self.leave(key)
                 board.pop()
@@ -779,7 +795,7 @@ class Engine:
 
     def search(self, board: chess.Board, depth: int, alpha: int, beta: int, ply: int) -> int:
         if depth <= 0:
-            return self.quiesce(board, alpha, beta, ply)
+            return self.quiesce(board, alpha, beta, ply, 1)
         self.tick()
         moves = list(board.legal_moves)
         if not moves:

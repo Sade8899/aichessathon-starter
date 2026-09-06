@@ -8,8 +8,6 @@ from collections import Counter
 from dataclasses import dataclass
 
 import chess
-import numpy as np
-from numba import njit
 
 VALUES = (0, 100, 320, 335, 500, 950, 0)
 MATE = 30_000
@@ -20,10 +18,6 @@ PRIOR = (0.17, 0.17, 0.17, 0.17, 0.17, 0.15)
 POLICIES = ("noisy", "material", "forcing", "shallow", "deep", "unknown")
 ADAPTIVE = False
 PASSIVE = True
-FAST_EVAL = True
-EVAL_CACHE = True
-DEPTH_EVIDENCE = False
-TIGHT_ROOT = False
 NORMAL_MARGIN = 15
 WINNING_MARGIN = 8
 SWINDLE_MARGIN = 25
@@ -132,205 +126,6 @@ def evaluate(board: chess.Board) -> int:
     return total
 
 
-ADJACENT = tuple(
-    (chess.BB_FILES[f - 1] if f else 0) | (chess.BB_FILES[f + 1] if f < 7 else 0) for f in range(8)
-)
-FORWARD = tuple(
-    tuple(
-        ((chess.BB_ALL << (8 * (s // 8 + 1))) & chess.BB_ALL)
-        if colour
-        else (1 << (8 * (s // 8))) - 1
-        for s in range(64)
-    )
-    for colour in (False, True)
-)
-DISTANCE = tuple(tuple(chess.square_distance(a, b) for b in range(64)) for a in range(64))
-
-
-def placement(phase: int, colour: bool, piece: int, square: int) -> int:
-    rank = square // 8 if colour else 7 - square // 8
-    centre = 7 - abs(2 * (square % 8) - 7) - abs(2 * rank - 7)
-    score = VALUES[piece]
-    if piece == chess.PAWN:
-        score += rank * 6 + max(0, centre) * 2
-    elif piece in (chess.KNIGHT, chess.BISHOP):
-        score += centre * (5 if piece == chess.KNIGHT else 3)
-    elif piece == chess.ROOK and rank == 6:
-        score += 18
-    elif piece == chess.KING:
-        score += (centre * 7 * (24 - phase) - centre * 4 * phase) // 24
-    return score
-
-
-PLACEMENT = tuple(
-    tuple(
-        tuple(tuple(placement(phase, colour, p, s) for s in range(64)) for p in range(7))
-        for colour in (False, True)
-    )
-    for phase in range(25)
-)
-
-
-_NUM_PLACEMENT = np.asarray(PLACEMENT, dtype=np.int32)
-_NUM_FILES = np.asarray(chess.BB_FILES, dtype=np.uint64)
-_NUM_ADJACENT = np.asarray(ADJACENT, dtype=np.uint64)
-_NUM_FORWARD = np.asarray(FORWARD, dtype=np.uint64)
-_NUM_DISTANCE = np.asarray(DISTANCE, dtype=np.int32)
-_NUM_KING = np.asarray(chess.BB_KING_ATTACKS, dtype=np.uint64)
-_NUM_KNIGHT = np.asarray(chess.BB_KNIGHT_ATTACKS, dtype=np.uint64)
-
-
-@njit(cache=False)
-def bit_count(bits: np.uint64) -> int:
-    count = 0
-    while bits:
-        bits &= bits - np.uint64(1)
-        count += 1
-    return count
-
-
-@njit(cache=False)
-def first_square(bits: np.uint64) -> int:
-    square = 0
-    while not bits & np.uint64(1):
-        bits >>= np.uint64(1)
-        square += 1
-    return square
-
-
-@njit(cache=False)
-def numeric_attacks(piece: int, square: int, occupied: np.uint64) -> np.uint64:
-    if piece == 2:
-        return np.uint64(_NUM_KNIGHT[square])
-    if piece == 6:
-        return np.uint64(_NUM_KING[square])
-    attacks = np.uint64(0)
-    for direction in range(8):
-        if (piece == 3 and direction < 4) or (piece == 4 and direction >= 4):
-            continue
-        dr = (1, -1, 0, 0, 1, 1, -1, -1)[direction]
-        df = (0, 0, 1, -1, 1, -1, 1, -1)[direction]
-        rank, file = square // 8 + dr, square % 8 + df
-        while 0 <= rank < 8 and 0 <= file < 8:
-            target = np.uint64(1) << np.uint64(rank * 8 + file)
-            attacks |= target
-            if occupied & target:
-                break
-            rank += dr
-            file += df
-    return attacks
-
-
-@njit(cache=False)
-def numeric_evaluate(
-    pawns_bb: np.uint64,
-    knights: np.uint64,
-    bishops: np.uint64,
-    rooks: np.uint64,
-    queens: np.uint64,
-    kings: np.uint64,
-    white: np.uint64,
-    turn: bool,
-) -> int:
-    pieces = (np.uint64(0), pawns_bb, knights, bishops, rooks, queens, kings)
-    occupied = pawns_bb | knights | bishops | rooks | queens | kings
-    phase = min(24, bit_count(knights | bishops) + 2 * bit_count(rooks) + 4 * bit_count(queens))
-    total = 0
-    for colour in range(2):
-        own = white if colour else occupied ^ white
-        pawns = pawns_bb & own
-        enemy_pawns = pawns_bb & ~own
-        king_bits, enemy_bits = kings & own, kings & ~own
-        king = first_square(king_bits) if king_bits else -1
-        enemy_king = first_square(enemy_bits) if enemy_bits else -1
-        ring = _NUM_KING[enemy_king] if enemy_king >= 0 else np.uint64(0)
-        score = 28 if bit_count(bishops & own) >= 2 else 0
-        for piece in range(1, 7):
-            bits = pieces[piece] & own
-            while bits:
-                square = first_square(bits)
-                bits &= bits - np.uint64(1)
-                score += _NUM_PLACEMENT[phase, colour, piece, square]
-                file = square % 8
-                if piece == 1:
-                    adjacent = _NUM_ADJACENT[file]
-                    if not pawns & adjacent:
-                        score -= 13
-                    if bit_count(pawns & _NUM_FILES[file]) > 1:
-                        score -= 11
-                    if (
-                        not enemy_pawns
-                        & (adjacent | _NUM_FILES[file])
-                        & _NUM_FORWARD[colour, square]
-                    ):
-                        rank = square // 8 if colour else 7 - square // 8
-                        score += rank * rank * (40 - phase) // 24
-                        if king >= 0 and enemy_king >= 0:
-                            score += (
-                                (_NUM_DISTANCE[enemy_king, square] - _NUM_DISTANCE[king, square])
-                                * (24 - phase)
-                                // 6
-                            )
-                    continue
-                if piece == 4 and not pawns & _NUM_FILES[file]:
-                    score += 12 if enemy_pawns & _NUM_FILES[file] else 24
-                if piece == 6 and phase > 8:
-                    score += bit_count(_NUM_KING[square] & pawns) * phase // 3
-                attacks = numeric_attacks(piece, square, occupied)
-                if piece != 6:
-                    score += bit_count(attacks & ~own) * (2 if piece == 5 else 3)
-                score += bit_count(attacks & ring) * phase // 4
-        total += score if bool(colour) == turn else -score
-    return total
-
-
-def compiled_evaluate(board: chess.Board) -> int:
-    return int(
-        numeric_evaluate(
-            np.uint64(board.pawns),
-            np.uint64(board.knights),
-            np.uint64(board.bishops),
-            np.uint64(board.rooks),
-            np.uint64(board.queens),
-            np.uint64(board.kings),
-            np.uint64(board.occupied_co[True]),
-            board.turn,
-        )
-    )
-
-
-# Compile the scalar signature before the game clock starts; no disk cache is needed.
-compiled_evaluate(chess.Board())
-
-EvalKey = tuple[int, int, int, int, int, int, int, bool]
-_eval_table: list[tuple[EvalKey, int] | None] = [None] * 32768
-fast_evaluate = compiled_evaluate
-_uncached_evaluate = fast_evaluate if FAST_EVAL else evaluate
-
-
-def cached_evaluate(board: chess.Board) -> int:
-    key = (
-        board.pawns,
-        board.knights,
-        board.bishops,
-        board.rooks,
-        board.queens,
-        board.kings,
-        board.occupied_co[True],
-        board.turn,
-    )
-    slot = hash(key) % len(_eval_table)
-    entry = _eval_table[slot]
-    if entry is not None and entry[0] == key:
-        return entry[1]
-    score = _uncached_evaluate(board)
-    _eval_table[slot] = (key, score)
-    return score
-
-
-evaluate = cached_evaluate if EVAL_CACHE else _uncached_evaluate
-
-
 @dataclass(frozen=True)
 class Pattern:
     tactical: bool
@@ -410,7 +205,6 @@ class ReplySet:
     depth: int
     moves: tuple[chess.Move, ...]
     replies: dict[chess.Move, ReplyEvidence]
-    shallow: ReplySet | None = None
 
     @property
     def coverage(self) -> float:
@@ -485,7 +279,7 @@ def policy_likelihoods(evidence: ReplySet) -> list[list[float]]:
         probabilities = distribution(values, temperature)
         coverage = len(evidence.replies) / count
         result.append([coverage * p + (1 - coverage) / count for p in probabilities])
-    result.append(interval_policy(evidence.shallow or evidence, 100.0))
+    result.append(interval_policy(evidence, 100.0))
     result.append(interval_policy(evidence, 25.0) if evidence.depth >= 2 else result[0])
     result.append(
         [0.5 / count + 0.125 * sum(result[k][i] for k in range(1, 5)) for i in range(count)]
@@ -791,9 +585,7 @@ class Engine:
         frame = None
         if self.collect and ply == 1:
             capture_start = time.perf_counter()
-            prior_frame = self.completed_evidence.get(self.root_move) if DEPTH_EVIDENCE else None
-            shallow = (prior_frame.shallow or prior_frame) if prior_frame is not None else None
-            frame = ReplySet(depth, tuple(moves), {}, shallow)
+            frame = ReplySet(depth, tuple(moves), {})
             self.iteration_evidence[self.root_move] = frame
             self.stats["model_seconds"] += time.perf_counter() - capture_start
         key = position_key(board)
@@ -935,7 +727,7 @@ class Engine:
             self.iteration_evidence = {}
             leaders = moves[:3]
             root_best = -INF
-            tolerance = 0 if TIGHT_ROOT and not ADAPTIVE else ROOT_WINDOW_MARGIN
+            tolerance = ROOT_WINDOW_MARGIN
             try:
                 for move in moves:
                     if time.perf_counter() >= self.deadline:
