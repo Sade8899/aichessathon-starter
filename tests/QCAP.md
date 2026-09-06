@@ -247,17 +247,66 @@ proof that the programs are equal, so it also compares `ast.dump(ast.parse(...))
 and the SHA-256 of the marshalled compiled code object. Both are identical,
 `e757629d88b2075b408cb6dfc738dc27ecbde30b8543334afeb501b78941f432`, while the
 control's code object is `5cd8e15433b6fdb76b8521cc40d77a437e9849366379b1de36e8f41cb7d3a81b`,
-confirming the pair is still two different programs. Because the executable code
-is identical, the correctness and benchmark evidence above carries over unchanged
-and was not re-run.
+confirming the pair is still two different programs.
+
+Because the compiled code is identical, the evidence gathered against the CRLF
+bytes describes the LF bytes as well, and was not re-run. That scoping matters: the
+equivalence, benchmark, timing, correctness and 20-game smoke results reported
+above were measured on the CRLF source `8e700199...`; the validation campaign
+below was played on the LF source `be5da869...`. What carries across is the
+program, established by the identical AST and code object, not the measurements
+themselves. No result is relabelled as having been taken on the other file.
 
 A fresh clone previously depended on the client's `core.autocrlf`. `.gitattributes`
 now pins `agent.py`, the test modules, the test manifests, every frozen
 `agent.py` under `tests/`, and the harness and baseline sources to `eol=lf`, so
 raw-byte hashes reproduce on any platform. Raw records under `tests/results/`
-carry no rule and keep the bytes their run produced. `git add --renormalize .`
-reports nothing to change, which confirms the working tree already matches what a
-clone yields. The working `agent.py` is now the LF source, `be5da869...`.
+carry no rule and keep the bytes their run produced. The working `agent.py` is the
+LF source, `be5da869...`.
+
+### The historical CRLF source is an explicit exception
+
+A blanket `tests/**/agent.py text eol=lf` is wrong for one file. The frozen
+candidate at `tests/qcap_candidate/8e700199.../agent.py` *is* the CRLF bytes: its
+directory name is its raw-byte hash, and `qcap_identity.py` asserts that hash. Under
+the broad rule Git stored it as the LF blob and would hand a clone LF bytes, so the
+assertion would fail on a fresh checkout even though `git status` looked clean.
+A clean `git add --renormalize` result only shows the working tree agrees with the
+normalization rules; it says nothing about whether the historical bytes survived.
+
+`.gitattributes` therefore carries an exact-path exception, placed **after** the
+broad rule so it wins, that disables conversion in both directions:
+
+```
+tests/qcap_candidate/8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3/agent.py -text !eol
+```
+
+`-text` turns the newline filter off and `!eol` removes the inherited `eol`
+setting that would otherwise still apply. `git check-attr text eol` reports
+`text: unset` and `eol: unspecified` for that path, and `text: set`, `eol: lf` for
+the LF checkpoint and for `agent.py`.
+
+The file's bytes were recovered and accepted only against the required hash. The
+working copy still held them, and reconstructing them independently from the
+verified LF source with `lf.replace(b"
+", b"
+")` produced a byte-identical
+result; both routes hash to `8e700199...`.
+
+Preservation was then verified by round trip in two throwaway repositories under a
+short temporary path, never touching this repository's index: the same
+`.gitattributes` and the same three files, added, committed, then deleted from the
+worktree and checked out again, once with `core.autocrlf=false` and once with
+`core.autocrlf=true`.
+
+| Path | Stored blob | Checkout, autocrlf=false | Checkout, autocrlf=true |
+|---|---|---|---|
+| historical CRLF | `8e700199...` | `8e700199...`, 1,034 CRLF, 39,712 B | `8e700199...`, 1,034 CRLF, 39,712 B |
+| LF checkpoint | `be5da869...` | `be5da869...`, 0 CRLF, 38,678 B | `be5da869...`, 0 CRLF, 38,678 B |
+| `agent.py` | `be5da869...` | `be5da869...`, 0 CRLF, 38,678 B | `be5da869...`, 0 CRLF, 38,678 B |
+
+All six checkouts are byte-exact, so the object database now holds the CRLF bytes
+and hands them back unconverted regardless of the client's `core.autocrlf`.
 
 Historical pins are untouched: `qcap_experiment.json` still names the CRLF bytes
 that the benchmark, equality and smoke runs actually loaded, and the CRLF file
@@ -388,7 +437,7 @@ clock. The 40-game confirmation at 120 s gives -2.5 points with an interval of
 [-20.0, +17.5], which is uninformative on its own and certainly not evidence of a
 gain at the clock the competition actually uses. The two samples are not pooled:
 they use different clocks, different seeds and different opening subsets, and the
-confirmation is a tenth the size. No Elo figure is inferred from either, and none
+confirmation is one sixth the size by game count, 40 against 240. No Elo figure is inferred from either, and none
 is inferred from the throughput measurements, which describe node rate rather than
 playing strength.
 

@@ -6,6 +6,13 @@ agent.py text eol=lf
 tests/*.py text eol=lf
 tests/*.json text eol=lf
 tests/**/agent.py text eol=lf
+
+# Exception, and it must follow the rule above: this frozen source is the qcap
+# candidate as it was actually loaded and measured, written with CRLF. Its identity
+# is the raw-byte hash 8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3,
+# so it must never be converted in either direction. -text disables conversion and
+# !eol removes the inherited eol setting that would otherwise still apply.
+tests/qcap_candidate/8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3/agent.py -text !eol
 tests/tournament/**/*.json text eol=lf
 harness/**/*.py text eol=lf
 baselines/**/*.py text eol=lf

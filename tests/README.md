@@ -36,12 +36,28 @@ validation campaign.
 ```powershell
 .\docker-test.ps1 -LogName qcap-identity python tests/qcap_identity.py
 .\docker-test.ps1 -LogName qcap-loader python tests/qcap_identity.py loader
-git add --renormalize .   # must report no change
+git check-attr text eol -- tests/qcap_candidate/8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3/agent.py
 ```
 
 `qcap_identity.py` proves the newline conversion is the only difference, by byte
 conversion in both directions and by identical AST and marshalled code objects.
 `loader` confirms the harness accepts the exact validation bytes.
+
+The CRLF frozen source is an **exception to the broad `tests/**/agent.py text
+eol=lf` rule** and must stay one. Its directory name is its raw-byte hash, so any
+conversion destroys its identity. `.gitattributes` disables conversion for that
+exact path with `-text !eol`, placed after the broad rule so it wins; `check-attr`
+must report `text: unset` and `eol: unspecified`. A clean `git add --renormalize`
+does **not** prove the historical bytes survived — it only shows the working tree
+agrees with the rules. Verify preservation with a throwaway repository instead:
+commit the file, delete it, check it out again with `core.autocrlf` both `false`
+and `true`, and require `8e700199...` from the stored blob and from both
+checkouts. Never run that round trip against this repository's index.
+
+Behavioural equivalence is scoped to the bytes each result was measured on: the
+equivalence, benchmark, timing, correctness and 20-game smoke ran against the CRLF
+source, and the validation campaign against the LF source. The identical compiled
+code object is what lets one describe the other; no measurement is relabelled.
 
 ## Validation campaign
 
