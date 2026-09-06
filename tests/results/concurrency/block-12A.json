@@ -1,0 +1,53 @@
+{
+  "workers": 12,
+  "block": "A",
+  "cpuset": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "makespan_s": 126.7132200000342,
+  "games": 48,
+  "games_per_hour": 1363.7093272505692,
+  "exit_codes": {
+    "calib-12A-0": 0,
+    "calib-12A-1": 0,
+    "calib-12A-2": 0,
+    "calib-12A-3": 0,
+    "calib-12A-4": 0,
+    "calib-12A-5": 0,
+    "calib-12A-6": 0,
+    "calib-12A-7": 0,
+    "calib-12A-8": 0,
+    "calib-12A-9": 0,
+    "calib-12A-10": 0,
+    "calib-12A-11": 0
+  },
+  "nonzero_exits": [],
+  "peak_container_mb": {
+    "calib-12A-0": 169.6,
+    "calib-12A-1": 175.5,
+    "calib-12A-2": 171.6,
+    "calib-12A-3": 171.0,
+    "calib-12A-4": 172.8,
+    "calib-12A-5": 170.7,
+    "calib-12A-6": 170.9,
+    "calib-12A-7": 169.6,
+    "calib-12A-8": 169.5,
+    "calib-12A-9": 171.9,
+    "calib-12A-10": 171.2,
+    "calib-12A-11": 174.0
+  },
+  "max_container_mb": 175.5,
+  "total_container_mb": 2058.3,
+  "stats_samples": 17
+}

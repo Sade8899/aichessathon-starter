@@ -1,0 +1,280 @@
+{
+  "levels": {
+    "6": {
+      "blocks": [
+        {
+          "block": "A",
+          "cpuset": [
+            0,
+            2,
+            4,
+            6,
+            8,
+            10
+          ],
+          "makespan_s": 115.4100159999798,
+          "games_per_hour": 748.6351964461657,
+          "max_container_mb": 183.6,
+          "total_container_mb": 1063.9,
+          "nonzero_exits": []
+        },
+        {
+          "block": "B",
+          "cpuset": [
+            10,
+            8,
+            6,
+            4,
+            2,
+            0
+          ],
+          "makespan_s": 122.23247109999647,
+          "games_per_hour": 706.8498184031436,
+          "max_container_mb": 185.0,
+          "total_container_mb": 1071.2,
+          "nonzero_exits": []
+        }
+      ],
+      "games": 48,
+      "games_per_hour": 727.1427012430777,
+      "container_exit_failures": 0,
+      "engine_failures": 0,
+      "control": {
+        "games": 24,
+        "failures": 0,
+        "moves": 931,
+        "median_move_ms": 205.63508800114505,
+        "worst_move_ms": 305.3829679993214,
+        "median_nps": 10419.616613023294,
+        "mean_depth": 1.8421052631578947,
+        "median_initialization_ms": 3908.1250929993985,
+        "max_initialization_ms": 5461.987244001648,
+        "max_peak_rss_mb": 172.40625
+      },
+      "candidate": {
+        "games": 24,
+        "failures": 0,
+        "moves": 830,
+        "median_move_ms": 208.5708125050587,
+        "worst_move_ms": 304.10360699897865,
+        "median_nps": 14007.791692310606,
+        "mean_depth": 1.966265060240964,
+        "median_initialization_ms": 3646.051879000879,
+        "max_initialization_ms": 4627.358577999985,
+        "max_peak_rss_mb": 173.125
+      }
+    },
+    "12": {
+      "blocks": [
+        {
+          "block": "A",
+          "cpuset": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "makespan_s": 126.7132200000342,
+          "games_per_hour": 1363.7093272505692,
+          "max_container_mb": 175.5,
+          "total_container_mb": 2058.3,
+          "nonzero_exits": []
+        },
+        {
+          "block": "B",
+          "cpuset": [
+            11,
+            10,
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "makespan_s": 139.5437105000019,
+          "games_per_hour": 1238.3216655257108,
+          "max_container_mb": 183.1,
+          "total_container_mb": 2080.2,
+          "nonzero_exits": []
+        }
+      ],
+      "games": 96,
+      "games_per_hour": 1297.9943821592021,
+      "container_exit_failures": 0,
+      "engine_failures": 0,
+      "control": {
+        "games": 48,
+        "failures": 0,
+        "moves": 1653,
+        "median_move_ms": 216.23039000405697,
+        "worst_move_ms": 379.36008800170384,
+        "median_nps": 6667.129010989086,
+        "mean_depth": 1.4349667271627344,
+        "median_initialization_ms": 6020.621068502805,
+        "max_initialization_ms": 7458.0148280001595,
+        "max_peak_rss_mb": 172.6640625
+      },
+      "candidate": {
+        "games": 48,
+        "failures": 0,
+        "moves": 1692,
+        "median_move_ms": 213.29690300262882,
+        "worst_move_ms": 342.47157700156095,
+        "median_nps": 8180.741495259203,
+        "mean_depth": 1.6016548463356974,
+        "median_initialization_ms": 5990.953347503819,
+        "max_initialization_ms": 7534.6394189982675,
+        "max_peak_rss_mb": 169.66796875
+      }
+    },
+    "24": {
+      "blocks": [
+        {
+          "block": "A",
+          "cpuset": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "makespan_s": 197.9718739000382,
+          "games_per_hour": 1745.702524261116,
+          "max_container_mb": 177.8,
+          "total_container_mb": 4048.4,
+          "nonzero_exits": []
+        },
+        {
+          "block": "B",
+          "cpuset": [
+            11,
+            10,
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1,
+            0,
+            11,
+            10,
+            9,
+            8,
+            7,
+            6,
+            5,
+            4,
+            3,
+            2,
+            1,
+            0
+          ],
+          "makespan_s": 201.4361368000391,
+          "games_per_hour": 1715.6802423344177,
+          "max_container_mb": 180.4,
+          "total_container_mb": 4059.4,
+          "nonzero_exits": []
+        }
+      ],
+      "games": 192,
+      "games_per_hour": 1730.5611842598585,
+      "container_exit_failures": 0,
+      "engine_failures": 0,
+      "control": {
+        "games": 96,
+        "failures": 0,
+        "moves": 3139,
+        "median_move_ms": 220.8799159998307,
+        "worst_move_ms": 405.5578580009751,
+        "median_nps": 2890.6608511415116,
+        "mean_depth": 1.198789423383243,
+        "median_initialization_ms": 11955.617486502888,
+        "max_initialization_ms": 18586.748863002867,
+        "max_peak_rss_mb": 171.2265625
+      },
+      "candidate": {
+        "games": 96,
+        "failures": 0,
+        "moves": 3403,
+        "median_move_ms": 216.40311200462747,
+        "worst_move_ms": 334.19415399839636,
+        "median_nps": 3706.5979347780913,
+        "mean_depth": 1.3153100205700852,
+        "median_initialization_ms": 12858.384380000643,
+        "max_initialization_ms": 15576.988449996861,
+        "max_peak_rss_mb": 167.35546875
+      }
+    }
+  },
+  "contention": {
+    "6": {
+      "nps_retained_vs_baseline": {
+        "control": 1.0,
+        "candidate": 1.0
+      },
+      "candidate_vs_control_imbalance": 0.0,
+      "within_3_percent": true
+    },
+    "12": {
+      "nps_retained_vs_baseline": {
+        "control": 0.639863179097776,
+        "candidate": 0.584013645759018
+      },
+      "candidate_vs_control_imbalance": -0.08728355555246559,
+      "within_3_percent": false
+    },
+    "24": {
+      "nps_retained_vs_baseline": {
+        "control": 0.27742487641325747,
+        "candidate": 0.2646097269430969
+      },
+      "candidate_vs_control_imbalance": -0.046193224039039915,
+      "within_3_percent": false
+    }
+  },
+  "decision": {
+    "material_gain_threshold": 0.1,
+    "best_of_6_and_12_games_per_hour": 1297.9943821592021,
+    "games_per_hour_at_24": 1730.5611842598585,
+    "gain_over_best_small": 0.3332578384361613,
+    "material": true,
+    "imbalance_within_3_percent": false,
+    "no_failures_at_24": true,
+    "approve_24_for_exploratory_screens": false
+  }
+}

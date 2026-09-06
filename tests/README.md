@@ -1,3 +1,29 @@
+# Concurrency calibration
+
+See [CONCURRENCY.md](CONCURRENCY.md). Identical arena workloads at 6, 12 and 24
+simultaneous containers, two blocks each with reversed container-to-CPU placement,
+336 games, zero failures. Raw records are in `results/concurrency/`.
+
+```powershell
+python tests/concurrency_calibration.py run --levels 6 --blocks A,B
+python tests/concurrency_calibration.py run --levels 12 --blocks A,B
+python tests/concurrency_calibration.py run --levels 24 --blocks A,B
+python tests/concurrency_calibration.py report --levels 6,12,24
+```
+
+Throughput rises materially with oversubscription: 727 games/hour at six workers,
+1,298 at twelve, 1,731 at 24. **24 workers are nevertheless not approved, for
+screens or anything else.** The declared fairness condition failed: the candidate
+retains 26.5% of its six-worker node rate against the control's 27.7%, an imbalance
+of -4.62% against a ±3% limit, and twelve workers are worse at -8.73%. Only six
+workers pass, and they remain the setting for both authoritative 120-second testing
+and screens. Do not raise the worker count without recalibrating fairness.
+
+Initialization degrades from about 3.8 s median at six workers to 12 s median and
+18.6 s worst at 24, and completed depth falls from 1.84 to 1.20 ply for the control,
+so 24-worker games are far from tournament conditions regardless. Memory is not the
+limit: about 180 MB per container and 4.06 GB for 24 inside an 8.29 GB Docker VM.
+
 # Selective quiescence capture generation
 
 See [QCAP.md](QCAP.md). `qcap_experiment.json` pins the Numba control and the
