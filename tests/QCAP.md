@@ -202,9 +202,11 @@ across these different game paths.
 
 ## Decision
 
-**Provisionally retained.** `agent.py` is the candidate,
-`8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3`, and the diff
-is preserved in `results/qcap/qcap-quiesce.patch`.
+**Provisionally retained.** `agent.py` is the candidate, which this section
+recorded as `8e700199...` because the tested working tree used CRLF; the same
+program with the repository's LF endings is `be5da869...`. See **Source identity
+and reproducibility** below, and **Campaign decision** for the later validation.
+The diff is preserved in `results/qcap/qcap-quiesce.patch`.
 
 Every mandatory gate passed. Search behaviour is exactly preserved: identical
 moves, root scores and node counts on all 24 fixed-depth positions, 938 matched
@@ -220,6 +222,181 @@ zero, and no Elo claim is made or implied. What the smoke does establish is that
 twenty full games ran with zero failures and no timing violation. A wider paired
 screen on the thirty held-out openings is the natural next step, but no further
 experiment was authorized here.
+
+
+## Source identity and reproducibility
+
+The candidate was written on Windows, so the bytes that every earlier qcap
+measurement loaded used CRLF and hash
+`8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3`. The same
+source stored with LF hashes
+`be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0`, which is what
+the repository holds and what a clone produces. Two different raw hashes are two
+different byte strings; they are not treated as equal anywhere.
+
+`qcap_identity.py` proves the relationship rather than asserting it. It checks
+both stored files against their hashes, then that `crlf.replace(b"
+
+", b"
+")`
+is byte-for-byte the LF file and the reverse conversion returns the CRLF file,
+that no bare carriage return or bare newline survives in either, that exactly
+1,034 carriage returns separate 39,712 bytes from 38,678, and that the two files
+split into identical line lists. Equal bytes under conversion is not by itself
+proof that the programs are equal, so it also compares `ast.dump(ast.parse(...))`
+and the SHA-256 of the marshalled compiled code object. Both are identical,
+`e757629d88b2075b408cb6dfc738dc27ecbde30b8543334afeb501b78941f432`, while the
+control's code object is `5cd8e15433b6fdb76b8521cc40d77a437e9849366379b1de36e8f41cb7d3a81b`,
+confirming the pair is still two different programs. Because the executable code
+is identical, the correctness and benchmark evidence above carries over unchanged
+and was not re-run.
+
+A fresh clone previously depended on the client's `core.autocrlf`. `.gitattributes`
+now pins `agent.py`, the test modules, the test manifests, every frozen
+`agent.py` under `tests/`, and the harness and baseline sources to `eol=lf`, so
+raw-byte hashes reproduce on any platform. Raw records under `tests/results/`
+carry no rule and keep the bytes their run produced. `git add --renormalize .`
+reports nothing to change, which confirms the working tree already matches what a
+clone yields. The working `agent.py` is now the LF source, `be5da869...`.
+
+Historical pins are untouched: `qcap_experiment.json` still names the CRLF bytes
+that the benchmark, equality and smoke runs actually loaded, and the CRLF file
+stays frozen under its own hash. The validation campaign uses a separate manifest,
+`qcap_validation.json`, which pins the LF candidate, the LF control, both file
+paths, the CRLF hash it supersedes and the line-ending policy. `qcap_identity.py
+loader` confirms the harness accepts those exact bytes, that only the candidate
+defines `captures_and_promotions`, and that suite positions 0 and 2 reproduce the
+recorded moves and node counts, 1,238 and 1,388.
+
+## Validation campaign
+
+Both stages use the thirty held-out opening prefixes in `quiet_openings.json` in
+file order. No position was selected, replaced or reordered using any result.
+Each matched colour pair is four official-referee games: the candidate and the
+control each face the frozen Numba control as White and as Black, on the same
+opening, seed, rival source and clock.
+
+The fast screen is 60 pairs, 120 cases, 240 games at 10,000 ms + 100 ms. Pair `p`
+plays opening `p % 30` with seed `57000 + p`, so pairs 0-29 and 30-59 are the two
+trials of each opening under different seeds. Six shards of 20 cases run on
+logical CPUs 0, 2, 4, 6, 8 and 10, one thread from each of the host's six physical
+cores, each container limited to one CPU and 2 GB.
+
+**Declared before the screen was launched:** the full-clock confirmation, which
+runs only if the screen's paired point estimate is nonnegative with zero failures,
+uses the **first ten openings of `quiet_openings.json` in file order**, one
+four-game matched colour pair each: pairs 0-9, cases 0-19, 40 games at 120,000 ms
++ 500 ms, seed 58000, run serially in a single one-CPU container.
+
+### Fast screen result
+
+Six shards, all `exited 0`. The merge accepted one identical `RUN` record across
+every shard (both source hashes, seed 57000, 10,000 ms base, 100 ms increment),
+120 complete case pairs with no duplicate or missing case, 60 verified colour
+reversals, 30 distinct openings and 60 distinct seeds. Every case matched on
+opening, seed, colour and rival between the two configurations.
+
+| Fast screen, 10 s + 0.1 s | Control | Candidate |
+|---|---:|---:|
+| Games | 120 | 120 |
+| W / D / L | 51 / 8 / 61 | 73 / 4 / 43 |
+| Score, percent | 45.83 | 62.50 |
+| Move milliseconds, median / P95 / worst | 205.54 / 290.74 / 305.48 | 207.54 / 290.20 / 309.05 |
+| Median nodes/second | 8,473 | 11,541 |
+| Mean completed depth, game paths | 1.824 | 1.903 |
+| Passive overhead, median / P95 percent | 0.558 / 1.652 | 0.572 / 1.557 |
+| Maximum / median initialization, ms | 5,560.80 / 4,117.68 | 5,070.66 / 4,136.31 |
+| Maximum RSS, MB | 171.79 | 173.43 |
+
+The paired difference is **+16.67 percentage points**. The colour-pair bootstrap
+over 60 clusters gives a 95% interval of **[+6.67, +26.25]**; the opening
+bootstrap over 30 clusters gives **[+5.42, +27.50]**. Both exclude zero.
+
+There were **zero failures** across 240 games and 8,972 recorded moves: no flag
+fall, no illegal or malformed move, no crash and no ply-cap draw. Every game ended
+by rule — 228 checkmates, 6 threefold repetitions, 5 fifty-move draws and one
+insufficient-material draw. The slowest single move was 309.05 ms against a
+10,000 ms clock, and peak initialization was 5.56 s against the 90 s budget.
+
+The mean completed depth in this table is a game-path statistic: the two
+configurations played different games, so the positions differ. It is not
+comparable with the identical-position measurements above, where the candidate
+gained 2.5625 to 2.7500 mean ply in the `timing.py` gate and 2.639 to 2.764 in the
+paired benchmark. Median nodes per second is likewise measured over different
+positions here.
+
+The point estimate is nonnegative and there were no failures, so the declared
+full-clock confirmation was run.
+
+### Full-clock confirmation result
+
+Forty games at 120,000 ms + 500 ms, seed 58000, run serially in one container on
+one CPU with 2 GB and no network. The openings are the ten declared before the
+screen launched: `quiet_openings.json` entries 0-9 in file order, one four-game
+matched colour pair each. The merge accepted 20 complete case pairs, 10 verified
+colour reversals, 10 distinct openings, 10 distinct seeds and one `RUN` record
+carrying both source hashes.
+
+| Confirmation, 120 s + 0.5 s | Control | Candidate |
+|---|---:|---:|
+| Games | 20 | 20 |
+| W / D / L | 3 / 12 / 5 | 5 / 7 / 8 |
+| Score, percent | 45.0 | 42.5 |
+| Move milliseconds, median / P95 / worst | 1,526.11 / 2,880.95 / 2,892.46 | 1,702.53 / 2,881.00 / 2,887.88 |
+| Median nodes/second | 15,271 | 19,601 |
+| Mean completed depth, game paths | 4.510 | 4.554 |
+| Passive overhead, median / P95 percent | 0.116 / 0.256 | 0.121 / 0.253 |
+| Maximum initialization, ms | 3,098.46 | 2,981.39 |
+| Maximum RSS, MB | 198.90 | 199.64 |
+
+The paired difference is **-2.5 percentage points**, with a 95% interval of
+**[-20.0, +17.5]** from both the colour-pair and the opening bootstrap, since ten
+pairs and ten openings are the same ten clusters. The interval spans zero widely.
+Per-pair paired differences were -0.5, -0.5, -0.5, +1.0, 0, -0.5, 0, -0.5, 0, +1.0.
+
+There were **zero failures** across 40 games and 2,773 recorded moves. All games
+ended by rule: 21 checkmates, 15 threefold repetitions, 3 fifty-move draws and one
+insufficient-material draw. The slowest move was 2,892.46 ms against a 120,000 ms
+clock, and peak initialization was 3.10 s against the 90 s budget.
+
+The two stages disagree, and the disagreement is the main finding. The candidate's
+throughput advantage is present at both clocks — median nodes per second 8,473 to
+11,541 at 10 s and 15,271 to 19,601 at 120 s — but at the full clock it buys almost
+no extra depth, 4.510 to 4.554 mean ply, because each additional ply costs a large
+branching factor. At the short clock the same advantage moves the search from 1.824
+to 1.903 mean ply, where a fraction of a ply still changes the move chosen. That is
+a consistent mechanism, not a contradiction, but it is a post-hoc reading of two
+samples and is not established by them.
+
+Draws also behave differently: at the full clock both configurations draw far more
+often, 12 and 7 of 20 games, against the same rival, which shrinks the score
+separation available to either side.
+
+## Campaign decision
+
+**Retention remains provisional, pending orchestrator review.** Nothing in this
+campaign changes the engine, and no gate regressed.
+
+What is now established: the source identity is reproducible from a fresh clone,
+the executable code is unchanged by the newline fix, and 280 further games ran
+with zero failures, no flag fall, no illegal move and no crash, at both a short
+and a full tournament clock.
+
+What is not established is a strength gain. The 240-game fast screen at 10 s gives
++16.67 points with both 95% intervals above zero, which is a strong result at that
+clock. The 40-game confirmation at 120 s gives -2.5 points with an interval of
+[-20.0, +17.5], which is uninformative on its own and certainly not evidence of a
+gain at the clock the competition actually uses. The two samples are not pooled:
+they use different clocks, different seeds and different opening subsets, and the
+confirmation is a tenth the size. No Elo figure is inferred from either, and none
+is inferred from the throughput measurements, which describe node rate rather than
+playing strength.
+
+The honest summary is that the optimization is exactly equivalent in search
+behaviour, materially faster, clearly better at a fast clock on this rival, and
+unproven at the full clock. The obvious next question, which this campaign was not
+authorized to answer, is whether a full-clock screen with the sample size the fast
+screen had would separate the configurations at all.
 
 
 ## Files and reuse

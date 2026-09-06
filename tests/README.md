@@ -21,6 +21,67 @@ Pass the manifest explicitly to exercise this one:
 .\docker-test.ps1 -Detached -CpuSet 0 -LogName qcap-smoke python tests/qgen_checks.py arena --cases 10 --seed 51000 --experiment tests/qcap_experiment.json
 ```
 
+## Source identity
+
+`agent.py` and every frozen source are stored and checked out with LF; the
+`.gitattributes` rules pin that so raw-byte SHA-256 assertions reproduce from a
+fresh clone on any platform. The retained candidate is
+`be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0`. The earlier
+qcap measurements loaded the same program written with CRLF,
+`8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3`, which
+`qcap_experiment.json` still pins; the two hashes are different byte strings and
+are never treated as equal. `qcap_validation.json` pins the LF pair used by the
+validation campaign.
+
+```powershell
+.\docker-test.ps1 -LogName qcap-identity python tests/qcap_identity.py
+.\docker-test.ps1 -LogName qcap-loader python tests/qcap_identity.py loader
+git add --renormalize .   # must report no change
+```
+
+`qcap_identity.py` proves the newline conversion is the only difference, by byte
+conversion in both directions and by identical AST and marshalled code objects.
+`loader` confirms the harness accepts the exact validation bytes.
+
+## Validation campaign
+
+Both stages use the thirty openings in `quiet_openings.json` in file order; none
+was selected or replaced using a result. Fast screen: 60 matched colour pairs,
+120 cases, 240 games at 10,000 ms + 100 ms, seed 57000, six shards of 20 cases
+pinned to logical CPUs 0, 2, 4, 6, 8, 10, one thread per physical core.
+
+```powershell
+for ($s=0; $s -lt 6; $s++) {
+    $cpu = 2*$s; $offset = 20*$s
+    .\docker-test.ps1 -Detached -CpuSet "$cpu" -LogName "qcap-screen-$s" python tests/qgen_checks.py arena --cases 20 --case-offset $offset --seed 57000 --experiment tests/qcap_validation.json
+}
+for ($s=0; $s -lt 6; $s++) { docker inspect "qcap-screen-$s" --format '{{.State.Status}} {{.State.ExitCode}}' }
+$logs = for ($s=0; $s -lt 6; $s++) { $p="tests/results/qcap/qcap-screen-$s.log"; docker logs "qcap-screen-$s" *> $p; $p }
+Get-Content -LiteralPath $logs | docker run --rm -i --network none --cpus 1 --memory 2g --pids-limit 128 --read-only --tmpfs /tmp:rw,size=256m --mount "type=bind,source=$PWD,target=/workspace,readonly" chessathon-scope:test python tests/numba_arena_summary.py --cases 120 --control control --candidate candidate *> "tests/results/qcap/qcap-screen-merged.json"
+```
+
+Every shard must reach `exited 0` before merging; the merge validates source
+hashes, identical conditions, complete cases, colour reversal and duplicates.
+The fast screen finished: candidate 62.50% (+73 =4 -43) against control 45.83%
+(+51 =8 -61), a paired difference of +16.67 points, 95% colour-pair interval
+[+6.67, +26.25] and opening interval [+5.42, +27.50], zero failures over 240
+games. The full-clock confirmation then ran, and disagreed: candidate 42.5%
+against control 45.0%, a paired difference of -2.5 points with a 95% interval of
+[-20.0, +17.5] over ten clusters, zero failures over 40 games. Retention stays
+provisional; see [QCAP.md](QCAP.md). Do not rerun either stage to move the
+estimate.
+
+The full-clock confirmation runs only if the screen's paired point estimate is
+nonnegative with zero failures. Its ten openings were declared before the screen
+launched: the first ten of `quiet_openings.json` in file order, one four-game
+matched colour pair each, run serially in one container.
+
+```powershell
+.\docker-test.ps1 -Detached -CpuSet 0 -LogName qcap-confirm python tests/qgen_checks.py arena --cases 20 --seed 58000 --base-ms 120000 --increment-ms 500 --experiment tests/qcap_validation.json
+docker logs qcap-confirm *> "tests/results/qcap/qcap-confirm.log"
+Get-Content "tests/results/qcap/qcap-confirm.log" | docker run --rm -i --network none --cpus 1 --memory 2g --pids-limit 128 --read-only --tmpfs /tmp:rw,size=256m --mount "type=bind,source=$PWD,target=/workspace,readonly" chessathon-scope:test python tests/numba_arena_summary.py --cases 20 --control control --candidate candidate *> "tests/results/qcap/qcap-confirm-merged.json"
+```
+
 `verify.py`, `determinism.py` and `make gate` import the working `agent.py`, so
 run them while the candidate is in place. Merge a benchmark log into the paired
 per-position report, and a detached arena into the paired score:

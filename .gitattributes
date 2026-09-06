@@ -1,0 +1,11 @@
+# Source identity is a raw-byte SHA-256, so a checkout must produce the same bytes
+# on every platform. Without this, a Windows clone with core.autocrlf=true rewrites
+# these files to CRLF and every frozen-source hash assertion fails. Scoped to the
+# files that carry those assertions; raw measurement records keep their own bytes.
+agent.py text eol=lf
+tests/*.py text eol=lf
+tests/*.json text eol=lf
+tests/**/agent.py text eol=lf
+tests/tournament/**/*.json text eol=lf
+harness/**/*.py text eol=lf
+baselines/**/*.py text eol=lf

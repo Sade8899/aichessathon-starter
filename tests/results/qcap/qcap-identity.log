@@ -1,0 +1,16 @@
+{
+  "crlf_sha256": "8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3",
+  "lf_sha256": "be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0",
+  "control_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+  "carriage_returns_removed": 1034,
+  "bytes": {
+    "crlf": 39712,
+    "lf": 38678,
+    "control": 37457
+  },
+  "newline_conversion_is_the_only_difference": true,
+  "identical_ast": true,
+  "code_object_sha256": "e757629d88b2075b408cb6dfc738dc27ecbde30b8543334afeb501b78941f432",
+  "control_code_object_sha256": "5cd8e15433b6fdb76b8521cc40d77a437e9849366379b1de36e8f41cb7d3a81b",
+  "manifest_pins_exact_bytes": true
+}

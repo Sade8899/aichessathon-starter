@@ -1,0 +1,11 @@
+{
+  "experiment": "qcap selective quiescence capture generation, validation campaign",
+  "control_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+  "control_path": "tests/numba_checkpoint/59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a/agent.py",
+  "candidate_sha256": "be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0",
+  "candidate_path": "tests/qcap_candidate/be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0/agent.py",
+  "candidate_crlf_sha256": "8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3",
+  "candidate_crlf_path": "tests/qcap_candidate/8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3/agent.py",
+  "line_endings": "LF. Both frozen sources and agent.py are stored and checked out with LF; .gitattributes pins this so raw-byte hashes reproduce from a fresh clone on any platform.",
+  "newline_note": "candidate_crlf_sha256 is the same program written with CRLF; tests/qcap_identity.py proves the conversion is the only difference. Earlier qcap measurements were taken against the CRLF bytes and keep that identity in qcap_experiment.json."
+}

@@ -1,0 +1,74 @@
+{
+  "conditions": {
+    "source_sha256": {
+      "control": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "candidate": "be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0"
+    },
+    "seed": 58000,
+    "base_ms": 120000,
+    "increment_ms": 500
+  },
+  "cases": 20,
+  "games": 40,
+  "verified_colour_pairs": 10,
+  "configs": {
+    "control": {
+      "games": 20,
+      "wdl": [
+        3,
+        12,
+        5
+      ],
+      "score": 0.45,
+      "median_ms": 1526.1119580027298,
+      "p95_ms": 2880.9481139978743,
+      "worst_ms": 2892.45611199658,
+      "mean_depth": 4.510354041416166,
+      "median_nps": 15270.758588937413,
+      "model_median_fraction": 0.0011596612306932405,
+      "model_p95_fraction": 0.0025590239235979795,
+      "coverage": 0.8924515698062793,
+      "max_initialization_ms": 3098.460570006864,
+      "max_rss_mb": 198.8984375
+    },
+    "candidate": {
+      "games": 20,
+      "wdl": [
+        5,
+        7,
+        8
+      ],
+      "score": 0.425,
+      "median_ms": 1702.52850399811,
+      "p95_ms": 2880.998486001772,
+      "worst_ms": 2887.8788790025283,
+      "mean_depth": 4.554075235109718,
+      "median_nps": 19600.93993479328,
+      "model_median_fraction": 0.0012058976105597152,
+      "model_p95_fraction": 0.0025282454455370505,
+      "coverage": 0.9184952978056427,
+      "max_initialization_ms": 2981.3906859999406,
+      "max_rss_mb": 199.63671875
+    }
+  },
+  "paired": {
+    "difference": -0.025,
+    "ci95": [
+      -0.2,
+      0.175
+    ],
+    "method": "paired colour-cluster bootstrap",
+    "colour_pair_clusters": 10
+  },
+  "opening_clustered": {
+    "difference": -0.025,
+    "ci95": [
+      -0.2,
+      0.175
+    ],
+    "method": "paired opening-cluster bootstrap",
+    "opening_clusters": 10
+  },
+  "unique_openings": 10,
+  "failures": 0
+}
