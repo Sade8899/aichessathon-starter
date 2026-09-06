@@ -22,6 +22,7 @@ from selection import load, positions
 CONTROL_SHA = "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a"
 CONTROL = Path("tests/numba_checkpoint") / CONTROL_SHA / "agent.py"
 MANIFEST = Path("tests/qgen_experiment.json")
+DEFAULT_MANIFEST = MANIFEST
 FLAGS = ("ADAPTIVE", "PASSIVE", "FAST_EVAL", "EVAL_CACHE", "DEPTH_EVIDENCE", "TIGHT_ROOT")
 
 
@@ -83,7 +84,7 @@ def trace_engine(module: types.ModuleType) -> Any:
             super().__init__()
             self.qdepth = 0
             self.qnodes = 0
-            self.lists: list[tuple[str, list[str]]] = []
+            self.lists: list[tuple[str, list[str], list[str]]] = []
 
         def order(
             self,
@@ -92,9 +93,13 @@ def trace_engine(module: types.ModuleType) -> Any:
             preferred: chess.Move | None,
             ply: int,
         ) -> list[chess.Move]:
+            result = cast(list[chess.Move], super().order(board, moves, preferred, ply))
             if self.qdepth:
-                self.lists.append((board.fen(), [m.uci() for m in moves]))
-            return cast(list[chess.Move], super().order(board, moves, preferred, ply))
+                # Both lists matter: the generated order, and the stable sort of it.
+                self.lists.append(
+                    (board.fen(), [m.uci() for m in moves], [m.uci() for m in result])
+                )
+            return result
 
         def quiesce(self, board: chess.Board, alpha: int, beta: int, ply: int) -> int:
             self.qnodes += 1
@@ -119,7 +124,7 @@ def state(engine: Any, board: chess.Board) -> tuple[Any, ...]:
 
 def probe(
     module: types.ModuleType, board: chess.Board, alpha: int, beta: int, ply: int, tactical: bool
-) -> tuple[int, int, list[tuple[str, list[str]]]]:
+) -> tuple[int, int, list[tuple[str, list[str], list[str]]]]:
     """Run one quiescence tree and assert the board and repetition state are restored."""
     engine = trace_engine(module)
     engine.deadline = float("inf")
@@ -138,12 +143,121 @@ def corpus() -> list[str]:
     return sorted(set(result))
 
 
+# Hand-authored positions for the cases a destination mask alone cannot express.
+SPECIAL: dict[str, str] = {
+    "ep_white": "4k3/8/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "ep_black": "4k3/8/8/8/3Pp3/8/8/4K3 b - d3 0 1",
+    "ep_pinned": "8/8/8/K2pP2r/8/8/8/7k w - d6 0 1",
+    "ep_two_capturers": "4k3/8/8/2PpP3/8/8/8/4K3 w - d6 0 1",
+    # A rook that attacks the en passant square: a pawn-only second pass must exclude it.
+    "ep_rook_reaches_square": "4k3/8/R7/3pP3/8/8/8/4K3 w - d6 0 1",
+    "quiet_promotion": "7k/P7/8/8/8/8/8/7K w - - 0 1",
+    "underpromotion": "8/1P6/k7/8/1K6/8/8/8 w - - 0 1",
+    "capture_promotion": "1n5k/P7/8/8/8/8/8/7K w - - 0 1",
+    "promotion_blocked": "1n5k/1P6/8/8/8/8/8/7K w - - 0 1",
+    # A rook that attacks an empty promotion square, which is not a quiescence move.
+    "promotion_rook_reaches_rank": "7R/1P6/8/8/k7/8/8/7K w - - 0 1",
+    "black_promotion": "7k/8/8/8/8/8/6p1/5NK1 b - - 0 1",
+    "promotion_and_ep": "1n5k/P7/8/3pP3/8/8/8/4K3 w - d6 0 1",
+    "no_captures": "4k3/8/8/8/8/8/8/4K3 w - - 0 1",
+}
+
+
+def special_positions() -> list[str]:
+    """Reachable positions that actually offer en passant or a promotion."""
+    rng = random.Random(7717)
+    ep, promoting, other = [], [], []
+    for _ in range(600):
+        board = chess.Board()
+        for _ in range(240):
+            if board.is_game_over():
+                break
+            if board.ep_square and any(board.generate_legal_ep()):
+                ep.append(board.fen())
+            elif any(m.promotion for m in board.generate_legal_moves()):
+                promoting.append(board.fen())
+            elif board.pawns & (chess.BB_RANK_7 | chess.BB_RANK_2):
+                other.append(board.fen())
+            board.push(rng.choice(list(board.legal_moves)))
+        if len(ep) >= 60 and len(promoting) >= 60:
+            break
+    assert len(ep) >= 20 and len(promoting) >= 20, (len(ep), len(promoting))
+    return sorted(set(ep[:60] + promoting[:60] + other[:60] + list(SPECIAL.values())))
+
+
+def filtered(board: chess.Board) -> list[str]:
+    """The control's quiescence predicate, applied to every legal move in order."""
+    return [m.uci() for m in board.legal_moves if board.is_capture(m) or m.promotion]
+
+
+def generation(candidate: types.ModuleType) -> dict[str, Any]:
+    """Selective generation must equal the control filter exactly, order included."""
+    checked = 0
+    for fen in corpus() + special_positions():
+        board = chess.Board(fen)
+        if board.is_check():
+            continue
+        produced = [m.uci() for m in candidate.captures_and_promotions(board)]
+        expected = filtered(board)
+        assert produced == expected, (fen, produced, expected)
+        assert len(set(produced)) == len(produced), (fen, produced)
+        checked += 1
+
+    details: dict[str, dict[str, Any]] = {}
+    for name, fen in SPECIAL.items():
+        board = chess.Board(fen)
+        produced = [m.uci() for m in candidate.captures_and_promotions(board)]
+        assert produced == filtered(board), name
+        ep_moves = [m for m in board.legal_moves if board.is_en_passant(m)]
+        promotions = [m.uci() for m in board.legal_moves if m.promotion]
+        assert all(m.uci() in produced for m in ep_moves), name
+        assert all(m in produced for m in promotions), name
+        quiet = [
+            m.uci()
+            for m in board.legal_moves
+            if not board.is_capture(m) and not m.promotion
+        ]
+        assert not set(quiet) & set(produced), (name, quiet, produced)
+        details[name] = {
+            "generated": produced,
+            "en_passant": [m.uci() for m in ep_moves],
+            "promotions": promotions,
+            "quiet_excluded": len(quiet),
+        }
+    assert details["ep_white"]["en_passant"] == ["e5d6"]
+    assert len(details["ep_two_capturers"]["en_passant"]) == 2
+    assert not details["ep_pinned"]["en_passant"] and not details["ep_pinned"]["generated"]
+    assert "a6d6" not in details["ep_rook_reaches_square"]["generated"]
+    assert details["quiet_promotion"]["generated"] == ["a7a8q", "a7a8r", "a7a8b", "a7a8n"]
+    assert details["underpromotion"]["generated"] == ["b7b8q", "b7b8r", "b7b8b", "b7b8n"]
+    assert details["capture_promotion"]["generated"] == [
+        "a7b8q",
+        "a7b8r",
+        "a7b8b",
+        "a7b8n",
+        "a7a8q",
+        "a7a8r",
+        "a7a8b",
+        "a7a8n",
+    ]
+    assert "h8b8" not in details["promotion_rook_reaches_rank"]["generated"]
+    assert details["promotion_and_ep"]["generated"][-1] == "e5d6"
+    assert details["promotion_blocked"]["generated"] == []
+    assert details["black_promotion"]["generated"] == ["g2f1q", "g2f1r", "g2f1b", "g2f1n"]
+    assert not details["no_captures"]["generated"]
+    return {"positions": checked, "special_cases": details}
+
+
 def targeted() -> None:
     modules = engines()
     control, candidate = modules["control"], modules["candidate"]
     assert candidate.PASSIVE is True and candidate.ADAPTIVE is False
     for flag in FLAGS:
         assert getattr(control, flag) == getattr(candidate, flag), flag
+
+    generated = (
+        generation(candidate) if hasattr(candidate, "captures_and_promotions") else None
+    )
 
     matched = 0
     for fen in corpus():
@@ -154,6 +268,16 @@ def targeted() -> None:
             ]
             assert outcomes[0] == outcomes[1], (fen, ply)
             matched += 1
+    # En passant and promotions are too rare in the reachable corpus to rely on.
+    special = 0
+    for fen in special_positions():
+        for ply, tactical in ((2, True), (5, False)):
+            board = chess.Board(fen)
+            outcomes = [
+                probe(m, board, -m.INF, m.INF, ply, tactical) for m in (control, candidate)
+            ]
+            assert outcomes[0] == outcomes[1], (fen, ply)
+            special += 1
     # Narrow windows exercise the stand pat cutoff, which must not generate a move list.
     cutoffs = 0
     for fen in corpus()[:60]:
@@ -246,6 +370,9 @@ def targeted() -> None:
             {
                 "positions": len(corpus()),
                 "matched_trees": matched,
+                "special_positions": len(special_positions()),
+                "matched_special_trees": special,
+                "generation": generated,
                 "stand_pat_cutoffs": cutoffs,
                 "first_move_preserved": preserved,
                 "first_move_only_forcing": only,
@@ -260,6 +387,13 @@ def equality() -> None:
     modules = engines()
     control, candidate = modules["control"], modules["candidate"]
     trees = [ast.parse(source) for source in sources().values()]
+    names = [
+        {n.name for n in tree.body if isinstance(n, ast.ClassDef | ast.FunctionDef)}
+        for tree in trees
+    ]
+    # The candidate may add definitions, but must not remove or rename any.
+    added = sorted(names[1] - names[0])
+    assert not names[0] - names[1], sorted(names[0] - names[1])
     for node in trees[0].body:
         name = getattr(node, "name", "")
         if not isinstance(node, ast.ClassDef | ast.FunctionDef):
@@ -325,6 +459,7 @@ def equality() -> None:
                 "exact_evaluations": count,
                 "fixed_depth_positions": len(rows),
                 "moves_scores_nodes_exact": True,
+                "added_definitions": added,
                 "signatures": before,
                 "sha256": {n: hashlib.sha256(s.encode()).hexdigest() for n, s in sources().items()},
             }
@@ -465,7 +600,9 @@ def main() -> None:
     parser.add_argument("--seed", type=int, default=51000)
     parser.add_argument("--base-ms", type=int, default=10000)
     parser.add_argument("--increment-ms", type=int, default=100)
+    parser.add_argument("--experiment", default=str(DEFAULT_MANIFEST))
     args = parser.parse_args()
+    globals()["MANIFEST"] = Path(args.experiment)
     if args.mode == "targeted":
         targeted()
     elif args.mode == "equality":

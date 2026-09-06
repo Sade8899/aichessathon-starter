@@ -1,3 +1,50 @@
+# Selective quiescence capture generation
+
+See [QCAP.md](QCAP.md). `qcap_experiment.json` pins the Numba control and the
+candidate `8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3`;
+raw measurements are in `results/qcap/`. `qgen_checks.py` now takes
+`--experiment`, defaulting to `qgen_experiment.json`, so every command in the
+section below still runs unchanged and selects the earlier, rejected candidate.
+Pass the manifest explicitly to exercise this one:
+
+```powershell
+.\docker-test.ps1 -LogName qcap-lint ruff check .
+.\docker-test.ps1 -LogName qcap-types mypy --strict agent.py tests/qgen_checks.py tests/numba_validation.py tests/numba_arena_summary.py tests/quiet_checks.py tests/quiet_report.py tests/quiet_openings.py tests/quiet_suite.py
+.\docker-test.ps1 -LogName qcap-targeted python tests/qgen_checks.py targeted --experiment tests/qcap_experiment.json
+.\docker-test.ps1 -LogName qcap-equality python tests/qgen_checks.py equality --experiment tests/qcap_experiment.json
+.\docker-test.ps1 -LogName qcap-benchmark python tests/qgen_checks.py bench --repeats 3 --experiment tests/qcap_experiment.json
+.\docker-test.ps1 -LogName qcap-timing python tests/qgen_checks.py timing --repeats 2 --experiment tests/qcap_experiment.json
+.\docker-test.ps1 -LogName qcap-legality python tests/verify.py
+.\docker-test.ps1 -LogName qcap-determinism python tests/determinism.py
+.\docker-test.ps1 -LogName qcap-passive python tests/qgen_checks.py passive --experiment tests/qcap_experiment.json
+.\docker-test.ps1 -LogName qcap-gate make gate
+.\docker-test.ps1 -Detached -CpuSet 0 -LogName qcap-smoke python tests/qgen_checks.py arena --cases 10 --seed 51000 --experiment tests/qcap_experiment.json
+```
+
+`verify.py`, `determinism.py` and `make gate` import the working `agent.py`, so
+run them while the candidate is in place. Merge a benchmark log into the paired
+per-position report, and a detached arena into the paired score:
+
+```powershell
+Get-Content "$env:TEMP/qcap-benchmark.log" | docker run --rm -i --network none --cpus 1 --memory 2g --pids-limit 128 --read-only --tmpfs /tmp:rw,size=256m --mount "type=bind,source=$PWD,target=/workspace,readonly" chessathon-scope:test python tests/qgen_checks.py report *> "tests/results/qcap/qcap-report.json"
+docker logs qcap-smoke *> "$env:TEMP/qcap-smoke.log"
+Get-Content "$env:TEMP/qcap-smoke.log" | docker run --rm -i --network none --cpus 1 --memory 2g --pids-limit 128 --read-only --tmpfs /tmp:rw,size=256m --mount "type=bind,source=$PWD,target=/workspace,readonly" chessathon-scope:test python tests/numba_arena_summary.py --cases 10 --control control --candidate candidate *> "tests/results/qcap/qcap-smoke-merged.json"
+```
+
+The `targeted` mode gained a direct comparison of `captures_and_promotions`
+against the control's filter over a corpus that actually contains en passant and
+promotions, thirteen hand-authored special-move fixtures, and recording of the
+list after `Engine.order`'s stable sort so equal-priority ties are compared too.
+The 20-game paired smoke finished with zero failures: control 45% (+4 =1 -5),
+candidate 70% (+7 =0 -3), a paired difference of +25 points with a 95% colour-pair
+interval of [-20, +60] over five clusters. That interval includes zero, so it is a
+screen, not a strength result. The candidate is provisionally retained; do not run
+a larger arena without authorization.
+
+`passive_units.unchanged_search` and `numba_validation.py check` are historical
+AST identity checks for the original search; this experiment changes
+`Engine.quiesce`, so they cannot pass and were not run. They are unmodified.
+
 # Quiescence move-generation experiment
 
 See [QGEN.md](QGEN.md) for the single-generator experiment and its rejection.

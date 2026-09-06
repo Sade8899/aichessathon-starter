@@ -1,0 +1,583 @@
+{
+  "aggregate": {
+    "positions": 24,
+    "median_fixed_nps_gain": 34.54387646749558,
+    "median_timed_nps_gain": 33.54390352507241,
+    "fixed_nps_regressions": [
+      9
+    ],
+    "timed_nps_regressions": [],
+    "depth_regressions": [],
+    "fixed_nodes_identical": true,
+    "control": {
+      "mean_completed_depth": 2.638888888888889,
+      "median_fixed_ms": 65.8010130009643,
+      "p95_fixed_ms": 300.62431400074274,
+      "median_timed_ms": 300.27836350018333,
+      "worst_timed_ms": 301.5185990007012,
+      "minimum_hard_slack_s": -0.0015173979991232045
+    },
+    "candidate": {
+      "mean_completed_depth": 2.763888888888889,
+      "median_fixed_ms": 45.90854849993775,
+      "p95_fixed_ms": 221.74555099991267,
+      "median_timed_ms": 300.29371099954005,
+      "worst_timed_ms": 301.37053900034516,
+      "minimum_hard_slack_s": -0.0013685390003956854
+    }
+  },
+  "per_position": [
+    {
+      "position": 0,
+      "control": {
+        "fixed_nps": 17159.046523383007,
+        "fixed_ms": 72.14853099867469,
+        "fixed_nodes": 1238,
+        "timed_nps": 12257.95029643065,
+        "mean_depth": 2,
+        "worst_ms": 301.5185990007012
+      },
+      "candidate": {
+        "fixed_nps": 23749.78621921378,
+        "fixed_ms": 52.12678499810863,
+        "fixed_nodes": 1238,
+        "timed_nps": 18906.70651439962,
+        "mean_depth": 2,
+        "worst_ms": 300.5077740017441
+      },
+      "fixed_nps_gain": 38.40970817842022,
+      "timed_nps_gain": 54.24035876458886,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 1,
+      "control": {
+        "fixed_nps": 16561.15449485906,
+        "fixed_ms": 521.8235239990463,
+        "fixed_nodes": 8642,
+        "timed_nps": 15929.330775990526,
+        "mean_depth": 1,
+        "worst_ms": 300.53231799684
+      },
+      "candidate": {
+        "fixed_nps": 22422.538652179464,
+        "fixed_ms": 385.4157700006908,
+        "fixed_nodes": 8642,
+        "timed_nps": 22282.877093135794,
+        "mean_depth": 1,
+        "worst_ms": 300.4054160010128
+      },
+      "fixed_nps_gain": 35.39236445828644,
+      "timed_nps_gain": 39.8858332876209,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 2,
+      "control": {
+        "fixed_nps": 14850.322444800931,
+        "fixed_ms": 93.4659839986125,
+        "fixed_nodes": 1388,
+        "timed_nps": 19502.80814447118,
+        "mean_depth": 3,
+        "worst_ms": 300.49420399882365
+      },
+      "candidate": {
+        "fixed_nps": 18127.654867462516,
+        "fixed_ms": 76.56809499894734,
+        "fixed_nodes": 1388,
+        "timed_nps": 22043.950498993443,
+        "mean_depth": 3,
+        "worst_ms": 301.37053900034516
+      },
+      "fixed_nps_gain": 22.069099407393477,
+      "timed_nps_gain": 13.02962289173033,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 3,
+      "control": {
+        "fixed_nps": 22852.9086231068,
+        "fixed_ms": 25.16091100187623,
+        "fixed_nodes": 575,
+        "timed_nps": 15611.578024504555,
+        "mean_depth": 2.3333333333333335,
+        "worst_ms": 300.495746996603
+      },
+      "candidate": {
+        "fixed_nps": 26250.792033662226,
+        "fixed_ms": 21.90410099865403,
+        "fixed_nodes": 575,
+        "timed_nps": 20781.207211940506,
+        "mean_depth": 3,
+        "worst_ms": 232.72473199904198
+      },
+      "fixed_nps_gain": 14.86849427612813,
+      "timed_nps_gain": 33.114072000418496,
+      "depth_change": 0.6666666666666665,
+      "nodes_match": true
+    },
+    {
+      "position": 4,
+      "control": {
+        "fixed_nps": 15157.577423415167,
+        "fixed_ms": 79.82805999927223,
+        "fixed_nodes": 1210,
+        "timed_nps": 13683.848347773408,
+        "mean_depth": 2,
+        "worst_ms": 300.86333899816964
+      },
+      "candidate": {
+        "fixed_nps": 22054.631326584386,
+        "fixed_ms": 54.86376000044402,
+        "fixed_nodes": 1210,
+        "timed_nps": 19353.48619723087,
+        "mean_depth": 2,
+        "worst_ms": 300.7327730010729
+      },
+      "fixed_nps_gain": 45.50234981821546,
+      "timed_nps_gain": 41.433065504412795,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 5,
+      "control": {
+        "fixed_nps": 15801.706279992379,
+        "fixed_ms": 251.0488379994058,
+        "fixed_nodes": 3967,
+        "timed_nps": 15229.072955177142,
+        "mean_depth": 2,
+        "worst_ms": 269.12421100132633
+      },
+      "candidate": {
+        "fixed_nps": 21126.15259698366,
+        "fixed_ms": 187.77673699878505,
+        "fixed_nodes": 3967,
+        "timed_nps": 22078.783724052628,
+        "mean_depth": 2,
+        "worst_ms": 300.81523999979254
+      },
+      "fixed_nps_gain": 33.69538847670472,
+      "timed_nps_gain": 44.977857739836466,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 6,
+      "control": {
+        "fixed_nps": 11936.256519340286,
+        "fixed_ms": 46.496989998559,
+        "fixed_nodes": 555,
+        "timed_nps": 16522.557706788895,
+        "mean_depth": 3,
+        "worst_ms": 300.33628300225246
+      },
+      "candidate": {
+        "fixed_nps": 14091.389132700844,
+        "fixed_ms": 39.38575500069419,
+        "fixed_nodes": 555,
+        "timed_nps": 22511.40545442525,
+        "mean_depth": 3,
+        "worst_ms": 300.64759900051286
+      },
+      "fixed_nps_gain": 18.05534767008905,
+      "timed_nps_gain": 36.246493151454494,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 7,
+      "control": {
+        "fixed_nps": 18934.104249065636,
+        "fixed_ms": 28.414336000423646,
+        "fixed_nodes": 538,
+        "timed_nps": 14275.543626667208,
+        "mean_depth": 2,
+        "worst_ms": 300.70950200024527
+      },
+      "candidate": {
+        "fixed_nps": 23537.739790751777,
+        "fixed_ms": 22.85690999997314,
+        "fixed_nodes": 538,
+        "timed_nps": 21367.230149979652,
+        "mean_depth": 3,
+        "worst_ms": 238.41587999777403
+      },
+      "fixed_nps_gain": 24.31398645073648,
+      "timed_nps_gain": 49.677173134513275,
+      "depth_change": 1,
+      "nodes_match": true
+    },
+    {
+      "position": 8,
+      "control": {
+        "fixed_nps": 10802.949014723848,
+        "fixed_ms": 29.251271997054573,
+        "fixed_nodes": 316,
+        "timed_nps": 18731.1667921992,
+        "mean_depth": 3,
+        "worst_ms": 300.7184169982793
+      },
+      "candidate": {
+        "fixed_nps": 12078.03880683881,
+        "fixed_ms": 26.16318800210138,
+        "fixed_nodes": 316,
+        "timed_nps": 21567.075199812036,
+        "mean_depth": 3,
+        "worst_ms": 300.6292450008914
+      },
+      "fixed_nps_gain": 11.803164028424828,
+      "timed_nps_gain": 15.140052080438892,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 9,
+      "control": {
+        "fixed_nps": 23643.874125104954,
+        "fixed_ms": 26.053260000480805,
+        "fixed_nodes": 616,
+        "timed_nps": 15744.99664071502,
+        "mean_depth": 2,
+        "worst_ms": 301.49802599771647
+      },
+      "candidate": {
+        "fixed_nps": 23168.147076996152,
+        "fixed_ms": 26.58822900048108,
+        "fixed_nodes": 616,
+        "timed_nps": 18883.708772236827,
+        "mean_depth": 2.3333333333333335,
+        "worst_ms": 300.7883709979069
+      },
+      "fixed_nps_gain": -2.0120520249415352,
+      "timed_nps_gain": 19.93466371028243,
+      "depth_change": 0.3333333333333335,
+      "nodes_match": true
+    },
+    {
+      "position": 10,
+      "control": {
+        "fixed_nps": 14999.452181245431,
+        "fixed_ms": 88.66990500246175,
+        "fixed_nodes": 1330,
+        "timed_nps": 18680.01399775298,
+        "mean_depth": 3,
+        "worst_ms": 300.6421730024158
+      },
+      "candidate": {
+        "fixed_nps": 18940.426136012997,
+        "fixed_ms": 70.22017300187144,
+        "fixed_nodes": 1330,
+        "timed_nps": 23389.54764469638,
+        "mean_depth": 3,
+        "worst_ms": 300.57549200137146
+      },
+      "fixed_nps_gain": 26.27411926213654,
+      "timed_nps_gain": 25.211617333423362,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 11,
+      "control": {
+        "fixed_nps": 15478.982592176826,
+        "fixed_ms": 51.29536100139376,
+        "fixed_nodes": 794,
+        "timed_nps": 14345.84473472801,
+        "mean_depth": 3,
+        "worst_ms": 280.5150140011392
+      },
+      "candidate": {
+        "fixed_nps": 21523.34540162165,
+        "fixed_ms": 36.8901760011795,
+        "fixed_nodes": 794,
+        "timed_nps": 18176.46643000123,
+        "mean_depth": 3,
+        "worst_ms": 246.19946000166237
+      },
+      "fixed_nps_gain": 39.04883782542454,
+      "timed_nps_gain": 26.70195980861385,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 12,
+      "control": {
+        "fixed_nps": 15124.37212653156,
+        "fixed_ms": 10.64507000046433,
+        "fixed_nodes": 161,
+        "timed_nps": 16945.264050371567,
+        "mean_depth": 3.6666666666666665,
+        "worst_ms": 300.6370590010192
+      },
+      "candidate": {
+        "fixed_nps": 17130.93267310703,
+        "fixed_ms": 9.398204001627164,
+        "fixed_nodes": 161,
+        "timed_nps": 19305.79351286487,
+        "mean_depth": 4,
+        "worst_ms": 263.3848930017848
+      },
+      "fixed_nps_gain": 13.267066756811086,
+      "timed_nps_gain": 13.930319736985997,
+      "depth_change": 0.3333333333333335,
+      "nodes_match": true
+    },
+    {
+      "position": 13,
+      "control": {
+        "fixed_nps": 13633.256522065925,
+        "fixed_ms": 41.00267600006191,
+        "fixed_nodes": 559,
+        "timed_nps": 15427.359600331596,
+        "mean_depth": 2.6666666666666665,
+        "worst_ms": 301.439142000163
+      },
+      "candidate": {
+        "fixed_nps": 19722.428864617876,
+        "fixed_ms": 28.34336500018253,
+        "fixed_nodes": 559,
+        "timed_nps": 18845.51413021648,
+        "mean_depth": 3,
+        "worst_ms": 300.75727500297944
+      },
+      "fixed_nps_gain": 44.664107454417824,
+      "timed_nps_gain": 22.15644555152143,
+      "depth_change": 0.3333333333333335,
+      "nodes_match": true
+    },
+    {
+      "position": 14,
+      "control": {
+        "fixed_nps": 16802.736456613988,
+        "fixed_ms": 102.95942000084324,
+        "fixed_nodes": 1730,
+        "timed_nps": 16920.149663539178,
+        "mean_depth": 2,
+        "worst_ms": 301.1229780022404
+      },
+      "candidate": {
+        "fixed_nps": 23520.765464289074,
+        "fixed_ms": 73.55202799953986,
+        "fixed_nodes": 1730,
+        "timed_nps": 23657.726566019242,
+        "mean_depth": 2,
+        "worst_ms": 300.58846499741776
+      },
+      "fixed_nps_gain": 39.9817555016802,
+      "timed_nps_gain": 39.819842238149384,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 15,
+      "control": {
+        "fixed_nps": 13992.884639361293,
+        "fixed_ms": 22.654371001408435,
+        "fixed_nodes": 317,
+        "timed_nps": 19538.587602553256,
+        "mean_depth": 3,
+        "worst_ms": 300.5844639992574
+      },
+      "candidate": {
+        "fixed_nps": 19549.354689564792,
+        "fixed_ms": 16.215368999837665,
+        "fixed_nodes": 317,
+        "timed_nps": 23095.897265217965,
+        "mean_depth": 3,
+        "worst_ms": 300.65946000104304
+      },
+      "fixed_nps_gain": 39.70925362003932,
+      "timed_nps_gain": 18.20658552719465,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 16,
+      "control": {
+        "fixed_nps": 12961.382518968278,
+        "fixed_ms": 84.01881499958108,
+        "fixed_nodes": 1089,
+        "timed_nps": 16022.61080171759,
+        "mean_depth": 3,
+        "worst_ms": 282.59282499857363
+      },
+      "candidate": {
+        "fixed_nps": 19990.521665820495,
+        "fixed_ms": 54.47581699991133,
+        "fixed_nodes": 1089,
+        "timed_nps": 21856.271605221562,
+        "mean_depth": 3,
+        "worst_ms": 300.74365900145494
+      },
+      "fixed_nps_gain": 54.23139959464551,
+      "timed_nps_gain": 36.40892783140319,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 17,
+      "control": {
+        "fixed_nps": 14979.944840331573,
+        "fixed_ms": 64.28595100078383,
+        "fixed_nodes": 963,
+        "timed_nps": 17954.35115530401,
+        "mean_depth": 3,
+        "worst_ms": 300.7426630028931
+      },
+      "candidate": {
+        "fixed_nps": 19169.927793530795,
+        "fixed_ms": 50.23493100088672,
+        "fixed_nodes": 963,
+        "timed_nps": 24100.65903611211,
+        "mean_depth": 3,
+        "worst_ms": 300.73866399834515
+      },
+      "fixed_nps_gain": 27.97061670025802,
+      "timed_nps_gain": 34.23297131510306,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 18,
+      "control": {
+        "fixed_nps": 15371.34484733854,
+        "fixed_ms": 300.62431400074274,
+        "fixed_nodes": 4621,
+        "timed_nps": 15835.873050182834,
+        "mean_depth": 1.6666666666666667,
+        "worst_ms": 300.72341800041613
+      },
+      "candidate": {
+        "fixed_nps": 20839.20051231071,
+        "fixed_ms": 221.74555099991267,
+        "fixed_nodes": 4621,
+        "timed_nps": 21215.910603062963,
+        "mean_depth": 2,
+        "worst_ms": 220.18826600105967
+      },
+      "fixed_nps_gain": 35.57174547364927,
+      "timed_nps_gain": 33.973735049726315,
+      "depth_change": 0.33333333333333326,
+      "nodes_match": true
+    },
+    {
+      "position": 19,
+      "control": {
+        "fixed_nps": 13516.110106845648,
+        "fixed_ms": 71.17432400264079,
+        "fixed_nodes": 962,
+        "timed_nps": 15454.686420326325,
+        "mean_depth": 3,
+        "worst_ms": 215.41528699890478
+      },
+      "candidate": {
+        "fixed_nps": 19996.194487782224,
+        "fixed_ms": 48.10915399866644,
+        "fixed_nodes": 962,
+        "timed_nps": 22606.880952723164,
+        "mean_depth": 3,
+        "worst_ms": 300.88665800212766
+      },
+      "fixed_nps_gain": 47.94341219264364,
+      "timed_nps_gain": 46.27848367722378,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 20,
+      "control": {
+        "fixed_nps": 18794.685746406067,
+        "fixed_ms": 3.6180440001771785,
+        "fixed_nodes": 68,
+        "timed_nps": 21458.07985399208,
+        "mean_depth": 5,
+        "worst_ms": 300.4928699992888
+      },
+      "candidate": {
+        "fixed_nps": 19853.29002636627,
+        "fixed_ms": 3.425124999921536,
+        "fixed_nodes": 68,
+        "timed_nps": 23171.382415652773,
+        "mean_depth": 5,
+        "worst_ms": 300.5776189966127
+      },
+      "fixed_nps_gain": 5.632465975988077,
+      "timed_nps_gain": 7.984416934406879,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 21,
+      "control": {
+        "fixed_nps": 20139.771338183706,
+        "fixed_ms": 15.094510999915656,
+        "fixed_nodes": 304,
+        "timed_nps": 20753.93957366268,
+        "mean_depth": 4,
+        "worst_ms": 291.35334600141505
+      },
+      "candidate": {
+        "fixed_nps": 23081.48272233335,
+        "fixed_ms": 13.17073099926347,
+        "fixed_nodes": 304,
+        "timed_nps": 23515.168440228314,
+        "mean_depth": 4,
+        "worst_ms": 257.18339400191326
+      },
+      "fixed_nps_gain": 14.606478567968395,
+      "timed_nps_gain": 13.304601069908228,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 22,
+      "control": {
+        "fixed_nps": 13753.402516993192,
+        "fixed_ms": 66.383573001076,
+        "fixed_nodes": 913,
+        "timed_nps": 12892.294551573526,
+        "mean_depth": 2,
+        "worst_ms": 300.9109279992117
+      },
+      "candidate": {
+        "fixed_nps": 20817.60422202524,
+        "fixed_ms": 43.85711200302467,
+        "fixed_nodes": 913,
+        "timed_nps": 19839.05196777587,
+        "mean_depth": 2,
+        "worst_ms": 300.84114800047246
+      },
+      "fixed_nps_gain": 51.363302254142425,
+      "timed_nps_gain": 53.88301817347543,
+      "depth_change": 0,
+      "nodes_match": true
+    },
+    {
+      "position": 23,
+      "control": {
+        "fixed_nps": 14989.711950074026,
+        "fixed_ms": 234.36074100027326,
+        "fixed_nodes": 3513,
+        "timed_nps": 14889.777500184606,
+        "mean_depth": 2,
+        "worst_ms": 238.346955000452
+      },
+      "candidate": {
+        "fixed_nps": 22770.87285302443,
+        "fixed_ms": 154.27603599891881,
+        "fixed_nodes": 3513,
+        "timed_nps": 19547.501375549527,
+        "mean_depth": 2,
+        "worst_ms": 300.46731300171814
+      },
+      "fixed_nps_gain": 51.910009537654766,
+      "timed_nps_gain": 31.281353098172037,
+      "depth_change": 0,
+      "nodes_match": true
+    }
+  ]
+}

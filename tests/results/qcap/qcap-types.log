@@ -1,0 +1,5 @@
+tests/qgen_checks.py:228: error: Argument 1 to "len" has incompatible type "object"; expected "Sized"  [arg-type]
+tests/qgen_checks.py:230: error: Unsupported right operand type for in ("object")  [operator]
+tests/qgen_checks.py:243: error: Unsupported right operand type for in ("object")  [operator]
+tests/qgen_checks.py:244: error: Value of type "object" is not indexable  [index]
+Found 4 errors in 1 file (checked 8 source files)

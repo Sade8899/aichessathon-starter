@@ -1,0 +1,27 @@
+INIT {"name": "control", "seconds": 2.1867057679992286, "rss_mb": 167.6015625}
+INIT {"name": "candidate", "seconds": 0.8428940430021612, "rss_mb": 177.8515625}
+FIXED {"position": 0, "move": "b8c6", "nodes": 1238, "root_scores": 27, "control_ms": 69.85046800036798, "candidate_ms": 50.833951001550304}
+FIXED {"position": 1, "move": "b7a8q", "nodes": 8642, "root_scores": 41, "control_ms": 504.5686299999943, "candidate_ms": 426.70157499742345}
+FIXED {"position": 2, "move": "d5e3", "nodes": 1388, "root_scores": 36, "control_ms": 91.01598900087993, "candidate_ms": 77.66724500106648}
+FIXED {"position": 3, "move": "g1f3", "nodes": 575, "root_scores": 22, "control_ms": 24.89430000059656, "candidate_ms": 22.194369998032926}
+FIXED {"position": 4, "move": "g8f6", "nodes": 1210, "root_scores": 34, "control_ms": 97.4969009985216, "candidate_ms": 54.4212239983608}
+FIXED {"position": 5, "move": "a7c8", "nodes": 3967, "root_scores": 35, "control_ms": 256.28375799715286, "candidate_ms": 187.93886200000998}
+FIXED {"position": 6, "move": "b8c6", "nodes": 555, "root_scores": 25, "control_ms": 44.98716899979627, "candidate_ms": 38.030634001188446}
+FIXED {"position": 7, "move": "g8f6", "nodes": 538, "root_scores": 19, "control_ms": 28.43157099778182, "candidate_ms": 21.624242999678245}
+FIXED {"position": 8, "move": "c8g4", "nodes": 316, "root_scores": 28, "control_ms": 28.32256599867833, "candidate_ms": 25.461127999733435}
+FIXED {"position": 9, "move": "e2d4", "nodes": 616, "root_scores": 24, "control_ms": 25.304719998530345, "candidate_ms": 21.961059002933325}
+FIXED {"position": 10, "move": "c4c8", "nodes": 1330, "root_scores": 41, "control_ms": 87.74673099833308, "candidate_ms": 70.51149999824702}
+FIXED {"position": 11, "move": "g8f6", "nodes": 794, "root_scores": 22, "control_ms": 48.74714999823482, "candidate_ms": 35.67322099843295}
+FIXED {"position": 12, "move": "f1e2", "nodes": 161, "root_scores": 29, "control_ms": 10.89302499894984, "candidate_ms": 8.854927000356838}
+FIXED {"position": 13, "move": "g8f6", "nodes": 559, "root_scores": 28, "control_ms": 47.711601000628434, "candidate_ms": 27.300316000037128}
+FIXED {"position": 14, "move": "g8f6", "nodes": 1730, "root_scores": 25, "control_ms": 101.7255050028325, "candidate_ms": 74.24648000232992}
+FIXED {"position": 15, "move": "e5e4", "nodes": 317, "root_scores": 27, "control_ms": 21.83115299703786, "candidate_ms": 15.571449999697506}
+FIXED {"position": 16, "move": "h5g4", "nodes": 1089, "root_scores": 31, "control_ms": 80.92940200003795, "candidate_ms": 54.09640899961232}
+FIXED {"position": 17, "move": "h2h3", "nodes": 963, "root_scores": 27, "control_ms": 63.679270999273285, "candidate_ms": 44.18773099678219}
+FIXED {"position": 18, "move": "c7a5", "nodes": 4621, "root_scores": 33, "control_ms": 313.5397190017102, "candidate_ms": 234.8720250010956}
+FIXED {"position": 19, "move": "h3f4", "nodes": 962, "root_scores": 21, "control_ms": 79.02051100245444, "candidate_ms": 82.25406600104179}
+FIXED {"position": 20, "move": "f3f4", "nodes": 68, "root_scores": 6, "control_ms": 3.5843730001943186, "candidate_ms": 3.2208550001087133}
+FIXED {"position": 21, "move": "g8f8", "nodes": 304, "root_scores": 20, "control_ms": 15.787361000548117, "candidate_ms": 12.59970799947041}
+FIXED {"position": 22, "move": "d8e7", "nodes": 913, "root_scores": 43, "control_ms": 64.45130800057086, "candidate_ms": 44.29483600324602}
+FIXED {"position": 23, "move": "d1h5", "nodes": 3513, "root_scores": 48, "control_ms": 246.50528600250254, "candidate_ms": 224.07800500150188}
+EQUALITY {"exact_evaluations": 2400, "fixed_depth_positions": 24, "moves_scores_nodes_exact": true, "added_definitions": ["captures_and_promotions"], "signatures": {"bit_count": ["(uint64,)"], "first_square": ["(uint64,)"], "numeric_attacks": ["(int64, int64, uint64)"], "numeric_evaluate": ["(uint64, uint64, uint64, uint64, uint64, uint64, uint64, bool)"]}, "sha256": {"control": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a", "candidate": "8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7a33b3"}}
