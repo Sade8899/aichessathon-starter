@@ -1,3 +1,43 @@
+# Rated loss diagnosis
+
+See [RATED_LOSSES.md](RATED_LOSSES.md). Raw logs are in `results/rated/`, and
+`rated_regression.json` is the reusable fixture. No engine was changed and no arena
+was run.
+
+The engine that plays rated games is the submitted archive
+`4cf5c888...`, which is **`agent_05_09.zip`**, not the root `agent.zip`; its
+`agent.py` is `4551f4e...`. The working `agent.py` (`be5da869...`) is not submitted
+and no rated result is attributed to it. Note that `tournament/submitted.json` names
+`agent.zip` as the source archive, which is now stale: the hashes are right, the
+filename is not. It was left as recorded.
+
+```powershell
+.\docker-test.ps1 -LogName rated-submitted python tests/rated_losses.py --config submitted --depths "1,2,3,4" --thinks "3.0,4.5,6.0" --cold
+.\docker-test.ps1 -LogName rated-regress-submitted python tests/rated_losses.py --config submitted --regress
+.\docker-test.ps1 -LogName rated-regress-candidate python tests/rated_losses.py --config candidate --regress
+.\docker-test.ps1 -LogName asset-feasibility python tests/asset_feasibility.py
+```
+
+Exactly one rated loss is available: round 30, `10. Bf4`, refuted by
+`Bxd4 Qxd4 Qa5+ Qc3 Qxb5` for -320 cp, played with 113,600 ms remaining. The
+submitted engine reproduces it exactly, cold and with replayed state. The earliest
+depth that rejects it is **4**, and depth 4 costs 3.13 s while the budget allows
+2.88 s. Classification: **cause 2, the three-second allocation stopped before the
+correcting depth**. Ordering, quiescence, evaluation, persistent state and strategic
+weakness were each ruled out by measurement.
+
+`budget = min(3.0, available / 32, ...)` yields 3.00 s here when `available / 32` is
+3.55 s. Measured: 3.2 s still blunders, 3.55 s does not. **The single recommended
+experiment is to relax that constant cap.** An opening book and a Syzygy tablebase
+were both assessed against the actual rated evidence and neither is justified: the
+rated start is a curated unpublished position so book coverage is 0 of 1, and no
+rated position ever reached five or fewer pieces so tablebase eligibility is 0 of 1.
+The five-piece Syzygy set is roughly 945 MB against a 50 MB limit in any case.
+
+The regression fixture discriminates today: the submitted engine fails it (`g5f4`,
+depth 3) and the candidate passes (`d1h5`, depth 4). Do not treat the candidate's
+pass as a fix; the 3.0 s cap is byte-identical in both engines.
+
 # Concurrency calibration
 
 See [CONCURRENCY.md](CONCURRENCY.md). Two versions, both preserved. **Version one**

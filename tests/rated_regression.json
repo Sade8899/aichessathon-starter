@@ -1,0 +1,79 @@
+{
+  "description": "Reusable regression fixture for the only available rated loss. Any engine change must keep the correcting depth reachable inside the per-move budget it will actually have.",
+  "source": "tests/tournament/fixtures/rated.json, round 30, user-supplied sequence with clocks rounded to 0.1 s",
+  "rated_games_available": 1,
+  "subject": {
+    "submitted_archive_sha256": "4cf5c8885c49360f6a60328cdd062aa5a45e697e8ee5122d243639c675640dfd",
+    "submitted_archive_file": "agent_05_09.zip",
+    "submitted_agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+    "frozen_path": "tests/submitted/4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0/agent.py",
+    "comparison_candidate_sha256": "be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0",
+    "note": "The candidate is not submitted. No rated result may be attributed to it."
+  },
+  "loss": {
+    "id": "round30-move10-Bf4",
+    "position_before_error": "r1bqk2r/pp2n1pp/1bn2p2/1B1p2B1/3N4/8/PPP2PPP/R2QK1NR w KQkq - 0 10",
+    "played": "g5f4",
+    "refutation_san": ["Bxd4", "Qxd4", "Qa5+", "Qc3", "Qxb5"],
+    "refutation_uci": ["b6d4", "d1d4", "d8a5", "d4c3", "a5b5"],
+    "material_swing_cp": -320,
+    "clock_remaining_ms": 113600,
+    "budget_used_s": 3.0,
+    "budget_expression": "min(3.0, available / 32, max(0.001, available - 0.025))",
+    "uncapped_budget_s": 3.55,
+    "classification": "2 - the three second allocation stopped before the correcting depth",
+    "earliest_depth_rejecting_blunder": 4,
+    "blunder_selected_at_depth": [1, 3],
+    "state_replay": {
+      "calls": [
+        "rnbqk1nr/pp3ppp/1b6/3p4/8/1N6/PPP2PPP/R1BQKBNR w KQkq - 2 7",
+        "r1bqk1nr/pp3ppp/1bn5/3p4/3N4/8/PPP2PPP/R1BQKBNR w KQkq - 4 8",
+        "r1bqk2r/pp2nppp/1bn5/1B1p4/3N4/8/PPP2PPP/R1BQK1NR w KQkq - 6 9"
+      ],
+      "expected_moves": ["b3d4", "f1b5", "c1g5"],
+      "observed_opponent_moves": [null, "b8c6", "g8e7"]
+    }
+  },
+  "expectations": {
+    "submitted": {
+      "depth_ladder": {
+        "1": {"move": "g5f4", "blunder": true, "blunder_cp": 39},
+        "2": {"move": "d1h5", "blunder": false, "blunder_cp": 3},
+        "3": {"move": "g5f4", "blunder": true, "blunder_cp": 31},
+        "4": {"move": "d1h5", "blunder": false, "blunder_cp": -338}
+      },
+      "think_ladder": {
+        "3.0": {"completed_depth": 3, "move": "g5f4", "blunder": true},
+        "3.2": {"completed_depth": 3, "move": "g5f4", "blunder": true},
+        "3.55": {"completed_depth": 4, "move": "d1h5", "blunder": false},
+        "4.5": {"completed_depth": 4, "move": "d1h5", "blunder": false},
+        "6.0": {"completed_depth": 4, "move": "d1h5", "blunder": false}
+      },
+      "depth4_seconds": 3.13
+    },
+    "candidate": {
+      "think_ladder": {
+        "3.0": {"completed_depth": 4, "move": "d1h5", "blunder": false},
+        "4.5": {"completed_depth": 4, "move": "d1h5", "blunder": false},
+        "6.0": {"completed_depth": 4, "move": "d1h5", "blunder": false}
+      },
+      "depth4_seconds": 1.9
+    }
+  },
+  "regression_rule": {
+    "statement": "With the rated persistent state and the per-move budget the engine will actually receive at 113600 ms remaining, the engine must complete depth 4 or deeper and must not select g5f4.",
+    "assert_move_not": "g5f4",
+    "assert_min_completed_depth": 4,
+    "clock_ms": 113600
+  },
+  "opening_theory_probe": {
+    "method": "depth 4 analysis of each rated position; unsafe means the rated move loses at least 100 cp against the depth 4 best",
+    "rows": [
+      {"fullmove": 7, "rated_move": "b3d4", "loss_cp": 5, "unsafe": false},
+      {"fullmove": 8, "rated_move": "f1b5", "loss_cp": 0, "unsafe": false},
+      {"fullmove": 9, "rated_move": "c1g5", "loss_cp": 0, "unsafe": false},
+      {"fullmove": 10, "rated_move": "g5f4", "loss_cp": 315, "unsafe": true}
+    ],
+    "first_unsafe_fullmove": 10
+  }
+}
