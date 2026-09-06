@@ -930,7 +930,7 @@ class Engine:
             self.stats["seconds"] = time.perf_counter() - started
             return fallback.uci()
         available = time_left_ms / 1000
-        budget = min(3.0, available / 32, max(0.001, available - 0.025))
+        budget = min(available / 32, max(0.001, available - 0.025))
         self.deadline = started + budget * 0.96
         soft = started + budget * 0.65
         self.nodes = 0
