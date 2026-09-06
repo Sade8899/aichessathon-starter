@@ -1,0 +1,3 @@
+INIT {"name": "control", "seconds": 2.481741920004424, "rss_mb": 167.6328125}
+INIT {"name": "candidate", "seconds": 1.0269661339989398, "rss_mb": 177.2578125}
+ADJUDICATION {"disagreements": 0, "comparisons": 72, "tactical_regressions": 0, "worst_candidate_loss_cp": 0}

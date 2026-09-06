@@ -1,0 +1,7 @@
+COLD {"config": "control", "repeat": 0, "import_seconds": 2.655457134002063, "first_move": "g1f3", "first_move_seconds": 3.1815807570019388}
+COLD {"config": "control", "repeat": 1, "import_seconds": 2.560044323996408, "first_move": "g1f3", "first_move_seconds": 3.235986788000446}
+COLD {"config": "control", "repeat": 2, "import_seconds": 2.609887514998263, "first_move": "g1f3", "first_move_seconds": 3.3442253740067827}
+COLD {"config": "candidate", "repeat": 0, "import_seconds": 2.7730307540041395, "first_move": "g1f3", "first_move_seconds": 3.4200639800037607}
+COLD {"config": "candidate", "repeat": 1, "import_seconds": 2.7028475429979153, "first_move": "g1f3", "first_move_seconds": 3.3202645590063184}
+COLD {"config": "candidate", "repeat": 2, "import_seconds": 2.680709840999043, "first_move": "g1f3", "first_move_seconds": 3.2317986959969858}
+COLD_SUMMARY {"control": {"repeats": 3, "median_import_s": 2.609887514998263, "worst_import_s": 2.655457134002063, "budget_s": 90.0, "first_moves": ["g1f3"]}, "candidate": {"repeats": 3, "median_import_s": 2.7028475429979153, "worst_import_s": 2.7730307540041395, "budget_s": 90.0, "first_moves": ["g1f3"]}}

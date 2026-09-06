@@ -64,6 +64,51 @@ The regression fixture discriminates today: the submitted engine fails it (`g5f4
 depth 3) and the candidate passes (`d1h5`, depth 4). Do not treat the candidate's
 pass as a fix; the 3.0 s cap is byte-identical in both engines.
 
+# Search efficiency experiment
+
+See [ORDER.md](ORDER.md). `order_experiment.json` pins the control `e5f63625...`,
+which is the submitted engine, the working `agent.py` and the `agent.py` inside
+`agent.zip`, against the candidate
+`65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda`. Raw logs and
+merged reports are in `results/order/`.
+
+The control was profiled first. Quiescence is **89.5% of nodes** and 70.7% of
+profiled time, and the legal move generation inside it is 38.6% cumulative; Numba has
+already reduced evaluation to 4.5% of tottime. Main-search ordering is near its
+ceiling at **85.6% first-move beta cutoffs**, with killers and history explaining
+98.8% of quiet cutoffs.
+
+**A countermove heuristic was therefore rejected on measurement**, not assumed: the
+residual it targets is 727 of 144,571 cutoffs, under 0.5%. `profile_search.py
+opportunity` then measured each alternative, and **conservative delta pruning in
+quiescence** was selected over aspiration windows (re-search rate already 0.34%),
+late move reductions (large but depth-lowering) and SEE filtering (same opportunity,
+far more code).
+
+The candidate adds `DELTA_MARGIN = 200` and one block in `Engine.quiesce`. Captures
+that cannot reach alpha even at face value plus the margin are skipped; evasions,
+promotions, non-captures and endgames never are. `order_checks.py identity` asserts
+**`quiesce` is the only `Engine` method whose AST differs**, with evaluation, Numba
+signatures, flags, the public API and the per-move budget unchanged.
+
+**Accepted, pending owner approval.** Zero flags, crashes, illegal moves and
+malformed outputs across 260 games; cold import, ruff, strict mypy, `make gate`,
+`verify.py`, `determinism.py`, the passive units/invariants/lifecycle, the round 30
+regression and 600-ply clock safety all pass for both engines. The fixed 24-position
+corpus gives **100% move agreement at depths 2, 3 and 4** with **23.7% fewer nodes**
+and 10-19% less wall time, and adjudication found zero tactical regressions. Mean
+completed depth rises **+0.069 ply**, ten measurements deeper and none shallower,
+against a measured control-versus-control noise floor of -0.0069.
+
+The 20-game smoke was +10 points; the established 240-game screen gave control 46.67%
+against candidate 49.58%, a paired difference of **+2.92 points** with a 95% interval
+of [-7.08, +12.92] over 60 colour-pair clusters and 30 openings. Directional only:
+the interval spans zero and no strength claim is made. Nodes per second *falls* 4.9%,
+which is the expected shape of a pruning change: fewer nodes, not faster ones.
+
+`agent.py` was not modified, and the candidate is not submitted, packaged, committed
+or promoted.
+
 # Time allocation experiment
 
 See [TIME.md](TIME.md). `time_experiment.json` pins the control `be5da869...`,

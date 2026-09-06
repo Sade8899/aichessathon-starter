@@ -1,0 +1,82 @@
+{
+  "experiment": "search efficiency: conservative delta pruning in quiescence",
+  "predeclared": "Written after the control profile and before any candidate code existed, and before any arena ran.",
+  "control_sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+  "control_path": "agent.py",
+  "control_frozen_path": "tests/submitted/e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b/agent.py",
+  "control_archive_sha256": "267400857f19b0c5ca9d5a4d6640f42201db1f42be9ba8cafae5e8bd63c6a74b",
+  "control_archive_file": "agent.zip",
+  "control_promotion_commit": "a43da91f93709fc46d9c17f51acc14add61b224b",
+  "candidate_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "candidate_path": "tests/order_candidate/65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda/agent.py",
+  "measured_bottleneck": {
+    "source": "tests/results/order/profile-counts.log, profile-components.log, profile-opportunity.log",
+    "conditions": "24-position fixed suite, 120000 ms clock, mean completed depth 4.54",
+    "quiescence_share_of_nodes": 0.8947,
+    "quiescence_cumulative_time_share": 0.707,
+    "legal_generation_cumulative_time_share": 0.386,
+    "evaluation_tottime_share": 0.045,
+    "note": "Numba already removed evaluation as a cost. Quiescence and the legal move generation inside it are what remain."
+  },
+  "countermove_rejected_on_measurement": {
+    "cutoff_first_move_rate": 0.8564,
+    "quiet_cutoff_share_of_cutoffs": 0.424,
+    "killer_share_of_quiet_cutoffs": 0.9096,
+    "history_share_of_quiet_cutoffs": 0.0785,
+    "unattributed_share_of_quiet_cutoffs": 0.0119,
+    "late_quiet_cutoffs_share_of_all_cutoffs": 0.0254,
+    "reason": "A countermove table targets quiet cutoffs that killers and history miss. That residual is 727 of 144571 cutoffs, under 0.5 percent. The profile does not justify it, so the task's alternative list applies."
+  },
+  "alternatives_considered": {
+    "aspiration_windows": {
+      "measured_headroom": "research rate 0.0034 of 732184 null windows; the root already narrows with ROOT_WINDOW_MARGIN",
+      "verdict": "rejected, the window discipline is already tight and a failed aspiration costs a full re-search"
+    },
+    "late_move_reductions": {
+      "measured_headroom": "late quiet moves are 0.686 of main moves searched and fail low 0.992 of the time",
+      "verdict": "large opportunity but rejected for this experiment: it reduces completed depth speculatively, and the one previously rejected experiment in this repository (QUIET_CHECKS) failed by collapsing completed depth"
+    },
+    "see_quiescence_filtering": {
+      "measured_headroom": "0.362 of quiescence moves are captures with a cheaper attacker onto a defended square",
+      "verdict": "comparable opportunity to delta pruning but needs a full static exchange evaluator, which is far more new code and a per-move loop rather than one comparison"
+    },
+    "delta_pruning": {
+      "measured_headroom": "prunable share of quiescence moves is 0.549 at a 0 cp margin, 0.446 at 100, 0.352 at 200, 0.225 at 400",
+      "verdict": "selected"
+    }
+  },
+  "selected": {
+    "technique": "conservative delta pruning in quiescence",
+    "why": "It removes work from the measured dominant cost, quiescence, which is 89.5 percent of nodes and 70.7 percent of profiled time. The test is one integer comparison on VALUES, which the engine already indexes for move ordering, so unlike SEE almost all of the saving is net. Unlike a reduction it never lowers main search depth, so it cannot reproduce the depth collapse that rejected the quiet-check extension.",
+    "margin_cp": 200,
+    "exemptions": [
+      "never while in check, where every evasion is mandatory",
+      "never a promotion, whose value the victim term does not represent",
+      "never a non-capture, which protects the quiet checks the tactical branch exists to examine, including the Qa5+ of the round 30 refutation",
+      "never when the root pattern is an endgame, where positional swings dominate material"
+    ],
+    "recovery": "Skipping a move that cannot raise alpha leaves the returned score a valid lower bound, so the node still fails low correctly and the caller's alpha-beta contract is unchanged."
+  },
+  "acceptance": {
+    "safety": "zero flags, crashes, illegal moves and malformed outputs everywhere",
+    "mandatory_gates": "cold import x3, ruff, mypy --strict over the agent and every touched test module, make gate, verify.py, determinism.py, passive units/invariants/lifecycle, round 30 rated regression, 600-ply clock safety",
+    "throughput": "median across the 24 corpus positions of the paired timed nodes-per-second gain at least 5 percent, OR at least a 10 percent reduction in nodes to reach the same fixed completed depth",
+    "completed_depth": "mean completed depth at a realistic clock must not fall by more than 0.05 ply, the established timing.py tolerance",
+    "fixed_depth_corpus": "at depths 2, 3 and 4 over the 24 positions, root move agreement with the control at least 0.90, and every disagreement re-examined against a deeper control search; a disagreement that loses 100 cp or more to the control's depth d+1 assessment is a tactical regression",
+    "round30": "must select d1h5 and complete depth 4 or deeper under the real budget",
+    "smoke": "20-game paired difference nonnegative",
+    "screen": "240-game paired point estimate nonnegative, with no serious recurring tactical failure found by game inspection",
+    "noise": "any depth or throughput claim must exceed the wall-clock noise floor, measured by repeated counterbalanced runs"
+  },
+  "rejection": [
+    "a mandatory correctness or safety gate fails",
+    "completed depth falls materially",
+    "a recurring tactical error appears",
+    "the throughput benefit is below the declared threshold",
+    "it would require weakening a test or changing the official harness",
+    "the smoke test is clearly negative"
+  ],
+  "on_rejection": "Restore agent.py byte for byte to e5f63625... and preserve the candidate, the patch, the measurements and the explanation separately.",
+  "line_endings": "LF, as pinned by .gitattributes, so the raw-byte hashes reproduce from a fresh clone.",
+  "patch": "tests/results/order/delta-quiesce.patch"
+}

@@ -1,0 +1,33 @@
+--- control/agent.py
++++ candidate/agent.py
+@@ -27,8 +27,9 @@
+ NORMAL_MARGIN = 15
+ WINNING_MARGIN = 8
+ SWINDLE_MARGIN = 25
+ ROOT_WINDOW_MARGIN = 60
++DELTA_MARGIN = 200
+ EXPLOIT_WEIGHT = 0.20
+ MAX_BONUS = 12.0
+ MIN_OBSERVATIONS = 6
+ MIN_CONFIDENCE = 0.30
+@@ -788,9 +789,20 @@
+                 ]
+             else:
+                 moves = captures_and_promotions(board)
+         assert moves is not None
++        # A capture can lift this node by at most the piece it wins, plus a margin for
++        # the positional terms material does not see. One that still cannot reach alpha
++        # cannot change the value here, so it is skipped; the result stays a lower
++        # bound. Evasions, promotions, quiet checks and endgames are never skipped.
++        pruning = not check and not self.pattern.endgame
+         for move in self.order(board, moves, None, ply):
++            if pruning and not move.promotion:
++                victim = board.piece_type_at(move.to_square) or (
++                    chess.PAWN if board.is_en_passant(move) else 0
++                )
++                if victim and stand + VALUES[victim] + DELTA_MARGIN <= alpha:
++                    continue
+             board.push(move)
+             key = self.enter(board)
+             try:
+                 score = -self.quiesce(board, -beta, -alpha, ply + 1)
