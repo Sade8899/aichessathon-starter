@@ -1,0 +1,64 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Rated 30
+  Team           Sassori
+  Colour         White
+  Opponent       archierayteam
+  Opening        French Tarrasch
+  Start FEN      rnbqk1nr/pp3ppp/8/2bp4/8/1N6/PPP2PPP/R1BQKBNR b KQkq - 1 6
+  You moved      Second
+  Machine        w-cc2f4f
+  Finished       2026-09-05 21:09:04 UTC
+  Match ID       4913676e-f975-4808-9104-02f2d718e875
+
+INIT
+  Ready in       0.6 s
+  Budget         90.0 s
+  Used           1 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          24
+  Time used      56.5 s
+  Slowest        2.9 s on move 7
+  Fastest        0.0 s on move 24
+  Average        2.4 s
+  Left at end    75.5 s
+
+RESULT
+  Lost by checkmate
+  Game lasted 126.7 s
+
+MOVES
+    #  move          time     clock left
+    1  Nd4           2.1 s      118.4 s
+    2  Bb5           2.9 s      116.0 s
+    3  Bg5           2.9 s      113.6 s
+    4  Bf4           2.9 s      111.2 s
+    5  Qxd4          2.0 s      109.7 s
+    6  Qc3           2.3 s      108.0 s
+    7  a4            2.9 s      105.6 s
+    8  h4            2.4 s      103.7 s
+    9  Ne2           2.1 s      102.1 s
+   10  Qd3           2.6 s      100.0 s
+   11  cxd3          2.9 s       97.6 s
+   12  Be3           2.9 s       95.3 s
+   13  h5            2.9 s       92.9 s
+   14  Bf4           2.8 s       90.6 s
+   15  Kd2           2.7 s       88.4 s
+   16  Rhf1          2.7 s       86.2 s
+   17  Kd3           2.6 s       84.1 s
+   18  Kc4           2.5 s       82.1 s
+   19  Kxc5          2.5 s       80.2 s
+   20  b4            2.4 s       78.2 s
+   21  Kd6           2.2 s       76.6 s
+   22  b5            2.3 s       74.8 s
+   23  Kc7           0.2 s       75.1 s
+   24  Kc8           0.0 s       75.5 s
+
+OUTPUT
+  Nothing written to stderr
+
+Email hello@aichessathon.com with this file if anything here is unclear.

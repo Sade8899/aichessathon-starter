@@ -1,0 +1,3 @@
+[18:59:36Z] building
+[18:59:36Z] no file named exactly agent.py at the root of the zip; most zip tools wrap the folder you selected, so zip the files themselves, not the folder. The root holds agent
+[18:59:36Z] failed

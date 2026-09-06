@@ -18,7 +18,33 @@ filename is not. It was left as recorded.
 .\docker-test.ps1 -LogName asset-feasibility python tests/asset_feasibility.py
 ```
 
-Exactly one rated loss is available: round 30, `10. Bf4`, refuted by
+**Twelve rated games are now available** in `aichessathon-games.csv`, rounds 29-40,
+4 wins and 8 losses, all ending in checkmate. Two submissions played them, separated
+by a measured import fingerprint (`init_s` 0.5-0.6 s = `agent_05_09.zip`/`4551f4e`,
+which imports in 0.16 s; 2.0-2.1 s = `agent.zip`/`59f99079`, which compiles Numba at
+import and takes 2.32 s):
+
+| Generation | Archive | Rounds | W/L |
+|---|---|---|---|
+| `4551f4e...` | `agent_05_09.zip` (`4cf5c888...`) | 29-33 | 2/3 |
+| `59f99079...` | `agent.zip` (`020340a3...`) | 34-40 | 2/5 |
+
+Round 30 is independently confirmed as `4551f4e`: replay reproduces all four of its
+rated moves, while `59f99079` plays `Qh5` instead of the losing `Bf4`. `agent.zip`'s
+source is frozen at `tests/submitted/59f99079.../agent.py`; neither archive was
+modified. Run `python tests/rated_games.py` in the image for the full mapping.
+
+**Only round 30 of the eight losses has a move record, and it belongs to the older
+generation.** Rounds 31, 33, 35, 36, 38, 39 and 40 have no PGN, so no position, no
+first losing move and no correcting depth can be extracted for the five losses played
+by the deployed `agent.zip`. Downloading those PGNs is the highest-value next action.
+
+Across all twelve games `slowest_s` is **2.9 s** — the `min(3.0, ...)` cap binds in
+every game — and the agent ends with a median **45.6 s of clock unused**. Round 35 was
+lost in 15 moves with 91.2 s still unspent. Round 30's platform log confirms `Bf4`
+took 2.9 s with 113.6 s remaining.
+
+Original single-game finding, still correct: round 30, `10. Bf4`, refuted by
 `Bxd4 Qxd4 Qa5+ Qc3 Qxb5` for -320 cp, played with 113,600 ms remaining. The
 submitted engine reproduces it exactly, cold and with replayed state. The earliest
 depth that rejects it is **4**, and depth 4 costs 3.13 s while the budget allows

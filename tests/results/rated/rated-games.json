@@ -1,0 +1,417 @@
+{
+  "archives": {
+    "agent.zip": {
+      "archive_sha256": "020340a3afcab4c41b2f0a1e2ab526a1bdd5e88b79338283d8af87a8b9136490",
+      "matches_recorded": true,
+      "members": [
+        "agent.py"
+      ],
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "frozen_copy": "tests/submitted/59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a/agent.py",
+      "frozen_matches": true,
+      "cold_import_s": 2.32
+    },
+    "agent_05_09.zip": {
+      "archive_sha256": "4cf5c8885c49360f6a60328cdd062aa5a45e697e8ee5122d243639c675640dfd",
+      "matches_recorded": true,
+      "members": [
+        "agent.py"
+      ],
+      "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+      "frozen_copy": "tests/submitted/4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0/agent.py",
+      "frozen_matches": true,
+      "cold_import_s": 0.16
+    }
+  },
+  "import_fingerprint": {
+    "measured_cold_import_s": {
+      "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0": 0.16,
+      "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a": 2.32
+    },
+    "split_threshold_s": 1.2,
+    "platform_init_s_observed": [
+      0.5,
+      0.6,
+      2.0,
+      2.1
+    ]
+  },
+  "games": [
+    {
+      "round": 29,
+      "colour": "Black",
+      "opponent": "Chessbuster 9000",
+      "result": "Win",
+      "termination": "Checkmate",
+      "init_s": 0.5,
+      "moves": 46,
+      "time_used_s": 96.0,
+      "slowest_s": 2.9,
+      "average_s": 2.1,
+      "clock_left_s": 47.0,
+      "finished_at": "2026-09-05T20:19:16.062783+00:00",
+      "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+      "generation": "agent_05_09.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": "aichessathon-round-29-chessbuster-9000.pgn"
+    },
+    {
+      "round": 30,
+      "colour": "White",
+      "opponent": "archierayteam",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 0.6,
+      "moves": 24,
+      "time_used_s": 56.5,
+      "slowest_s": 2.9,
+      "average_s": 2.4,
+      "clock_left_s": 75.5,
+      "finished_at": "2026-09-05T21:09:04.806331+00:00",
+      "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+      "generation": "agent_05_09.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": "aichessathon-round-30-archierayteam.pgn"
+    },
+    {
+      "round": 31,
+      "colour": "Black",
+      "opponent": "3D",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 0.5,
+      "moves": 45,
+      "time_used_s": 94.8,
+      "slowest_s": 2.9,
+      "average_s": 2.1,
+      "clock_left_s": 47.7,
+      "finished_at": "2026-09-06T07:24:08.057775+00:00",
+      "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+      "generation": "agent_05_09.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 32,
+      "colour": "White",
+      "opponent": "Columbia Trader",
+      "result": "Win",
+      "termination": "Checkmate",
+      "init_s": 0.5,
+      "moves": 33,
+      "time_used_s": 72.1,
+      "slowest_s": 2.9,
+      "average_s": 2.2,
+      "clock_left_s": 64.4,
+      "finished_at": "2026-09-06T08:24:21.896849+00:00",
+      "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+      "generation": "agent_05_09.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 33,
+      "colour": "Black",
+      "opponent": "murmp",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 0.5,
+      "moves": 58,
+      "time_used_s": 109.8,
+      "slowest_s": 2.9,
+      "average_s": 1.9,
+      "clock_left_s": 39.2,
+      "finished_at": "2026-09-06T09:15:17.628338+00:00",
+      "agent_sha256": "4551f4e4f2fc09fa56801e52a9ad38f0485ebb32d3c84aa4adbb4166fbb598c0",
+      "generation": "agent_05_09.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 34,
+      "colour": "White",
+      "opponent": "Cheeky",
+      "result": "Win",
+      "termination": "Checkmate",
+      "init_s": 2.0,
+      "moves": 71,
+      "time_used_s": 122.7,
+      "slowest_s": 2.9,
+      "average_s": 1.7,
+      "clock_left_s": 32.8,
+      "finished_at": "2026-09-06T10:27:52.741444+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 35,
+      "colour": "Black",
+      "opponent": "while True: win()",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 2.0,
+      "moves": 15,
+      "time_used_s": 36.3,
+      "slowest_s": 2.9,
+      "average_s": 2.4,
+      "clock_left_s": 91.2,
+      "finished_at": "2026-09-06T11:19:31.076455+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 36,
+      "colour": "White",
+      "opponent": "0x88",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 2.0,
+      "moves": 62,
+      "time_used_s": 113.0,
+      "slowest_s": 2.9,
+      "average_s": 1.8,
+      "clock_left_s": 38.0,
+      "finished_at": "2026-09-06T12:25:17.568163+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 37,
+      "colour": "White",
+      "opponent": "DawilliuCodes",
+      "result": "Win",
+      "termination": "Checkmate",
+      "init_s": 2.1,
+      "moves": 66,
+      "time_used_s": 117.1,
+      "slowest_s": 2.9,
+      "average_s": 1.8,
+      "clock_left_s": 35.9,
+      "finished_at": "2026-09-06T13:29:19.482813+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 38,
+      "colour": "Black",
+      "opponent": "ASD",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 2.0,
+      "moves": 49,
+      "time_used_s": 100.3,
+      "slowest_s": 2.9,
+      "average_s": 2.0,
+      "clock_left_s": 44.2,
+      "finished_at": "2026-09-06T14:25:38.061353+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 39,
+      "colour": "Black",
+      "opponent": "Checkmate99",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 2.0,
+      "moves": 46,
+      "time_used_s": 95.4,
+      "slowest_s": 2.9,
+      "average_s": 2.1,
+      "clock_left_s": 47.6,
+      "finished_at": "2026-09-06T15:28:45.841759+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    },
+    {
+      "round": 40,
+      "colour": "White",
+      "opponent": "Will",
+      "result": "Loss",
+      "termination": "Checkmate",
+      "init_s": 2.0,
+      "moves": 85,
+      "time_used_s": 133.9,
+      "slowest_s": 2.9,
+      "average_s": 1.6,
+      "clock_left_s": 28.6,
+      "finished_at": "2026-09-06T16:31:31.8417+00:00",
+      "agent_sha256": "59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a",
+      "generation": "agent.zip",
+      "assigned_by": "init_s fingerprint",
+      "move_record": null
+    }
+  ],
+  "pgn_confirmation": [
+    {
+      "round": 29,
+      "start_fen": "r1bq1rk1/ppp1bppp/2np1n2/4p3/P1B1P3/2NP1N2/1PP2PPP/R1BQ1RK1 b - - 2 7",
+      "plies": 91,
+      "result": "0-1",
+      "termination": "checkmate",
+      "opening": null
+    },
+    {
+      "round": 30,
+      "start_fen": "rnbqk1nr/pp3ppp/8/2bp4/8/1N6/PPP2PPP/R1BQKBNR b KQkq - 1 6",
+      "plies": 49,
+      "result": "0-1",
+      "termination": "checkmate",
+      "opening": null
+    }
+  ],
+  "aggregate": {
+    "all": {
+      "games": 12,
+      "rounds": [
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "wins": 4,
+      "losses": 8,
+      "as_white": "3/6",
+      "as_black": "1/6",
+      "terminations": [
+        "Checkmate"
+      ],
+      "slowest_move_s": [
+        2.9
+      ],
+      "init_s": [
+        0.5,
+        0.6,
+        2.0,
+        2.1
+      ],
+      "median_clock_left_s": 45.6,
+      "clock_left_range_s": [
+        28.6,
+        91.2
+      ],
+      "median_clock_left_in_losses_s": 45.900000000000006,
+      "median_average_move_s": 2.05,
+      "games_with_move_records": [
+        29,
+        30
+      ],
+      "losses_with_move_records": [
+        30
+      ],
+      "losses_without_move_records": [
+        31,
+        33,
+        35,
+        36,
+        38,
+        39,
+        40
+      ]
+    },
+    "agent.zip": {
+      "games": 7,
+      "rounds": [
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40
+      ],
+      "wins": 2,
+      "losses": 5,
+      "as_white": "2/4",
+      "as_black": "0/3",
+      "terminations": [
+        "Checkmate"
+      ],
+      "slowest_move_s": [
+        2.9
+      ],
+      "init_s": [
+        2.0,
+        2.1
+      ],
+      "median_clock_left_s": 38.0,
+      "clock_left_range_s": [
+        28.6,
+        91.2
+      ],
+      "median_clock_left_in_losses_s": 44.2,
+      "median_average_move_s": 1.8,
+      "games_with_move_records": [],
+      "losses_with_move_records": [],
+      "losses_without_move_records": [
+        35,
+        36,
+        38,
+        39,
+        40
+      ]
+    },
+    "agent_05_09.zip": {
+      "games": 5,
+      "rounds": [
+        29,
+        30,
+        31,
+        32,
+        33
+      ],
+      "wins": 2,
+      "losses": 3,
+      "as_white": "1/2",
+      "as_black": "1/3",
+      "terminations": [
+        "Checkmate"
+      ],
+      "slowest_move_s": [
+        2.9
+      ],
+      "init_s": [
+        0.5,
+        0.6
+      ],
+      "median_clock_left_s": 47.7,
+      "clock_left_range_s": [
+        39.2,
+        75.5
+      ],
+      "median_clock_left_in_losses_s": 47.7,
+      "median_average_move_s": 2.1,
+      "games_with_move_records": [
+        29,
+        30
+      ],
+      "losses_with_move_records": [
+        30
+      ],
+      "losses_without_move_records": [
+        31,
+        33
+      ]
+    }
+  }
+}

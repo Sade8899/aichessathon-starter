@@ -1,0 +1,86 @@
+AI CHESSATHON MATCH LOG
+=======================
+
+MATCH
+  Round          Rated 29
+  Team           Sassori
+  Colour         Black
+  Opponent       Chessbuster 9000
+  Opening        Two Knights Defence
+  Start FEN      r1bq1rk1/ppp1bppp/2np1n2/4p3/P1B1P3/2NP1N2/1PP2PPP/R1BQ1RK1 b - - 2 7
+  You moved      First
+  Machine        w-998ebe
+  Finished       2026-09-05 20:19:16 UTC
+  Match ID       56d66cb6-f2d7-48f4-8f2a-c1a1b5c2c4eb
+
+INIT
+  Ready in       0.5 s
+  Budget         90.0 s
+  Used           1 percent
+
+CLOCK
+  Base           120.0 s plus 0.5 s per move
+  Moves          46
+  Time used      96.0 s
+  Slowest        2.9 s on move 10
+  Fastest        0.0 s on move 46
+  Average        2.1 s
+  Left at end    47.0 s
+
+RESULT
+  Won by checkmate
+  Game lasted 195.7 s
+
+MOVES
+    #  move          time     clock left
+    1  Bg4           2.5 s      118.0 s
+    2  Nd4           2.9 s      115.6 s
+    3  c5            2.9 s      113.2 s
+    4  Qc7           2.9 s      110.8 s
+    5  Nxb5          2.9 s      108.4 s
+    6  Nd5           2.9 s      106.1 s
+    7  Nxe7          2.0 s      104.6 s
+    8  a6            2.6 s      102.5 s
+    9  Bxf3          2.4 s      100.6 s
+   10  Nc6           2.9 s       98.2 s
+   11  Nxa5          2.9 s       95.8 s
+   12  Nc6           2.9 s       93.4 s
+   13  Nb4           2.8 s       91.1 s
+   14  b5            2.7 s       88.9 s
+   15  c4            2.7 s       86.7 s
+   16  bxc4          2.6 s       84.6 s
+   17  cxb3          2.5 s       82.6 s
+   18  bxc2          2.4 s       80.6 s
+   19  Rfb8          2.4 s       78.8 s
+   20  Rxb8          2.2 s       77.1 s
+   21  Rxb2          2.3 s       75.3 s
+   22  Rb6           2.3 s       73.5 s
+   23  Rc6           1.8 s       72.2 s
+   24  exf4          2.2 s       70.5 s
+   25  Qc8           2.1 s       68.9 s
+   26  f5            2.1 s       67.4 s
+   27  Qxf5          2.0 s       65.8 s
+   28  d5            2.0 s       64.4 s
+   29  Rc8           1.9 s       62.9 s
+   30  Qxc8          1.9 s       61.5 s
+   31  Qc3           1.8 s       60.2 s
+   32  g5            1.8 s       58.9 s
+   33  hxg6          1.8 s       57.6 s
+   34  Qb3           1.5 s       56.6 s
+   35  Qb1+          1.7 s       55.4 s
+   36  c1=Q          1.7 s       54.2 s
+   37  Qxc1          1.6 s       53.1 s
+   38  Kf7           1.6 s       52.0 s
+   39  Ke6           1.6 s       50.9 s
+   40  a5            1.5 s       49.9 s
+   41  a4            1.5 s       48.9 s
+   42  a3            1.5 s       47.9 s
+   43  a2            1.4 s       47.0 s
+   44  Qf4           1.4 s       46.1 s
+   45  a1=Q          0.1 s       46.5 s
+   46  Qaf1#         0.0 s       47.0 s
+
+OUTPUT
+  Nothing written to stderr
+
+Email hello@aichessathon.com with this file if anything here is unclear.

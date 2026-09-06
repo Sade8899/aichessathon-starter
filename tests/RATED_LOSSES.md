@@ -1,5 +1,11 @@
 # Rated loss diagnosis
 
+**Superseded in part.** This file was first written when only the round-30 fragment
+was available. The twelve-game results CSV and the platform records arrived later and
+correct two things: the game-to-submission mapping, and the claim that the rated start
+is a constructed position. See **Rated game set, twelve games, corrected source
+mapping** at the end, which takes precedence wherever the two disagree.
+
 No engine was changed. No arena was run. Nothing was downloaded, packaged or
 submitted. All measurement ran serially in the existing `chessathon-scope:test`
 image with one CPU, 2 GB, no network and a read-only workspace. Raw logs are in
@@ -145,9 +151,12 @@ with the submitted engine, unchanged in every other respect.
 | Positions a legitimate book could have covered | **0 of 1** |
 | Positions requiring tactical search | **1 of 1** |
 
-Four captures by move 6 with every piece still on the board is not a mainline
-opening; it is a constructed position, consistent with the rules, which state that
-rated games start from curated positions and that **the set is not published**. A
+~~Four captures by move 6 with every piece still on the board is not a mainline
+opening; it is a constructed position.~~ **This was wrong**; the start is the French
+Tarrasch after 1.e4 e6 2.d4 d5 3.Nd2 c5 4.exd5 exd5 5.dxc5 Bxc5 6.Nb3, FEN-identical,
+and the platform log labels it so. The correction and its consequences are at the end
+of this file. The rules do state that rated games start from curated positions and
+that **the set is not published**. A
 book keyed to the standard initial position would not have contained this start, and
 a book for the curated set cannot be built in advance because the set is secret.
 
@@ -292,3 +301,157 @@ the structural fact is unchanged in every engine: with 113.6 s on the clock the
 agent thinks for 3.0 s. Depth 5 was not reachable even at 6.0 s in either engine.
 The recommended experiment therefore applies to the candidate as much as to the
 submitted engine.
+
+---
+
+# Rated game set, twelve games, corrected source mapping
+
+`aichessathon-games.csv` and the platform records supersede the single-game view
+above. The archives, the frozen sources, the game-to-submission mapping and the
+aggregate analysis are in `results/rated/rated-games.json`; the platform PGNs, match
+logs, validation logs and the CSV are preserved in `results/rated/platform/`.
+
+## Archives and frozen sources
+
+Both archives were hashed, opened and their single member verified. Neither archive
+was modified or rebuilt.
+
+| Archive | SHA-256 | Member | Member SHA-256 | Cold import |
+|---|---|---|---|---:|
+| `agent.zip` | `020340a3afcab4c41b2f0a1e2ab526a1bdd5e88b79338283d8af87a8b9136490` (9,428 B) | `agent.py` (37,457 B) | `59f99079...` | 2.32 s |
+| `agent_05_09.zip` | `4cf5c8885c49360f6a60328cdd062aa5a45e697e8ee5122d243639c675640dfd` | `agent.py` | `4551f4e4...` | 0.16 s |
+
+`agent.zip`'s source is now frozen at
+`tests/submitted/59f99079f1db99221683dd3f06391f4fc502c1dae11fb712b08170242649830a/agent.py`,
+byte-identical to the existing `numba_checkpoint` copy. The earlier note in this
+file about `submitted.json` naming the wrong archive still stands: that manifest
+describes the `4cf5c888...` generation and names `agent.zip`, which now holds the
+other one. It was left as recorded.
+
+## Which submission played which game
+
+The two generations are separable physically. The pre-Numba source imports in 0.16 s;
+the Numba source compiles at import and takes 2.32 s, measured over three cold
+processes each in the calibration image. The platform reports its own import time per
+game, and the CSV's `init_s` is cleanly bimodal with nothing in between:
+**0.5–0.6 s for rounds 29–33, and 2.0–2.1 s for rounds 34–40.**
+
+That fingerprint is corroborated independently for round 30: replaying it reproduces
+all four rated moves with `4551f4e...`, while `59f99079...` plays `Qh5` instead of the
+losing `Bf4`, so round 30 cannot have been played by `agent.zip`. Validation logs
+agree: `v1` (`1393ebac54e5`) **failed** validation and never played; `v2`
+(`4cf5c8885c49` = `agent_05_09.zip`) validated at 19:09Z on 5 September, before
+rounds 29 and 30 that evening.
+
+| Round | Colour | Result | init s | Moves | Slowest s | Clock left s | Played by | Move record |
+|---:|---|---|---:|---:|---:|---:|---|---|
+| 29 | Black | Win | 0.5 | 46 | 2.9 | 47.0 | `agent_05_09.zip` | yes |
+| 30 | White | **Loss** | 0.6 | 24 | 2.9 | 75.5 | `agent_05_09.zip` | yes |
+| 31 | Black | **Loss** | 0.5 | 45 | 2.9 | 47.7 | `agent_05_09.zip` | no |
+| 32 | White | Win | 0.5 | 33 | 2.9 | 64.4 | `agent_05_09.zip` | no |
+| 33 | Black | **Loss** | 0.5 | 58 | 2.9 | 39.2 | `agent_05_09.zip` | no |
+| 34 | White | Win | 2.0 | 71 | 2.9 | 32.8 | `agent.zip` | no |
+| 35 | Black | **Loss** | 2.0 | 15 | 2.9 | 91.2 | `agent.zip` | no |
+| 36 | White | **Loss** | 2.0 | 62 | 2.9 | 38.0 | `agent.zip` | no |
+| 37 | White | Win | 2.1 | 66 | 2.9 | 35.9 | `agent.zip` | no |
+| 38 | Black | **Loss** | 2.0 | 49 | 2.9 | 44.2 | `agent.zip` | no |
+| 39 | Black | **Loss** | 2.0 | 46 | 2.9 | 47.6 | `agent.zip` | no |
+| 40 | White | **Loss** | 2.0 | 85 | 2.9 | 28.6 | `agent.zip` | no |
+
+`agent_05_09.zip`: 5 games, 2 wins, 3 losses. `agent.zip`: 7 games, 2 wins, 5 losses.
+Overall 4 wins, 8 losses; 3 of 6 as White, 1 of 6 as Black.
+
+## The blocking limitation
+
+**Only round 30 has a move record among the eight losses, and it belongs to the
+`agent_05_09.zip` generation.** There is no PGN, no FEN and no move list for rounds
+31, 33, 35, 36, 38, 39 or 40. For the five losses played by `agent.zip` — the
+generation this task is about — the position before the decisive error cannot be
+extracted, the first materially losing move cannot be identified, and no correcting
+depth can be measured, because no position from those games exists anywhere in the
+available data.
+
+Nothing below invents that data. Per-loss diagnosis is reported for the one loss that
+has moves; everything else is aggregate, and is labelled as such.
+
+**The single most valuable next action is not an engine change: obtain the platform
+PGNs and match logs for rounds 31 and 33–40.** They are downloadable the same way
+rounds 29 and 30 were, and without them five of eight rated losses stay undiagnosable.
+
+## The one diagnosable loss, with the correct historical source
+
+Round 30 was played by `agent_05_09.zip` (`4551f4e...`), so that is the engine used for
+its diagnosis, exactly as reported earlier in this file. The platform match log now
+confirms the conditions independently: `Bf4` was move 4 of the game, took **2.9 s**,
+and left the clock at 111.2 s having started the move at **113.6 s** — matching the
+fixture to the tenth of a second, and matching the 0.96 x 3.0 s hard deadline.
+
+| Engine | Generation | At the rated 3.0 s budget | Depth | Verdict |
+|---|---|---|---:|---|
+| `4551f4e...` | `agent_05_09.zip`, played it | **`g5f4`, the blunder** | 3 | reproduces the loss |
+| `59f99079...` | `agent.zip`, played rounds 34-40 | `d1h5`, 2.53 s | 4 | avoids it |
+| `be5da869...` | unsubmitted candidate | `d1h5`, 2.11 s | 4 | avoids it |
+
+The correcting depth is 4 and it costs 3.13 s for `4551f4e...` against a 2.88 s
+deadline; 3.55 s avoids the loss and 3.2 s does not. Both later generations are fast
+enough to finish depth 4 inside the same 3.0 s. **This specific defect is fixed in the
+deployed `agent.zip` generation**, by throughput rather than by any change to search
+rules. The 3.0 s cap that caused it is byte-identical in all three engines.
+
+## Correction to the opening assessment above
+
+The earlier section of this file states that the round-30 start "is not a mainline
+opening; it is a constructed position". **That is wrong, and the conclusion it
+supported was too dismissive.**
+
+The round-30 start is reached exactly by
+**1.e4 e6 2.d4 d5 3.Nd2 c5 4.exd5 exd5 5.dxc5 Bxc5 6.Nb3** — the French Tarrasch,
+FEN-identical, and the platform match log itself labels the game "French Tarrasch".
+The round-29 start is a 32-piece position at move 7 with **zero captures**, an Italian
+game structure with `a4`, `d3`, `Nc3`, `Bc4` against `...d6`, `...Be7` and both sides
+castled. Both curated starts are ordinary opening theory roughly six moves deep, not
+constructed material imbalances.
+
+The pawn-count reasoning that produced the error was sound arithmetic applied without
+checking whether a real opening produces it; four captures by move 6 is entirely
+normal in an exchange-heavy French line.
+
+## What the twelve games support
+
+**Time allocation — supported, and the only cause with a demonstrated causal chain.**
+`slowest_s` is **2.9 s in all twelve games**, so the `min(3.0, available / 32, ...)`
+cap binds in every rated game of both generations. The agent finishes with a median
+of **45.6 s of its clock unused** (range 28.6-91.2 s), and 45.9 s median in the
+losses specifically. Round 35 was lost in 15 moves with 91.2 s, 76% of the clock,
+still unspent. In the one loss where positions exist, the cap is measurably decisive.
+The caveat is real and stated plainly: that loss belongs to `agent_05_09.zip`, and
+because no `agent.zip` game has a move record, no `agent.zip` loss is *attributed* to
+the cap. What is established for `agent.zip` is that the cap binds in all seven of its
+games and leaves 38 s median unused, not that it caused any particular defeat.
+
+**Opening book — plausible and now worth measuring, but unmeasured.** Both observed
+rated starts are mainstream theory at move 6-7, and the one diagnosable blunder came
+four plies after the start, inside the range an ordinary theory book covers for the
+French Tarrasch. That is a real change from the earlier assessment. It remains
+unmeasured: coverage cannot be estimated without an actual book file, none is present,
+downloading is out of scope here, and the curated set is unpublished so coverage over
+rounds 31-40 is unknown. Any book must come from human opening theory; a table of
+engine moves or evaluations is out of scope under the project rules.
+
+**Endgame tablebase — not supported.** All twelve rated games ended in **checkmate**.
+There were no fifty-move draws, no threefold repetitions, no insufficient-material
+draws and no flag falls in rated play, so there is no observed conversion or
+repetition failure for a tablebase to address.
+
+**Tactical search improvement — not supported by the available evidence.** The only
+error that can be examined is found by the existing search, with unchanged
+quiescence, at depth 4, scoring it -338 cp. The search was capable; it lacked time.
+
+**Evaluation change — not supported.** The same error is scored +31 cp at depth 3 and
+-338 cp at depth 4, so deeper search corrects it. Nothing suggests a static
+evaluation defect.
+
+**Unexplained, and flagged rather than diagnosed:** the colour asymmetry. One win in
+six as Black against three in six as White, and `agent.zip` is 0 for 3 as Black. With
+no move records for those games there is no way to tell whether this is opening
+handling, a search asymmetry, or small-sample noise across twelve games.
