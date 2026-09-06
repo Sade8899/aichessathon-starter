@@ -1,0 +1,6 @@
+GATE {"config": "control", "check": "official_gate", "passed": true, "tail": ["terminations: checkmate 2"]}
+GATE {"config": "control", "check": "verify", "passed": true, "tail": ["}"]}
+GATE {"config": "control", "check": "determinism", "passed": true, "tail": ["{\"fixed_depth_positions\": 12, \"repeatability\": \"passed\", \"colour_symmetry\": \"passed\", \"opening_repeats\": [\"g1f3\", \"g1f3\", \"g1f3\", \"g1f3\", \"g1f3\"]}"]}
+GATE {"config": "candidate", "check": "official_gate", "passed": true, "tail": ["terminations: checkmate 2"]}
+GATE {"config": "candidate", "check": "verify", "passed": true, "tail": ["}"]}
+GATE {"config": "candidate", "check": "determinism", "passed": true, "tail": ["{\"fixed_depth_positions\": 12, \"repeatability\": \"passed\", \"colour_symmetry\": \"passed\", \"opening_repeats\": [\"g1f3\", \"g1f3\", \"g1f3\", \"g1f3\", \"g1f3\"]}"]}

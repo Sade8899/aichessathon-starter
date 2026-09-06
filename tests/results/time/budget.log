@@ -1,0 +1,24 @@
+INIT {"name": "control", "seconds": 2.272667065997666, "rss_mb": 167.55859375}
+INIT {"name": "candidate", "seconds": 0.8340709140029503, "rss_mb": 178.18359375}
+BUDGET {"clock_ms": 50, "control_budget_s": 0.0015625, "candidate_budget_s": 0.0015625, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 100, "control_budget_s": 0.003125, "candidate_budget_s": 0.003125, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 250, "control_budget_s": 0.0078125, "candidate_budget_s": 0.0078125, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 500, "control_budget_s": 0.015625, "candidate_budget_s": 0.015625, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 1000, "control_budget_s": 0.03125, "candidate_budget_s": 0.03125, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 2000, "control_budget_s": 0.0625, "candidate_budget_s": 0.0625, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 5000, "control_budget_s": 0.15625, "candidate_budget_s": 0.15625, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 10000, "control_budget_s": 0.3125, "candidate_budget_s": 0.3125, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 20000, "control_budget_s": 0.625, "candidate_budget_s": 0.625, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 30000, "control_budget_s": 0.9374999999999999, "candidate_budget_s": 0.9374999999999999, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 48000, "control_budget_s": 1.5, "candidate_budget_s": 1.5, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 60000, "control_budget_s": 1.8749999999999998, "candidate_budget_s": 1.8749999999999998, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 90000, "control_budget_s": 2.8125, "candidate_budget_s": 2.8125, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 95000, "control_budget_s": 2.96875, "candidate_budget_s": 2.96875, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 95900, "control_budget_s": 2.996875, "candidate_budget_s": 2.996875, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 96000, "control_budget_s": 3.0, "candidate_budget_s": 3.0, "extra_s": 0.0, "cap_binds_for_control": false}
+BUDGET {"clock_ms": 96100, "control_budget_s": 3.0, "candidate_budget_s": 3.003125, "extra_s": 0.0031249999999998224, "cap_binds_for_control": true}
+BUDGET {"clock_ms": 100000, "control_budget_s": 3.0, "candidate_budget_s": 3.125, "extra_s": 0.125, "cap_binds_for_control": true}
+BUDGET {"clock_ms": 110000, "control_budget_s": 3.0, "candidate_budget_s": 3.4375, "extra_s": 0.4375, "cap_binds_for_control": true}
+BUDGET {"clock_ms": 113600, "control_budget_s": 3.0, "candidate_budget_s": 3.5500000000000003, "extra_s": 0.5500000000000003, "cap_binds_for_control": true}
+BUDGET {"clock_ms": 120000, "control_budget_s": 3.0, "candidate_budget_s": 3.7499999999999996, "extra_s": 0.7499999999999996, "cap_binds_for_control": true}
+BUDGET_SUMMARY {"clocks": 21, "identical_at_or_below_96s": true, "cap_boundary_ms": 96000.0, "max_extra_s": 0.7499999999999996, "extra_at_120000_ms": 0.7499999999999996, "extra_at_113600_ms": 0.5500000000000003, "clocks_where_candidate_thinks_longer": [96100, 100000, 110000, 113600, 120000], "reserve_s": 0.025, "divisor": 32}

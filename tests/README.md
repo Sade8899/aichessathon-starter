@@ -64,6 +64,45 @@ The regression fixture discriminates today: the submitted engine fails it (`g5f4
 depth 3) and the candidate passes (`d1h5`, depth 4). Do not treat the candidate's
 pass as a fix; the 3.0 s cap is byte-identical in both engines.
 
+# Time allocation experiment
+
+See [TIME.md](TIME.md). `time_experiment.json` pins the control `be5da869...`,
+which is the working `agent.py`, against the candidate
+`e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b`. Raw logs and
+merged reports are in `results/time/`.
+
+The candidate removes the constant 3.0 s ceiling from the per-move budget and
+changes nothing else. `available / 32` and the final clock reserve stay.
+`time_checks.py identity` proves the two sources differ on **exactly one line**, one
+statement inside `Engine.choose`, with every other definition identical at the AST
+level. This is the single change [RATED_LOSSES.md](RATED_LOSSES.md) recommended.
+
+The cap binds only above 96 s of clock, so the engines are provably identical for
+all but the opening moves. At the round 30 clock of 113.6 s the budget goes from
+3.00 s to 3.55 s, the value the fixture records as sufficient.
+
+**Accepted.** Zero flags, crashes and illegal moves over 24 full-clock games; cold
+import, ruff, strict mypy, `make gate`, `verify.py`, `determinism.py` and the rated
+round 30 regression all pass for both engines; and on the fixed tactical corpus,
+864 paired measurements, the extra time becomes depth: **+0.137** mean completed
+depth above the cap, 60 measurements deeper against 1 shallower, against a noise
+floor of 0.021 measured at the clocks where the two budgets are provably equal.
+
+Clock safety was checked to the 600-ply referee cap. The candidate finishes a
+maximum-length game with **18.4 s** still on the clock, 105 ms behind the control,
+and survives an analytic recurrence at twice the worst overshoot ever measured.
+
+The 24-game score is exactly even, 0.500 against 0.500, paired difference 0.0 with a
+95% interval of [-0.125, +0.125]. **Treat it as directional only**; 24 games cannot
+establish strength and no strength claim is made. The candidate is retained as the
+development candidate. It is not submitted, not packaged and not committed.
+
+`rated_losses.py` now accepts either budget expression and a `--manifest`, so the
+same fixture diagnoses a time candidate. The spliced override is byte-identical to
+the previous hard-coded one for the capped source. One recorded row, the 3.2 s
+think, did not reproduce; TIME.md explains why it is a knife edge rather than a
+regression.
+
 # Concurrency calibration
 
 See [CONCURRENCY.md](CONCURRENCY.md). Two versions, both preserved. **Version one**

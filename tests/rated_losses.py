@@ -20,36 +20,42 @@ from pathlib import Path
 from typing import Any
 
 import chess
-import qgen_checks
 from selection import load
 
 MANIFEST = Path("tests/qcap_validation.json")
 FIXTURE = Path("tests/tournament/fixtures/rated.json")
 SUBMITTED = Path("tests/tournament/submitted.json")
 REGRESSION = Path("tests/rated_regression.json")
-BUDGET_LINE = "        budget = min(3.0, available / 32, max(0.001, available - 0.025))"
-BUDGET_PATCH = (
-    "        budget = _THINK[0] or min(3.0, available / 32, max(0.001, available - 0.025))"
+# Every budget expression this repository has carried, capped and uncapped. The
+# override is spliced in front of whichever one the loaded source actually has, so a
+# time-allocation candidate is diagnosed by the same fixture as the engine it changes.
+BUDGET_LINES = (
+    "        budget = min(3.0, available / 32, max(0.001, available - 0.025))",
+    "        budget = min(available / 32, max(0.001, available - 0.025))",
 )
 
 
-def instrumented(config: str) -> tuple[types.ModuleType, str]:
+def instrumented(config: str, manifest_path: Path = MANIFEST) -> tuple[types.ModuleType, str]:
     """One engine, with a development override for the per-move budget only.
 
     "submitted" is the engine actually deployed on the platform and is the primary
-    subject; "candidate" is the unsubmitted development agent, used for comparison.
+    subject; every other name is an unsubmitted development agent read from
+    `manifest_path` by its own recorded hash, used for comparison.
     """
     if config == "submitted":
         manifest = json.loads(SUBMITTED.read_text())
         raw = Path(manifest["frozen_path"]).read_bytes()
         assert hashlib.sha256(raw).hexdigest() == manifest["agent_sha256"]
-        source = raw.decode()
     else:
-        qgen_checks.MANIFEST = MANIFEST
-        source = qgen_checks.sources()[config]
+        manifest = json.loads(manifest_path.read_text())
+        raw = Path(manifest[config + "_path"]).read_bytes()
+        assert hashlib.sha256(raw).hexdigest() == manifest[config + "_sha256"]
+    source = raw.decode()
     digest = hashlib.sha256(source.encode()).hexdigest()
-    assert source.count(BUDGET_LINE) == 1, "budget expression not found"
-    patched = source.replace(BUDGET_LINE, BUDGET_PATCH) + "\n_THINK = [0.0]\n"
+    present = [line for line in BUDGET_LINES if source.count(line) == 1]
+    assert len(present) == 1, "budget expression not found"
+    override = present[0].replace("budget = ", "budget = _THINK[0] or ", 1)
+    patched = source.replace(present[0], override) + "\n_THINK = [0.0]\n"
     module = load("rated_" + config, patched)
     return module, digest
 
@@ -202,10 +208,15 @@ def main() -> None:
     parser.add_argument(
         "--config", default="submitted", choices=("submitted", "candidate", "control")
     )
+    parser.add_argument("--manifest", default=str(MANIFEST))
     args = parser.parse_args()
     fixture = json.loads(FIXTURE.read_text())
-    module, digest = instrumented(args.config)
-    print("AGENT " + json.dumps({"config": args.config, "sha256": digest}), flush=True)
+    module, digest = instrumented(args.config, Path(args.manifest))
+    print(
+        "AGENT "
+        + json.dumps({"config": args.config, "manifest": args.manifest, "sha256": digest}),
+        flush=True,
+    )
     print("LOSS " + json.dumps(refutation(fixture, module)), flush=True)
     if args.regress:
         regress(module, fixture, args.config)

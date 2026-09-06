@@ -1,0 +1,17 @@
+{
+  "experiment": "time allocation: remove the constant 3.0 s per-move ceiling",
+  "motivation": "tests/rated_regression.json. Round 30 lost to a depth-3 move played under the 3.0 s cap while available / 32 offered 3.55 s. RATED_LOSSES.md records slowest_s = 2.9 s in all twelve rated games and a median 45.6 s of clock left unused.",
+  "control_sha256": "be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0",
+  "control_path": "agent.py",
+  "control_frozen_path": "tests/qcap_candidate/be5da8696f01924e2f752b1686e1d6a94b38dc72fff86a1f7fedb05f006c56e0/agent.py",
+  "candidate_sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+  "candidate_path": "tests/time_candidate/e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b/agent.py",
+  "change": {
+    "line": 933,
+    "before": "        budget = min(3.0, available / 32, max(0.001, available - 0.025))",
+    "after": "        budget = min(available / 32, max(0.001, available - 0.025))",
+    "retained": "available / 32 and the final clock reserve max(0.001, available - 0.025); the 0.96 hard and 0.65 soft fractions of the budget are untouched.",
+    "lines_differing": 1
+  },
+  "line_endings": "LF, as pinned by .gitattributes, so the raw-byte hashes reproduce from a fresh clone."
+}
