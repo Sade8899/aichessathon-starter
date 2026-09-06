@@ -1,0 +1,150 @@
+{
+  "phase": "arena",
+  "workers": 12,
+  "plan": [
+    {
+      "index": 0,
+      "cpu": 0,
+      "core": 0,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 1,
+      "cpu": 1,
+      "core": 0,
+      "sibling": 1,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 2,
+      "cpu": 2,
+      "core": 1,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 3,
+      "cpu": 3,
+      "core": 1,
+      "sibling": 1,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 4,
+      "cpu": 4,
+      "core": 2,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 5,
+      "cpu": 5,
+      "core": 2,
+      "sibling": 1,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 6,
+      "cpu": 6,
+      "core": 3,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 7,
+      "cpu": 7,
+      "core": 3,
+      "sibling": 1,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 8,
+      "cpu": 8,
+      "core": 4,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 9,
+      "cpu": 9,
+      "core": 4,
+      "sibling": 1,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 10,
+      "cpu": 10,
+      "core": 5,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 11,
+      "cpu": 11,
+      "core": 5,
+      "sibling": 1,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    }
+  ],
+  "launch_seconds": 3.1873093999456614,
+  "all_containers_created_before_start": true,
+  "makespan_s": 127.15271539997775,
+  "exit_codes": {
+    "c2-arena-12-0": 0,
+    "c2-arena-12-1": 0,
+    "c2-arena-12-2": 0,
+    "c2-arena-12-3": 0,
+    "c2-arena-12-4": 0,
+    "c2-arena-12-5": 0,
+    "c2-arena-12-6": 0,
+    "c2-arena-12-7": 0,
+    "c2-arena-12-8": 0,
+    "c2-arena-12-9": 0,
+    "c2-arena-12-10": 0,
+    "c2-arena-12-11": 0
+  },
+  "nonzero_exits": [],
+  "peak_container_mb": {
+    "c2-arena-12-0": 183.2,
+    "c2-arena-12-1": 171.8,
+    "c2-arena-12-2": 173.2,
+    "c2-arena-12-3": 174.1,
+    "c2-arena-12-4": 172.5,
+    "c2-arena-12-5": 171.9,
+    "c2-arena-12-6": 180.6,
+    "c2-arena-12-7": 175.1,
+    "c2-arena-12-8": 176.2,
+    "c2-arena-12-9": 173.6,
+    "c2-arena-12-10": 175.7,
+    "c2-arena-12-11": 174.3
+  },
+  "max_container_mb": 183.2,
+  "total_container_mb": 2102.2,
+  "games": 48,
+  "games_per_hour": 1358.9957513406766
+}

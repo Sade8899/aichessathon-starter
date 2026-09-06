@@ -1,0 +1,82 @@
+{
+  "phase": "fair",
+  "workers": 6,
+  "plan": [
+    {
+      "index": 0,
+      "cpu": 0,
+      "core": 0,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 1,
+      "cpu": 2,
+      "core": 1,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 2,
+      "cpu": 4,
+      "core": 2,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 3,
+      "cpu": 6,
+      "core": 3,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 4,
+      "cpu": 8,
+      "core": 4,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 5,
+      "cpu": 10,
+      "core": 5,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    }
+  ],
+  "launch_seconds": 1.516516700037755,
+  "all_containers_created_before_start": true,
+  "makespan_s": 27.407041599974036,
+  "exit_codes": {
+    "c2-fair-6-0": 0,
+    "c2-fair-6-1": 0,
+    "c2-fair-6-2": 0,
+    "c2-fair-6-3": 0,
+    "c2-fair-6-4": 0,
+    "c2-fair-6-5": 0
+  },
+  "nonzero_exits": [],
+  "peak_container_mb": {
+    "c2-fair-6-0": 87.2,
+    "c2-fair-6-1": 87.25,
+    "c2-fair-6-2": 87.18,
+    "c2-fair-6-3": 87.21,
+    "c2-fair-6-4": 87.09,
+    "c2-fair-6-5": 87.24
+  },
+  "max_container_mb": 87.25,
+  "total_container_mb": 523.17
+}

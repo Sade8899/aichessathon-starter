@@ -1,8 +1,9 @@
 # Concurrency calibration
 
-See [CONCURRENCY.md](CONCURRENCY.md). Identical arena workloads at 6, 12 and 24
-simultaneous containers, two blocks each with reversed container-to-CPU placement,
-336 games, zero failures. Raw records are in `results/concurrency/`.
+See [CONCURRENCY.md](CONCURRENCY.md). Two versions, both preserved. **Version one**
+is commit `86d493cc7660969015a78383c1a4d75419fc3be4`: identical arena workloads at
+6, 12 and 24 containers, two blocks each with reversed container-to-CPU placement,
+336 games, zero failures, records in `results/concurrency/`.
 
 ```powershell
 python tests/concurrency_calibration.py run --levels 6 --blocks A,B
@@ -11,18 +12,45 @@ python tests/concurrency_calibration.py run --levels 24 --blocks A,B
 python tests/concurrency_calibration.py report --levels 6,12,24
 ```
 
-Throughput rises materially with oversubscription: 727 games/hour at six workers,
-1,298 at twelve, 1,731 at 24. **24 workers are nevertheless not approved, for
-screens or anything else.** The declared fairness condition failed: the candidate
-retains 26.5% of its six-worker node rate against the control's 27.7%, an imbalance
-of -4.62% against a ±3% limit, and twelve workers are worse at -8.73%. Only six
-workers pass, and they remain the setting for both authoritative 120-second testing
-and screens. Do not raise the worker count without recalibrating fairness.
+Version one's throughput, initialization, memory and failure numbers stand, but its
+**fairness conclusion does not**: it rejected 24 workers conservatively without
+isolating fairness. Every version one container ran control, candidate, candidate,
+control, so the configurations never swapped execution slots, and its statistic came
+from arena games whose positions diverge under contention. Split by colour, version
+one's own 24-worker figure is +6.49% for White and -24.73% for Black; a real
+difference in CPU service would not reverse sign by colour.
 
-Initialization degrades from about 3.8 s median at six workers to 12 s median and
-18.6 s worst at 24, and completed depth falls from 1.84 to 1.20 ply for the control,
-so 24-worker games are far from tournament conditions regardless. Memory is not the
-limit: about 180 MB per container and 4.06 GB for 24 inside an 8.29 GB Docker VM.
+**Version two** is the calibration to rely on. It records the topology Docker
+actually exposes (a WSL2 guest with the hypervisor flag set, so no physical core
+isolation is claimed), counterbalances execution order, starts all workers on a
+shared future timestamp, and measures fairness on the identical 24-position
+fixed-depth corpus where both configurations search exactly the same nodes.
+
+```powershell
+python tests/concurrency_v2.py topology
+python tests/concurrency_v2.py run --levels 6
+python tests/concurrency_v2.py run --levels 12
+python tests/concurrency_v2.py run --levels 24
+python tests/concurrency_v2.py report --levels 6,12,24
+```
+
+Version two: 771.9 games/hour at six workers, 1,359.0 at twelve, 1,892.5 at 24,
++39.3% over the best smaller level, zero failures anywhere. **24 workers are still
+not approved, for screens or anything else.** The declared rule requires the
+aggregate and both execution-order strata to be within 3%; at 24 the aggregate
+passes at +1.94% but both strata fail, +3.80% control-first and +3.29%
+candidate-first. Twelve workers also fail, at +3.68% control-first. Note the sign
+reversed from version one: the candidate retains slightly *more* speed, not less.
+Six workers remain the setting for screens and for authoritative 120-second testing.
+Do not raise the worker count without recalibrating fairness.
+
+Initialization degrades from about 3.6 s median at six workers to 12.3 s median and
+16.1 s worst at 24, and arena completed depth falls to near one ply, so 24-worker
+games are far from tournament conditions regardless. Memory is not the limit: about
+180 MB per arena container and 4.07 GB for 24 inside an 8.29 GB Docker VM.
+
+`qgen_checks.py arena` gained a `--configs` argument for this, defaulting to the
+previous `control,candidate`, so every earlier command behaves exactly as before.
 
 # Selective quiescence capture generation
 

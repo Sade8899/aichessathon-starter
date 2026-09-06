@@ -601,6 +601,8 @@ def main() -> None:
     parser.add_argument("--base-ms", type=int, default=10000)
     parser.add_argument("--increment-ms", type=int, default=100)
     parser.add_argument("--experiment", default=str(DEFAULT_MANIFEST))
+    # Execution order within a case; reversing it counterbalances the order effect.
+    parser.add_argument("--configs", default="control,candidate")
     args = parser.parse_args()
     globals()["MANIFEST"] = Path(args.experiment)
     if args.mode == "targeted":
@@ -638,7 +640,7 @@ def main() -> None:
         corpus_json = json.loads(Path("tests/quiet_openings.json").read_text())
         vars(selection)["OPENINGS"] = tuple(tuple(r["uci"]) for r in corpus_json["positions"])
         selection.sources = lambda: {**sources(), "reference": sources()["control"]}
-        args.configs = "control,candidate"
+        assert sorted(args.configs.split(",")) == ["candidate", "control"], args.configs
         args.sparring = True
         args.spread_openings = False
         args.games = 0

@@ -1,0 +1,253 @@
+{
+  "version": 2,
+  "topology": {
+    "affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "cpu_count": 12,
+    "thread_siblings": {
+      "0": "0-1",
+      "1": "0-1",
+      "2": "2-3",
+      "3": "2-3",
+      "4": "4-5",
+      "5": "4-5",
+      "6": "6-7",
+      "7": "6-7",
+      "8": "8-9",
+      "9": "8-9",
+      "10": "10-11",
+      "11": "10-11"
+    },
+    "core_id": {
+      "0": "0",
+      "1": "0",
+      "2": "1",
+      "3": "1",
+      "4": "2",
+      "5": "2",
+      "6": "3",
+      "7": "3",
+      "8": "4",
+      "9": "4",
+      "10": "5",
+      "11": "5"
+    },
+    "hypervisor_flag": true,
+    "model": [
+      "Intel(R) Core(TM) i7-8700 CPU @ 3.20GHz"
+    ],
+    "kernel": "6.6.87.2-microsoft-standard-WSL2",
+    "cores_reported": 6,
+    "virtual_topology": true,
+    "physical_core_isolation_claimed": false,
+    "note": "Guest reports 6 core ids with adjacent thread siblings, but the hypervisor flag is set and the kernel is WSL2, so guest vCPU to host logical processor placement is not controlled here. cpuset pins the guest scheduler only."
+  },
+  "levels": {
+    "6": {
+      "arena": {
+        "makespan_s": 111.93831930001033,
+        "games": 24,
+        "games_per_hour": 771.8536470825145,
+        "nonzero_exits": [],
+        "max_container_mb": 185.8,
+        "total_container_mb": 1069.0,
+        "synchronized_start": true,
+        "failures": 0,
+        "control": {
+          "games": 12,
+          "median_move_ms": 235.88905700307805,
+          "worst_move_ms": 307.07021999842254,
+          "mean_depth": 1.6210526315789473,
+          "median_initialization_ms": 3616.6070885010413,
+          "max_initialization_ms": 3703.6443739998504,
+          "max_peak_rss_mb": 172.29296875
+        },
+        "candidate": {
+          "games": 12,
+          "median_move_ms": 190.69188549838145,
+          "worst_move_ms": 303.3234469985473,
+          "mean_depth": 2.1244725738396624,
+          "median_initialization_ms": 3587.100543998531,
+          "max_initialization_ms": 3684.1285139962565,
+          "max_peak_rss_mb": 172.80859375
+        }
+      },
+      "fairness": {
+        "makespan_s": 27.407041599974036,
+        "nonzero_exits": [],
+        "measurements": 864,
+        "synchronized_start": true,
+        "aggregate": {
+          "control": 1.0,
+          "control_positions": 24,
+          "candidate": 1.0,
+          "candidate_positions": 24,
+          "imbalance": 0.0,
+          "within_limit": true
+        },
+        "control_first": {
+          "control": 1.0,
+          "control_positions": 24,
+          "candidate": 1.0,
+          "candidate_positions": 24,
+          "imbalance": 0.0,
+          "within_limit": true
+        },
+        "candidate_first": {
+          "control": 1.0,
+          "control_positions": 24,
+          "candidate": 1.0,
+          "candidate_positions": 24,
+          "imbalance": 0.0,
+          "within_limit": true
+        }
+      }
+    },
+    "12": {
+      "arena": {
+        "makespan_s": 127.15271539997775,
+        "games": 48,
+        "games_per_hour": 1358.9957513406766,
+        "nonzero_exits": [],
+        "max_container_mb": 183.2,
+        "total_container_mb": 2102.2,
+        "synchronized_start": true,
+        "failures": 0,
+        "control": {
+          "games": 24,
+          "median_move_ms": 202.45472850001534,
+          "worst_move_ms": 331.2331909983186,
+          "mean_depth": 1.654075546719682,
+          "median_initialization_ms": 5316.221709501406,
+          "max_initialization_ms": 6053.086118001374,
+          "max_peak_rss_mb": 172.37890625
+        },
+        "candidate": {
+          "games": 24,
+          "median_move_ms": 213.9731945026142,
+          "worst_move_ms": 303.57249599910574,
+          "mean_depth": 1.6786600496277915,
+          "median_initialization_ms": 5420.423038503941,
+          "max_initialization_ms": 5961.986668000463,
+          "max_peak_rss_mb": 171.89453125
+        }
+      },
+      "fairness": {
+        "makespan_s": 36.25760299997637,
+        "nonzero_exits": [],
+        "measurements": 1728,
+        "synchronized_start": true,
+        "aggregate": {
+          "control": 0.7127910488253808,
+          "control_positions": 24,
+          "candidate": 0.7174568384760347,
+          "candidate_positions": 24,
+          "imbalance": 0.00654580281043482,
+          "within_limit": true
+        },
+        "control_first": {
+          "control": 0.7121097811097921,
+          "control_positions": 24,
+          "candidate": 0.7382865092018301,
+          "candidate_positions": 24,
+          "imbalance": 0.03675939972519804,
+          "within_limit": false
+        },
+        "candidate_first": {
+          "control": 0.7308833149726568,
+          "control_positions": 24,
+          "candidate": 0.7290015017571936,
+          "candidate_positions": 24,
+          "imbalance": -0.002574710869591601,
+          "within_limit": true
+        }
+      }
+    },
+    "24": {
+      "arena": {
+        "makespan_s": 182.61427349998849,
+        "games": 96,
+        "games_per_hour": 1892.5136210670946,
+        "nonzero_exits": [],
+        "max_container_mb": 179.4,
+        "total_container_mb": 4065.6,
+        "synchronized_start": true,
+        "failures": 0,
+        "control": {
+          "games": 48,
+          "median_move_ms": 218.85711849972722,
+          "worst_move_ms": 377.19527300214395,
+          "mean_depth": 1.1103658536585366,
+          "median_initialization_ms": 12308.474355999351,
+          "max_initialization_ms": 16056.548356995336,
+          "max_peak_rss_mb": 167.80078125
+        },
+        "candidate": {
+          "games": 48,
+          "median_move_ms": 222.41821749776136,
+          "worst_move_ms": 329.1141610025079,
+          "mean_depth": 1.2886866059817945,
+          "median_initialization_ms": 12562.805875000777,
+          "max_initialization_ms": 15926.142486001481,
+          "max_peak_rss_mb": 170.8984375
+        }
+      },
+      "fairness": {
+        "makespan_s": 79.0872327000252,
+        "nonzero_exits": [],
+        "measurements": 3456,
+        "synchronized_start": true,
+        "aggregate": {
+          "control": 0.34538501691378626,
+          "control_positions": 24,
+          "candidate": 0.3521010469224958,
+          "candidate_positions": 24,
+          "imbalance": 0.01944505314307232,
+          "within_limit": true
+        },
+        "control_first": {
+          "control": 0.33710715441482025,
+          "control_positions": 24,
+          "candidate": 0.3499138369944702,
+          "candidate_positions": 24,
+          "imbalance": 0.03798994596208116,
+          "within_limit": false
+        },
+        "candidate_first": {
+          "control": 0.34363807385739153,
+          "control_positions": 24,
+          "candidate": 0.3549504391599748,
+          "candidate_positions": 24,
+          "imbalance": 0.03291941773389717,
+          "within_limit": false
+        }
+      }
+    }
+  },
+  "decision": {
+    "material_gain_threshold": 0.1,
+    "imbalance_limit": 0.03,
+    "best_of_6_and_12_games_per_hour": 1358.9957513406766,
+    "games_per_hour_at_24": 1892.5136210670946,
+    "gain_over_best_small": 0.39258244126230113,
+    "material": true,
+    "imbalance_aggregate": 0.01944505314307232,
+    "imbalance_control_first": 0.03798994596208116,
+    "imbalance_candidate_first": 0.03291941773389717,
+    "all_strata_within_limit": false,
+    "total_failures": 0,
+    "approve_24_for_exploratory_screens": false
+  }
+}

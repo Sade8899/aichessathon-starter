@@ -1,0 +1,148 @@
+{
+  "phase": "fair",
+  "workers": 12,
+  "plan": [
+    {
+      "index": 0,
+      "cpu": 0,
+      "core": 0,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 1,
+      "cpu": 1,
+      "core": 0,
+      "sibling": 1,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 2,
+      "cpu": 2,
+      "core": 1,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 3,
+      "cpu": 3,
+      "core": 1,
+      "sibling": 1,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 4,
+      "cpu": 4,
+      "core": 2,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 5,
+      "cpu": 5,
+      "core": 2,
+      "sibling": 1,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 6,
+      "cpu": 6,
+      "core": 3,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 7,
+      "cpu": 7,
+      "core": 3,
+      "sibling": 1,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 8,
+      "cpu": 8,
+      "core": 4,
+      "sibling": 0,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    },
+    {
+      "index": 9,
+      "cpu": 9,
+      "core": 4,
+      "sibling": 1,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 10,
+      "cpu": 10,
+      "core": 5,
+      "sibling": 0,
+      "replica": 0,
+      "order": "candidate,control",
+      "stratum": "candidate_first"
+    },
+    {
+      "index": 11,
+      "cpu": 11,
+      "core": 5,
+      "sibling": 1,
+      "replica": 0,
+      "order": "control,candidate",
+      "stratum": "control_first"
+    }
+  ],
+  "launch_seconds": 3.115871700050775,
+  "all_containers_created_before_start": true,
+  "makespan_s": 36.25760299997637,
+  "exit_codes": {
+    "c2-fair-12-0": 0,
+    "c2-fair-12-1": 0,
+    "c2-fair-12-2": 0,
+    "c2-fair-12-3": 0,
+    "c2-fair-12-4": 0,
+    "c2-fair-12-5": 0,
+    "c2-fair-12-6": 0,
+    "c2-fair-12-7": 0,
+    "c2-fair-12-8": 0,
+    "c2-fair-12-9": 0,
+    "c2-fair-12-10": 0,
+    "c2-fair-12-11": 0
+  },
+  "nonzero_exits": [],
+  "peak_container_mb": {
+    "c2-fair-12-0": 86.84,
+    "c2-fair-12-1": 87.07,
+    "c2-fair-12-2": 87.11,
+    "c2-fair-12-3": 86.83,
+    "c2-fair-12-4": 87.07,
+    "c2-fair-12-5": 87.07,
+    "c2-fair-12-6": 87.07,
+    "c2-fair-12-7": 87.11,
+    "c2-fair-12-8": 87.1,
+    "c2-fair-12-9": 87.08,
+    "c2-fair-12-10": 87.07,
+    "c2-fair-12-11": 87.07
+  },
+  "max_container_mb": 87.11,
+  "total_container_mb": 1044.49
+}
