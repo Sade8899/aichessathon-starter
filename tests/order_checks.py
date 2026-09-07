@@ -118,8 +118,8 @@ def identity() -> None:
     """Scope: only Engine.quiesce and one added constant may differ."""
     record = json.loads(MANIFEST.read_text())
     raw = {
-        "control": Path(record["control_path"]).read_bytes(),
-        "candidate": Path(record["candidate_path"]).read_bytes(),
+        "control": time_checks.resolve(record, "control", CONTROL_SHA),
+        "candidate": time_checks.resolve(record, "candidate", CANDIDATE_SHA),
     }
     digests = {name: hashlib.sha256(v).hexdigest() for name, v in raw.items()}
     assert digests["control"] == CONTROL_SHA, digests
@@ -351,9 +351,13 @@ GATE_COMMANDS: tuple[tuple[str, list[str]], ...] = (
 )
 
 
-def official_gate(configs: list[str]) -> None:
-    """The official gate plus the correctness suites, run against each source."""
-    engine_sources = sources()
+def official_gate(configs: list[str], engine_sources: dict[str, str] | None = None) -> None:
+    """The official gate plus the correctness suites, run against each source.
+
+    A later experiment can pass its own pair of sources so this driver, and the exact
+    set of commands it runs, is shared rather than copied.
+    """
+    engine_sources = sources() if engine_sources is None else engine_sources
     for name in configs:
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)

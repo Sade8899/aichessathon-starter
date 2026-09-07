@@ -52,17 +52,36 @@ def manifest() -> dict[str, Any]:
     return cast(dict[str, Any], json.loads(MANIFEST.read_text()))
 
 
+def resolve(record: dict[str, Any], name: str, sha: str) -> bytes:
+    """The manifest's bytes for one role, from whichever path still holds them.
+
+    A manifest names the control by its working path, `agent.py`. Once a candidate
+    is promoted that file holds the candidate, so the frozen copy the manifest also
+    records becomes the control's only location. Both paths are tried and the bytes
+    are returned only if they hash to the manifest's declared digest, so this
+    resolves where the source lives without relaxing what it has to be.
+    """
+    candidates = [record[name + "_path"]]
+    if record.get(name + "_frozen_path"):
+        candidates.append(record[name + "_frozen_path"])
+    for path in candidates:
+        raw = Path(path).read_bytes()
+        if hashlib.sha256(raw).hexdigest() == sha:
+            return raw
+    raise AssertionError((name, sha, candidates))
+
+
 def sources() -> dict[str, str]:
     record = manifest()
     assert record["control_sha256"] == CONTROL_SHA
     assert record["candidate_sha256"] == CANDIDATE_SHA
     result = {}
     for name, sha in (("control", CONTROL_SHA), ("candidate", CANDIDATE_SHA)):
-        raw = Path(record[name + "_path"]).read_bytes()
+        raw = resolve(record, name, sha)
         assert hashlib.sha256(raw).hexdigest() == sha, name
         assert b"\r" not in raw, name
         result[name] = raw.decode()
-    # The control is the working agent.py; its frozen copy must be the same bytes.
+    # The control's frozen copy must exist and must be the control's exact bytes.
     frozen_control = Path(record["control_frozen_path"]).read_bytes()
     assert hashlib.sha256(frozen_control).hexdigest() == CONTROL_SHA
     return result

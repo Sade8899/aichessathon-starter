@@ -1,0 +1,550 @@
+{
+ "source": "30 held-out opening prefixes plus the 24-position suite; ordinary positions, no tactic label",
+ "role": "quiet positional corpus: completed depth and node cost only, solved is meaningless here",
+ "positions": [
+  {
+   "fen": "r1bqkb1r/1ppp1ppp/p1n2n2/4p3/B3P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 2 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 0
+  },
+  {
+   "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2P2N2/PP1P1PPP/RNBQK2R w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 1
+  },
+  {
+   "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 2
+  },
+  {
+   "fen": "r1bqkb1r/pppp1ppp/2n2n2/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 3
+  },
+  {
+   "fen": "rnbqkb1r/ppp2ppp/3p4/8/4n3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 4
+  },
+  {
+   "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/2NP4/PPP2PPP/R1BQK1NR w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 5
+  },
+  {
+   "fen": "r1bqk2r/pppp1ppp/2n2n2/1B2p3/1b2P3/2N2N2/PPPP1PPP/R1BQK2R w KQkq - 6 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 6
+  },
+  {
+   "fen": "r1bqk2r/pppp1ppp/2n2n2/2b1p3/2B1P3/3P1N2/PPP2PPP/RNBQK2R w KQkq - 3 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 7
+  },
+  {
+   "fen": "rnbqkb1r/pp2pppp/3p1n2/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 8
+  },
+  {
+   "fen": "r1bqkbnr/pp1ppp1p/2n3p1/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 9
+  },
+  {
+   "fen": "rnbqkbnr/1p1p1ppp/p3p3/8/3NP3/8/PPP2PPP/RNBQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 10
+  },
+  {
+   "fen": "rnbqkb1r/pp1ppppp/8/3nP3/3p4/2P5/PP3PPP/RNBQKBNR w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 11
+  },
+  {
+   "fen": "r1bqk1nr/pp1pppbp/2n3p1/2p5/4P3/2N3P1/PPPP1PBP/R1BQK1NR w KQkq - 2 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 12
+  },
+  {
+   "fen": "rnbqk2r/ppp1bppp/4pn2/3p2B1/3PP3/2N5/PPP2PPP/R2QKBNR w KQkq - 4 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 13
+  },
+  {
+   "fen": "rnbqkb1r/pppn1ppp/4p3/3pP3/3P4/8/PPPN1PPP/R1BQKBNR w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 14
+  },
+  {
+   "fen": "rnbqkb1r/ppp2ppp/5n2/3p4/3P4/5N2/PPP2PPP/RNBQKB1R w KQkq - 2 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 15
+  },
+  {
+   "fen": "rn1qkbnr/pp2pppp/2p5/5b2/3PN3/8/PPP2PPP/R1BQKBNR w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 16
+  },
+  {
+   "fen": "rn1qkbnr/pp3ppp/2p1p3/3pPb2/3P4/5N2/PPP2PPP/RNBQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 17
+  },
+  {
+   "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/3PP3/2N2N2/PPP2PPP/R1BQKB1R w KQkq - 2 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 18
+  },
+  {
+   "fen": "rnbqk1nr/1pp1ppbp/p2p2p1/8/3PP3/2N2N2/PPP2PPP/R1BQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 19
+  },
+  {
+   "fen": "rnbqk2r/ppp1bppp/4pn2/3p2B1/2PP4/2N5/PP2PPPP/R2QKBNR w KQkq - 4 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 20
+  },
+  {
+   "fen": "rnbqkb1r/pp3ppp/2p1pn2/3p4/2PP4/2N2N2/PP2PPPP/R1BQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 21
+  },
+  {
+   "fen": "rnbqkb1r/ppp2ppp/4pn2/8/2pP4/4PN2/PP3PPP/RNBQKB1R w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 22
+  },
+  {
+   "fen": "rnbq1rk1/pppp1ppp/4pn2/8/1bPP4/2N1P3/PP3PPP/R1BQKBNR w KQ - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 23
+  },
+  {
+   "fen": "rnbqk2r/ppp1ppbp/3p1np1/8/2PPP3/2N5/PP3PPP/R1BQKBNR w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 24
+  },
+  {
+   "fen": "rnbqkb1r/ppp1pp1p/6p1/3n4/3P4/2N5/PP2PPPP/R1BQKBNR w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 25
+  },
+  {
+   "fen": "rn1qkb1r/pbpp1ppp/1p2pn2/8/2PP4/5NP1/PP2PP1P/RNBQKB1R w KQkq - 1 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 26
+  },
+  {
+   "fen": "rnbqkb1r/ppp2ppp/8/3np3/8/2N3P1/PP1PPP1P/R1BQKBNR w KQkq - 0 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 27
+  },
+  {
+   "fen": "r1bqk1nr/pp1pppbp/2n3p1/2p5/2P5/2N3P1/PP1PPPBP/R1BQK1NR w KQkq - 2 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 28
+  },
+  {
+   "fen": "rnbqk2r/ppp1bppp/4pn2/3p4/8/5NP1/PPPPPPBP/RNBQ1RK1 w kq - 2 5",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 29
+  },
+  {
+   "fen": "rnbqkb1r/ppp1pp1p/3p2pn/8/2P1P3/3P3P/PP3PP1/RNBQKBNR b KQkq - 0 4",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 30
+  },
+  {
+   "fen": "r1bq1b1r/pP1pkppp/1np5/4p3/2P1P1n1/1P3P2/R2P3P/1NBQKBNR w K - 0 12",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 31
+  },
+  {
+   "fen": "rnb1qb1r/pp1k1p1p/3p2p1/2pnp3/P2P1PP1/RPN1P2P/1BP5/3QKBNR b - - 1 12",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 32
+  },
+  {
+   "fen": "r1bqkbnr/1ppppppp/p1n5/8/P1P5/8/1P1PPPPP/RNBQKBNR w KQkq - 0 3",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 33
+  },
+  {
+   "fen": "1nbqkbnr/1pp2pp1/r2p3p/p3p3/8/P2P1N2/1PPKPPPP/RNB1QB1R b k - 1 7",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 34
+  },
+  {
+   "fen": "rnb1kb1r/Npqpp2p/5n2/8/2pPp1p1/1P3P1N/P1P3PP/R1BQKB1R w KQkq - 0 10",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 35
+  },
+  {
+   "fen": "rnb1qkr1/1p1pp1b1/p1Q4n/6pp/P2pP1P1/RP5N/2P2P1P/1N2KB1R b K - 6 14",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 36
+  },
+  {
+   "fen": "r1bqkbnr/ppppp1p1/n6p/5p2/8/P1N2P2/RPPPP1PP/2BQKBNR b Kkq - 1 4",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 37
+  },
+  {
+   "fen": "rnB1kb1r/ppp2p1p/6p1/4p3/6bn/2N3P1/PPPPPK1P/R1BQ2NR w kq - 5 10",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 38
+  },
+  {
+   "fen": "rnbqkbnr/p1p1p1pp/1p1p4/5p2/1P6/4P3/P1PPNPPP/RNBQKB1R w KQkq - 0 4",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 39
+  },
+  {
+   "fen": "rnb1kb2/3pp2p/3q1B1n/pp3p2/P1QP4/1P3Pr1/2P1PNPP/RN2KB1R w KQq - 1 14",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 40
+  },
+  {
+   "fen": "rnbqkbnr/p1pppp1p/6p1/8/1p4PP/3P4/PPPKPP2/RNBQ1BNR b kq - 1 4",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 41
+  },
+  {
+   "fen": "1n1q1knr/r2p2pp/pp2pp2/2p5/1b2NP1P/2PPP3/PP2Q1P1/R1B1Kb1R b Q - 4 14",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 42
+  },
+  {
+   "fen": "rnbqkbnr/1p1p1p2/1p2p2p/6p1/p1P5/1P1P1P2/PB1KP1PP/RN3BNR b kq - 1 9",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 43
+  },
+  {
+   "fen": "2b1kbn1/rppqpp1r/2n4p/p2p2p1/3P2P1/P1P1PP1N/1PQ4P/RNB1KBR1 b - - 4 12",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 44
+  },
+  {
+   "fen": "rnbq1bnr/1pppkppp/8/p3p3/2PP1P2/N7/PP2P1PP/R1BQKBNR b KQ - 0 4",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 45
+  },
+  {
+   "fen": "rnbqk1nr/1p1p1p2/3bp3/p1p3pp/4P1P1/1PPP3P/PB1KNP2/RN1Q1B1R b kq - 1 11",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 46
+  },
+  {
+   "fen": "r3k1nr/ppp2ppp/n2q4/3pp3/P7/R3P2b/1PPPKPPR/1NBQ1BN1 w kq - 0 8",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 47
+  },
+  {
+   "fen": "3rkbnr/ppqbpp1p/n2p4/2PN2p1/P1P2PP1/1P6/3KP2P/R1BQ1BNR b k - 0 13",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 48
+  },
+  {
+   "fen": "rnb1kbnr/pppp2pp/8/5p1q/1PP1p2P/P6N/3PPPP1/RNBQKB1R w KQkq - 1 6",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "development",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 49
+  },
+  {
+   "fen": "8/5pk1/6p1/3p4/3P4/5KP1/5P2/8 w - - 0 40",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 50
+  },
+  {
+   "fen": "4r1k1/5pp1/7p/8/8/5P2/5KPP/4R3 b - - 0 35",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 51
+  },
+  {
+   "fen": "rnbqk1nr/pp3ppp/8/2bp4/8/1N6/PPP2PPP/R1BQKBNR b KQkq - 1 6",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 52
+  },
+  {
+   "fen": "r1bqk2r/pp2n1pp/1bn2p2/1B1p2B1/3N4/8/PPP2PPP/R2QK1NR w KQkq - 0 10",
+   "expected": "0000",
+   "expected_set": [],
+   "mate_in": 0,
+   "group": "holdout",
+   "motifs": [],
+   "oracle_pv": [],
+   "index": 53
+  }
+ ],
+ "counts": {
+  "total": 54
+ },
+ "seal": "de3573dd6526326cd1b7ba28750eb4921cb81653a53a49759ae9d84a3664b676"
+}

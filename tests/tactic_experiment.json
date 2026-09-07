@@ -1,0 +1,129 @@
+{
+  "experiment": "tactical search: a check extension capped at one ply per line",
+  "predeclared": "Written after the baseline measurement and before any candidate code existed, and before any arena ran.",
+  "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "control_path": "agent.py",
+  "control_frozen_path": "tests/order_candidate/65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda/agent.py",
+  "control_role": "the engine Phase 1 promoted; the protected tactical control",
+  "candidate_sha256": "896ac0b24e5e7961ea5927e40f188163af4136e3b20faebf1f0cfc8e66fcc44d",
+  "candidate_path": "tests/tactic_candidate/896ac0b24e5e7961ea5927e40f188163af4136e3b20faebf1f0cfc8e66fcc44d/agent.py",
+  "corpus": {
+    "tactical": "tests/tactics_corpus.json",
+    "previously_solved": "tests/tactics_solved.json",
+    "quiet": "the 30 held-out opening prefixes plus the 24-position suite, via tactics.py quiet",
+    "round30": "tests/rated_regression.json through rated_losses.py"
+  },
+  "oracle": {
+    "engine": "none. No trusted reference engine is installed, the platform image ships none, and downloading one is out of scope.",
+    "method": "exact forced-mate proof from the rules, tactics.mating_moves, independent of the evaluation under test",
+    "rejected_alternative": "labelling with a deeper search by the control itself. Measured over random reachable positions the control's depth-3 move equals its own depth-6 move in 11 of 14 cases and never loses more than 105 cp, so a self-oracle corpus does not discriminate. An engine-scored corpus built that way solved 243 of 243 positions at depth 2 and is retained only as the previously-solved regression set."
+  },
+  "measured_bottleneck": {
+    "source": "tests/results/tactics/baseline-mate-depth.log, tests/results/tactics/shapes.log",
+    "corpus": "251 positions whose shortest forced mate is exactly 3 moves, 5 plies, every label re-proved independently",
+    "solved_by_fixed_depth": {
+      "2": 163,
+      "3": 172,
+      "4": 173,
+      "5": 241,
+      "never_through_5": 9
+    },
+    "solved_rate_by_fixed_depth": {
+      "2": 0.649,
+      "3": 0.685,
+      "4": 0.689,
+      "5": 0.96
+    },
+    "earliest_solving_depth": {
+      "2": 163,
+      "3": 11,
+      "4": 5,
+      "5": 63,
+      "none": 9
+    },
+    "line_shape": {
+      "positions": 251,
+      "plies_per_line": 5,
+      "all_lines_exactly_five_plies": true,
+      "mean_checks_per_line": 2.93,
+      "lines_that_are_pure_check_sequences": 233,
+      "pure_check_share": 0.928,
+      "lines_containing_any_recapture": 11,
+      "lines_containing_a_forced_single_reply": 186
+    },
+    "note": "Depth 3 to depth 4 gains one position out of 251. Depth 4 to depth 5 gains 68. The tactic sits exactly one nominal ply beyond the depth a realistic clock completes, which ORDER.md measured at a mean of 4.13 ply at 120000 ms.",
+    "correction": "The first shape pass ran a solver that iterated board.legal_moves lazily while pushing and popping inside the loop, so python-chess generated moves for the wrong position and some reported lines were shorter than the mate they proved. The solver now materialises the move list. Every one of the 251 labels re-proves unchanged under the corrected solver, so no label moved and the corpus seal is unchanged; only the reported line shapes changed, in the direction that supports the choice more strongly: 4.56 to 5.00 mean plies, 92.0 to 92.8 percent pure check sequences, and recaptures still negligible at 11 of 251 lines."
+  },
+  "alternatives_considered": {
+    "forcing_move_ordering": {
+      "verdict": "rejected",
+      "why": "Ordering cannot change a fixed-depth result: a mate five plies deep is simply absent from a four-ply tree, whatever order the moves are tried in. It could only help by reaching depth 5 sooner, and ORDER.md measured main-search ordering already at 85.6 percent first-move cutoffs, with unattributed quiet cutoffs at 1.2 percent."
+    },
+    "recapture_extension": {
+      "verdict": "rejected on measurement",
+      "why": "Only 6 of 251 proved mating lines contain a recapture at all, mean 0.03 per line. The missed tactics do not cross the horizon during exchange sequences."
+    },
+    "see_for_tactical_ordering": {
+      "verdict": "rejected",
+      "why": "Same objection as ordering, plus a per-move loop of new code. It reorders, it does not deepen."
+    },
+    "quiescence_check_addition": {
+      "verdict": "rejected",
+      "why": "This is the design QUIET_CHECKS.md already rejected: it collapsed mean completed depth from 2.438 to 1.667 ply and lost 27.5 percentage points over 240 games. The measured failure here does not require quiescence to generate checks, it requires one more full-width ply on a checking line, which is a different mechanism."
+    },
+    "check_extension": {
+      "verdict": "selected"
+    }
+  },
+  "selected": {
+    "technique": "a check extension in the main search, capped at one extension per root-to-leaf line",
+    "constant": "CHECK_EXTENSION_CAP = 1",
+    "scope": "Engine.search and Engine.__init__ only",
+    "why": "The measured shortfall is exactly one ply on lines that are 92 percent pure check sequences, and 151 of 251 of those lines contain a position where the defender has a single legal reply, so the extended subtree is unusually cheap. One extension turns a completed depth 4 into a five-ply line along a checking sequence, which is precisely the 63 positions whose earliest solving depth is 5.",
+    "cap_justification": "The measurement demands one additional ply and nothing in it demands two, so the cap is one. A larger cap was not tested and would be a separate experiment.",
+    "bound": "The counter is incremented before descending and restored in a finally on the way up, so it counts extensions on the current path only. Once the cap is reached depth strictly decreases again, and MAX_PLY remains the outer guard, so no extension chain can be unbounded.",
+    "recovery": "An extension only searches an existing legal line more deeply. It adds no pruning, no speculative cutoff and no evaluation term, so no result can become unsound; the only risk it carries is cost."
+  },
+  "expected": {
+    "benefit": "positions whose earliest solving depth is 5 become reachable from a completed depth of 4 whenever the mating line runs through a check",
+    "cost": "node growth from extending checking moves, concentrated in the main search, which ORDER.md measured at 10.5 percent of all nodes"
+  },
+  "acceptance": {
+    "safety": "zero flags, crashes, illegal moves and malformed outputs everywhere",
+    "mandatory_gates": "mechanical identity, cold import x3, ruff, mypy --strict, make gate, verify.py, determinism.py, passive units/invariants/lifecycle, round 30 rated regression, 600-ply clock safety",
+    "previously_solved": "zero regressions on tests/tactics_solved.json at fixed depths 2, 3 and 4, and on the 24-position suite at depths 2, 3 and 4",
+    "holdout": "at least 2 additional solved holdout positions or at least a 5 percentage point absolute improvement, whichever requires more; the holdout has 118 positions, so the binding requirement is at least 6 additional solved positions at a realistic clock",
+    "reproducibility": "the holdout improvement must reproduce across repeated counterbalanced runs",
+    "depth": "the candidate must improve the earliest solving depth, or solve the position within the same realistic clock",
+    "node_growth": "fixed-depth node growth on the quiet positional corpus at depths 2, 3 and 4 must not exceed 1.35x the control",
+    "quiet_agreement": "quiet positional move agreement at depths 2, 3 and 4 must be at least 0.95",
+    "completed_depth": "mean completed depth at realistic clocks must not fall by more than 0.05 ply, the established timing.py tolerance, beyond the measured noise floor",
+    "smoke": "20-game paired difference nonnegative",
+    "screen": "240-game paired point estimate nonnegative, with no recurring tactical or defensive failure found by game inspection"
+  },
+  "rejection": [
+    "a correctness or clock safety gate fails",
+    "any previously solved critical tactic becomes unsolved",
+    "extensions become unbounded",
+    "fixed-depth node growth on the quiet corpus exceeds 1.35x",
+    "the tactical improvement exists only on the development positions",
+    "the candidate would need a changed evaluation value or additional thinking time to work",
+    "it would require weakening a test or changing the official harness",
+    "the smoke test is clearly negative",
+    "a recurring tactical failure appears in game inspection"
+  ],
+  "on_rejection": "Preserve the promoted working agent.py byte for byte as 65ec40ce..., and keep the candidate, the patch, the measurements and the explanation separately.",
+  "scope": {
+    "added_constants": [
+      "CHECK_EXTENSION_CAP"
+    ],
+    "added_definitions": [],
+    "added_methods": [],
+    "changed_methods": [
+      "__init__",
+      "search"
+    ]
+  },
+  "line_endings": "LF, as pinned by .gitattributes, so the raw-byte hashes reproduce from a fresh clone.",
+  "patch": "tests/results/tactics/check-extension.patch"
+}

@@ -1,0 +1,48 @@
+--- control/agent.py
++++ candidate/agent.py
+@@ -29,6 +29,7 @@
+ SWINDLE_MARGIN = 25
+ ROOT_WINDOW_MARGIN = 60
+ DELTA_MARGIN = 200
++CHECK_EXTENSION_CAP = 1
+ EXPLOIT_WEIGHT = 0.20
+ MAX_BONUS = 12.0
+ MIN_OBSERVATIONS = 6
+@@ -677,6 +678,7 @@
+         self.model = OpponentModel()
+         self.age = 0
+         self.nodes = 0
++        self.extensions = 0
+         self.collect = False
+         self.deadline = 0.0
+         self.pattern = Pattern(False, False, False, False, False, False)
+@@ -873,15 +875,26 @@
+                 capture_start = time.perf_counter()
+                 forcing = 3 * int(board.is_check()) + int(not quiet) + int(bool(move.promotion))
+                 self.stats["model_seconds"] += time.perf_counter() - capture_start
++            # A mate in three is five plies and this search completes four, so the
++            # move that delivers it falls into quiescence, which generates captures
++            # and not quiet checks. Spending one extra ply on a checking move puts it
++            # back inside the full-width search. `extensions` counts only the current
++            # root-to-leaf path, because it is restored on the way back up, so a line
++            # can take at most CHECK_EXTENSION_CAP of them and depth then strictly
++            # decreases again.
++            extend = int(self.extensions < CHECK_EXTENSION_CAP and board.is_check())
++            self.extensions += extend
+             child = self.enter(board)
+             try:
++                deeper = depth - 1 + extend
+                 if index == 0:
+-                    score = -self.search(board, depth - 1, -beta, -alpha, ply + 1)
++                    score = -self.search(board, deeper, -beta, -alpha, ply + 1)
+                 else:
+-                    score = -self.search(board, depth - 1, -alpha - 1, -alpha, ply + 1)
++                    score = -self.search(board, deeper, -alpha - 1, -alpha, ply + 1)
+                     if alpha < score < beta:
+-                        score = -self.search(board, depth - 1, -beta, -alpha, ply + 1)
++                        score = -self.search(board, deeper, -beta, -alpha, ply + 1)
+             finally:
++                self.extensions -= extend
+                 self.leave(child)
+                 board.pop()
+             if frame is not None:

@@ -1,0 +1,6980 @@
+{
+ "source": "seeded random play from the standard start and the 30 held-out prefixes",
+ "oracle": "the promoted control at fixed depth 6; no external engine is installed",
+ "margin_cp": 150,
+ "positions": [
+  {
+   "fen": "4rk2/n2b1P1p/3p4/1P2P3/qP1p4/3n4/2B5/1K5R b - - 6 73",
+   "expected": "a4b4",
+   "expected_set": [
+    "a4b4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a4b4",
+    "c2b3",
+    "b4b3",
+    "b1a1",
+    "b3b2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender"
+   ],
+   "in_check": false,
+   "index": 17,
+   "group": "holdout"
+  },
+  {
+   "fen": "6k1/1Pp5/8/R4p1p/2R1pP2/1P5p/5K1P/3b1n2 w - - 1 78",
+   "expected": "b7b8q",
+   "expected_set": [
+    "b7b8q",
+    "b7b8r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7b8q",
+    "g8h7",
+    "b8c7",
+    "h7h8",
+    "a5a8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 268,
+   "group": "holdout"
+  },
+  {
+   "fen": "r3n1k1/pr5R/1P1BN1n1/3p1pQ1/q7/8/P4P1N/5K1R w - - 1 64",
+   "expected": "g5g6",
+   "expected_set": [
+    "g5g6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5g6",
+    "e8g7",
+    "h7g7",
+    "g8h8",
+    "g6h7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 289,
+   "group": "holdout"
+  },
+  {
+   "fen": "7r/7k/p5N1/Pp2R3/1PpP1R1p/2Q5/7P/2B2K1R w - - 7 56",
+   "expected": "g6h8",
+   "expected_set": [
+    "g6h8",
+    "g6e7",
+    "g6h4",
+    "e5e7",
+    "c3c2",
+    "h1g1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g6h8",
+    "h7h8",
+    "e5h5",
+    "h8g8",
+    "h1g1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 356,
+   "group": "development"
+  },
+  {
+   "fen": "8/1Bp1k1NQ/5p1p/P3p1R1/1b1PP2N/3n3K/2P2P2/1R6 w - - 0 44",
+   "expected": "g7e6",
+   "expected_set": [
+    "g7e6",
+    "g7h5",
+    "g7f5",
+    "h4f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g7e6",
+    "e7e6",
+    "b7c8",
+    "e6d6",
+    "h7d7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 634,
+   "group": "holdout"
+  },
+  {
+   "fen": "1r3rk1/1b1n1n1p/BP3p2/N7/3PPP2/2p3qP/2R1K3/8 b - - 2 37",
+   "expected": "b7a6",
+   "expected_set": [
+    "b7a6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7a6",
+    "a5c4",
+    "a6c4",
+    "e2d1",
+    "g3g1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 701,
+   "group": "holdout"
+  },
+  {
+   "fen": "4r2r/p3p2k/1pNpQ1p1/2pP1p1p/2P2bbP/5PP1/1P2PKB1/2B3NR w - - 4 26",
+   "expected": "e6f7",
+   "expected_set": [
+    "e6f7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e6f7",
+    "h7h6",
+    "c1f4",
+    "g6g5",
+    "f4g5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 793,
+   "group": "holdout"
+  },
+  {
+   "fen": "6k1/8/3b3r/1p1N4/3P3p/1QP4B/3BKnP1/3R4 w - - 2 61",
+   "expected": "d5f6",
+   "expected_set": [
+    "d5f6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d5f6",
+    "g8f8",
+    "b3g8",
+    "f8e7",
+    "f6d5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 798,
+   "group": "holdout"
+  },
+  {
+   "fen": "2k5/1r6/p1P1p1bn/q2B2P1/2K1R3/8/8/2b5 b - - 6 72",
+   "expected": "a5d5",
+   "expected_set": [
+    "a5d5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a5d5",
+    "c4c3",
+    "c1b2",
+    "c3c2",
+    "g6e4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 859,
+   "group": "development"
+  },
+  {
+   "fen": "8/1b1p1k1q/1P2ppp1/2p1rR2/1p3n2/PN5r/1Q4R1/5K1B b - - 2 43",
+   "expected": "h3f3",
+   "expected_set": [
+    "h3f3",
+    "h3h1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h3f3",
+    "b2f2",
+    "h7h1",
+    "g2g1",
+    "b7a6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 904,
+   "group": "holdout"
+  },
+  {
+   "fen": "r2B1r2/p1pk1ppp/bp1n4/1P1p4/3P4/1nPK4/1b5q/1N4NR b - - 3 32",
+   "expected": "b3c1",
+   "expected_set": [
+    "b3c1",
+    "h2f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b3c1",
+    "d3e3",
+    "d6f5",
+    "e3f3",
+    "h2g3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1104,
+   "group": "holdout"
+  },
+  {
+   "fen": "2N4r/8/P1n2p1Q/3k1P2/8/3b3P/1P3q2/K7 b - - 0 62",
+   "expected": "f2e1",
+   "expected_set": [
+    "f2e1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f2e1",
+    "a1a2",
+    "e1a5",
+    "a2b3",
+    "c6d4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1189,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/6k1/7n/p1pr2p1/P7/2r2bK1/7R/2n5 b - - 2 84",
+   "expected": "f3h5",
+   "expected_set": [
+    "f3h5",
+    "f3g4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f3h5",
+    "g3g2",
+    "c3c2",
+    "g2h3",
+    "d5d3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 1272,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/2p3bp/p1pk1pp1/P7/b1r3nP/3P4/qB1R1PP1/1N4K1 b - - 0 38",
+   "expected": "a2b1",
+   "expected_set": [
+    "a2b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a2b1",
+    "b2c1",
+    "c4c1",
+    "d2d1",
+    "c1d1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1274,
+   "group": "development"
+  },
+  {
+   "fen": "8/4k3/3N1p2/2pqpr2/Pr1BP3/6P1/8/3K2n1 b - - 1 73",
+   "expected": "f5f1",
+   "expected_set": [
+    "f5f1",
+    "d5d4",
+    "b4b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f5f1",
+    "d1d2",
+    "d5d4",
+    "d2c2",
+    "b4b2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1319,
+   "group": "development"
+  },
+  {
+   "fen": "8/p1B2k2/8/1bP1PP2/n2K4/P1N5/R6r/2q4n b - - 3 73",
+   "expected": "h2h4",
+   "expected_set": [
+    "h2h4",
+    "c1c3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h2h4",
+    "d4d5",
+    "a4c3",
+    "d5d6",
+    "h4d4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1345,
+   "group": "development"
+  },
+  {
+   "fen": "rnb5/1p6/1prbk1p1/8/B2PP1Pp/P1R1K2P/7R/1q6 b - - 0 44",
+   "expected": "b1e1",
+   "expected_set": [
+    "b1e1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b1e1",
+    "e3f3",
+    "c6c3",
+    "f3g2",
+    "c3g3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1360,
+   "group": "development"
+  },
+  {
+   "fen": "6kr/Q6p/q7/7n/5pPP/p1p1PK1R/P1B3n1/6B1 w - - 4 41",
+   "expected": "c2b3",
+   "expected_set": [
+    "c2b3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c2b3",
+    "a6e6",
+    "b3e6",
+    "g8f8",
+    "a7f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1379,
+   "group": "holdout"
+  },
+  {
+   "fen": "1k6/2N1prnp/2P1Q3/p3ppp1/2K3P1/P7/3b3P/1b3BR1 w - - 4 47",
+   "expected": "c7a6",
+   "expected_set": [
+    "c7a6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c7a6",
+    "b8a8",
+    "e6c8",
+    "a8a7",
+    "c8b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1520,
+   "group": "development"
+  },
+  {
+   "fen": "8/p2kB3/1q1N2pb/1p6/2r3pP/5P2/PRb4P/4K1n1 b - - 6 58",
+   "expected": "b6e3",
+   "expected_set": [
+    "b6e3",
+    "c2d3",
+    "g1f3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b6e3",
+    "e1f1",
+    "e3f3",
+    "f1g1",
+    "h6e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1593,
+   "group": "development"
+  },
+  {
+   "fen": "BBk5/2N5/4N3/1P6/P6p/6rP/1QR2b1b/7K w - - 3 76",
+   "expected": "b2h8",
+   "expected_set": [
+    "b2h8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b2h8",
+    "g3g8",
+    "h8g8",
+    "c8d7",
+    "g8d8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1612,
+   "group": "development"
+  },
+  {
+   "fen": "3k4/r5p1/p1Pp1p2/P4b1P/5P2/2K1Bq2/8/r7 b - - 2 64",
+   "expected": "f3e3",
+   "expected_set": [
+    "f3e3",
+    "a1b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f3e3",
+    "c3c4",
+    "f5e6",
+    "c4b4",
+    "e3c5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 1866,
+   "group": "holdout"
+  },
+  {
+   "fen": "4q1B1/4k2r/2b1pb2/P3p1Pr/4P3/1pP1K3/1R2B1p1/N7 b - - 0 79",
+   "expected": "g2g1q",
+   "expected_set": [
+    "g2g1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g2g1q",
+    "e3d3",
+    "c6b5",
+    "d3d2",
+    "f6g5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1904,
+   "group": "holdout"
+  },
+  {
+   "fen": "5b2/7R/1N3k2/RQ5p/1P3K2/8/4q2r/8 b - - 3 83",
+   "expected": "h2h4",
+   "expected_set": [
+    "h2h4",
+    "h2f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h2h4",
+    "f4g3",
+    "h4g4",
+    "g3h3",
+    "e2g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1939,
+   "group": "holdout"
+  },
+  {
+   "fen": "r2k2q1/3n4/ppp2p1r/4Q3/3R1p1P/BPN2b2/P1P1B3/R2NK3 w - - 0 38",
+   "expected": "e5e7",
+   "expected_set": [
+    "e5e7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5e7",
+    "d8c8",
+    "e7d7",
+    "c8b8",
+    "a3d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 47,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 1954,
+   "group": "development"
+  },
+  {
+   "fen": "4r2k/2pbR3/8/3ppP2/PQ6/P3q3/1p3R2/5N1K w - - 0 53",
+   "expected": "b4h4",
+   "expected_set": [
+    "b4h4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b4h4",
+    "h8g8",
+    "h4h7",
+    "g8f8",
+    "h7g7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 9,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 1980,
+   "group": "development"
+  },
+  {
+   "fen": "4Q3/4P2k/8/2p5/P4Kp1/p1p3p1/8/B7 w - - 1 82",
+   "expected": "e8h5",
+   "expected_set": [
+    "e8h5",
+    "f4g5",
+    "f4f5",
+    "a1c3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8h5",
+    "h7g8",
+    "h5g6",
+    "g8h8",
+    "a1c3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 1990,
+   "group": "development"
+  },
+  {
+   "fen": "5Q2/8/1k6/1p6/6RP/2NK4/q1QP4/8 w - - 1 77",
+   "expected": "c3a4",
+   "expected_set": [
+    "c3a4",
+    "c3a2",
+    "c2a2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3a4",
+    "b6b7",
+    "f8c8",
+    "b7a7",
+    "c2c7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2127,
+   "group": "development"
+  },
+  {
+   "fen": "n6k/8/8/2p1bQ2/p1PBP2N/1P3rp1/5R2/2R1K3 w - - 7 64",
+   "expected": "f5e5",
+   "expected_set": [
+    "f5e5",
+    "d4e5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f5e5",
+    "f3f6",
+    "e5f6",
+    "h8g8",
+    "f6h8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2161,
+   "group": "development"
+  },
+  {
+   "fen": "6nr/4k3/3p1p2/1p1P1Pp1/2p3PP/4p3/7K/2q5 b - - 5 71",
+   "expected": "c1d2",
+   "expected_set": [
+    "c1d2",
+    "c1c2",
+    "c1b2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c1d2",
+    "h2h3",
+    "h8h4",
+    "h3g3",
+    "d2f2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 2185,
+   "group": "holdout"
+  },
+  {
+   "fen": "1nk1rb2/1p2n2r/1P3Q2/B1p2p1p/5PP1/P2R3P/6B1/RN2K3 w Q - 5 36",
+   "expected": "f6e6",
+   "expected_set": [
+    "f6e6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f6e6",
+    "b8d7",
+    "e6d7",
+    "c8b8",
+    "d7b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2215,
+   "group": "development"
+  },
+  {
+   "fen": "1r6/B3p1k1/4qbpp/2p5/p4p2/4PP1P/P2K2P1/R4R2 b - - 2 33",
+   "expected": "b8b2",
+   "expected_set": [
+    "b8b2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8b2",
+    "d2e1",
+    "e6e3",
+    "e1d1",
+    "e3d2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 2378,
+   "group": "development"
+  },
+  {
+   "fen": "2k3n1/2p4r/R7/2r1P2p/4p2p/1Q1b2P1/6K1/3q2R1 w - - 2 45",
+   "expected": "b3g8",
+   "expected_set": [
+    "b3g8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b3g8",
+    "c8d7",
+    "g8e6",
+    "d7d8",
+    "a6a8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2441,
+   "group": "development"
+  },
+  {
+   "fen": "5B1k/2N3r1/p7/PP6/4bP2/B2R4/7r/1K6 b - - 0 73",
+   "expected": "g7g1",
+   "expected_set": [
+    "g7g1",
+    "e4d3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g7g1",
+    "a3c1",
+    "e4d3",
+    "b1a1",
+    "g1c1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2641,
+   "group": "development"
+  },
+  {
+   "fen": "r7/1QPpkp2/6rb/2n1B1qp/p1b1p2P/P4Pp1/RPK3P1/5Rn1 b - - 1 52",
+   "expected": "g5d2",
+   "expected_set": [
+    "g5d2",
+    "c4d3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5d2",
+    "c2b1",
+    "d2d3",
+    "b1a1",
+    "d3f1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2658,
+   "group": "development"
+  },
+  {
+   "fen": "3k4/7r/p1q4p/2b1Pr2/5R2/5P2/4b3/7K b - - 0 81",
+   "expected": "f5h5",
+   "expected_set": [
+    "f5h5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f5h5",
+    "h1g2",
+    "h7g7",
+    "f4g4",
+    "g7g4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 29,
+   "motifs": [
+    "mate_threat",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 2748,
+   "group": "holdout"
+  },
+  {
+   "fen": "5k1r/1p6/2b3p1/2P2Nn1/1p5R/qr6/8/2R1K3 b - - 0 58",
+   "expected": "a3c1",
+   "expected_set": [
+    "a3c1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a3c1",
+    "e1f2",
+    "b3b2",
+    "f2g3",
+    "b2g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 37,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 2853,
+   "group": "holdout"
+  },
+  {
+   "fen": "1k4r1/8/1P1b1p2/4RR2/6P1/p2r4/P6q/4K3 b - - 6 77",
+   "expected": "d6b4",
+   "expected_set": [
+    "d6b4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d6b4",
+    "e1f1",
+    "d3d1",
+    "e5e1",
+    "d1e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2865,
+   "group": "development"
+  },
+  {
+   "fen": "r1b1B3/nk2p3/p7/Q1pp4/2PQ2P1/2P5/qPK1PP2/1RB3Nr w - - 8 30",
+   "expected": "d4d5",
+   "expected_set": [
+    "d4d5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4d5",
+    "b7b8",
+    "d5e5",
+    "b8b7",
+    "e5c7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2976,
+   "group": "holdout"
+  },
+  {
+   "fen": "7r/8/bN1P1ppr/B5Pk/2pQPR2/pPP4P/8/R3K1n1 w - - 0 48",
+   "expected": "d4d1",
+   "expected_set": [
+    "d4d1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4d1",
+    "g1f3",
+    "d1f3",
+    "h5g5",
+    "f3g4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 2995,
+   "group": "development"
+  },
+  {
+   "fen": "5B2/1Rr4k/b2B4/p2PN2p/7P/P4B2/5K2/4R3 w - - 15 65",
+   "expected": "b7c7",
+   "expected_set": [
+    "b7c7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7c7",
+    "h7h8",
+    "c7g7",
+    "a6c8",
+    "e5f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 3055,
+   "group": "holdout"
+  },
+  {
+   "fen": "4Q3/7k/p3P3/P7/2r2P1P/4PR2/7K/7N w - - 0 64",
+   "expected": "e8h5",
+   "expected_set": [
+    "e8h5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8h5",
+    "h7g8",
+    "f3g3",
+    "g8f8",
+    "h5f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 26,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 3112,
+   "group": "development"
+  },
+  {
+   "fen": "k3n1r1/3R4/B5pP/2N5/RP3P1K/8/P5q1/N7 b - - 2 71",
+   "expected": "g6g5",
+   "expected_set": [
+    "g6g5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g6g5",
+    "f4g5",
+    "g2g5",
+    "h4h3",
+    "g5h6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 3479,
+   "group": "development"
+  },
+  {
+   "fen": "6r1/4kN2/5b2/P2P4/1pP2r1p/2R4P/4b2B/7K b - - 7 64",
+   "expected": "f4f1",
+   "expected_set": [
+    "f4f1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f4f1",
+    "h2g1",
+    "f1g1",
+    "h1h2",
+    "g8g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3486,
+   "group": "development"
+  },
+  {
+   "fen": "1q5r/1k3B1R/p7/1p2PP2/PP3Pr1/8/2r5/5K2 b - - 2 59",
+   "expected": "g4f4",
+   "expected_set": [
+    "g4f4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g4f4",
+    "f1g1",
+    "b8a7",
+    "g1h1",
+    "f4f1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3504,
+   "group": "development"
+  },
+  {
+   "fen": "1r6/1pB1k3/1Q4p1/3p3R/1p1P1P2/P2q4/K7/8 w - - 2 73",
+   "expected": "h5h7",
+   "expected_set": [
+    "h5h7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h5h7",
+    "e7f8",
+    "b6f6",
+    "f8g8",
+    "h7h8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3541,
+   "group": "holdout"
+  },
+  {
+   "fen": "5Q1n/2k5/8/p2R3n/8/1P6/6K1/7r w - - 3 84",
+   "expected": "f8c5",
+   "expected_set": [
+    "f8c5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f8c5",
+    "c7b8",
+    "c5b6",
+    "b8c8",
+    "d5d8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3574,
+   "group": "holdout"
+  },
+  {
+   "fen": "2r3k1/3p3r/3P4/6q1/4pN2/P3Pb1P/1N3K1P/2B5 b - - 5 55",
+   "expected": "c8c1",
+   "expected_set": [
+    "c8c1",
+    "h7g7",
+    "g5h4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c8c1",
+    "b2d1",
+    "g5h4",
+    "f2g1",
+    "h4e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3733,
+   "group": "development"
+  },
+  {
+   "fen": "5k2/1r6/n7/2p1qP1p/4B3/3P4/6b1/3K4 b - - 0 69",
+   "expected": "e5a1",
+   "expected_set": [
+    "e5a1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5a1",
+    "d1e2",
+    "b7b2",
+    "e2e3",
+    "a1c1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3770,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/B1P5/n2p3k/6bp/1r1Pp2P/N4BP1/3Q4/K3R3 w - - 3 72",
+   "expected": "d2g5",
+   "expected_set": [
+    "d2g5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d2g5",
+    "h6h7",
+    "f3e4",
+    "h7h8",
+    "c7c8q"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 3817,
+   "group": "development"
+  },
+  {
+   "fen": "5k1r/P7/4p2p/1Bp1P2p/4Q1PP/P3p3/6K1/2rN4 w - - 0 46",
+   "expected": "e4a8",
+   "expected_set": [
+    "e4a8",
+    "a7a8q",
+    "a7a8r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e4a8",
+    "f8g7",
+    "a8b7",
+    "g7g8",
+    "a7a8q"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 2,
+   "motifs": [
+    "mate_threat",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 3825,
+   "group": "holdout"
+  },
+  {
+   "fen": "2n5/p3rN2/Pp2k2p/1Pp1P1p1/BP4PN/3r4/1B4QP/1RKR4 w - - 0 50",
+   "expected": "a4b3",
+   "expected_set": [
+    "a4b3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a4b3",
+    "c5c4",
+    "b3c4",
+    "e6d7",
+    "g2c6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 19,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 3929,
+   "group": "development"
+  },
+  {
+   "fen": "r1k2r2/pp5n/1P4Rp/2b5/2q1P3/B6P/P2K1P1P/R4B2 b - - 0 35",
+   "expected": "f8f2",
+   "expected_set": [
+    "f8f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f8f2",
+    "f1e2",
+    "c4e2",
+    "d2c3",
+    "f2f3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 3939,
+   "group": "holdout"
+  },
+  {
+   "fen": "2k5/5P2/6P1/pp1B3R/3Pn2p/8/Q3KN1b/n3R3 w - - 2 60",
+   "expected": "f7f8q",
+   "expected_set": [
+    "f7f8q",
+    "f7f8r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f7f8q",
+    "c8c7",
+    "f8g7",
+    "c7d8",
+    "h5h8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4284,
+   "group": "holdout"
+  },
+  {
+   "fen": "n2k4/2r5/1p6/6b1/p2N1r1p/2B4P/P7/qB2KR2 b - - 20 62",
+   "expected": "a1b1",
+   "expected_set": [
+    "a1b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a1b1",
+    "e1e2",
+    "b1f1",
+    "e2e3",
+    "f4g4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4299,
+   "group": "development"
+  },
+  {
+   "fen": "rq1k4/p6b/3P3P/2n3p1/P2KP1n1/2R5/r7/4R3 b - - 4 53",
+   "expected": "b8d6",
+   "expected_set": [
+    "b8d6",
+    "b8b4",
+    "h7g8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8d6",
+    "d4c4",
+    "h7g8",
+    "c4b5",
+    "d6b6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender"
+   ],
+   "in_check": false,
+   "index": 4345,
+   "group": "development"
+  },
+  {
+   "fen": "3k4/2p5/2n5/b6p/6p1/p4P2/1N2K3/1q6 b - - 3 51",
+   "expected": "b1e1",
+   "expected_set": [
+    "b1e1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b1e1",
+    "e2d3",
+    "e1c3",
+    "d3e4",
+    "c3f3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4370,
+   "group": "development"
+  },
+  {
+   "fen": "4r3/p7/3k1P1B/P1p5/3qB1p1/p6r/8/R3K3 b - - 2 62",
+   "expected": "h3h1",
+   "expected_set": [
+    "h3h1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h3h1",
+    "e1e2",
+    "e8e4",
+    "h6e3",
+    "d4e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4373,
+   "group": "development"
+  },
+  {
+   "fen": "b1R5/5k1p/r7/4PP2/p2K1Q2/P2Nr3/1B5N/3q1R2 b - - 5 58",
+   "expected": "e3d3",
+   "expected_set": [
+    "e3d3",
+    "d1d3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e3d3",
+    "d4c5",
+    "d3d5",
+    "c5c4",
+    "d1b3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4512,
+   "group": "development"
+  },
+  {
+   "fen": "2r5/4B2k/2R4B/1pP5/7P/2n3p1/2K1p3/1r3R2 w - - 4 77",
+   "expected": "f1f7",
+   "expected_set": [
+    "f1f7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f1f7",
+    "h7g8",
+    "f7g7",
+    "g8h8",
+    "c6c8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4544,
+   "group": "holdout"
+  },
+  {
+   "fen": "r3n3/p3N1p1/b2p4/1k2q2p/2pp1Q2/2P1RPKP/R5P1/1N2B3 w - - 0 59",
+   "expected": "a2b2",
+   "expected_set": [
+    "a2b2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a2b2",
+    "b5c5",
+    "e3e5",
+    "d6e5",
+    "f4e5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 36,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 4579,
+   "group": "development"
+  },
+  {
+   "fen": "1N1k4/8/1N6/2n5/p1P4q/B4r2/N1R5/Q1RK4 b - - 2 68",
+   "expected": "h4h1",
+   "expected_set": [
+    "h4h1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h4h1",
+    "d1e2",
+    "h1g2",
+    "e2e1",
+    "f3f1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4582,
+   "group": "development"
+  },
+  {
+   "fen": "3QBkr1/8/R7/p7/PnP1q1pR/1p4P1/5P2/2K3N1 w - - 15 63",
+   "expected": "e8d7",
+   "expected_set": [
+    "e8d7",
+    "e8g6",
+    "e8h5",
+    "e8b5",
+    "a6f6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8d7",
+    "e4e8",
+    "d8e8",
+    "f8g7",
+    "e8e7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 4605,
+   "group": "holdout"
+  },
+  {
+   "fen": "k7/8/2p2Np1/p1p3b1/P1P1n1P1/8/2b1K3/7r b - - 13 64",
+   "expected": "c2d1",
+   "expected_set": [
+    "c2d1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c2d1",
+    "e2d3",
+    "h1h3",
+    "d3e4",
+    "h3e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4607,
+   "group": "development"
+  },
+  {
+   "fen": "q2k4/3r2p1/pp3p1p/5P2/5NPP/2P5/1p6/2BR1K2 b - - 5 50",
+   "expected": "a8f3",
+   "expected_set": [
+    "a8f3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a8f3",
+    "f1g1",
+    "d7d1",
+    "g1h2",
+    "d1h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4642,
+   "group": "development"
+  },
+  {
+   "fen": "1n1r1k2/1p1b3R/4r3/p1P1Bpp1/q5P1/1P6/P3PQP1/1R2KBN1 w - - 0 31",
+   "expected": "f2f5",
+   "expected_set": [
+    "f2f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f2f5",
+    "e6f6",
+    "h7h8",
+    "f8g7",
+    "f5h7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4693,
+   "group": "development"
+  },
+  {
+   "fen": "1n1k3r/7p/RK2b2p/P7/5r2/5p1P/2q5/8 b - - 0 53",
+   "expected": "d8c8",
+   "expected_set": [
+    "d8c8",
+    "b8d7",
+    "e6c8",
+    "e6d5",
+    "f4f7",
+    "f4b4",
+    "c2c8",
+    "c2c7",
+    "c2c6",
+    "c2c4",
+    "c2d3",
+    "c2b3",
+    "c2e2",
+    "c2b2",
+    "c2b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d8c8",
+    "b6a7",
+    "c2c7",
+    "a7a8",
+    "c7b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 32,
+   "motifs": [
+    "defensive_only",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 4734,
+   "group": "holdout"
+  },
+  {
+   "fen": "3k4/1P3b2/p7/4R1N1/4PB2/2p1K2P/4Br1P/8 w - - 1 68",
+   "expected": "b7b8q",
+   "expected_set": [
+    "b7b8q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7b8q",
+    "d8d7",
+    "b8b7",
+    "d7d8",
+    "g5f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4770,
+   "group": "holdout"
+  },
+  {
+   "fen": "2q5/1pR5/1P1p2kr/p4pP1/P1P1n3/8/1Q1P1P1p/1NB2B1K w - - 2 40",
+   "expected": "b2g7",
+   "expected_set": [
+    "b2g7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b2g7",
+    "g6h5",
+    "f1e2",
+    "h5h4",
+    "g7h6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4812,
+   "group": "holdout"
+  },
+  {
+   "fen": "5k2/8/p3p2r/p3N3/3R1Pp1/1P2P1N1/8/4K2Q w - - 1 62",
+   "expected": "d4d8",
+   "expected_set": [
+    "d4d8",
+    "h1a8",
+    "h1h6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4d8",
+    "f8g7",
+    "d8d7",
+    "g7h8",
+    "h1a8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 4982,
+   "group": "holdout"
+  },
+  {
+   "fen": "r4b2/4k1r1/3p2PK/1P5p/p1Rp4/P4NPq/8/4BN2 b - - 3 43",
+   "expected": "g7f7",
+   "expected_set": [
+    "g7f7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g7f7",
+    "g6g7",
+    "f8g7",
+    "h6h7",
+    "h3f5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5356,
+   "group": "holdout"
+  },
+  {
+   "fen": "5b1r/3bk1p1/p1p3np/2Pp4/P2PN3/7r/2QK4/RNB2q2 b - - 4 42",
+   "expected": "f1g2",
+   "expected_set": [
+    "f1g2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f1g2",
+    "e4f2",
+    "g2f2",
+    "d2d1",
+    "h3h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5413,
+   "group": "development"
+  },
+  {
+   "fen": "5kr1/8/4R3/p3Pp2/5P1N/2KQ3P/8/R7 w - - 5 70",
+   "expected": "d3d8",
+   "expected_set": [
+    "d3d8",
+    "d3d6",
+    "d3f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d3d8",
+    "f8g7",
+    "d8e7",
+    "g7h8",
+    "e6h6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 5448,
+   "group": "development"
+  },
+  {
+   "fen": "6kr/1rpB1pBp/1p2n1P1/4pp1q/1bb1P3/PPPP4/5K2/R7 b - - 4 40",
+   "expected": "h5h2",
+   "expected_set": [
+    "h5h2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h5h2",
+    "f2f3",
+    "e6g5",
+    "f3e3",
+    "f5f4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5605,
+   "group": "holdout"
+  },
+  {
+   "fen": "2k5/1q3p1p/Q7/NP1B4/p5pP/2p3PR/1P6/5K1b w - - 1 57",
+   "expected": "a6b7",
+   "expected_set": [
+    "a6b7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a6b7",
+    "c8d8",
+    "a5c6",
+    "d8e8",
+    "b7c8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5643,
+   "group": "holdout"
+  },
+  {
+   "fen": "1r6/P2pnk2/3q1r2/1P1n3p/P1Bpb3/1RN2p2/1B1Q2pP/3RK3 b - - 1 38",
+   "expected": "g2g1q",
+   "expected_set": [
+    "g2g1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g2g1q",
+    "c4f1",
+    "f3f2",
+    "e1e2",
+    "g1g4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "promotion",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5691,
+   "group": "development"
+  },
+  {
+   "fen": "r7/1k6/p7/B3p1p1/P1P2R1p/N1P2P2/1n6/4QK2 w - - 0 57",
+   "expected": "e1e4",
+   "expected_set": [
+    "e1e4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e1e4",
+    "b7c8",
+    "e4h7",
+    "c8b8",
+    "h7c7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 5695,
+   "group": "development"
+  },
+  {
+   "fen": "rn5r/pp6/2p1kBp1/4b3/PqPPb3/1PN1n3/5P1P/R3K1NR b - - 0 25",
+   "expected": "b4c3",
+   "expected_set": [
+    "b4c3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b4c3",
+    "e1e2",
+    "c3d3",
+    "e2e1",
+    "e3g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5729,
+   "group": "development"
+  },
+  {
+   "fen": "3n3k/3b4/4p2p/1pKnPq1P/B7/5Pr1/2R5/7r b - - 0 60",
+   "expected": "d8b7",
+   "expected_set": [
+    "d8b7",
+    "f5f8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d8b7",
+    "c5d4",
+    "f5f4",
+    "d4d3",
+    "f4e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5762,
+   "group": "holdout"
+  },
+  {
+   "fen": "r6Q/1p1k3B/pP6/8/1n1b4/P6N/1R3P1K/4R1r1 w - - 9 53",
+   "expected": "h8d4",
+   "expected_set": [
+    "h8d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h8d4",
+    "d7c6",
+    "h7e4",
+    "c6b5",
+    "d4b4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5780,
+   "group": "development"
+  },
+  {
+   "fen": "2k5/Pbpr4/2p5/2p1P1pq/2PPnpP1/7R/1r1b3P/6K1 b - - 0 43",
+   "expected": "h5g4",
+   "expected_set": [
+    "h5g4",
+    "b2b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h5g4",
+    "h3g3",
+    "b2b1",
+    "g1g2",
+    "f4f3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 5905,
+   "group": "development"
+  },
+  {
+   "fen": "1Q1bbk2/2p2P2/p2p2pp/1p1K4/P4p2/1n4P1/1P2R2P/1R6 w - - 1 48",
+   "expected": "f7e8q",
+   "expected_set": [
+    "f7e8q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f7e8q",
+    "f8g7",
+    "e8d7",
+    "g7h8",
+    "b8d8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6052,
+   "group": "holdout"
+  },
+  {
+   "fen": "3k4/b3N1p1/4p1Pr/3n4/1p5n/7K/5r2/8 b - - 2 80",
+   "expected": "d8e7",
+   "expected_set": [
+    "d8e7",
+    "h4f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d8e7",
+    "h3g4",
+    "d5f6",
+    "g4g5",
+    "a7e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 6095,
+   "group": "development"
+  },
+  {
+   "fen": "r5r1/5Nkp/n7/1ppP1bq1/2nP1R1b/pP6/PQP1K1P1/R7 b - - 2 32",
+   "expected": "g5g2",
+   "expected_set": [
+    "g5g2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5g2",
+    "f4f2",
+    "g2f2",
+    "e2d1",
+    "f2d2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6142,
+   "group": "holdout"
+  },
+  {
+   "fen": "2rqk3/2p3p1/2p5/pP2p2p/2Pp1nb1/2QP4/PB1b4/RN3R1K b - - 0 27",
+   "expected": "d8h4",
+   "expected_set": [
+    "d8h4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d8h4",
+    "h1g1",
+    "h4g3",
+    "g1h1",
+    "g3g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 5,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6173,
+   "group": "development"
+  },
+  {
+   "fen": "rn5k/8/pP6/p5P1/3P1B2/2KQ2P1/7p/2N4b w - - 0 67",
+   "expected": "f4e5",
+   "expected_set": [
+    "f4e5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f4e5",
+    "h8g8",
+    "d3g6",
+    "g8f8",
+    "e5d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6278,
+   "group": "development"
+  },
+  {
+   "fen": "1nb1k3/r4pPr/2p3N1/2P1n3/p7/P3Q3/8/R1B3K1 w - - 1 43",
+   "expected": "e3e5",
+   "expected_set": [
+    "e3e5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e3e5",
+    "e8d8",
+    "e5d6",
+    "d8e8",
+    "g7g8q"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6299,
+   "group": "development"
+  },
+  {
+   "fen": "8/3R2P1/2b1p2p/5k2/r1P5/2P4K/1Q1R1B2/5N2 w - - 1 67",
+   "expected": "d7f7",
+   "expected_set": [
+    "d7f7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d7f7",
+    "f5g6",
+    "g7g8q",
+    "g6h5",
+    "g8g4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 6308,
+   "group": "development"
+  },
+  {
+   "fen": "R2r4/8/1Q1P3B/1p1b1krp/5P1P/3n4/4K3/q7 b - - 9 57",
+   "expected": "a1b2",
+   "expected_set": [
+    "a1b2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a1b2",
+    "e2d3",
+    "g5g3",
+    "b6e3",
+    "d5e4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6347,
+   "group": "development"
+  },
+  {
+   "fen": "B2k4/3b2P1/p5pb/n1P1Q3/7P/5p2/5KP1/2B4R w - - 0 45",
+   "expected": "g7g8q",
+   "expected_set": [
+    "g7g8q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g7g8q",
+    "h6f8",
+    "g8f8",
+    "d7e8",
+    "f8e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 21,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "promotion",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 6602,
+   "group": "development"
+  },
+  {
+   "fen": "3rkbR1/2pb3n/p2p3P/R1B2pQ1/4NP2/1N5P/1PP1K3/5B2 w - - 3 42",
+   "expected": "e4d6",
+   "expected_set": [
+    "e4d6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e4d6",
+    "c7d6",
+    "g5g6",
+    "e8e7",
+    "c5d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6627,
+   "group": "holdout"
+  },
+  {
+   "fen": "r1b1kr2/5pB1/p5p1/1p1pP2p/1Q6/2n4P/1qP3P1/2b2RK1 w - - 4 28",
+   "expected": "b4f8",
+   "expected_set": [
+    "b4f8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b4f8",
+    "e8d7",
+    "f1f7",
+    "d7e6",
+    "f8e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6714,
+   "group": "holdout"
+  },
+  {
+   "fen": "r7/2kq1p1r/b1n2n1p/p5P1/p2P4/PP4KR/8/R5n1 b - - 5 44",
+   "expected": "d7h3",
+   "expected_set": [
+    "d7h3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d7h3",
+    "g3f2",
+    "h3h2",
+    "f2e3",
+    "a8e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 6776,
+   "group": "development"
+  },
+  {
+   "fen": "4r1kb/4p3/n2p4/pB4p1/P4Ppp/P3Q1n1/1Q4PP/1N2K1R1 w - - 2 38",
+   "expected": "e3e6",
+   "expected_set": [
+    "e3e6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e3e6",
+    "g8h7",
+    "b5d3",
+    "g3f5",
+    "d3f5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6860,
+   "group": "development"
+  },
+  {
+   "fen": "6kr/r1p1P1b1/R4pp1/3P1R2/7p/1P1P4/1B4q1/1QK5 b - - 0 40",
+   "expected": "g7h6",
+   "expected_set": [
+    "g7h6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g7h6",
+    "f5g5",
+    "h6g5",
+    "c1d1",
+    "g2d2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 40,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 6862,
+   "group": "development"
+  },
+  {
+   "fen": "3k4/8/2r2pQ1/1p3B2/p4b2/P2p4/3B4/4RK2 w - - 2 61",
+   "expected": "d2a5",
+   "expected_set": [
+    "d2a5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d2a5",
+    "c6b6",
+    "g6h7",
+    "f4b8",
+    "h7e7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 6891,
+   "group": "development"
+  },
+  {
+   "fen": "4Nb1k/1p1b3B/1P2N3/3p3P/1p2QPp1/r7/P4R1K/8 w - - 2 72",
+   "expected": "e4e5",
+   "expected_set": [
+    "e4e5",
+    "e4d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e4e5",
+    "h8h7",
+    "e6f8",
+    "h7g8",
+    "e5g7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7001,
+   "group": "holdout"
+  },
+  {
+   "fen": "r2r4/2nk4/1p6/1Pp4P/P6q/3pK2P/4b2R/3R4 b - - 12 64",
+   "expected": "h4g5",
+   "expected_set": [
+    "h4g5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h4g5",
+    "e3f2",
+    "d8f8",
+    "f2e1",
+    "f8f1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7237,
+   "group": "development"
+  },
+  {
+   "fen": "5kr1/p2rpp2/3pb3/nP2P1pn/1P2KQ2/1q3PPP/6B1/bN1R4 b - - 3 29",
+   "expected": "b3c2",
+   "expected_set": [
+    "b3c2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b3c2",
+    "e4e3",
+    "g5f4",
+    "g3f4",
+    "a5c4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7303,
+   "group": "holdout"
+  },
+  {
+   "fen": "B5Nr/p1p5/b2pkp1p/4B3/2P1PQ2/Pr1PbP2/1P2K3/3R3R w - - 0 30",
+   "expected": "f4f6",
+   "expected_set": [
+    "f4f6",
+    "f4f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f4f6",
+    "e6d7",
+    "f6e7",
+    "d7c8",
+    "e7e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7305,
+   "group": "development"
+  },
+  {
+   "fen": "3q4/r1p2p2/4nk2/1Bb5/4PPP1/3r4/4K3/2B1R3 b - - 2 46",
+   "expected": "a7a2",
+   "expected_set": [
+    "a7a2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a7a2",
+    "c1d2",
+    "a2d2",
+    "e2f1",
+    "d3f3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender"
+   ],
+   "in_check": false,
+   "index": 7320,
+   "group": "development"
+  },
+  {
+   "fen": "1r4k1/Q4np1/N2B2P1/7p/q2ppp1P/2R5/1P3P2/RK6 w - - 0 52",
+   "expected": "a7b8",
+   "expected_set": [
+    "a7b8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a7b8",
+    "f7d8",
+    "b8d8",
+    "a4e8",
+    "d8e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7697,
+   "group": "development"
+  },
+  {
+   "fen": "r7/1b1k2r1/1p5p/1P4PP/1RpP4/2n1p1P1/PbKB3N/5R2 b - - 0 44",
+   "expected": "b7e4",
+   "expected_set": [
+    "b7e4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7e4",
+    "c2b2",
+    "a8a2",
+    "b2c3",
+    "a2c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7932,
+   "group": "development"
+  },
+  {
+   "fen": "1q1r2k1/2n2pr1/6pb/1N1N2Qp/PR1P4/8/6P1/5K2 w - - 5 46",
+   "expected": "d5f6",
+   "expected_set": [
+    "d5f6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d5f6",
+    "g8h8",
+    "g5h6",
+    "g7h7",
+    "h6h7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 7983,
+   "group": "development"
+  },
+  {
+   "fen": "8/pkN3b1/3q2p1/4r3/Pp2ppQ1/1K1R4/5P1r/4R3 b - - 30 67",
+   "expected": "d6d3",
+   "expected_set": [
+    "d6d3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d6d3",
+    "b3b2",
+    "e5e7",
+    "b2a2",
+    "d3c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 8146,
+   "group": "development"
+  },
+  {
+   "fen": "2B3r1/8/3rQ3/2P5/5N1p/5k1P/7R/B6K w - - 1 67",
+   "expected": "c8b7",
+   "expected_set": [
+    "c8b7",
+    "h2f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c8b7",
+    "d6c6",
+    "b7c6",
+    "f3f4",
+    "e6e5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 8221,
+   "group": "development"
+  },
+  {
+   "fen": "8/1kr5/4R3/p5B1/Pp6/1p3RQP/5Kp1/3R4 w - - 0 76",
+   "expected": "g3c7",
+   "expected_set": [
+    "g3c7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g3c7",
+    "b7c7",
+    "f3f7",
+    "c7c8",
+    "e6e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 17,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 8417,
+   "group": "holdout"
+  },
+  {
+   "fen": "4r1Bq/p1p1b3/n4k2/1Pr5/1PP5/NB1Pp2N/R3b2P/6K1 b - - 0 38",
+   "expected": "h8g8",
+   "expected_set": [
+    "h8g8",
+    "h8g7",
+    "h8h3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h8g8",
+    "g1h1",
+    "e2f3",
+    "a2g2",
+    "g8g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 8544,
+   "group": "holdout"
+  },
+  {
+   "fen": "1R1b2k1/4R1rp/5rpK/2p3P1/P4n2/3p4/7N/8 w - - 6 61",
+   "expected": "b8d8",
+   "expected_set": [
+    "b8d8",
+    "e7g7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8d8",
+    "f6f8",
+    "e7g7",
+    "g8h8",
+    "d8f8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 8558,
+   "group": "holdout"
+  },
+  {
+   "fen": "3n4/5k2/p2Q4/6R1/1P1B4/2K4b/4rr2/4R3 w - - 5 77",
+   "expected": "g5g7",
+   "expected_set": [
+    "g5g7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5g7",
+    "f7e8",
+    "g7g8",
+    "e8f7",
+    "g8f8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 8677,
+   "group": "holdout"
+  },
+  {
+   "fen": "6r1/8/2p1nk2/4N1p1/rBP3pP/1RQ1P2B/P7/R2K4 w - - 0 50",
+   "expected": "e5g4",
+   "expected_set": [
+    "e5g4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5g4",
+    "f6f7",
+    "c3f6",
+    "f7e8",
+    "f6e7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 30,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "overloaded_defender",
+    "recapture"
+   ],
+   "in_check": false,
+   "index": 8767,
+   "group": "development"
+  },
+  {
+   "fen": "b7/2p1k3/P7/2P5/8/6r1/6p1/1K6 b - - 0 62",
+   "expected": "g2g1q",
+   "expected_set": [
+    "g2g1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g2g1q",
+    "b1c2",
+    "g1h2",
+    "c2d1",
+    "g3g1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 34,
+   "motifs": [
+    "mate_threat",
+    "promotion"
+   ],
+   "in_check": false,
+   "index": 8851,
+   "group": "holdout"
+  },
+  {
+   "fen": "4qr2/1r1k4/nP6/1N2pp2/p4P2/PP1p3p/n6P/4K3 b - - 7 60",
+   "expected": "e5f4",
+   "expected_set": [
+    "e5f4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5f4",
+    "e1f2",
+    "e8e2",
+    "f2g1",
+    "e2g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 9004,
+   "group": "holdout"
+  },
+  {
+   "fen": "4B2r/2p3Bk/p7/P3Q3/NPP1p3/7P/3r2p1/6K1 w - - 1 53",
+   "expected": "e5h5",
+   "expected_set": [
+    "e5h5",
+    "e5f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5h5",
+    "h7g7",
+    "h5f7",
+    "g7h6",
+    "f7g6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 9046,
+   "group": "holdout"
+  },
+  {
+   "fen": "3r3r/ppk5/2n1p1pp/4p1q1/P2n1bP1/R1P4N/1B1p2KP/1N3B1R b - - 3 34",
+   "expected": "g5g4",
+   "expected_set": [
+    "g5g4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5g4",
+    "g2f2",
+    "d2d1n",
+    "f2e1",
+    "d4c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 9064,
+   "group": "holdout"
+  },
+  {
+   "fen": "1r1k3r/1p1bq3/pb4p1/P4P1p/8/1nKp1PPP/RP6/2B3R1 b - - 2 35",
+   "expected": "e7c5",
+   "expected_set": [
+    "e7c5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e7c5",
+    "c3d3",
+    "d7b5",
+    "d3e4",
+    "c5f5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 9131,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/6r1/2p3p1/pP3b2/5q2/rk6/4KN1p/8 b - - 0 83",
+   "expected": "g7e7",
+   "expected_set": [
+    "g7e7",
+    "g7d7",
+    "f5g4",
+    "f5h3",
+    "b3c2",
+    "a3a2",
+    "h2h1q",
+    "h2h1r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g7e7",
+    "f2e4",
+    "e7e4",
+    "e2d3",
+    "f4d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 33,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 9260,
+   "group": "development"
+  },
+  {
+   "fen": "7k/1PQ3n1/3p2r1/1P2NP1p/3R4/8/5P2/4K3 w - - 0 59",
+   "expected": "f5g6",
+   "expected_set": [
+    "f5g6",
+    "b7b8q",
+    "b7b8r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f5g6",
+    "h8g8",
+    "c7f7",
+    "g8h8",
+    "f7f8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 9716,
+   "group": "development"
+  },
+  {
+   "fen": "2b5/1p2q3/1P1k1ppr/pK1Pn3/5bPP/PP6/4P3/4n2B b - - 1 53",
+   "expected": "c8d7",
+   "expected_set": [
+    "c8d7",
+    "e7e8",
+    "e7d7",
+    "f4d2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c8d7",
+    "b5a5",
+    "f4d2",
+    "b3b4",
+    "e5c4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 9812,
+   "group": "holdout"
+  },
+  {
+   "fen": "1r6/1Pr5/2Q5/1p3pk1/1P2p3/R4PP1/2R5/2K5 w - - 4 71",
+   "expected": "f3f4",
+   "expected_set": [
+    "f3f4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f3f4",
+    "g5h5",
+    "c2h2",
+    "h5g4",
+    "h2h4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 9850,
+   "group": "development"
+  },
+  {
+   "fen": "4kb1r/8/4P1p1/1p3npp/5P2/2QP3P/R4KP1/5BNR w k - 1 36",
+   "expected": "c3c8",
+   "expected_set": [
+    "c3c8",
+    "c3c6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3c8",
+    "e8e7",
+    "c8d7",
+    "e7f6",
+    "d7f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 9948,
+   "group": "holdout"
+  },
+  {
+   "fen": "rnb3kr/5pp1/1pp1p1n1/p7/1Pp1BB1p/2N4P/3R1PP1/3QK2R w K - 0 32",
+   "expected": "d2d8",
+   "expected_set": [
+    "d2d8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d2d8",
+    "g6f8",
+    "d8f8",
+    "g8f8",
+    "d1d8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 9962,
+   "group": "holdout"
+  },
+  {
+   "fen": "1rq2b2/3kppr1/p1p5/1n1b2pp/PK2P3/RP3PPP/3BN3/4Q2R b - - 4 31",
+   "expected": "e7e6",
+   "expected_set": [
+    "e7e6",
+    "c6c5",
+    "a6a5",
+    "e7e5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e7e6",
+    "b4a5",
+    "c8d8",
+    "a5a6",
+    "d8b6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 9977,
+   "group": "development"
+  },
+  {
+   "fen": "1r6/1k5N/4p1Pp/6RP/1pb1p3/pP2b3/3rR1K1/1q6 b - - 9 69",
+   "expected": "d2e2",
+   "expected_set": [
+    "d2e2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d2e2",
+    "g2h3",
+    "b1h1",
+    "h3g4",
+    "e2g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10066,
+   "group": "development"
+  },
+  {
+   "fen": "2n1r3/3p2pk/r7/pp2pP1K/2pP4/2P3P1/8/1qB1Rb2 b - - 2 48",
+   "expected": "b1f5",
+   "expected_set": [
+    "b1f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b1f5",
+    "h5h4",
+    "h7g6",
+    "e1e5",
+    "f5h3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 10071,
+   "group": "development"
+  },
+  {
+   "fen": "6R1/6r1/1r3k2/4pN1p/4K2P/2B5/2Q3R1/8 w - - 12 77",
+   "expected": "c3e5",
+   "expected_set": [
+    "c3e5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3e5",
+    "f6f7",
+    "g8g7",
+    "f7f8",
+    "c2c8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10110,
+   "group": "holdout"
+  },
+  {
+   "fen": "B4k1b/R2n4/P3P3/4p3/2P1P1r1/5p2/nN5p/4K1R1 b - - 1 71",
+   "expected": "h2g1q",
+   "expected_set": [
+    "h2g1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h2g1q",
+    "e1d2",
+    "g4g2",
+    "d2d3",
+    "d7c5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10130,
+   "group": "development"
+  },
+  {
+   "fen": "7b/5k1N/1P3P2/2PpQ3/8/6KP/2n5/1R6 w - - 3 68",
+   "expected": "e5h5",
+   "expected_set": [
+    "e5h5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5h5",
+    "f7g8",
+    "h5g6",
+    "h8g7",
+    "g6g7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 10158,
+   "group": "holdout"
+  },
+  {
+   "fen": "1r6/1p5k/3Q3p/r1pP4/2p5/B7/K5nR/6R1 w - - 1 57",
+   "expected": "d6e7",
+   "expected_set": [
+    "d6e7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d6e7",
+    "h7h8",
+    "h2h6",
+    "h8g8",
+    "g1g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10226,
+   "group": "holdout"
+  },
+  {
+   "fen": "rn3kn1/1pQ5/p1pp1p2/2BP3K/2P1Bp1b/P6p/NP4PP/R1N2R2 w - - 1 31",
+   "expected": "c5d6",
+   "expected_set": [
+    "c5d6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c5d6",
+    "g8e7",
+    "c7e7",
+    "f8g8",
+    "e7f8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10389,
+   "group": "development"
+  },
+  {
+   "fen": "4Q3/8/pk2N1rp/R4p2/1p5P/8/1PPK4/8 w - - 0 47",
+   "expected": "e8d8",
+   "expected_set": [
+    "e8d8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8d8",
+    "b6b7",
+    "d8c7",
+    "b7a8",
+    "a5a6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 10429,
+   "group": "holdout"
+  },
+  {
+   "fen": "5k2/6R1/8/2q5/1pnN1PK1/P2p4/7P/R1rB4 w - - 4 71",
+   "expected": "d4e6",
+   "expected_set": [
+    "d4e6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4e6",
+    "f8e8",
+    "d1a4",
+    "c5c6",
+    "a4c6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10484,
+   "group": "development"
+  },
+  {
+   "fen": "1BQ5/1r2k2N/2p3b1/1p3p1p/1Pp5/Pr4PN/4KP1P/R2Bb3 w - - 1 43",
+   "expected": "c8f8",
+   "expected_set": [
+    "c8f8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c8f8",
+    "e7d7",
+    "h7f6",
+    "d7e6",
+    "h3g5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10488,
+   "group": "development"
+  },
+  {
+   "fen": "r4r1B/1p1b4/1b2k1p1/2n2pnP/5P1Q/1q2p3/pR5P/4K2B b - - 1 48",
+   "expected": "a2a1q",
+   "expected_set": [
+    "a2a1q",
+    "a2a1r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a2a1q",
+    "b2b1",
+    "b3b1",
+    "e1e2",
+    "b1d3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "promotion",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10534,
+   "group": "holdout"
+  },
+  {
+   "fen": "2r5/1pp3pr/B2k1n2/pP3bb1/3P4/PR4P1/2P1qP1P/R6K b - - 0 31",
+   "expected": "h7h2",
+   "expected_set": [
+    "h7h2",
+    "e2f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h7h2",
+    "h1h2",
+    "e2f2",
+    "h2h1",
+    "c8h8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10562,
+   "group": "holdout"
+  },
+  {
+   "fen": "1n6/k7/r7/PR6/2p4P/B1N3pK/8/1R6 w - - 3 56",
+   "expected": "b5b7",
+   "expected_set": [
+    "b5b7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b5b7",
+    "a7a8",
+    "b7b8",
+    "a8a7",
+    "b1b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10645,
+   "group": "development"
+  },
+  {
+   "fen": "2b2br1/B2k1n1p/Q2p1p2/6p1/P3PN2/2N2PP1/RPP1K2P/3R1B1n w - - 15 34",
+   "expected": "a6b5",
+   "expected_set": [
+    "a6b5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a6b5",
+    "d7d8",
+    "a7b6",
+    "d8e7",
+    "c3d5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender"
+   ],
+   "in_check": false,
+   "index": 10728,
+   "group": "development"
+  },
+  {
+   "fen": "1rbrN3/p2R3p/4P2b/2n2Pk1/p1p4N/4P1nB/1B1K1P2/5qR1 b - - 0 39",
+   "expected": "d8d7",
+   "expected_set": [
+    "d8d7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d8d7",
+    "d2c2",
+    "f1d3",
+    "c2c1",
+    "c5b3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 9,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 10818,
+   "group": "development"
+  },
+  {
+   "fen": "r7/3n4/8/p2b2b1/P6P/8/3p1Q2/krR3KB b - - 0 80",
+   "expected": "d2c1q",
+   "expected_set": [
+    "d2c1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d2c1q",
+    "g1h2",
+    "c1h1",
+    "h2g3",
+    "h1h4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 13,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "promotion",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10867,
+   "group": "holdout"
+  },
+  {
+   "fen": "4k1q1/4n3/8/r6p/1P2R3/1P1r4/8/2K5 b - - 4 83",
+   "expected": "a5a1",
+   "expected_set": [
+    "a5a1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a5a1",
+    "c1b2",
+    "g8b3",
+    "b2a1",
+    "d3d1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 10885,
+   "group": "development"
+  },
+  {
+   "fen": "8/5p2/R1r4P/1N1n3R/P3pk2/8/1NP3Q1/7K w - - 6 83",
+   "expected": "b5d4",
+   "expected_set": [
+    "b5d4",
+    "g2g5",
+    "g2f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b5d4",
+    "c6g6",
+    "h5f5",
+    "f4e3",
+    "g2f2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "defensive_only",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 10927,
+   "group": "development"
+  },
+  {
+   "fen": "4k3/n7/8/p5N1/P7/K3B1NB/3Rr3/6q1 b - - 0 64",
+   "expected": "g1e3",
+   "expected_set": [
+    "g1e3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g1e3",
+    "a3b2",
+    "e3d2",
+    "b2b3",
+    "d2b4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 38,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10955,
+   "group": "development"
+  },
+  {
+   "fen": "r2r4/2pn1p2/2Q2B2/1p1p3P/3P1k2/1p4N1/P3KnP1/1Rb4R w - - 0 47",
+   "expected": "c6c7",
+   "expected_set": [
+    "c6c7",
+    "c6c1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c6c7",
+    "d7e5",
+    "c7e5",
+    "f4g4",
+    "h1h4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 10997,
+   "group": "development"
+  },
+  {
+   "fen": "kn2B3/7p/5p1b/nQp3rP/4P3/1ppN1p2/5p2/2K1R3 b - - 11 62",
+   "expected": "g5d5",
+   "expected_set": [
+    "g5d5",
+    "g5g1",
+    "f2e1q",
+    "f2e1r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5d5",
+    "c1b1",
+    "f2e1q",
+    "d3e1",
+    "d5d1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11103,
+   "group": "holdout"
+  },
+  {
+   "fen": "N5QB/8/2k5/8/6R1/7p/2N1K3/1N6 w - - 6 72",
+   "expected": "g8e6",
+   "expected_set": [
+    "g8e6",
+    "c2d4",
+    "c2b4",
+    "c2e3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g8e6",
+    "c6b7",
+    "e6d7",
+    "b7b8",
+    "g4g8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 11185,
+   "group": "development"
+  },
+  {
+   "fen": "3k1N2/8/p6p/P2bp2P/6P1/1R6/4Kp2/2r5 b - - 2 73",
+   "expected": "f2f1q",
+   "expected_set": [
+    "f2f1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f2f1q",
+    "e2e3",
+    "f1e1",
+    "e3d3",
+    "d5e4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11213,
+   "group": "development"
+  },
+  {
+   "fen": "k2N4/8/2P1Qp2/p1n2P2/P6P/K5p1/6P1/1R6 w - - 5 84",
+   "expected": "e6c8",
+   "expected_set": [
+    "e6c8",
+    "e6c4",
+    "c6c7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e6c8",
+    "a8a7",
+    "d8f7",
+    "c5d7",
+    "c8b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 11218,
+   "group": "development"
+  },
+  {
+   "fen": "1n2rbr1/4kB1p/Pp2N1p1/2p3P1/QR2P3/P3p1n1/5P1P/4K1NR w K - 2 35",
+   "expected": "a4e8",
+   "expected_set": [
+    "a4e8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a4e8",
+    "e7d6",
+    "e8b8",
+    "d6e7",
+    "b8c7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11306,
+   "group": "development"
+  },
+  {
+   "fen": "rn2k2r/6bp/pp6/1N1pp3/3P4/qP5N/2P1BPPR/2R1Kn2 b - - 1 26",
+   "expected": "a3c1",
+   "expected_set": [
+    "a3c1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a3c1",
+    "e2d1",
+    "c1d2",
+    "e1f1",
+    "d2d1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11349,
+   "group": "development"
+  },
+  {
+   "fen": "5b2/p2r1k2/1p1p1p2/qP3P2/3B4/1R6/2rR2N1/4K1N1 b - - 0 45",
+   "expected": "a5d2",
+   "expected_set": [
+    "a5d2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a5d2",
+    "e1f1",
+    "d2g2",
+    "f1e1",
+    "c2c1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 27,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11365,
+   "group": "holdout"
+  },
+  {
+   "fen": "5r2/3kb3/pKp3N1/2rp2p1/6P1/P7/R7/6nB b - - 1 63",
+   "expected": "c5b5",
+   "expected_set": [
+    "c5b5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c5b5",
+    "b6a7",
+    "e7c5",
+    "a7a6",
+    "f8a8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 11374,
+   "group": "development"
+  },
+  {
+   "fen": "2b5/7k/4q1rp/2P5/3Q4/Pp2nK2/7b/3n4 b - - 2 70",
+   "expected": "e6f7",
+   "expected_set": [
+    "e6f7",
+    "e6c6",
+    "e6f5",
+    "e6h3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e6f7",
+    "f3e2",
+    "f7f2",
+    "e2d3",
+    "f2c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 11446,
+   "group": "holdout"
+  },
+  {
+   "fen": "3N2k1/Q3R3/p7/5n2/7p/b1p1BN2/2P1B3/3K4 w - - 0 78",
+   "expected": "e7e8",
+   "expected_set": [
+    "e7e8",
+    "e2c4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e7e8",
+    "a3f8",
+    "e8f8",
+    "g8f8",
+    "a7f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11556,
+   "group": "holdout"
+  },
+  {
+   "fen": "4r3/1N1k1q2/3B2P1/p6p/3P3P/3K4/6b1/8 b - - 6 84",
+   "expected": "f7f3",
+   "expected_set": [
+    "f7f3",
+    "f7b3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f7f3",
+    "d3c4",
+    "g2f1",
+    "c4c5",
+    "f3c6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11626,
+   "group": "holdout"
+  },
+  {
+   "fen": "7k/5R2/P2Pb3/Qr2R3/P3q1p1/R1p3P1/2P5/2K5 b - - 6 65",
+   "expected": "e4h1",
+   "expected_set": [
+    "e4h1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e4h1",
+    "f7f1",
+    "h1f1",
+    "e5e1",
+    "f1e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11680,
+   "group": "development"
+  },
+  {
+   "fen": "1r3Q2/2k2P1p/p1p1R2r/1p6/3P1Kp1/1n1b1R2/B2BN3/8 w - - 1 68",
+   "expected": "f8d6",
+   "expected_set": [
+    "f8d6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f8d6",
+    "c7c8",
+    "e6e8",
+    "c8b7",
+    "d6b8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11968,
+   "group": "development"
+  },
+  {
+   "fen": "4rr2/p2k1p2/3p1B2/PR1P1b2/2p2P2/2N3b1/1RPN1n1P/6K1 w - - 3 41",
+   "expected": "b5b7",
+   "expected_set": [
+    "b5b7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b5b7",
+    "d7c8",
+    "b7b8",
+    "c8d7",
+    "b2b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 11989,
+   "group": "holdout"
+  },
+  {
+   "fen": "1n1Rr1r1/6k1/6p1/r7/1p5K/7N/2q5/8 b - - 7 80",
+   "expected": "g8h8",
+   "expected_set": [
+    "g8h8",
+    "e8e4",
+    "a5h5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g8h8",
+    "h4g4",
+    "c2g2",
+    "g4f4",
+    "h8f8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12001,
+   "group": "holdout"
+  },
+  {
+   "fen": "6r1/6N1/2R2p1p/P2nk3/P6P/3B1b2/2PKp2b/8 b - - 1 52",
+   "expected": "h2f4",
+   "expected_set": [
+    "h2f4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h2f4",
+    "d2e1",
+    "f4g3",
+    "e1d2",
+    "e2e1q"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12240,
+   "group": "holdout"
+  },
+  {
+   "fen": "3qkn2/pr6/5p2/1N2rPQ1/2p3Pp/P1p2b2/P6P/1B4KR b - - 3 46",
+   "expected": "d8d1",
+   "expected_set": [
+    "d8d1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d8d1",
+    "g1f2",
+    "d1e2",
+    "f2g1",
+    "e2g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12291,
+   "group": "holdout"
+  },
+  {
+   "fen": "1rbk1r2/1p1pb1Bn/6P1/P1p2pQ1/P6P/q2P4/2RN1P2/3KR3 w - - 6 34",
+   "expected": "g5e7",
+   "expected_set": [
+    "g5e7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g5e7",
+    "d8c7",
+    "g7e5",
+    "c7c6",
+    "e7d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12333,
+   "group": "development"
+  },
+  {
+   "fen": "1r3b2/p1pQ3p/P5p1/8/P3B2P/4r1k1/2R5/B4K1R b - - 9 47",
+   "expected": "b8b1",
+   "expected_set": [
+    "b8b1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8b1",
+    "c2c1",
+    "b1c1",
+    "d7d1",
+    "c1d1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12387,
+   "group": "development"
+  },
+  {
+   "fen": "8/rnp5/p1N1k3/7P/P3q1P1/5r2/8/1RB1N1K1 b - - 3 49",
+   "expected": "e4e1",
+   "expected_set": [
+    "e4e1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e4e1",
+    "g1h2",
+    "e1g3",
+    "h2h1",
+    "f3f1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12396,
+   "group": "holdout"
+  },
+  {
+   "fen": "4k3/7p/4n1p1/1r6/p2P4/Q7/1N1B1R1K/RN1bbB2 w - - 1 67",
+   "expected": "f1b5",
+   "expected_set": [
+    "f1b5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f1b5",
+    "e8d8",
+    "a3d6",
+    "d8c8",
+    "b5a6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12432,
+   "group": "development"
+  },
+  {
+   "fen": "8/7r/3ppkPp/pNq2bbn/P1P5/2K5/5R2/5B1R b - - 1 47",
+   "expected": "c5b4",
+   "expected_set": [
+    "c5b4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c5b4",
+    "c3d4",
+    "e6e5",
+    "d4d5",
+    "b4c5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12437,
+   "group": "development"
+  },
+  {
+   "fen": "1r6/4k2P/p7/2pq1p1P/2P2Pr1/8/4K2p/4N3 b - - 2 73",
+   "expected": "b8b2",
+   "expected_set": [
+    "b8b2",
+    "g4g2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8b2",
+    "e1c2",
+    "d5g2",
+    "e2e3",
+    "g4g3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender"
+   ],
+   "in_check": false,
+   "index": 12555,
+   "group": "development"
+  },
+  {
+   "fen": "2N5/6n1/6k1/4PbB1/p6P/1q1B3p/2r3PK/3R4 b - - 4 63",
+   "expected": "c2g2",
+   "expected_set": [
+    "c2g2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c2g2",
+    "h2h1",
+    "b3d1",
+    "d3f1",
+    "d1f1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "fork",
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12648,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/8/1Q6/2r3kp/5p2/1K6/2r1BQ2/8 w - - 0 74",
+   "expected": "f2g2",
+   "expected_set": [
+    "f2g2",
+    "f2g1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f2g2",
+    "g5f5",
+    "b6g6",
+    "f5e5",
+    "g2e4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12664,
+   "group": "holdout"
+  },
+  {
+   "fen": "1r3r2/1qk3bb/1p1p4/5Q1P/1p2P2B/1P1B1P2/5K2/1n4R1 w - - 15 60",
+   "expected": "g1g7",
+   "expected_set": [
+    "g1g7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g1g7",
+    "f8f7",
+    "g7f7",
+    "c7c6",
+    "f5d5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12694,
+   "group": "development"
+  },
+  {
+   "fen": "r7/4r3/6k1/8/1p1B2P1/1P1Rpp1p/1P2N2P/6K1 b - - 2 75",
+   "expected": "a8a1",
+   "expected_set": [
+    "a8a1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a8a1",
+    "e2c1",
+    "a1c1",
+    "d3d1",
+    "c1d1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12701,
+   "group": "development"
+  },
+  {
+   "fen": "4rk2/1Q3n2/6p1/pPP5/P4N2/R2Bb1p1/3r1R2/7K w - - 9 65",
+   "expected": "f4e6",
+   "expected_set": [
+    "f4e6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f4e6",
+    "f8g8",
+    "b7f7",
+    "g8h8",
+    "f7g7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "overloaded_defender",
+    "pin",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12811,
+   "group": "holdout"
+  },
+  {
+   "fen": "2k5/4Q3/2n5/7p/4Bp1B/K5b1/P7/8 w - - 1 80",
+   "expected": "e7e8",
+   "expected_set": [
+    "e7e8",
+    "e4c6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e7e8",
+    "c8c7",
+    "e8c6",
+    "c7b8",
+    "c6b7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 12845,
+   "group": "development"
+  },
+  {
+   "fen": "8/2k2p2/rp2p2P/pP6/6p1/P1q2R2/1n1p2K1/8 b - - 2 75",
+   "expected": "c3f3",
+   "expected_set": [
+    "c3f3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3f3",
+    "g2h2",
+    "f3f2",
+    "h2h1",
+    "d2d1q"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 12897,
+   "group": "development"
+  },
+  {
+   "fen": "5Qn1/8/Pp1pk3/7R/8/1N3P2/PPK4p/R2B4 w - - 0 84",
+   "expected": "f8f5",
+   "expected_set": [
+    "f8f5",
+    "b3d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f8f5",
+    "e6e7",
+    "h5h7",
+    "e7e8",
+    "f5c8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 12975,
+   "group": "holdout"
+  },
+  {
+   "fen": "bB3k2/4n3/4p1p1/1B3pPp/5P2/1KQ5/P7/8 w - - 8 81",
+   "expected": "c3h8",
+   "expected_set": [
+    "c3h8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3h8",
+    "e7g8",
+    "b8d6",
+    "f8f7",
+    "h8h7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 13004,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/2r4k/1R5p/2pq1r1P/P7/8/7K/n7 b - - 7 84",
+   "expected": "f5f2",
+   "expected_set": [
+    "f5f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f5f2",
+    "h2h3",
+    "d5f3",
+    "h3h4",
+    "f2h2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 13023,
+   "group": "holdout"
+  },
+  {
+   "fen": "r4nkr/1N3p2/7p/qB1Q4/2K1P1bP/P7/5P2/1NB3R1 w - - 0 41",
+   "expected": "g1g4",
+   "expected_set": [
+    "g1g4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g1g4",
+    "f8g6",
+    "g4g6",
+    "g8f8",
+    "d5d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 32,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 13055,
+   "group": "development"
+  },
+  {
+   "fen": "1r3k2/pp6/n1bp4/4rBPn/2p2PP1/P7/q1PQ3b/B2K3R b - - 1 43",
+   "expected": "c6f3",
+   "expected_set": [
+    "c6f3",
+    "a2a1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c6f3",
+    "d2e2",
+    "a2a1",
+    "d1d2",
+    "e5e2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13070,
+   "group": "holdout"
+  },
+  {
+   "fen": "1n6/2rq1k2/8/p3p2P/3Rb3/5qp1/1K6/8 b - - 1 66",
+   "expected": "d7b5",
+   "expected_set": [
+    "d7b5",
+    "d7d4",
+    "c7b7",
+    "c7c2",
+    "f3c3",
+    "f3g2",
+    "f3f2",
+    "f3e2",
+    "e5d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d7b5",
+    "d4b4",
+    "b5b4",
+    "b2a2",
+    "b4a3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13088,
+   "group": "development"
+  },
+  {
+   "fen": "4k3/2b4N/6p1/P2p2P1/1B2p1r1/5n1p/4KP2/1b1r4 b - - 4 55",
+   "expected": "b1d3",
+   "expected_set": [
+    "b1d3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b1d3",
+    "e2d1",
+    "g4g1",
+    "b4e1",
+    "g1e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 13109,
+   "group": "holdout"
+  },
+  {
+   "fen": "r7/2b3nr/pp2R1P1/P6b/7P/1k3p1q/8/4K3 b - - 5 68",
+   "expected": "h3e6",
+   "expected_set": [
+    "h3e6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h3e6",
+    "e1f2",
+    "a8e8",
+    "f2g1",
+    "e6e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 13128,
+   "group": "holdout"
+  },
+  {
+   "fen": "5b2/4pk2/pp3r2/1N2rpP1/q6p/4PP1P/1K1n4/4R3 b - - 1 47",
+   "expected": "e5b5",
+   "expected_set": [
+    "e5b5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5b5",
+    "b2c3",
+    "a4c4",
+    "c3d2",
+    "f6d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 13135,
+   "group": "development"
+  },
+  {
+   "fen": "1Bb2r2/5Bk1/8/Q6p/P6P/3R1N2/1Pp4K/8 w - - 3 61",
+   "expected": "a5g5",
+   "expected_set": [
+    "a5g5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a5g5",
+    "g7h7",
+    "g5g6",
+    "h7h8",
+    "b8e5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender"
+   ],
+   "in_check": false,
+   "index": 13202,
+   "group": "development"
+  },
+  {
+   "fen": "rn3knr/p7/b7/b1p3p1/1pP3P1/1Q1qPpPP/PP1B3K/2R1N3 b - - 1 35",
+   "expected": "d3e2",
+   "expected_set": [
+    "d3e2",
+    "d3f1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d3e2",
+    "h2h1",
+    "e2f1",
+    "h1h2",
+    "h8h3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13262,
+   "group": "holdout"
+  },
+  {
+   "fen": "1q1N4/8/1r2P1k1/p5Pr/8/6P1/8/6K1 b - - 4 77",
+   "expected": "b8g3",
+   "expected_set": [
+    "b8g3",
+    "b6b2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8g3",
+    "g1f1",
+    "b6b2",
+    "d8f7",
+    "h5h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 13351,
+   "group": "holdout"
+  },
+  {
+   "fen": "4k3/1pp3r1/B1P2p2/p3pb1P/3qP3/PP6/3B1P1P/RNQ1n1RK b - - 2 25",
+   "expected": "f5e4",
+   "expected_set": [
+    "f5e4",
+    "d4e4",
+    "d4f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f5e4",
+    "g1g2",
+    "e4g2",
+    "h1g1",
+    "e1f3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13401,
+   "group": "holdout"
+  },
+  {
+   "fen": "B7/4k3/8/8/5PP1/5R2/b7/qq2n1K1 b - - 0 66",
+   "expected": "e1f3",
+   "expected_set": [
+    "e1f3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e1f3",
+    "g1g2",
+    "b1h1",
+    "g2g3",
+    "a1g1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 13428,
+   "group": "holdout"
+  },
+  {
+   "fen": "4B3/5P2/1P3k1P/8/2Pp4/3N4/8/1K1R2n1 w - - 2 77",
+   "expected": "f7f8q",
+   "expected_set": [
+    "f7f8q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f7f8q",
+    "f6e6",
+    "f8f7",
+    "e6d6",
+    "f7d7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13466,
+   "group": "holdout"
+  },
+  {
+   "fen": "3r1Bb1/p7/2k5/4p3/2p2p2/1rPQn3/PR3P1P/1qB1KR2 b - - 4 44",
+   "expected": "b1c1",
+   "expected_set": [
+    "b1c1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b1c1",
+    "e1e2",
+    "c4d3",
+    "e2f3",
+    "g8d5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13691,
+   "group": "holdout"
+  },
+  {
+   "fen": "R4b2/2k3n1/2P1r1p1/5bpp/3K4/1p6/3p4/6N1 b - - 1 79",
+   "expected": "d2d1q",
+   "expected_set": [
+    "d2d1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d2d1q",
+    "d4c3",
+    "e6c6",
+    "c3b2",
+    "d1b1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13771,
+   "group": "holdout"
+  },
+  {
+   "fen": "1RR5/Q3r1k1/8/P6p/8/1n3K1P/8/3R4 w - - 1 76",
+   "expected": "a7e7",
+   "expected_set": [
+    "a7e7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a7e7",
+    "g7g6",
+    "c8g8",
+    "g6h6",
+    "b8b6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13807,
+   "group": "holdout"
+  },
+  {
+   "fen": "2r5/2k1NKb1/3pn3/3bp2P/7q/2P2R2/8/R4N2 b - - 1 63",
+   "expected": "c8f8",
+   "expected_set": [
+    "c8f8",
+    "h4h5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c8f8",
+    "f7g6",
+    "h4g5",
+    "g6h7",
+    "f8h8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13890,
+   "group": "development"
+  },
+  {
+   "fen": "rn6/p2k1r1p/3Bp3/2Pnq1b1/1pb1P2N/1P2R1PB/P1K2P1P/7R b - - 1 32",
+   "expected": "f7f2",
+   "expected_set": [
+    "f7f2",
+    "d5e3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f7f2",
+    "e3e2",
+    "c4d3",
+    "c2d3",
+    "e5c3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 13997,
+   "group": "holdout"
+  },
+  {
+   "fen": "1k6/3rn3/1P6/pP2p1p1/6p1/2KP4/8/5q2 b - - 10 74",
+   "expected": "f1c1",
+   "expected_set": [
+    "f1c1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f1c1",
+    "c3b3",
+    "d7d3",
+    "b3a4",
+    "d3a3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 14037,
+   "group": "holdout"
+  },
+  {
+   "fen": "4R3/8/5k2/2Q5/B1pN3p/P7/3RK1b1/8 w - - 0 81",
+   "expected": "e8e6",
+   "expected_set": [
+    "e8e6",
+    "c5e7",
+    "c5d6",
+    "c5f5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8e6",
+    "f6g7",
+    "c5c7",
+    "g7h8",
+    "e6e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 45,
+   "motifs": [
+    "mate_threat",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 14264,
+   "group": "development"
+  },
+  {
+   "fen": "rnb2kr1/pRB2p2/2qp4/1Bp3pn/P2bp1p1/1Q6/1PP1KP1P/6NR w - - 0 28",
+   "expected": "c7d6",
+   "expected_set": [
+    "c7d6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c7d6",
+    "f8e8",
+    "b3f7",
+    "e8d8",
+    "f7e7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 27,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 14279,
+   "group": "development"
+  },
+  {
+   "fen": "r1bB3k/3p1p1p/2p5/p1P4n/1b4n1/1PNp3R/P4Nq1/2R1KB2 b - - 1 30",
+   "expected": "g2f2",
+   "expected_set": [
+    "g2f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g2f2",
+    "e1d1",
+    "f2f1",
+    "d1d2",
+    "f1e2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 14302,
+   "group": "holdout"
+  },
+  {
+   "fen": "2k3n1/1p3Qp1/1np5/3P2P1/3P2P1/r2N4/5KR1/8 w - - 2 48",
+   "expected": "f7f8",
+   "expected_set": [
+    "f7f8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f7f8",
+    "c8d7",
+    "d3e5",
+    "d7c7",
+    "d5d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 14346,
+   "group": "development"
+  },
+  {
+   "fen": "rQ6/2r1k3/p2q3p/1Pp1PP2/P1pPb2b/4K2R/5R2/8 b - - 0 50",
+   "expected": "d6d4",
+   "expected_set": [
+    "d6d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d6d4",
+    "e3e2",
+    "d4f2",
+    "e2d1",
+    "f2c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 57,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece",
+    "zwischenzug"
+   ],
+   "in_check": false,
+   "index": 14358,
+   "group": "holdout"
+  },
+  {
+   "fen": "7r/4B2k/8/P5p1/bnpnp1P1/P3q3/6K1/8 b - - 14 64",
+   "expected": "h7g8",
+   "expected_set": [
+    "h7g8",
+    "h7g6",
+    "e3f3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h7g8",
+    "e7f8",
+    "e3f3",
+    "g2g1",
+    "h8h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "defensive_only",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 14443,
+   "group": "development"
+  },
+  {
+   "fen": "1k6/6P1/8/1p6/5P1R/4B3/2p3BP/2K4b w - - 0 80",
+   "expected": "h4h7",
+   "expected_set": [
+    "h4h7",
+    "g7g8q",
+    "g7g8r"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h4h7",
+    "b8c7",
+    "g7g8q",
+    "c7d6",
+    "g8g6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 10,
+   "motifs": [
+    "defensive_only",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 14529,
+   "group": "development"
+  },
+  {
+   "fen": "4n3/4R3/2k1q3/1pr4p/1P2p3/2B1P1K1/B7/5r2 b - - 13 78",
+   "expected": "e6g6",
+   "expected_set": [
+    "e6g6",
+    "e6g4",
+    "c5g5",
+    "f1f3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e6g6",
+    "g3h2",
+    "f1f2",
+    "h2h3",
+    "g6g4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 14657,
+   "group": "holdout"
+  },
+  {
+   "fen": "N7/p7/4q3/Np1k3p/P2p1p1R/2rP1Pp1/3P4/2B2K2 b - - 3 61",
+   "expected": "c3c1",
+   "expected_set": [
+    "c3c1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3c1",
+    "f1g2",
+    "e6e2",
+    "g2h3",
+    "e2h2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 14689,
+   "group": "development"
+  },
+  {
+   "fen": "1r2kr2/ppp4p/8/Pb4pP/1R2P1q1/2P1K3/6P1/N7 b - - 0 50",
+   "expected": "b8d8",
+   "expected_set": [
+    "b8d8",
+    "g4f4",
+    "g4g3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8d8",
+    "b4b5",
+    "g4f4",
+    "e3e2",
+    "f4e4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 20,
+   "motifs": [
+    "defensive_only",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 14793,
+   "group": "development"
+  },
+  {
+   "fen": "7k/4p3/4n3/4p2p/1p5p/8/Rn1b4/2r1rNK1 b - - 15 81",
+   "expected": "e1f1",
+   "expected_set": [
+    "e1f1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e1f1",
+    "g1h2",
+    "f1f2",
+    "h2h3",
+    "c1h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 14803,
+   "group": "holdout"
+  },
+  {
+   "fen": "7k/2Rr4/5p2/4p1rp/7P/6nK/2P2R2/3q4 b - - 5 67",
+   "expected": "d1g4",
+   "expected_set": [
+    "d1g4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d1g4",
+    "h3h2",
+    "g4h4",
+    "h2g2",
+    "h4h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 14828,
+   "group": "holdout"
+  },
+  {
+   "fen": "r1bk3N/2r5/3P3B/1qp1p2P/1P5N/1K1P1n2/P4p2/R6B b - - 0 48",
+   "expected": "b5b4",
+   "expected_set": [
+    "b5b4",
+    "f3d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b5b4",
+    "b3c2",
+    "f3d4",
+    "c2d1",
+    "b4e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15006,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/8/5Qbk/4P1p1/P1P2p2/3r4/5pK1/B2B4 w - - 3 80",
+   "expected": "f6h8",
+   "expected_set": [
+    "f6h8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f6h8",
+    "g6h7",
+    "h8f8",
+    "h6g6",
+    "f8f6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15017,
+   "group": "holdout"
+  },
+  {
+   "fen": "1QrB1b2/5k2/4p3/4P3/1n1R4/1N4Rp/1p3P1P/5KN1 w - - 13 70",
+   "expected": "b8b7",
+   "expected_set": [
+    "b8b7",
+    "b8a7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b8b7",
+    "c8c7",
+    "b7c7",
+    "f7e8",
+    "c7d7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15031,
+   "group": "development"
+  },
+  {
+   "fen": "4r3/p4pkp/1p5b/2p1q1N1/1P1rQ1P1/P1PP1B2/2nN1P1P/2K2R1R w - - 1 29",
+   "expected": "e4h7",
+   "expected_set": [
+    "e4h7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e4h7",
+    "g7f6",
+    "h7f7",
+    "f6g5",
+    "h2h4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15084,
+   "group": "development"
+  },
+  {
+   "fen": "r5n1/1q3k2/8/Np4p1/1pP5/5r2/4K3/8 b - - 0 82",
+   "expected": "b7e4",
+   "expected_set": [
+    "b7e4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7e4",
+    "e2d2",
+    "f3f2",
+    "d2d1",
+    "e4h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 12,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15103,
+   "group": "development"
+  },
+  {
+   "fen": "2b2br1/rpNp1kp1/pNn5/1B2pp2/4P3/PP3PnP/2P1q3/R1B2RK1 b - - 2 28",
+   "expected": "f8c5",
+   "expected_set": [
+    "f8c5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f8c5",
+    "c1e3",
+    "c5e3",
+    "f1f2",
+    "e2f2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15110,
+   "group": "development"
+  },
+  {
+   "fen": "8/5kr1/p7/p1N4p/P1P1p3/2NRq2P/6r1/Q3R2K b - - 3 74",
+   "expected": "g2h2",
+   "expected_set": [
+    "g2h2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g2h2",
+    "h1h2",
+    "e3f2",
+    "h2h1",
+    "f2g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15133,
+   "group": "holdout"
+  },
+  {
+   "fen": "1R1r2r1/2p5/1n2kb1p/Pp2qp1P/6p1/P1P3p1/RBK5/1Q1N2R1 b - - 0 47",
+   "expected": "e5e4",
+   "expected_set": [
+    "e5e4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e5e4",
+    "c2c1",
+    "f6g5",
+    "d1e3",
+    "g5e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 32,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15207,
+   "group": "holdout"
+  },
+  {
+   "fen": "1R2bk2/4r2R/8/2B2N2/3PpK2/5P2/P3B3/7q w - - 2 54",
+   "expected": "c5e7",
+   "expected_set": [
+    "c5e7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c5e7",
+    "f8g8",
+    "h7g7",
+    "g8h8",
+    "b8e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15352,
+   "group": "holdout"
+  },
+  {
+   "fen": "2b4N/r1p5/k3q3/N1PpBp1P/4nP2/P2K4/1P2B2P/RQ5R w - - 1 25",
+   "expected": "d3d4",
+   "expected_set": [
+    "d3d4",
+    "d3e3",
+    "d3c2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d3d4",
+    "a6a5",
+    "b2b4",
+    "a5a4",
+    "b1c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15430,
+   "group": "development"
+  },
+  {
+   "fen": "2r1b1k1/p1p3pr/n2p2Np/3n2P1/1q3PRP/P7/1bK1B3/2R5 b - - 1 38",
+   "expected": "e8a4",
+   "expected_set": [
+    "e8a4",
+    "d5e3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8a4",
+    "c2b1",
+    "b2a3",
+    "b1a2",
+    "b4b2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15440,
+   "group": "holdout"
+  },
+  {
+   "fen": "7b/2k5/8/1pn2r2/1pr5/p7/b3K3/8 b - - 7 79",
+   "expected": "h8c3",
+   "expected_set": [
+    "h8c3",
+    "c4e4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h8c3",
+    "e2d1",
+    "a2b3",
+    "d1e2",
+    "c4e4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "defensive_only",
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 15484,
+   "group": "development"
+  },
+  {
+   "fen": "2kr4/1n6/b3pn2/3R1Ppp/6p1/1r5N/4N2r/4K1R1 b - - 1 70",
+   "expected": "h2e2",
+   "expected_set": [
+    "h2e2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h2e2",
+    "e1f1",
+    "f6d5",
+    "h3g5",
+    "d5e3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15509,
+   "group": "development"
+  },
+  {
+   "fen": "8/2k5/4P3/pB6/8/PP5p/2b1p3/7K b - - 9 69",
+   "expected": "e2e1q",
+   "expected_set": [
+    "e2e1q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e2e1q",
+    "h1h2",
+    "e1f2",
+    "h2h3",
+    "c2f5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "promotion"
+   ],
+   "in_check": false,
+   "index": 15517,
+   "group": "holdout"
+  },
+  {
+   "fen": "2r2k2/8/p2N1p2/P1p4p/5PQP/1p4N1/1P3B2/R3KbR1 w - - 1 53",
+   "expected": "g4c8",
+   "expected_set": [
+    "g4c8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "g4c8",
+    "f8g7",
+    "g3f5",
+    "g7h7",
+    "c8g8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15526,
+   "group": "holdout"
+  },
+  {
+   "fen": "2k1rQ2/8/R1b4P/P4R2/1N4p1/1p2p3/4PPP1/3K1B2 w - - 8 77",
+   "expected": "a6c6",
+   "expected_set": [
+    "a6c6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a6c6",
+    "c8b8",
+    "f8e8",
+    "b8b7",
+    "f5f7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 15593,
+   "group": "development"
+  },
+  {
+   "fen": "r2k3r/3b3p/4p1p1/ppN1Pp2/PP2N3/3R4/1B4PP/5K2 w - f6 0 35",
+   "expected": "d3d7",
+   "expected_set": [
+    "d3d7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d3d7",
+    "d8e8",
+    "e4f6",
+    "e8f8",
+    "c5e6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 15701,
+   "group": "development"
+  },
+  {
+   "fen": "8/1BP2k2/1r6/8/6K1/pq6/8/br6 b - - 2 76",
+   "expected": "b6g6",
+   "expected_set": [
+    "b6g6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b6g6",
+    "g4f5",
+    "b1f1",
+    "f5e4",
+    "g6e6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16063,
+   "group": "development"
+  },
+  {
+   "fen": "r1q1nb1r/3kp3/1Q2np2/pp1p2pp/P4PbP/4K3/1P5R/R1B2BN1 w - - 7 33",
+   "expected": "f1b5",
+   "expected_set": [
+    "f1b5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f1b5",
+    "c8c6",
+    "b6c6",
+    "d7d8",
+    "c6d7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16089,
+   "group": "development"
+  },
+  {
+   "fen": "7r/2n1kp2/1R6/3Q2bp/1P1ppP2/3bB1PP/N7/R5K1 w - - 1 67",
+   "expected": "d5d6",
+   "expected_set": [
+    "d5d6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d5d6",
+    "e7e8",
+    "b6b8",
+    "g5d8",
+    "b8d8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16150,
+   "group": "holdout"
+  },
+  {
+   "fen": "4b2k/1r1P2r1/n4P2/B5pp/P3p3/2p3N1/4R2R/5K2 w - - 0 77",
+   "expected": "d7e8q",
+   "expected_set": [
+    "d7e8q"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d7e8q",
+    "g7g8",
+    "e8h5",
+    "b7h7",
+    "h5h7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "promotion",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16165,
+   "group": "development"
+  },
+  {
+   "fen": "8/1r6/pPr2p2/2P2Rpk/1K5P/5P1R/2q5/8 b - - 2 73",
+   "expected": "b7b6",
+   "expected_set": [
+    "b7b6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b7b6",
+    "c5b6",
+    "c6c4",
+    "b4a5",
+    "c4a4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16387,
+   "group": "holdout"
+  },
+  {
+   "fen": "3r1kr1/2n4p/p4q1p/1N5B/1P6/1P4P1/2K4P/1RR5 b - - 1 52",
+   "expected": "f6f2",
+   "expected_set": [
+    "f6f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f6f2",
+    "c2c3",
+    "c7b5",
+    "c3c4",
+    "f2d4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16433,
+   "group": "holdout"
+  },
+  {
+   "fen": "2b1N3/1p5r/rPk4p/p2p1pp1/P1PQ2B1/6nN/3KPP2/3R4 w - - 4 53",
+   "expected": "d4d5",
+   "expected_set": [
+    "d4d5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4d5",
+    "c6b6",
+    "d5d4",
+    "b6c6",
+    "d4d6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16573,
+   "group": "development"
+  },
+  {
+   "fen": "1r4n1/2P2p2/Qp3Pk1/2p3N1/2PP3p/2B4P/rq6/R2K1B1R b - - 5 47",
+   "expected": "b2b3",
+   "expected_set": [
+    "b2b3",
+    "b2c2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b2b3",
+    "d1e1",
+    "b3c3",
+    "e1d1",
+    "c3d2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16579,
+   "group": "development"
+  },
+  {
+   "fen": "Brn5/1b1N3k/4pp2/P2P3r/2qp4/2n1P1P1/2Kb4/1R2R3 b - - 1 49",
+   "expected": "d4d3",
+   "expected_set": [
+    "d4d3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4d3",
+    "c2d2",
+    "c3e4",
+    "d2d1",
+    "c4c2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16614,
+   "group": "holdout"
+  },
+  {
+   "fen": "1nr5/1b1k4/6R1/5PPp/R4nNP/8/1B5K/q7 b - - 8 52",
+   "expected": "a1h1",
+   "expected_set": [
+    "a1h1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a1h1",
+    "h2g3",
+    "h1f3",
+    "g3h2",
+    "f3g2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16796,
+   "group": "holdout"
+  },
+  {
+   "fen": "n3k1B1/3b4/5R2/qp3p2/3pP3/5r1R/PK4N1/8 b - - 7 79",
+   "expected": "a5c3",
+   "expected_set": [
+    "a5c3",
+    "a5d2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a5c3",
+    "b2b1",
+    "f3f1",
+    "g2e1",
+    "f1e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16890,
+   "group": "holdout"
+  },
+  {
+   "fen": "N1qr1n2/np3p2/4p2p/2bpP3/1kP5/1P1Q3P/5P1P/2B2RK1 w - - 0 32",
+   "expected": "c1d2",
+   "expected_set": [
+    "c1d2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c1d2",
+    "b4a3",
+    "f1a1",
+    "a3b2",
+    "d3c3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 48,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 16957,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/2P1kp1b/2r1P2K/p2PP3/1p4P1/PP5Q/N6P/R3R3 w - - 1 58",
+   "expected": "h3h4",
+   "expected_set": [
+    "h3h4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h3h4",
+    "f7f6",
+    "h4f6",
+    "e7e8",
+    "f6d8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 16975,
+   "group": "development"
+  },
+  {
+   "fen": "2b2k2/1rp2Pp1/B2P2np/4n2P/4r3/5P2/4Nq2/2KR4 b - - 10 49",
+   "expected": "f2c5",
+   "expected_set": [
+    "f2c5"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f2c5",
+    "c1d2",
+    "b7b2",
+    "d2e1",
+    "c5g1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17029,
+   "group": "development"
+  },
+  {
+   "fen": "r1b2k2/3Q2r1/3p1n2/1pp5/p4B2/1PRPnp2/P2N2PR/6K1 w - - 6 42",
+   "expected": "h2h8",
+   "expected_set": [
+    "h2h8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h2h8",
+    "f6g8",
+    "f4d6",
+    "g7e7",
+    "d7e7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17057,
+   "group": "holdout"
+  },
+  {
+   "fen": "rn2k1r1/N7/3qP2p/p1N2p2/PPpbb1nR/4PPP1/8/R1BK4 b - - 8 41",
+   "expected": "d4c3",
+   "expected_set": [
+    "d4c3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d4c3",
+    "d1e2",
+    "e4d3",
+    "e2d1",
+    "g4f2"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "discovered_attack",
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17158,
+   "group": "development"
+  },
+  {
+   "fen": "r1b5/p1pr1pb1/n1k4p/P5p1/1Ppp2PP/2N1R2B/Q4K2/2B2N1R w - - 6 38",
+   "expected": "h3g2",
+   "expected_set": [
+    "h3g2",
+    "a2c4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h3g2",
+    "d7d5",
+    "a2c4",
+    "c6d7",
+    "c4d5"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "skewer"
+   ],
+   "in_check": false,
+   "index": 17189,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/5Bk1/pp2R1Np/P5p1/3r2PP/2B5/4Kp2/5B2 w - - 0 66",
+   "expected": "c3d4",
+   "expected_set": [
+    "c3d4"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c3d4",
+    "g7f7",
+    "e6e7",
+    "f7g8",
+    "e7g7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 17197,
+   "group": "holdout"
+  },
+  {
+   "fen": "5kn1/3b1N2/4rr2/3nBP1Q/1p4P1/p2K2b1/P1P2q2/RN5B b - - 2 53",
+   "expected": "d7b5",
+   "expected_set": [
+    "d7b5",
+    "f2e3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "d7b5",
+    "d3e4",
+    "f2f4",
+    "e4d5",
+    "f4c4"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17335,
+   "group": "development"
+  },
+  {
+   "fen": "R1b1k3/8/p6P/pr1N1pp1/P1np4/q7/8/6K1 b - - 0 73",
+   "expected": "b5b1",
+   "expected_set": [
+    "b5b1",
+    "a3g3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b5b1",
+    "g1h2",
+    "b1b2",
+    "h2h1",
+    "a3a1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 17499,
+   "group": "holdout"
+  },
+  {
+   "fen": "5k2/n1q5/3rpp2/p2p2N1/PB1PR2Q/7K/RPB2PP1/8 w - - 1 45",
+   "expected": "h4h8",
+   "expected_set": [
+    "h4h8"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "h4h8",
+    "f8e7",
+    "e4e6",
+    "e7d7",
+    "h8e8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17612,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/2rk4/q1N5/r3p2p/p2p3N/2R5/2K3R1/4q3 b - - 4 69",
+   "expected": "e1c3",
+   "expected_set": [
+    "e1c3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e1c3",
+    "c2b1",
+    "a6d3",
+    "b1a2",
+    "c3a3"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "deflection",
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17673,
+   "group": "development"
+  },
+  {
+   "fen": "2r2k2/5Nbp/4p3/6N1/qP1P1PP1/8/6R1/1K6 b - - 0 56",
+   "expected": "a4b3",
+   "expected_set": [
+    "a4b3",
+    "a4d1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "a4b3",
+    "g2b2",
+    "b3d1",
+    "b1a2",
+    "c8a8"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 38,
+   "motifs": [
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17679,
+   "group": "development"
+  },
+  {
+   "fen": "3Br3/3k4/2r2pP1/2n5/P1P2P1b/3P2R1/1Pn2K2/1q6 b - - 2 58",
+   "expected": "b1e1",
+   "expected_set": [
+    "b1e1"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b1e1",
+    "f2g2",
+    "e1g3",
+    "g2h1",
+    "e8e1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "skewer",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17680,
+   "group": "development"
+  },
+  {
+   "fen": "3k4/3N4/1r1P4/p5p1/3p3p/1q4PB/2R3nK/8 b - - 5 64",
+   "expected": "b3g3",
+   "expected_set": [
+    "b3g3"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "b3g3",
+    "h2h1",
+    "b6b1",
+    "c2c1",
+    "b1c1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17726,
+   "group": "holdout"
+  },
+  {
+   "fen": "8/4P1k1/3B4/2P2q2/b5pr/5p2/8/6K1 b - - 2 76",
+   "expected": "f3f2",
+   "expected_set": [
+    "f3f2"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "f3f2",
+    "g1g2",
+    "f5f3",
+    "g2f1",
+    "h4h1"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "mate_threat"
+   ],
+   "in_check": false,
+   "index": 17808,
+   "group": "development"
+  },
+  {
+   "fen": "1n2Rr2/5k2/Bp3n2/5Npp/6PP/8/P7/2Q1K2b w - - 0 46",
+   "expected": "e8e7",
+   "expected_set": [
+    "e8e7"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "e8e7",
+    "f7g8",
+    "c1g5",
+    "g8h8",
+    "g5g7"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": 7,
+   "motifs": [
+    "mate_threat",
+    "overloaded_defender",
+    "sacrifice"
+   ],
+   "in_check": false,
+   "index": 17884,
+   "group": "holdout"
+  },
+  {
+   "fen": "4k1bb/2Q5/4p1pr/1P4pN/4rB2/5R1P/n4PB1/R4K2 w - - 4 53",
+   "expected": "c7c6",
+   "expected_set": [
+    "c7c6"
+   ],
+   "mate_in": 3,
+   "plies": 5,
+   "oracle": "exact forced-mate proof, independent of the engine",
+   "oracle_pv": [
+    "c7c6",
+    "e8d8",
+    "f4g5",
+    "h8f6",
+    "g5f6"
+   ],
+   "shorter_mate_exists": false,
+   "previous_capture": null,
+   "motifs": [
+    "fork",
+    "mate_threat",
+    "trapped_piece"
+   ],
+   "in_check": false,
+   "index": 17999,
+   "group": "holdout"
+  }
+ ],
+ "counts": {
+  "total": 251,
+  "development": 133,
+  "holdout": 118
+ },
+ "motif_counts": {
+  "mate_threat": 251,
+  "check_evasion": 0,
+  "fork": 68,
+  "pin": 1,
+  "skewer": 49,
+  "discovered_attack": 16,
+  "deflection": 29,
+  "overloaded_defender": 90,
+  "sacrifice": 58,
+  "recapture": 1,
+  "promotion": 16,
+  "defensive_only": 6,
+  "zwischenzug": 12,
+  "trapped_piece": 182
+ },
+ "seal": "2226f7259f9b053c3696f891af30f0cddd07d4288770fe8522f412ecc0e13de5"
+}
