@@ -1,0 +1,110 @@
+{
+  "snapshot_taken": "2026-09-07",
+  "source": "https://aichessathon.com/leaderboard",
+  "method": "server-rendered HTML table parsed directly; 365 of 367 ranked rows parsed (ranks 2 and 3 sit in a differently-nested row and were not needed)",
+  "total_ranked_entries": 367,
+  "us": {
+    "bot": "KilliManjaru1",
+    "team": "Sassori",
+    "university": "Southampton",
+    "rank": 281,
+    "rating": 1348,
+    "games": 28,
+    "record": "11 - 3 - 14"
+  },
+  "top_5_percent": {
+    "boundary_rank": 19,
+    "entry_at_boundary": "Fuzzydafool FuzzyBot",
+    "rating_at_boundary": 2200,
+    "our_gap_rating": 852,
+    "our_gap_places": 262
+  },
+  "public_engine_baselines": [
+    {
+      "name": "Loki 3.0 Engine",
+      "rank": 111,
+      "rating": 1721,
+      "games": 43,
+      "record": "25 - 5 - 13",
+      "gap_from_us": 373
+    },
+    {
+      "name": "Zagreus 5.0 Engine",
+      "rank": 121,
+      "rating": 1686,
+      "games": 42,
+      "record": "20 - 7 - 15",
+      "gap_from_us": 338
+    },
+    {
+      "name": "Shallow Blue 2.0 Engine",
+      "rank": 150,
+      "rating": 1632,
+      "games": 49,
+      "record": "21 - 9 - 19",
+      "gap_from_us": 284
+    },
+    {
+      "name": "Rustic Alpha 3 Engine",
+      "rank": 153,
+      "rating": 1630,
+      "games": 51,
+      "record": "20 - 9 - 22",
+      "gap_from_us": 282
+    },
+    {
+      "name": "Zagreus 2.3.1 Engine",
+      "rank": 200,
+      "rating": 1527,
+      "games": 42,
+      "record": "16 - 8 - 18",
+      "gap_from_us": 179
+    },
+    {
+      "name": "Sunfish House",
+      "rank": 238,
+      "rating": 1447,
+      "games": 51,
+      "record": "21 - 4 - 26",
+      "gap_from_us": 99
+    },
+    {
+      "name": "Minimax Three House",
+      "rank": 349,
+      "rating": 1152,
+      "games": 46,
+      "record": "16 - 4 - 26",
+      "gap_from_us": -196
+    },
+    {
+      "name": "Minimax Two House",
+      "rank": 355,
+      "rating": 1069,
+      "games": 48,
+      "record": "16 - 5 - 27",
+      "gap_from_us": -279
+    },
+    {
+      "name": "Greedy Material House",
+      "rank": 362,
+      "rating": 937,
+      "games": 52,
+      "record": "13 - 9 - 30",
+      "gap_from_us": -411
+    },
+    {
+      "name": "Random Mover House",
+      "rank": 367,
+      "rating": 819,
+      "games": 51,
+      "record": "2 - 20 - 29",
+      "gap_from_us": -529
+    }
+  ],
+  "caveats": [
+    "A leaderboard rating is fitted to results against the whole field on the platform's hardware and openings. A local match against a downloaded binary shares neither the field, the hardware, nor the opponent pool, so a local score cannot be converted into a leaderboard rating.",
+    "The house engines hold a fixed rating by design, which anchors the scale but also means their number is not re-estimated from recent play.",
+    "Our own rating rests on 28 games, several of them played by earlier submissions than the current one, so it lags the engine actually in the repository.",
+    "Rank moves as teams upload; the boundary rating for the top 5% is a snapshot, not a fixed target."
+  ]
+}

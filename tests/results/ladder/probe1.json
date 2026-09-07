@@ -1,0 +1,65 @@
+{
+  "engine": "shallowblue",
+  "engine_binary": "tests/external_engines/bin/shallowblue_x86-64.exe",
+  "our_source": ".",
+  "games": 1,
+  "base_ms": 8000,
+  "increment_ms": 100,
+  "seed": 20260907,
+  "wins": 0,
+  "draws": 0,
+  "losses": 1,
+  "points": 0.0,
+  "score": 0.0,
+  "score_ci95": [
+    0.0,
+    0.7935
+  ],
+  "paired_pairs": 0,
+  "paired_mean_difference": null,
+  "paired_stdev": null,
+  "by_colour": {
+    "White": {
+      "games": 1,
+      "points": 0.0
+    },
+    "Black": {
+      "games": 0,
+      "points": 0
+    }
+  },
+  "by_opening": {
+    "r44-blitz": {
+      "games": 1.0,
+      "points": 0.0
+    }
+  },
+  "terminations": {
+    "checkmate": 1
+  },
+  "agent_failures": 0,
+  "flags": 0,
+  "crashes": 0,
+  "illegal": 0,
+  "init_failures": 0,
+  "mean_plies": 59.0,
+  "mean_move_seconds": 0.245,
+  "games_detail": [
+    {
+      "index": 0,
+      "pair": 0,
+      "opening": "r44-blitz",
+      "opening_fen": "r1bq1rk1/ppp2ppp/2np1n2/2b1p3/2B1P3/2PP1N2/PP1N1PPP/R1BQ1RK1 b - - 3 7",
+      "agent_colour": "White",
+      "result": "black",
+      "termination": "checkmate",
+      "points": 0.0,
+      "plies": 59,
+      "our_moves": 30,
+      "wall_seconds": 14.45,
+      "mean_move_seconds": 0.245,
+      "agent_failed": false,
+      "pgn": "[Event \"?\"]\n[Site \"?\"]\n[Date \"????.??.??\"]\n[Round \"?\"]\n[White \"?\"]\n[Black \"?\"]\n[Result \"0-1\"]\n[FEN \"r1bq1rk1/ppp2ppp/2np1n2/2b1p3/2B1P3/2PP1N2/PP1N1PPP/R1BQ1RK1 b - - 3 7\"]\n[SetUp \"1\"]\n[Termination \"checkmate\"]\n\n7... d5 8. Bb5 Qd6 9. b4 Bb6 10. Ng5 a6 11. Bxc6 Qxc6 12. c4 dxe4 13. Ndxe4 Bd4 14. Nxf6+ gxf6 15. b5 axb5 16. cxb5 Qxb5 17. a4 Qc6 18. Nxh7 Kxh7 19. Ra2 Be6 20. Rc2 Qxa4 21. Qh5+ Kg8 22. Rxc7 Qb5 23. Bh6 Qb6 24. Rc2 Rfc8 25. Rfc1 Rxc2 26. Rxc2 Bxf2+ 27. Kf1 Bc5 28. Qf3 Ra4 29. Bd2 Qd6 30. Ke1 Bg4 31. Qxb7 Qxd3 32. Qb8+ Kh7 33. Qh8+ Kxh8 34. Be3 Qxe3+ 35. Kf1 Ra1+ 36. Rc1 Rxc1# 0-1"
+    }
+  ]
+}

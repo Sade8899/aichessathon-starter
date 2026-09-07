@@ -1,0 +1,30 @@
+{
+  "engine": "rustic3",
+  "binary": "tests/external_engines/bin/rustic-alpha-3.0.6-win64.exe",
+  "identified": "Rustic Alpha 3.0.6",
+  "identity_matches_expected": true,
+  "answers_legal_moves": true,
+  "answers_for_side_to_move": true,
+  "small_clock_seconds": 0.221,
+  "respects_small_clock": true,
+  "large_clock_seconds": 0.448,
+  "scales_with_clock": true,
+  "process_exited": true,
+  "exit_code": 0,
+  "fixed_position_moves": [
+    "d2d3",
+    "d2d3",
+    "d2d3"
+  ],
+  "fixed_position_legal": true,
+  "fixed_position_deterministic": true,
+  "mandatory": [
+    "identity_matches_expected",
+    "answers_legal_moves",
+    "answers_for_side_to_move",
+    "respects_small_clock",
+    "process_exited",
+    "fixed_position_legal"
+  ],
+  "passed": true
+}

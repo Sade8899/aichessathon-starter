@@ -1,0 +1,138 @@
+{
+  "cases": 414,
+  "mismatches": 0,
+  "illegal_moves": 0,
+  "detail": [
+    {
+      "name": "ep-white",
+      "fen": "rnbqkbnr/ppp1p1pp/8/3pPp2/8/8/PPPP1PPP/RNBQKBNR w KQkq f6 0 3",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "e5f6"
+      ]
+    },
+    {
+      "name": "ep-black",
+      "fen": "rnbqkbnr/ppp1pppp/8/8/3pP3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 3",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "d4e3"
+      ]
+    },
+    {
+      "name": "ep-pinned-horizontal",
+      "fen": "8/8/8/K2pP2q/8/8/8/3k4 w - d6 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": []
+    },
+    {
+      "name": "ep-two-capturers",
+      "fen": "8/8/8/2k5/3Pp3/8/5K2/8 b - d3 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "c5d4",
+        "e4d3"
+      ]
+    },
+    {
+      "name": "quiet-promotion",
+      "fen": "8/3P4/8/8/8/8/3k4/K7 w - - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "d7d8q",
+        "d7d8r",
+        "d7d8b",
+        "d7d8n"
+      ]
+    },
+    {
+      "name": "capture-and-quiet-promotion",
+      "fen": "3r4/3P4/8/8/8/8/3k4/K7 w - - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": []
+    },
+    {
+      "name": "black-promotion-by-capture",
+      "fen": "8/8/8/8/8/8/3p4/K1R4k b - - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "d2c1q",
+        "d2c1r",
+        "d2c1b",
+        "d2c1n",
+        "d2d1q",
+        "d2d1r",
+        "d2d1b",
+        "d2d1n"
+      ]
+    },
+    {
+      "name": "blocked-seventh-rank",
+      "fen": "3r4/3P4/8/8/8/8/3k4/K7 w - - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": []
+    },
+    {
+      "name": "promotion-and-ep-together",
+      "fen": "8/2P5/8/3pP3/8/8/8/K6k w - d6 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "c7c8q",
+        "c7c8r",
+        "c7c8b",
+        "c7c8n",
+        "e5d6"
+      ]
+    },
+    {
+      "name": "no-captures-at-all",
+      "fen": "8/8/4k3/8/8/3K4/8/8 w - - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": []
+    },
+    {
+      "name": "castling-available",
+      "fen": "r3k2r/pppppppp/8/8/8/8/PPPPPPPP/R3K2R w KQkq - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": []
+    },
+    {
+      "name": "castling-with-captures",
+      "fen": "r3k2r/pp1ppppp/8/2b5/2B5/8/PP1PPPPP/R3K2R w KQkq - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "c4f7"
+      ]
+    },
+    {
+      "name": "rook-eyes-ep-square",
+      "fen": "8/8/8/R2pP2k/8/8/8/K7 w - d6 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": [
+        "a5d5",
+        "e5d6"
+      ]
+    },
+    {
+      "name": "stalemate-side",
+      "fen": "7k/5Q2/6K1/8/8/8/8/8 b - - 0 1",
+      "equal": true,
+      "illegal_moves": [],
+      "moves": []
+    }
+  ],
+  "passed": true
+}

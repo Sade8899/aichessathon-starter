@@ -49,7 +49,7 @@ WORKING_PATH = Path("agent.py")
 SASSORI = "Sassori"
 INCREMENT_S = 0.5
 BASE_S = 120.0
-ROUNDS = tuple(range(44, 54))
+ROUNDS = tuple(range(44, 57))
 REQUIRED_HEADERS = (
     "Event",
     "Site",
@@ -72,21 +72,14 @@ ASSERTIONS = (
     "not_standard_start",
     "all_moves_legal",
     "under_600_plies",
-    "colour_matches_csv",
     "colour_matches_expected",
-    "outcome_matches_csv",
     "outcome_matches_expected",
-    "termination_matches_csv",
     "termination_matches_expected",
     "termination_condition_holds",
     "mated_side_matches_result",
-    "moves_matches_csv",
     "clocks_present",
     "clock_never_negative",
     "no_move_exceeded_budget",
-    "slowest_matches_csv",
-    "clock_left_matches_csv",
-    "time_used_matches_csv",
     "round_header_matches_filename",
     "round_in_range",
 )
@@ -101,7 +94,23 @@ EXPECTED = {
     51: ("White", "Draw", "threefold_repetition"),
     52: ("White", "Win", "checkmate"),
     53: ("Black", "Loss", "checkmate"),
+    54: ("Black", "Win", "checkmate"),
+    55: ("Black", "Loss", "checkmate"),
+    56: ("White", "Loss", "checkmate"),
 }
+# The platform's cumulative CSV export stops at round 53. Rounds 54-56 were downloaded as
+# PGNs before a refreshed export existed, so every `*_matches_csv` check is inapplicable
+# there and is recorded as None rather than asserted. `CSV_ASSERTIONS` is the subset that
+# only runs when a row exists; `ASSERTIONS` holds the checks every game must satisfy.
+CSV_ASSERTIONS = (
+    "colour_matches_csv",
+    "outcome_matches_csv",
+    "termination_matches_csv",
+    "moves_matches_csv",
+    "slowest_matches_csv",
+    "clock_left_matches_csv",
+    "time_used_matches_csv",
+)
 
 
 # --------------------------------------------------------------------------- loading
@@ -265,8 +274,9 @@ def validate() -> dict[str, Any]:
     table = csv_rows()
     report: list[dict[str, Any]] = []
     for game in games():
-        row = table[game.round]
+        row = table.get(game.round)
         checks: dict[str, Any] = {}
+        checks["csv_row_present"] = row is not None
         checks["missing_headers"] = sorted(set(REQUIRED_HEADERS) - set(game.headers))
         checks["headers_present"] = not checks["missing_headers"]
         board = chess.Board(game.start_fen)
@@ -291,7 +301,7 @@ def validate() -> dict[str, Any]:
 
         colour = "White" if game.sassori else "Black"
         checks["sassori_colour"] = colour
-        checks["colour_matches_csv"] = colour == row["colour"]
+        checks["colour_matches_csv"] = None if row is None else colour == row["colour"]
         checks["colour_matches_expected"] = colour == EXPECTED[game.round][0]
         outcome = (
             "Draw"
@@ -299,11 +309,13 @@ def validate() -> dict[str, Any]:
             else ("Win" if (game.result == "1-0") == game.sassori else "Loss")
         )
         checks["outcome"] = outcome
-        checks["outcome_matches_csv"] = outcome == row["result"]
+        checks["outcome_matches_csv"] = None if row is None else outcome == row["result"]
         checks["outcome_matches_expected"] = outcome == EXPECTED[game.round][1]
         checks["termination"] = game.termination
         checks["termination_matches_csv"] = (
-            game.termination.replace("_", " ").lower() == row["termination"].lower()
+            None
+            if row is None
+            else game.termination.replace("_", " ").lower() == row["termination"].lower()
         )
         checks["termination_matches_expected"] = game.termination == EXPECTED[game.round][2]
 
@@ -325,28 +337,45 @@ def validate() -> dict[str, Any]:
         rows = clocks(game)
         spent = [r["seconds_used"] for r in rows if r["seconds_used"] is not None]
         checks["moves"] = len(rows)
-        checks["moves_matches_csv"] = len(rows) == int(row["moves"])
+        checks["moves_matches_csv"] = None if row is None else len(rows) == int(row["moves"])
         checks["clocks_present"] = len(spent) == len(rows)
         checks["clock_never_negative"] = all(
             r["clock_after_s"] is not None and r["clock_after_s"] >= 0 for r in rows
         )
         checks["no_move_exceeded_budget"] = max(spent) <= 3.75
         checks["slowest_s"] = round(max(spent), 3)
-        checks["slowest_matches_csv"] = abs(max(spent) - float(row["slowest_s"])) <= 0.05
+        checks["slowest_matches_csv"] = (
+            None if row is None else abs(max(spent) - float(row["slowest_s"])) <= 0.05
+        )
         checks["clock_left_s"] = rows[-1]["clock_after_s"]
         checks["clock_left_matches_csv"] = (
-            abs(float(rows[-1]["clock_after_s"] or 0.0) - float(row["clock_left_s"])) <= 0.05
+            None
+            if row is None
+            else abs(float(rows[-1]["clock_after_s"] or 0.0) - float(row["clock_left_s"])) <= 0.05
         )
         checks["time_used_s"] = round(sum(spent), 3)
-        checks["time_used_matches_csv"] = abs(sum(spent) - float(row["time_used_s"])) <= 0.6
+        checks["time_used_matches_csv"] = (
+            None if row is None else abs(sum(spent) - float(row["time_used_s"])) <= 0.6
+        )
         checks["round_header_matches_filename"] = f"round-{game.round}-" in game.path.name
         checks["round_in_range"] = game.round in ROUNDS
         checks["sha256"] = hashlib.sha256(game.path.read_bytes()).hexdigest()
         checks["file"] = str(game.path).replace("\\", "/")
-        report.append({"round": game.round, "opponent": row["opponent"], **checks})
+        opponent = (
+            row["opponent"]
+            if row is not None
+            else (game.headers["Black"] if game.sassori else game.headers["White"])
+        )
+        report.append({"round": game.round, "opponent": opponent, **checks})
 
     failures = [
         [entry["round"], name] for entry in report for name in ASSERTIONS if not entry[name]
+    ]
+    failures += [
+        [entry["round"], name]
+        for entry in report
+        for name in CSV_ASSERTIONS
+        if entry[name] is False
     ]
     return {
         "rounds": [entry["round"] for entry in report],

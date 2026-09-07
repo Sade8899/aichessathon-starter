@@ -1,0 +1,10 @@
+{
+  "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "candidate_sha256": "12907f5441c507d2b27a83eaf8b8146aed8811321c157e073bf2ae118bfb7566",
+  "added_definitions": [],
+  "removed_definitions": [],
+  "differing_definitions": [
+    "captures_and_promotions"
+  ],
+  "passed": true
+}

@@ -1,0 +1,201 @@
+{
+  "group": "rated",
+  "depth": 4,
+  "repeats": 3,
+  "positions": 31,
+  "total_control_s": 54.07,
+  "total_candidate_s": 50.834,
+  "total_gain_pct": 5.99,
+  "median_paired_gain_pct": 5.81,
+  "mean_paired_gain_pct": 4.42,
+  "worst_position_gain_pct": -20.59,
+  "positions_regressed": 5,
+  "detail": [
+    {
+      "id": "r55 7...Nbc6",
+      "control_s": 2.157,
+      "candidate_s": 1.9932,
+      "gain_pct": 7.6
+    },
+    {
+      "id": "r55 8...Qa5",
+      "control_s": 3.4338,
+      "candidate_s": 3.224,
+      "gain_pct": 6.11
+    },
+    {
+      "id": "r55 9...O-O",
+      "control_s": 4.8438,
+      "candidate_s": 4.4544,
+      "gain_pct": 8.04
+    },
+    {
+      "id": "r55 10...c4",
+      "control_s": 2.3407,
+      "candidate_s": 2.0408,
+      "gain_pct": 12.81
+    },
+    {
+      "id": "r55 11...f6",
+      "control_s": 1.1305,
+      "candidate_s": 1.0982,
+      "gain_pct": 2.86
+    },
+    {
+      "id": "r55 12...Rxf6",
+      "control_s": 0.823,
+      "candidate_s": 0.7528,
+      "gain_pct": 8.53
+    },
+    {
+      "id": "r55 13...Rf8",
+      "control_s": 0.6934,
+      "candidate_s": 0.6579,
+      "gain_pct": 5.11
+    },
+    {
+      "id": "r55 14...Bd7",
+      "control_s": 1.7121,
+      "candidate_s": 1.5358,
+      "gain_pct": 10.3
+    },
+    {
+      "id": "r55 15...b6",
+      "control_s": 3.1227,
+      "candidate_s": 2.8599,
+      "gain_pct": 8.42
+    },
+    {
+      "id": "r55 16...Kh8",
+      "control_s": 3.8558,
+      "candidate_s": 3.6449,
+      "gain_pct": 5.47
+    },
+    {
+      "id": "r55 17...Qa6",
+      "control_s": 1.4927,
+      "candidate_s": 1.5987,
+      "gain_pct": -7.1
+    },
+    {
+      "id": "r55 18...h6",
+      "control_s": 5.335,
+      "candidate_s": 5.0251,
+      "gain_pct": 5.81
+    },
+    {
+      "id": "r55 19...g5",
+      "control_s": 6.5557,
+      "candidate_s": 6.3894,
+      "gain_pct": 2.54
+    },
+    {
+      "id": "r55 20...Nxd4",
+      "control_s": 3.364,
+      "candidate_s": 3.1643,
+      "gain_pct": 5.94
+    },
+    {
+      "id": "r55 21...Bxb5",
+      "control_s": 0.6698,
+      "candidate_s": 0.6137,
+      "gain_pct": 8.37
+    },
+    {
+      "id": "r55 22...Bxa4",
+      "control_s": 0.372,
+      "candidate_s": 0.4486,
+      "gain_pct": -20.59
+    },
+    {
+      "id": "r55 23...Rxf8",
+      "control_s": 0.2448,
+      "candidate_s": 0.2235,
+      "gain_pct": 8.67
+    },
+    {
+      "id": "r55 24...Rxf3",
+      "control_s": 0.1694,
+      "candidate_s": 0.1759,
+      "gain_pct": -3.85
+    },
+    {
+      "id": "r55 25...b5",
+      "control_s": 0.2316,
+      "candidate_s": 0.2273,
+      "gain_pct": 1.86
+    },
+    {
+      "id": "r55 26...Kh7",
+      "control_s": 0.1431,
+      "candidate_s": 0.1567,
+      "gain_pct": -9.52
+    },
+    {
+      "id": "r55 27...Kh8",
+      "control_s": 0.1287,
+      "candidate_s": 0.1302,
+      "gain_pct": -1.15
+    },
+    {
+      "id": "r55 28...Kh7",
+      "control_s": 0.3678,
+      "candidate_s": 0.3499,
+      "gain_pct": 4.88
+    },
+    {
+      "id": "r55 29...Qb6",
+      "control_s": 0.8498,
+      "candidate_s": 0.8391,
+      "gain_pct": 1.26
+    },
+    {
+      "id": "r55 30...Kh8",
+      "control_s": 0.1554,
+      "candidate_s": 0.1549,
+      "gain_pct": 0.35
+    },
+    {
+      "id": "r55 31...Kh7",
+      "control_s": 0.2488,
+      "candidate_s": 0.23,
+      "gain_pct": 7.55
+    },
+    {
+      "id": "r54 53...Ke5",
+      "control_s": 0.1937,
+      "candidate_s": 0.1856,
+      "gain_pct": 4.19
+    },
+    {
+      "id": "r54 58...Qg3",
+      "control_s": 0.1873,
+      "candidate_s": 0.1815,
+      "gain_pct": 3.11
+    },
+    {
+      "id": "r56 17.f4",
+      "control_s": 6.9597,
+      "candidate_s": 6.4964,
+      "gain_pct": 6.66
+    },
+    {
+      "id": "r56 31.Kh1",
+      "control_s": 1.5588,
+      "candidate_s": 1.4381,
+      "gain_pct": 7.74
+    },
+    {
+      "id": "r56 39.g5",
+      "control_s": 0.6882,
+      "candidate_s": 0.5057,
+      "gain_pct": 26.51
+    },
+    {
+      "id": "r56 50.g5",
+      "control_s": 0.0405,
+      "candidate_s": 0.037,
+      "gain_pct": 8.56
+    }
+  ]
+}

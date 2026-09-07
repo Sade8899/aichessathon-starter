@@ -5,7 +5,9 @@
     "submitted_on": "2026-09-06",
     "archive_file": "submission 0609v4/agent.zip",
     "archive_sha256": "267400857f19b0c5ca9d5a4d6640f42201db1f42be9ba8cafae5e8bd63c6a74b",
-    "archive_members": ["agent.py"],
+    "archive_members": [
+      "agent.py"
+    ],
     "agent_sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
     "agent_bytes": 38673,
     "frozen_copy": "tests/submitted/e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b/agent.py",
@@ -15,41 +17,149 @@
   },
   "rated_rounds": {
     "first": 44,
-    "last": 53,
-    "played_on": ["2026-09-06", "2026-09-07"],
-    "all_played_by": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b"
+    "last": 56,
+    "played_on": [
+      "2026-09-06",
+      "2026-09-07"
+    ],
+    "all_played_by": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+    "attribution_evidence": [
+      "The leaderboard snapshot of 2026-09-07 records KilliManjaru1 at 28 games with a 11-3-14 record. Rounds 29-53 from the platform CSV total 10-3-12; adding round 54 (Win), 55 (Loss) and 56 (Loss) reproduces 11-3-14 over 28 games exactly.",
+      "Clock signature. This submission removed the 3.0 s per-move ceiling, so its budget ceiling is about 3.75 s. Rounds 44-53 show a slowest move of 3.50-3.60 s; rounds 54, 55 and 56 show 3.515, 3.522 and 3.602 s, with 8, 7 and 5 moves above 2.95 s. The previous build could not exceed 2.9 s in any of rounds 29-43, so these three games cannot have been played by it.",
+      "No newer submission directory or archive exists in the repository."
+    ]
   },
   "results": {
-    "games": 10,
-    "wins": 5,
+    "games": 13,
+    "wins": 6,
     "draws": 1,
-    "losses": 4,
-    "points": 5.5,
-    "as_white": {"games": 5, "wins": 2, "draws": 1, "losses": 2},
-    "as_black": {"games": 5, "wins": 3, "draws": 0, "losses": 2},
-    "terminations": {"checkmate": 9, "threefold_repetition": 1},
+    "losses": 6,
+    "points": 6.5,
+    "as_white": {
+      "games": 6,
+      "wins": 2,
+      "draws": 1,
+      "losses": 3
+    },
+    "as_black": {
+      "games": 7,
+      "wins": 4,
+      "draws": 0,
+      "losses": 3
+    },
+    "terminations": {
+      "checkmate": 12,
+      "threefold_repetition": 1
+    },
     "flags": 0,
     "crashes": 0,
     "illegal_moves": 0,
     "by_round": [
-      {"round": 44, "colour": "White", "opponent": "Blitz", "result": "Loss", "termination": "checkmate"},
-      {"round": 45, "colour": "Black", "opponent": "corundum.ai", "result": "Loss", "termination": "checkmate"},
-      {"round": 46, "colour": "White", "opponent": "The W in Woxbridge", "result": "Loss", "termination": "checkmate"},
-      {"round": 47, "colour": "Black", "opponent": "The Italian", "result": "Win", "termination": "checkmate"},
-      {"round": 48, "colour": "White", "opponent": "Queens of Queens'", "result": "Win", "termination": "checkmate"},
-      {"round": 49, "colour": "Black", "opponent": "Knightmare", "result": "Win", "termination": "checkmate"},
-      {"round": 50, "colour": "Black", "opponent": "Zugzwang Rickwar", "result": "Win", "termination": "checkmate"},
-      {"round": 51, "colour": "White", "opponent": "Left Right", "result": "Draw", "termination": "threefold repetition"},
-      {"round": 52, "colour": "White", "opponent": "Team2", "result": "Win", "termination": "checkmate"},
-      {"round": 53, "colour": "Black", "opponent": "e=mc^2", "result": "Loss", "termination": "checkmate"}
+      {
+        "round": 44,
+        "colour": "White",
+        "opponent": "Blitz",
+        "result": "Loss",
+        "termination": "checkmate"
+      },
+      {
+        "round": 45,
+        "colour": "Black",
+        "opponent": "corundum.ai",
+        "result": "Loss",
+        "termination": "checkmate"
+      },
+      {
+        "round": 46,
+        "colour": "White",
+        "opponent": "The W in Woxbridge",
+        "result": "Loss",
+        "termination": "checkmate"
+      },
+      {
+        "round": 47,
+        "colour": "Black",
+        "opponent": "The Italian",
+        "result": "Win",
+        "termination": "checkmate"
+      },
+      {
+        "round": 48,
+        "colour": "White",
+        "opponent": "Queens of Queens'",
+        "result": "Win",
+        "termination": "checkmate"
+      },
+      {
+        "round": 49,
+        "colour": "Black",
+        "opponent": "Knightmare",
+        "result": "Win",
+        "termination": "checkmate"
+      },
+      {
+        "round": 50,
+        "colour": "Black",
+        "opponent": "Zugzwang Rickwar",
+        "result": "Win",
+        "termination": "checkmate"
+      },
+      {
+        "round": 51,
+        "colour": "White",
+        "opponent": "Left Right",
+        "result": "Draw",
+        "termination": "threefold repetition"
+      },
+      {
+        "round": 52,
+        "colour": "White",
+        "opponent": "Team2",
+        "result": "Win",
+        "termination": "checkmate"
+      },
+      {
+        "round": 53,
+        "colour": "Black",
+        "opponent": "e=mc^2",
+        "result": "Loss",
+        "termination": "checkmate"
+      },
+      {
+        "round": 54,
+        "colour": "Black",
+        "opponent": "StockZero",
+        "result": "Win",
+        "termination": "checkmate"
+      },
+      {
+        "round": 55,
+        "colour": "Black",
+        "opponent": "Checkmate99",
+        "result": "Loss",
+        "termination": "checkmate"
+      },
+      {
+        "round": 56,
+        "colour": "White",
+        "opponent": "tristanize_chess",
+        "result": "Loss",
+        "termination": "checkmate"
+      }
     ]
   },
   "results_csv": {
     "file": "submission 0609v4/aichessathon-games.csv",
     "cumulative": true,
-    "rounds_contained": [29, 53],
-    "rounds_belonging_to_this_submission": [44, 53],
-    "note": "The CSV is the platform's cumulative export and contains rounds 29 through 53. Rounds 29 through 43 were played by earlier submissions and must not be attributed to this one."
+    "rounds_contained": [
+      29,
+      53
+    ],
+    "rounds_belonging_to_this_submission": [
+      44,
+      56
+    ],
+    "note": "The CSV is the platform's cumulative export and contains rounds 29 through 53 only. Rounds 29-43 were played by earlier submissions and must not be attributed to this one. Rounds 54, 55 and 56 were downloaded as PGNs before a refreshed CSV existed, so no CSV row backs them; every *_matches_csv check is recorded as null for those three rather than asserted, and attribution rests on rated_rounds.attribution_evidence."
   },
   "working_agent": {
     "path": "agent.py",
@@ -61,16 +171,71 @@
     "896ac0b24e5e7961ea5927e40f188163af4136e3b20faebf1f0cfc8e66fcc44d": "tactical check extension; failed verify.py and reduced completed depth. Not revived."
   },
   "games": [
-    {"round": 44, "file": "submission 0609v4/games/aichessathon-round-44-blitz.pgn", "sha256": "64934ad3997fecf66a1505e044b476c39bd07baea15d137a0da625e89bbbf8c2"},
-    {"round": 45, "file": "submission 0609v4/games/aichessathon-round-45-corundum-ai.pgn", "sha256": "f5b464d16bef821ebb26bc18a0fd695116cb61684799128d524a148f64b39237"},
-    {"round": 46, "file": "submission 0609v4/games/aichessathon-round-46-the-w-in-woxbridge.pgn", "sha256": "308b12cf17dedf60bf28beea0478abedba46d62e71a16b3d03d6016bac5a74f6"},
-    {"round": 47, "file": "submission 0609v4/games/aichessathon-round-47-the-italian.pgn", "sha256": "de4556a0c44654eadc0c20d5d05b8076657a2f905141858c0705f172850c9a62"},
-    {"round": 48, "file": "submission 0609v4/games/aichessathon-round-48-queens-of-queens-.pgn", "sha256": "8b0a2958f8bf098bcec8caec02e8d6eeecf08b3747e4e9d855867020a293be4a"},
-    {"round": 49, "file": "submission 0609v4/games/aichessathon-round-49-knightmare.pgn", "sha256": "a2bc65a175ebaf1be6465f3f454d27520ce355d52c62823565d5b1f866ea9105"},
-    {"round": 50, "file": "submission 0609v4/games/aichessathon-round-50-zugzwang-rickwar.pgn", "sha256": "e35714ab3590a4aaba7b6234f557b6e7b55f57a06798f0d2e02f87384e02f229"},
-    {"round": 51, "file": "submission 0609v4/games/aichessathon-round-51-left-right.pgn", "sha256": "350c80c927c3470858fee36718e434fb01ab6edcdb4343c554db491bdee33358"},
-    {"round": 52, "file": "submission 0609v4/games/aichessathon-round-52-team2.pgn", "sha256": "9a558978a5adb4643da379624a347709b106704437e7750671f00f805e54e525"},
-    {"round": 53, "file": "submission 0609v4/games/aichessathon-round-53-e-mc-2.pgn", "sha256": "a956b8bdb83dad8b1e196415cea1fc32e6563ade6b4e3230985d0b7edf28a4f4"}
+    {
+      "round": 44,
+      "file": "submission 0609v4/games/aichessathon-round-44-blitz.pgn",
+      "sha256": "64934ad3997fecf66a1505e044b476c39bd07baea15d137a0da625e89bbbf8c2"
+    },
+    {
+      "round": 45,
+      "file": "submission 0609v4/games/aichessathon-round-45-corundum-ai.pgn",
+      "sha256": "f5b464d16bef821ebb26bc18a0fd695116cb61684799128d524a148f64b39237"
+    },
+    {
+      "round": 46,
+      "file": "submission 0609v4/games/aichessathon-round-46-the-w-in-woxbridge.pgn",
+      "sha256": "308b12cf17dedf60bf28beea0478abedba46d62e71a16b3d03d6016bac5a74f6"
+    },
+    {
+      "round": 47,
+      "file": "submission 0609v4/games/aichessathon-round-47-the-italian.pgn",
+      "sha256": "de4556a0c44654eadc0c20d5d05b8076657a2f905141858c0705f172850c9a62"
+    },
+    {
+      "round": 48,
+      "file": "submission 0609v4/games/aichessathon-round-48-queens-of-queens-.pgn",
+      "sha256": "8b0a2958f8bf098bcec8caec02e8d6eeecf08b3747e4e9d855867020a293be4a"
+    },
+    {
+      "round": 49,
+      "file": "submission 0609v4/games/aichessathon-round-49-knightmare.pgn",
+      "sha256": "a2bc65a175ebaf1be6465f3f454d27520ce355d52c62823565d5b1f866ea9105"
+    },
+    {
+      "round": 50,
+      "file": "submission 0609v4/games/aichessathon-round-50-zugzwang-rickwar.pgn",
+      "sha256": "e35714ab3590a4aaba7b6234f557b6e7b55f57a06798f0d2e02f87384e02f229"
+    },
+    {
+      "round": 51,
+      "file": "submission 0609v4/games/aichessathon-round-51-left-right.pgn",
+      "sha256": "350c80c927c3470858fee36718e434fb01ab6edcdb4343c554db491bdee33358"
+    },
+    {
+      "round": 52,
+      "file": "submission 0609v4/games/aichessathon-round-52-team2.pgn",
+      "sha256": "9a558978a5adb4643da379624a347709b106704437e7750671f00f805e54e525"
+    },
+    {
+      "round": 53,
+      "file": "submission 0609v4/games/aichessathon-round-53-e-mc-2.pgn",
+      "sha256": "a956b8bdb83dad8b1e196415cea1fc32e6563ade6b4e3230985d0b7edf28a4f4"
+    },
+    {
+      "round": 54,
+      "file": "submission 0609v4/games/aichessathon-round-54-stockzero.pgn",
+      "sha256": "5a73fb2d31b6c06c6628a7dd20f9dcc20c24cc7655a044a2147dcdc4e1eb2d83"
+    },
+    {
+      "round": 55,
+      "file": "submission 0609v4/games/aichessathon-round-55-checkmate99.pgn",
+      "sha256": "1720c586e8e2f4536e2315fa8538c249e3b972a2ec032818d0988625cd31f338"
+    },
+    {
+      "round": 56,
+      "file": "submission 0609v4/games/aichessathon-round-56-tristanize-chess.pgn",
+      "sha256": "98cc51256e4bcefe07e9b07d56e78b5b9a74763310d9d6d76f7339d32f84d0ae"
+    }
   ],
   "game_files_note": "The ten PGNs are byte-identical copies of the platform downloads that also sit at the top of this directory. *.pgn is ignored repository-wide; .gitignore carries one narrow exception, !submission*/games/*.pgn, so this evidence directory is tracked while every other PGN stays ignored. .gitattributes marks the same paths -text so core.autocrlf cannot rewrite them and invalidate the digests above.",
   "validation": {
@@ -80,12 +245,19 @@
       "required headers present",
       "starting FEN legal and flagged SetUp",
       "every move legal from the starting FEN",
-      "result and termination agree with the CSV row",
-      "Sassori colour agrees with the CSV row",
+      "result and termination agree with the CSV row (rounds 44-53 only; null for 54-56)",
+      "Sassori colour agrees with the CSV row (rounds 44-53 only; null for 54-56)",
+      "result, colour and termination agree with the expected table (all rounds)",
       "clock stamps present, non-negative, and never above the 3.75 s budget ceiling",
       "final position satisfies the claimed termination",
-      "round header matches the file name and lies in 44 through 53"
+      "mated side agrees with the result",
+      "round header matches the file name and lies in 44 through 56",
+      "game under the 600-ply cap"
     ],
-    "passed": true
+    "passed": true,
+    "rounds": [
+      44,
+      56
+    ]
   }
 }

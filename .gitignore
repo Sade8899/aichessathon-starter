@@ -9,3 +9,8 @@ submission.zip
 # submission evidence under a submission folder's games/ directory are the
 # record of what the uploaded engine actually played, so they are tracked.
 !submission*/games/*.pgn
+
+# Third-party engine binaries used only as local benchmark opponents. They are
+# never shipped, never imported by agent.py, and several are GPL/AGPL, so the
+# binaries stay untracked; tests/external_engines.json records their provenance.
+tests/external_engines/

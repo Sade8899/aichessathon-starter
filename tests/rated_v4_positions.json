@@ -1,1493 +1,1872 @@
 {
-  "description": "Regression fixtures from rated rounds 44-53, played by the submitted source e5f63625... . Each fixture names a depth at which the control already makes the right choice, so it is a floor on search quality, not a memorised answer.",
-  "subject": {
-    "rated_agent_sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
-    "rated_agent_frozen_path": "tests/submitted/e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b/agent.py",
-    "submitted_archive_sha256": "267400857f19b0c5ca9d5a4d6640f42201db1f42be9ba8cafae5e8bd63c6a74b",
-    "working_agent_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
-    "working_agent_note": "the submitted source plus the accepted quiescence delta pruning; it played none of rounds 44-53",
-    "rejected_candidate_sha256": "896ac0b24e5e7961ea5927e40f188163af4136e3b20faebf1f0cfc8e66fcc44d",
-    "rejected_candidate_note": "check extension; not revived"
-  },
-  "method": {
-    "root": "full-window fixed-depth search using the engine's own root ordering",
-    "rated_move_score": "separate full-window search of the rated move at the same depth",
-    "oracle": "none. No trusted reference engine is installed and downloading one is out of scope, so every centipawn here is the control judging itself. Only the mate scores are proofs: the defender generates every legal move and the one shortcut on its side, a quiescence stand-pat, can only suppress a mate claim.",
-    "measurements": "tests/results/rated_v4/"
-  },
-  "rule": "A candidate passes a fixture with enforced=true when, at minimum_correcting_depth, its chosen move is in acceptable_uci (or, where that list is empty, is anything other than unacceptable_uci). Fixtures with enforced=false are recorded context and are reported but never gate a candidate.",
-  "positions": [
-    {
-      "id": "r44-14-b4",
-      "round": 44,
-      "kind": "earliest_recoverable",
-      "move": "14.b4",
-      "fen": "r1bqr1k1/ppp3pp/5b2/n2npp2/2B5/2PP1N2/PPQN1PPP/R1B1R1K1 w - - 4 14",
-      "side_to_move": "white",
-      "rated_move_uci": "b2b4",
-      "rated_move_san": "b4",
-      "acceptable_uci": [
-        "c4d5"
-      ],
-      "acceptable_san": [
-        "Bxd5+"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 5,
-      "score_margin_cp": 35,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "deflection: cxb4 opens the a1-h8 diagonal onto the undefended Ra1",
-      "classification": "5 - static evaluation",
-      "note": "Advisory. The control never rates this above 45 cp against, even at depth 7, so it is recorded as the earliest point with a better alternative, not as a move any engine must find.",
-      "enforced": false,
-      "depth_ladder": {
-        "2": {
-          "best": "b2b4",
-          "best_san": "b4",
-          "best_score": 7,
-          "rated_move_score": 7,
-          "loss_cp": 0,
-          "nodes": 899,
-          "quiescence_share": 0.962
-        },
-        "3": {
-          "best": "b2b4",
-          "best_san": "b4",
-          "best_score": 7,
-          "rated_move_score": 7,
-          "loss_cp": 0,
-          "nodes": 8416,
-          "quiescence_share": 0.977
-        },
-        "4": {
-          "best": "b2b4",
-          "best_san": "b4",
-          "best_score": -14,
-          "rated_move_score": -14,
-          "loss_cp": 0,
-          "nodes": 58302,
-          "quiescence_share": 0.942
-        },
-        "5": {
-          "best": "c4d5",
-          "best_san": "Bxd5+",
-          "best_score": 1,
-          "rated_move_score": -34,
-          "loss_cp": 35,
-          "nodes": 114072,
-          "quiescence_share": 0.938
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 103.867,
-        "seconds_used": 2.15,
-        "completed_depth_in_replay": 3,
-        "replay_reproduced_rated_move": true
-      }
+ "description": "Regression fixtures from rated rounds 44-56, played by the submitted source e5f63625... . Each fixture names a depth at which the control already makes the right choice, so it is a floor on search quality, not a memorised answer. Rounds 44-53 were recorded first and are unchanged; rounds 54-56 were appended after those games were downloaded and validated.",
+ "subject": {
+  "rated_agent_sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+  "rated_agent_frozen_path": "tests/submitted/e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b/agent.py",
+  "submitted_archive_sha256": "267400857f19b0c5ca9d5a4d6640f42201db1f42be9ba8cafae5e8bd63c6a74b",
+  "working_agent_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "working_agent_note": "the submitted source plus the accepted quiescence delta pruning; it played none of rounds 44-56",
+  "rejected_candidate_sha256": "896ac0b24e5e7961ea5927e40f188163af4136e3b20faebf1f0cfc8e66fcc44d",
+  "rejected_candidate_note": "check extension; not revived"
+ },
+ "method": {
+  "root": "full-window fixed-depth search using the engine's own root ordering",
+  "rated_move_score": "separate full-window search of the rated move at the same depth",
+  "oracle": "none. No trusted reference engine is installed and downloading one is out of scope, so every centipawn here is the control judging itself. Only the mate scores are proofs: the defender generates every legal move and the one shortcut on its side, a quiescence stand-pat, can only suppress a mate claim.",
+  "measurements": "tests/results/rated_v4/"
+ },
+ "rule": "A candidate passes a fixture with enforced=true when, at minimum_correcting_depth, its chosen move is in acceptable_uci (or, where that list is empty, is anything other than unacceptable_uci). Fixtures with enforced=false are recorded context and are reported but never gate a candidate.",
+ "positions": [
+  {
+   "id": "r44-14-b4",
+   "round": 44,
+   "kind": "earliest_recoverable",
+   "move": "14.b4",
+   "fen": "r1bqr1k1/ppp3pp/5b2/n2npp2/2B5/2PP1N2/PPQN1PPP/R1B1R1K1 w - - 4 14",
+   "side_to_move": "white",
+   "rated_move_uci": "b2b4",
+   "rated_move_san": "b4",
+   "acceptable_uci": [
+    "c4d5"
+   ],
+   "acceptable_san": [
+    "Bxd5+"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 5,
+   "score_margin_cp": 35,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "deflection: cxb4 opens the a1-h8 diagonal onto the undefended Ra1",
+   "classification": "5 - static evaluation",
+   "note": "Advisory. The control never rates this above 45 cp against, even at depth 7, so it is recorded as the earliest point with a better alternative, not as a move any engine must find.",
+   "enforced": false,
+   "depth_ladder": {
+    "2": {
+     "best": "b2b4",
+     "best_san": "b4",
+     "best_score": 7,
+     "rated_move_score": 7,
+     "loss_cp": 0,
+     "nodes": 899,
+     "quiescence_share": 0.962
     },
-    {
-      "id": "r44-21-Bf4",
-      "round": 44,
-      "kind": "earliest_recoverable",
-      "move": "21.Bf4",
-      "fen": "r1b3k1/ppp3pp/8/5q2/1PN5/1Q6/P4PPP/b1B1N1K1 w - - 0 21",
-      "side_to_move": "white",
-      "rated_move_uci": "c1f4",
-      "rated_move_san": "Bf4",
-      "acceptable_uci": [
-        "c1b2"
-      ],
-      "acceptable_san": [
-        "Bb2"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 5,
-      "score_margin_cp": 67,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "the exchange is already gone; this is the largest single depth-visible slip left",
-      "classification": "5 - static evaluation",
-      "note": "Advisory, 67 cp at depth 5. Round 44 has no result-changing single move.",
-      "enforced": false,
-      "depth_ladder": {
-        "2": {
-          "best": "c4d6",
-          "best_san": "Nd6+",
-          "best_score": -145,
-          "rated_move_score": -522,
-          "loss_cp": 377,
-          "nodes": 516,
-          "quiescence_share": 0.921
-        },
-        "3": {
-          "best": "c1f4",
-          "best_san": "Bf4",
-          "best_score": -138,
-          "rated_move_score": -138,
-          "loss_cp": 0,
-          "nodes": 9250,
-          "quiescence_share": 0.971
-        },
-        "4": {
-          "best": "c1f4",
-          "best_san": "Bf4",
-          "best_score": -163,
-          "rated_move_score": -163,
-          "loss_cp": 0,
-          "nodes": 27744,
-          "quiescence_share": 0.846
-        },
-        "5": {
-          "best": "c1b2",
-          "best_san": "Bb2",
-          "best_score": -170,
-          "rated_move_score": -237,
-          "loss_cp": 67,
-          "nodes": 120890,
-          "quiescence_share": 0.921
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 88.437,
-        "seconds_used": 2.654,
-        "completed_depth_in_replay": 3,
-        "replay_reproduced_rated_move": true
-      }
+    "3": {
+     "best": "b2b4",
+     "best_san": "b4",
+     "best_score": 7,
+     "rated_move_score": 7,
+     "loss_cp": 0,
+     "nodes": 8416,
+     "quiescence_share": 0.977
     },
-    {
-      "id": "r45-54-Rc7",
-      "round": 45,
-      "kind": "critical",
-      "move": "54...Rc7",
-      "fen": "1k6/6R1/8/p5P1/8/2r5/5PK1/8 b - - 0 54",
-      "side_to_move": "black",
-      "rated_move_uci": "c3c7",
-      "rated_move_san": "Rc7",
-      "acceptable_uci": [
-        "a5a4"
-      ],
-      "acceptable_san": [
-        "a4"
-      ],
-      "unacceptable_uci": "c3c7",
-      "minimum_correcting_depth": 7,
-      "score_margin_cp": 785,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "exchange into a pawn race: trading the last rook lets the g pawn queen alone",
-      "classification": "8 - exchange or promotion race",
-      "note": "The control plays Rc7 through depth 5 and needs depth 7 to see 785 cp. 54...a4 queens too and the control holds it at -133.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "c3c7",
-          "best_san": "Rc7",
-          "best_score": -129,
-          "rated_move_score": -129,
-          "loss_cp": 0,
-          "nodes": 155,
-          "quiescence_share": 0.89
-        },
-        "3": {
-          "best": "c3c7",
-          "best_san": "Rc7",
-          "best_score": -129,
-          "rated_move_score": -129,
-          "loss_cp": 0,
-          "nodes": 588,
-          "quiescence_share": 0.864
-        },
-        "4": {
-          "best": "c3c7",
-          "best_san": "Rc7",
-          "best_score": -165,
-          "rated_move_score": -165,
-          "loss_cp": 0,
-          "nodes": 2285,
-          "quiescence_share": 0.772
-        },
-        "5": {
-          "best": "c3c7",
-          "best_san": "Rc7",
-          "best_score": -135,
-          "rated_move_score": -135,
-          "loss_cp": 0,
-          "nodes": 7313,
-          "quiescence_share": 0.799
-        },
-        "6": {
-          "best": "a5a4",
-          "best_san": "a4",
-          "best_score": -133,
-          "rated_move_score": -161,
-          "loss_cp": 28,
-          "nodes": 25887,
-          "quiescence_share": 0.797
-        },
-        "7": {
-          "best": "a5a4",
-          "best_san": "a4",
-          "best_score": -133,
-          "rated_move_score": -918,
-          "loss_cp": 785,
-          "nodes": 201382,
-          "quiescence_share": 0.76
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 42.622,
-        "seconds_used": 1.242,
-        "completed_depth_in_replay": 5,
-        "replay_reproduced_rated_move": true
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 42620,
-          "budget_s": 1.33,
-          "move": "c3c7",
-          "san": "Rc7",
-          "completed_depth": 5,
-          "seconds": 1.12,
-          "avoided": false
-        },
-        {
-          "multiple": 2,
-          "clock_ms": 85240,
-          "budget_s": 2.66,
-          "move": "c3c7",
-          "san": "Rc7",
-          "completed_depth": 5,
-          "seconds": 2.56,
-          "avoided": false
-        },
-        {
-          "multiple": 4,
-          "clock_ms": 170480,
-          "budget_s": 5.33,
-          "move": "a5a4",
-          "san": "a4",
-          "completed_depth": 6,
-          "seconds": 4.8,
-          "avoided": true
-        }
-      ]
+    "4": {
+     "best": "b2b4",
+     "best_san": "b4",
+     "best_score": -14,
+     "rated_move_score": -14,
+     "loss_cp": 0,
+     "nodes": 58302,
+     "quiescence_share": 0.942
     },
-    {
-      "id": "r45-55-a4",
-      "round": 45,
-      "kind": "critical",
-      "move": "55...a4",
-      "fen": "1k6/2R5/8/p5P1/8/8/5PK1/8 b - - 0 55",
-      "side_to_move": "black",
-      "rated_move_uci": "a5a4",
-      "rated_move_san": "a4",
-      "acceptable_uci": [
-        "b8c7"
-      ],
-      "acceptable_san": [
-        "Kxc7"
-      ],
-      "unacceptable_uci": "a5a4",
-      "minimum_correcting_depth": 7,
-      "score_margin_cp": 29093,
-      "proof_type": "forced mate returned by full-window search",
-      "motif": "declining a free rook in a lost race; proven mate against at depth 7",
-      "classification": "12 - already lost position",
-      "note": "Both moves lose. a4 is a proven forced mate at depth 7 while Kxc7 is -899, so the fixture asserts the recapture, not a save.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "b8c7",
-          "best_san": "Kxc7",
-          "best_score": -165,
-          "rated_move_score": -737,
-          "loss_cp": 572,
-          "nodes": 30,
-          "quiescence_share": 0.9
-        },
-        "3": {
-          "best": "b8c7",
-          "best_san": "Kxc7",
-          "best_score": -133,
-          "rated_move_score": -721,
-          "loss_cp": 588,
-          "nodes": 38,
-          "quiescence_share": 0.605
-        },
-        "4": {
-          "best": "b8c7",
-          "best_san": "Kxc7",
-          "best_score": -161,
-          "rated_move_score": -753,
-          "loss_cp": 592,
-          "nodes": 136,
-          "quiescence_share": 0.721
-        },
-        "5": {
-          "best": "b8c7",
-          "best_san": "Kxc7",
-          "best_score": -918,
-          "rated_move_score": -918,
-          "loss_cp": 0,
-          "nodes": 2238,
-          "quiescence_share": 0.606
-        },
-        "6": {
-          "best": "b8c7",
-          "best_san": "Kxc7",
-          "best_score": -918,
-          "rated_move_score": -918,
-          "loss_cp": 0,
-          "nodes": 13466,
-          "quiescence_share": 0.867
-        },
-        "7": {
-          "best": "b8c7",
-          "best_san": "Kxc7",
-          "best_score": -899,
-          "rated_move_score": -29992,
-          "loss_cp": 29093,
-          "nodes": 4744,
-          "quiescence_share": 0.653
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 41.88,
-        "seconds_used": 0.936,
-        "completed_depth_in_replay": 6,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r46-29-a5",
-      "round": 46,
-      "kind": "context",
-      "move": "29.a5",
-      "fen": "r5k1/5rq1/1pp1p2p/3bPp2/PP2pP2/K1Q3P1/4P1B1/3R3R w - - 1 29",
-      "side_to_move": "white",
-      "rated_move_uci": "a4a5",
-      "rated_move_san": "a5",
-      "acceptable_uci": [
-        "a4a5"
-      ],
-      "acceptable_san": [
-        "a5"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 5,
-      "score_margin_cp": 0,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "the pawn break before the king walk",
-      "classification": "not an error",
-      "note": "Recorded so a future engine is not credited with fixing a move that was never wrong: loss 0 at depths 4, 5 and 6, and only 22 cp at depth 7.",
-      "enforced": false,
-      "depth_ladder": {
-        "2": {
-          "best": "a4a5",
-          "best_san": "a5",
-          "best_score": 9,
-          "rated_move_score": 9,
-          "loss_cp": 0,
-          "nodes": 3178,
-          "quiescence_share": 0.987
-        },
-        "3": {
-          "best": "h1h3",
-          "best_san": "Rh3",
-          "best_score": -22,
-          "rated_move_score": -63,
-          "loss_cp": 41,
-          "nodes": 22961,
-          "quiescence_share": 0.985
-        },
-        "4": {
-          "best": "a4a5",
-          "best_san": "a5",
-          "best_score": -63,
-          "rated_move_score": -63,
-          "loss_cp": 0,
-          "nodes": 25722,
-          "quiescence_share": 0.953
-        },
-        "5": {
-          "best": "a4a5",
-          "best_san": "a5",
-          "best_score": -129,
-          "rated_move_score": -129,
-          "loss_cp": 0,
-          "nodes": 141049,
-          "quiescence_share": 0.964
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 70.332,
-        "seconds_used": 2.112,
-        "completed_depth_in_replay": 2,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r46-30-Ka4",
-      "round": 46,
-      "kind": "critical",
-      "move": "30.Ka4",
-      "fen": "r5k1/5rq1/2p1p2p/p2bPp2/1P2pP2/K1Q3P1/4P1B1/3R3R w - - 0 30",
-      "side_to_move": "white",
-      "rated_move_uci": "a3a4",
-      "rated_move_san": "Ka4",
-      "acceptable_uci": [
-        "b4a5"
-      ],
-      "acceptable_san": [
-        "bxa5"
-      ],
-      "unacceptable_uci": "a3a4",
-      "minimum_correcting_depth": 4,
-      "score_margin_cp": 95,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "king walk into a forcing check sequence that wins the queen and then mates",
-      "classification": "1 - search horizon",
-      "note": "Highest-priority loss. Avoided at depth 4 (95 cp); understood at depth 6 (985 cp); after 30...axb4+ every White move is a proven mate at depth 6.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "b4a5",
-          "best_san": "bxa5",
-          "best_score": -19,
-          "rated_move_score": -129,
-          "loss_cp": 110,
-          "nodes": 895,
-          "quiescence_share": 0.953
-        },
-        "3": {
-          "best": "a3a4",
-          "best_san": "Ka4",
-          "best_score": -129,
-          "rated_move_score": -129,
-          "loss_cp": 0,
-          "nodes": 7605,
-          "quiescence_share": 0.969
-        },
-        "4": {
-          "best": "b4a5",
-          "best_san": "bxa5",
-          "best_score": -131,
-          "rated_move_score": -226,
-          "loss_cp": 95,
-          "nodes": 22786,
-          "quiescence_share": 0.95
-        },
-        "5": {
-          "best": "b4a5",
-          "best_san": "bxa5",
-          "best_score": -131,
-          "rated_move_score": -223,
-          "loss_cp": 92,
-          "nodes": 74531,
-          "quiescence_share": 0.944
-        },
-        "6": {
-          "best": "b4a5",
-          "best_san": "bxa5",
-          "best_score": -177,
-          "rated_move_score": -1162,
-          "loss_cp": 985,
-          "nodes": 295714,
-          "quiescence_share": 0.905
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 68.72,
-        "seconds_used": 1.606,
-        "completed_depth_in_replay": 3,
-        "replay_reproduced_rated_move": true
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 68720,
-          "budget_s": 2.15,
-          "move": "a3a4",
-          "san": "Ka4",
-          "completed_depth": 3,
-          "seconds": 1.42,
-          "avoided": false
-        },
-        {
-          "multiple": 2,
-          "clock_ms": 137440,
-          "budget_s": 4.29,
-          "move": "b4a5",
-          "san": "bxa5",
-          "completed_depth": 4,
-          "seconds": 4.13,
-          "avoided": true
-        }
-      ]
-    },
-    {
-      "id": "r51-53-Qc5",
-      "round": 51,
-      "kind": "critical",
-      "move": "53.Qc5",
-      "fen": "5nk1/2R5/3P1p1r/P2q2p1/6P1/Q6P/7K/2R5 w - - 18 53",
-      "side_to_move": "white",
-      "rated_move_uci": "a3c5",
-      "rated_move_san": "Qc5",
-      "acceptable_uci": [
-        "a5a6"
-      ],
-      "acceptable_san": [
-        "a6"
-      ],
-      "unacceptable_uci": "a3c5",
-      "minimum_correcting_depth": 4,
-      "score_margin_cp": 161,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "the winning passed pawn push is abandoned for a queen sortie",
-      "classification": "1 - search horizon",
-      "note": "First move of the collapse from +520 to a draw. 161 cp at depth 4.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "a3c5",
-          "best_san": "Qc5",
-          "best_score": 545,
-          "rated_move_score": 545,
-          "loss_cp": 0,
-          "nodes": 1932,
-          "quiescence_share": 0.978
-        },
-        "3": {
-          "best": "a3c5",
-          "best_san": "Qc5",
-          "best_score": 545,
-          "rated_move_score": 545,
-          "loss_cp": 0,
-          "nodes": 7878,
-          "quiescence_share": 0.958
-        },
-        "4": {
-          "best": "a5a6",
-          "best_san": "a6",
-          "best_score": 529,
-          "rated_move_score": 368,
-          "loss_cp": 161,
-          "nodes": 40913,
-          "quiescence_share": 0.902
-        },
-        "5": {
-          "best": "a5a6",
-          "best_san": "a6",
-          "best_score": 536,
-          "rated_move_score": 386,
-          "loss_cp": 150,
-          "nodes": 177975,
-          "quiescence_share": 0.913
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 44.894,
-        "seconds_used": 0.982,
-        "completed_depth_in_replay": 2,
-        "replay_reproduced_rated_move": true
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 44890,
-          "budget_s": 1.4,
-          "move": "a3c5",
-          "san": "Qc5",
-          "completed_depth": 3,
-          "seconds": 1.35,
-          "avoided": false
-        },
-        {
-          "multiple": 2,
-          "clock_ms": 89780,
-          "budget_s": 2.81,
-          "move": "a5a6",
-          "san": "a6",
-          "completed_depth": 4,
-          "seconds": 2.51,
-          "avoided": true
-        }
-      ]
-    },
-    {
-      "id": "r51-62-Ke3",
-      "round": 51,
-      "kind": "critical",
-      "move": "62.Ke3",
-      "fen": "2R2n1k/8/Q2P1p2/P5p1/6P1/8/3K1r2/2R3q1 w - - 8 62",
-      "side_to_move": "white",
-      "rated_move_uci": "d2e3",
-      "rated_move_san": "Ke3",
-      "acceptable_uci": [
-        "d2d3"
-      ],
-      "acceptable_san": [
-        "Kd3"
-      ],
-      "unacceptable_uci": "d2e3",
-      "minimum_correcting_depth": 6,
-      "score_margin_cp": 468,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "king walk into a forcing check sequence; the win is gone one ply later",
-      "classification": "1 - search horizon",
-      "note": "The last move at which White was still winning. +261 through depth 5, -230 at depth 6. The container replay completed depth 6 here and played Kd3.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "d2e3",
-          "best_san": "Ke3",
-          "best_score": 261,
-          "rated_move_score": 261,
-          "loss_cp": 0,
-          "nodes": 363,
-          "quiescence_share": 0.989
-        },
-        "3": {
-          "best": "d2e3",
-          "best_san": "Ke3",
-          "best_score": 261,
-          "rated_move_score": 261,
-          "loss_cp": 0,
-          "nodes": 637,
-          "quiescence_share": 0.917
-        },
-        "4": {
-          "best": "d2e3",
-          "best_san": "Ke3",
-          "best_score": 261,
-          "rated_move_score": 261,
-          "loss_cp": 0,
-          "nodes": 3063,
-          "quiescence_share": 0.903
-        },
-        "5": {
-          "best": "d2e3",
-          "best_san": "Ke3",
-          "best_score": 261,
-          "rated_move_score": 261,
-          "loss_cp": 0,
-          "nodes": 11324,
-          "quiescence_share": 0.878
-        },
-        "6": {
-          "best": "d2d3",
-          "best_san": "Kd3",
-          "best_score": 238,
-          "rated_move_score": -230,
-          "loss_cp": 468,
-          "nodes": 32795,
-          "quiescence_share": 0.843
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 39.135,
-        "seconds_used": 0.977,
-        "completed_depth_in_replay": 6,
-        "replay_reproduced_rated_move": false
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 39130,
-          "budget_s": 1.22,
-          "move": "d2d3",
-          "san": "Kd3",
-          "completed_depth": 6,
-          "seconds": 1.14,
-          "avoided": true
-        }
-      ]
-    },
-    {
-      "id": "r51-66-Qc4",
-      "round": 51,
-      "kind": "critical",
-      "move": "66.Qc4",
-      "fen": "2R2n1k/8/Q2P1p2/P1K3p1/6P1/8/5r2/2q5 w - - 0 66",
-      "side_to_move": "white",
-      "rated_move_uci": "a6c4",
-      "rated_move_san": "Qc4",
-      "acceptable_uci": [
-        "c5b6"
-      ],
-      "acceptable_san": [
-        "Kb6"
-      ],
-      "unacceptable_uci": "a6c4",
-      "minimum_correcting_depth": 4,
-      "score_margin_cp": 395,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "queen trade into a lost pawn ending while blocking a check",
-      "classification": "1 - search horizon",
-      "note": "395 cp at depth 4, and the control completes depth 3 at the rated clock.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "a6c4",
-          "best_san": "Qc4",
-          "best_score": -145,
-          "rated_move_score": -145,
-          "loss_cp": 0,
-          "nodes": 398,
-          "quiescence_share": 0.985
-        },
-        "3": {
-          "best": "a6c4",
-          "best_san": "Qc4",
-          "best_score": -145,
-          "rated_move_score": -145,
-          "loss_cp": 0,
-          "nodes": 666,
-          "quiescence_share": 0.793
-        },
-        "4": {
-          "best": "c5b6",
-          "best_san": "Kb6",
-          "best_score": -220,
-          "rated_move_score": -615,
-          "loss_cp": 395,
-          "nodes": 4548,
-          "quiescence_share": 0.896
-        },
-        "5": {
-          "best": "c5b6",
-          "best_san": "Kb6",
-          "best_score": -220,
-          "rated_move_score": -615,
-          "loss_cp": 395,
-          "nodes": 10105,
-          "quiescence_share": 0.782
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 36.934,
-        "seconds_used": 1.112,
-        "completed_depth_in_replay": 5,
-        "replay_reproduced_rated_move": false
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 36930,
-          "budget_s": 1.15,
-          "move": "c5b6",
-          "san": "Kb6",
-          "completed_depth": 5,
-          "seconds": 1.11,
-          "avoided": true
-        }
-      ]
-    },
-    {
-      "id": "r51-79-repetition",
-      "round": 51,
-      "kind": "objective_state",
-      "move": "79.Kb7 (the position the threefold repeated)",
-      "fen": "7r/PK1P1k2/5p2/2n3p1/6P1/8/8/8 w - - 11 80",
-      "side_to_move": "white",
-      "rated_move_uci": null,
-      "rated_move_san": null,
-      "acceptable_uci": [
-        "b7c6"
-      ],
-      "acceptable_san": [
-        "Kc6"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 6,
-      "score_margin_cp": 0,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "two connected passers on a7 and d7 against a rook and knight; neither side makes progress",
-      "classification": "9 - repetition handling, and it was handled correctly",
-      "note": "Recorded to fix the objective state, not to gate anything. White is a rook and a knight down for the two passers, -720 by material. The control searched this to depth 10 and never found progress for either side: -670 at depth 4 through -731 at depth 10. Repeating scores 0 against roughly -700 for everything else, so accepting the threefold saved half a point from a lost position. The win was already gone at 62.Ke3.",
-      "enforced": false,
-      "depth_ladder": {
-        "4": {
-          "best": "b7c6",
-          "best_san": "Kc6",
-          "best_score": -670,
-          "rated_move_score": -670,
-          "loss_cp": 0,
-          "nodes": 3165,
-          "quiescence_share": 0.937
-        },
-        "5": {
-          "best": "b7c6",
-          "best_san": "Kc6",
-          "best_score": -671,
-          "rated_move_score": -671,
-          "loss_cp": 0,
-          "nodes": 9932,
-          "quiescence_share": 0.882
-        },
-        "6": {
-          "best": "b7c6",
-          "best_san": "Kc6",
-          "best_score": -699,
-          "rated_move_score": -699,
-          "loss_cp": 0,
-          "nodes": 52207,
-          "quiescence_share": 0.921
-        }
-      },
-      "deep_search": {
-        "depths_4_to_10": "-670, -671, -699, -688, -674, -731, -731",
-        "record": "tests/results/rated_v4/deep_r51_fortress.log"
-      },
-      "delta_pruning_changes_choice": false
-    },
-    {
-      "id": "r53-35-Rf7",
-      "round": 53,
-      "kind": "critical",
-      "move": "35...Rf7",
-      "fen": "1rb5/2p1r1k1/P2P1n2/2N3pp/1p2P3/3B2BP/6P1/1R4K1 b - - 0 35",
-      "side_to_move": "black",
-      "rated_move_uci": "e7f7",
-      "rated_move_san": "Rf7",
-      "acceptable_uci": [
-        "e7e8"
-      ],
-      "acceptable_san": [
-        "Re8"
-      ],
-      "unacceptable_uci": "e7f7",
-      "minimum_correcting_depth": 5,
-      "score_margin_cp": 87,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "the c7 blockade square is conceded and the connected passers become decisive",
-      "classification": "1 - search horizon",
-      "note": "87 cp at depths 5 and 6. A stronger passed-pawn term does not change the choice at any depth the control reaches (probe_passed_pawn.log).",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "c7d6",
-          "best_san": "cxd6",
-          "best_score": -13,
-          "rated_move_score": -165,
-          "loss_cp": 152,
-          "nodes": 260,
-          "quiescence_share": 0.862
-        },
-        "3": {
-          "best": "e7f7",
-          "best_san": "Rf7",
-          "best_score": -156,
-          "rated_move_score": -156,
-          "loss_cp": 0,
-          "nodes": 2660,
-          "quiescence_share": 0.937
-        },
-        "4": {
-          "best": "e7f7",
-          "best_san": "Rf7",
-          "best_score": -182,
-          "rated_move_score": -182,
-          "loss_cp": 0,
-          "nodes": 10128,
-          "quiescence_share": 0.871
-        },
-        "5": {
-          "best": "e7e8",
-          "best_san": "Re8",
-          "best_score": -195,
-          "rated_move_score": -282,
-          "loss_cp": 87,
-          "nodes": 58819,
-          "quiescence_share": 0.918
-        },
-        "6": {
-          "best": "e7e8",
-          "best_san": "Re8",
-          "best_score": -220,
-          "rated_move_score": -307,
-          "loss_cp": 87,
-          "nodes": 223150,
-          "quiescence_share": 0.846
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 62.184,
-        "seconds_used": 1.867,
-        "completed_depth_in_replay": 4,
-        "replay_reproduced_rated_move": true
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 62180,
-          "budget_s": 1.94,
-          "move": "e7f7",
-          "san": "Rf7",
-          "completed_depth": 4,
-          "seconds": 1.87,
-          "avoided": false
-        },
-        {
-          "multiple": 2,
-          "clock_ms": 124360,
-          "budget_s": 3.89,
-          "move": "e7e8",
-          "san": "Re8",
-          "completed_depth": 5,
-          "seconds": 2.68,
-          "avoided": true
-        }
-      ]
-    },
-    {
-      "id": "r53-52-Bc6",
-      "round": 53,
-      "kind": "critical",
-      "move": "52...Bc6",
-      "fen": "2r5/rBPb4/P7/6p1/7p/4B2P/5RP1/3k2K1 b - - 9 52",
-      "side_to_move": "black",
-      "rated_move_uci": "d7c6",
-      "rated_move_san": "Bc6",
-      "acceptable_uci": [
-        "g5g4"
-      ],
-      "acceptable_san": [
-        "g4"
-      ],
-      "unacceptable_uci": "d7c6",
-      "minimum_correcting_depth": 6,
-      "score_margin_cp": 29246,
-      "proof_type": "forced mate returned by full-window search",
-      "motif": "walking into mate at the end of a forced king march",
-      "classification": "1 - search horizon",
-      "note": "Proven mate against at depth 6; the control completed depth 5 at the rated clock.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "a7b7",
-          "best_san": "Rxb7",
-          "best_score": -368,
-          "rated_move_score": -495,
-          "loss_cp": 127,
-          "nodes": 235,
-          "quiescence_share": 0.911
-        },
-        "3": {
-          "best": "c8c7",
-          "best_san": "Rxc7",
-          "best_score": -465,
-          "rated_move_score": -495,
-          "loss_cp": 30,
-          "nodes": 2993,
-          "quiescence_share": 0.946
-        },
-        "4": {
-          "best": "d7c6",
-          "best_san": "Bc6",
-          "best_score": -647,
-          "rated_move_score": -647,
-          "loss_cp": 0,
-          "nodes": 11098,
-          "quiescence_share": 0.92
-        },
-        "5": {
-          "best": "d7c6",
-          "best_san": "Bc6",
-          "best_score": -647,
-          "rated_move_score": -647,
-          "loss_cp": 0,
-          "nodes": 48909,
-          "quiescence_share": 0.875
-        },
-        "6": {
-          "best": "g5g4",
-          "best_san": "g4",
-          "best_score": -748,
-          "rated_move_score": -29994,
-          "loss_cp": 29246,
-          "nodes": 307878,
-          "quiescence_share": 0.908
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 44.697,
-        "seconds_used": 1.343,
-        "completed_depth_in_replay": 5,
-        "replay_reproduced_rated_move": true
-      },
-      "clock_ladder": [
-        {
-          "multiple": 1,
-          "clock_ms": 44700,
-          "budget_s": 1.4,
-          "move": "d7c6",
-          "san": "Bc6",
-          "completed_depth": 5,
-          "seconds": 1.34,
-          "avoided": false
-        },
-        {
-          "multiple": 2,
-          "clock_ms": 89400,
-          "budget_s": 2.79,
-          "move": "d7c6",
-          "san": "Bc6",
-          "completed_depth": 5,
-          "seconds": 2.68,
-          "avoided": false
-        },
-        {
-          "multiple": 4,
-          "clock_ms": 178800,
-          "budget_s": 5.59,
-          "move": "d7c6",
-          "san": "Bc6",
-          "completed_depth": 5,
-          "seconds": 5.37,
-          "avoided": false
-        },
-        {
-          "multiple": 8,
-          "clock_ms": 357600,
-          "budget_s": 11.18,
-          "move": "g5g4",
-          "san": "g4",
-          "completed_depth": 6,
-          "seconds": 10.73,
-          "avoided": true
-        }
-      ]
-    },
-    {
-      "id": "round30-Bf4",
-      "round": 30,
-      "kind": "critical",
-      "move": "10.Bf4",
-      "fen": "r1bqk2r/pp2n1pp/1bn2p2/1B1p2B1/3N4/8/PPP2PPP/R2QK1NR w KQkq - 0 10",
-      "side_to_move": "white",
-      "rated_move_uci": "g5f4",
-      "rated_move_san": "Bf4",
-      "acceptable_uci": [],
-      "acceptable_san": [],
-      "unacceptable_uci": "g5f4",
-      "minimum_correcting_depth": 4,
-      "score_margin_cp": 315,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "Bxd4 then Qa5+ forks the loose Bb5",
-      "classification": "1 - search horizon",
-      "note": "The established round 30 regression, carried forward unchanged in substance: the engine must complete depth 4 and must not play g5f4.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "d1h5",
-          "best_san": "Qh5+",
-          "best_score": 26,
-          "rated_move_score": 3,
-          "loss_cp": 23,
-          "nodes": 1776,
-          "quiescence_share": 0.973
-        },
-        "3": {
-          "best": "g5f4",
-          "best_san": "Bf4",
-          "best_score": 31,
-          "rated_move_score": 31,
-          "loss_cp": 0,
-          "nodes": 10555,
-          "quiescence_share": 0.98
-        },
-        "4": {
-          "best": "d4c6",
-          "best_san": "Nxc6",
-          "best_score": -23,
-          "rated_move_score": -338,
-          "loss_cp": 315,
-          "nodes": 16865,
-          "quiescence_share": 0.856
-        },
-        "5": {
-          "best": "g5e3",
-          "best_san": "Be3",
-          "best_score": -24,
-          "rated_move_score": -332,
-          "loss_cp": 308,
-          "nodes": 113401,
-          "quiescence_share": 0.944
-        }
-      },
-      "delta_pruning_changes_choice": false
-    },
-    {
-      "id": "r47-63-e2",
-      "round": 47,
-      "kind": "control_win",
-      "move": "63...e2",
-      "fen": "7r/7r/1pb1k3/5p2/p5P1/P2pp3/RP1P2Rp/2B4K b - - 0 63",
-      "side_to_move": "black",
-      "rated_move_uci": "e3e2",
-      "rated_move_san": "e2",
-      "acceptable_uci": [
-        "e3e2"
-      ],
-      "acceptable_san": [
-        "e2"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 4,
-      "score_margin_cp": 0,
-      "proof_type": "forced mate returned by full-window search",
-      "motif": "promotion race won by one tempo; mate found at depth 4",
-      "classification": "negative control",
-      "note": "Round 47 must stay solved: at depths 2 and 3 the control prefers Bxg2+ and only at depth 4 does e2 show as mate.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "c6g2",
-          "best_san": "Bxg2+",
-          "best_score": 1799,
-          "rated_move_score": 462,
-          "loss_cp": 1337,
-          "nodes": 470,
-          "quiescence_share": 0.917
-        },
-        "3": {
-          "best": "c6g2",
-          "best_san": "Bxg2+",
-          "best_score": 1799,
-          "rated_move_score": 462,
-          "loss_cp": 1337,
-          "nodes": 814,
-          "quiescence_share": 0.904
-        },
-        "4": {
-          "best": "e3e2",
-          "best_san": "e2",
-          "best_score": 29995,
-          "rated_move_score": 29995,
-          "loss_cp": 0,
-          "nodes": 8236,
-          "quiescence_share": 0.917
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 36.979,
-        "seconds_used": 0.953,
-        "completed_depth_in_replay": 4,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r48-26-Qxf6",
-      "round": 48,
-      "kind": "control_win",
-      "move": "26.Qxf6+",
-      "fen": "8/p1p2pkp/5r2/3rQ3/8/1PP1P3/PK4PP/5R2 w - - 0 26",
-      "side_to_move": "white",
-      "rated_move_uci": "e5f6",
-      "rated_move_san": "Qxf6+",
-      "acceptable_uci": [
-        "e5f6"
-      ],
-      "acceptable_san": [
-        "Qxf6+"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 2,
-      "score_margin_cp": 0,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "queen sacrifice into a forced mating attack",
-      "classification": "negative control",
-      "note": "Round 48 must stay solved at depth 2.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "e5f6",
-          "best_san": "Qxf6+",
-          "best_score": 1961,
-          "rated_move_score": 1961,
-          "loss_cp": 0,
-          "nodes": 283,
-          "quiescence_share": 0.859
-        },
-        "3": {
-          "best": "e5f6",
-          "best_san": "Qxf6+",
-          "best_score": 1961,
-          "rated_move_score": 1961,
-          "loss_cp": 0,
-          "nodes": 1408,
-          "quiescence_share": 0.928
-        },
-        "4": {
-          "best": "e5f6",
-          "best_san": "Qxf6+",
-          "best_score": 1961,
-          "rated_move_score": 1961,
-          "loss_cp": 0,
-          "nodes": 4249,
-          "quiescence_share": 0.708
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 75.268,
-        "seconds_used": 1.455,
-        "completed_depth_in_replay": 5,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r49-53-h3",
-      "round": 49,
-      "kind": "control_win",
-      "move": "53...h3",
-      "fen": "8/4p3/1k6/1p2p3/p2pP2p/P7/8/3K4 b - - 0 53",
-      "side_to_move": "black",
-      "rated_move_uci": "h4h3",
-      "rated_move_san": "h3",
-      "acceptable_uci": [
-        "h4h3"
-      ],
-      "acceptable_san": [
-        "h3"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 3,
-      "score_margin_cp": 0,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "outside passed pawn breaks through",
-      "classification": "negative control",
-      "note": "Round 49 must stay solved at depth 3.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "b6c5",
-          "best_san": "Kc5",
-          "best_score": 551,
-          "rated_move_score": 536,
-          "loss_cp": 15,
-          "nodes": 40,
-          "quiescence_share": 0.725
-        },
-        "3": {
-          "best": "h4h3",
-          "best_san": "h3",
-          "best_score": 572,
-          "rated_move_score": 572,
-          "loss_cp": 0,
-          "nodes": 191,
-          "quiescence_share": 0.806
-        },
-        "4": {
-          "best": "h4h3",
-          "best_san": "h3",
-          "best_score": 1362,
-          "rated_move_score": 1362,
-          "loss_cp": 0,
-          "nodes": 497,
-          "quiescence_share": 0.668
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 44.105,
-        "seconds_used": 1.325,
-        "completed_depth_in_replay": 7,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r50-35-d3",
-      "round": 50,
-      "kind": "control_win",
-      "move": "35...d3",
-      "fen": "8/5p2/8/2bk2p1/2np3p/r4P1P/P3R1P1/3K4 b - - 7 35",
-      "side_to_move": "black",
-      "rated_move_uci": "d4d3",
-      "rated_move_san": "d3",
-      "acceptable_uci": [
-        "d4d3"
-      ],
-      "acceptable_san": [
-        "d3"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 2,
-      "score_margin_cp": 0,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "passed pawn plus bishop pair converts",
-      "classification": "negative control",
-      "note": "Round 50 must stay solved at depth 2.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "d4d3",
-          "best_san": "d3",
-          "best_score": 954,
-          "rated_move_score": 954,
-          "loss_cp": 0,
-          "nodes": 1134,
-          "quiescence_share": 0.974
-        },
-        "3": {
-          "best": "d4d3",
-          "best_san": "d3",
-          "best_score": 954,
-          "rated_move_score": 954,
-          "loss_cp": 0,
-          "nodes": 2586,
-          "quiescence_share": 0.945
-        },
-        "4": {
-          "best": "d4d3",
-          "best_san": "d3",
-          "best_score": 981,
-          "rated_move_score": 981,
-          "loss_cp": 0,
-          "nodes": 15346,
-          "quiescence_share": 0.844
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 61.021,
-        "seconds_used": 1.832,
-        "completed_depth_in_replay": 4,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r52-40-c7",
-      "round": 52,
-      "kind": "control_win",
-      "move": "40.c7",
-      "fen": "8/5pp1/2P1p3/6rk/NR5p/4P2P/5KP1/8 w - - 1 40",
-      "side_to_move": "white",
-      "rated_move_uci": "c6c7",
-      "rated_move_san": "c7",
-      "acceptable_uci": [
-        "c6c7"
-      ],
-      "acceptable_san": [
-        "c7"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 2,
-      "score_margin_cp": 0,
-      "proof_type": "control's own deeper search, no independent oracle",
-      "motif": "passed pawn one square from queening",
-      "classification": "negative control",
-      "note": "Round 52 must stay solved at depth 2.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "c6c7",
-          "best_san": "c7",
-          "best_score": 409,
-          "rated_move_score": 409,
-          "loss_cp": 0,
-          "nodes": 981,
-          "quiescence_share": 0.973
-        },
-        "3": {
-          "best": "c6c7",
-          "best_san": "c7",
-          "best_score": 409,
-          "rated_move_score": 409,
-          "loss_cp": 0,
-          "nodes": 1508,
-          "quiescence_share": 0.909
-        },
-        "4": {
-          "best": "c6c7",
-          "best_san": "c7",
-          "best_score": 938,
-          "rated_move_score": 938,
-          "loss_cp": 0,
-          "nodes": 6817,
-          "quiescence_share": 0.868
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 57.214,
-        "seconds_used": 1.718,
-        "completed_depth_in_replay": 5,
-        "replay_reproduced_rated_move": true
-      }
-    },
-    {
-      "id": "r52-55-Re4",
-      "round": 52,
-      "kind": "control_win",
-      "move": "55.Re4",
-      "fen": "8/8/4R3/8/N7/1k2P2P/3Q2PK/8 w - - 1 55",
-      "side_to_move": "white",
-      "rated_move_uci": "e6e4",
-      "rated_move_san": "Re4",
-      "acceptable_uci": [
-        "e6e4"
-      ],
-      "acceptable_san": [
-        "Re4"
-      ],
-      "unacceptable_uci": null,
-      "minimum_correcting_depth": 2,
-      "score_margin_cp": 0,
-      "proof_type": "forced mate returned by full-window search",
-      "motif": "mate in two",
-      "classification": "negative control",
-      "note": "Round 52's finish must stay solved at depth 2.",
-      "enforced": true,
-      "depth_ladder": {
-        "2": {
-          "best": "e6e4",
-          "best_san": "Re4",
-          "best_score": 29997,
-          "rated_move_score": 29997,
-          "loss_cp": 0,
-          "nodes": 830,
-          "quiescence_share": 0.953
-        },
-        "3": {
-          "best": "e6e4",
-          "best_san": "Re4",
-          "best_score": 29997,
-          "rated_move_score": 29997,
-          "loss_cp": 0,
-          "nodes": 2064,
-          "quiescence_share": 0.96
-        },
-        "4": {
-          "best": "e6e4",
-          "best_san": "Re4",
-          "best_score": 29997,
-          "rated_move_score": 29997,
-          "loss_cp": 0,
-          "nodes": 3227,
-          "quiescence_share": 0.482
-        }
-      },
-      "delta_pruning_changes_choice": false,
-      "rated_game": {
-        "clock_before_s": 43.122,
-        "seconds_used": 0.091,
-        "completed_depth_in_replay": 2,
-        "replay_reproduced_rated_move": true
-      }
+    "5": {
+     "best": "c4d5",
+     "best_san": "Bxd5+",
+     "best_score": 1,
+     "rated_move_score": -34,
+     "loss_cp": 35,
+     "nodes": 114072,
+     "quiescence_share": 0.938
     }
-  ]
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 103.867,
+    "seconds_used": 2.15,
+    "completed_depth_in_replay": 3,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r44-21-Bf4",
+   "round": 44,
+   "kind": "earliest_recoverable",
+   "move": "21.Bf4",
+   "fen": "r1b3k1/ppp3pp/8/5q2/1PN5/1Q6/P4PPP/b1B1N1K1 w - - 0 21",
+   "side_to_move": "white",
+   "rated_move_uci": "c1f4",
+   "rated_move_san": "Bf4",
+   "acceptable_uci": [
+    "c1b2"
+   ],
+   "acceptable_san": [
+    "Bb2"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 5,
+   "score_margin_cp": 67,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the exchange is already gone; this is the largest single depth-visible slip left",
+   "classification": "5 - static evaluation",
+   "note": "Advisory, 67 cp at depth 5. Round 44 has no result-changing single move.",
+   "enforced": false,
+   "depth_ladder": {
+    "2": {
+     "best": "c4d6",
+     "best_san": "Nd6+",
+     "best_score": -145,
+     "rated_move_score": -522,
+     "loss_cp": 377,
+     "nodes": 516,
+     "quiescence_share": 0.921
+    },
+    "3": {
+     "best": "c1f4",
+     "best_san": "Bf4",
+     "best_score": -138,
+     "rated_move_score": -138,
+     "loss_cp": 0,
+     "nodes": 9250,
+     "quiescence_share": 0.971
+    },
+    "4": {
+     "best": "c1f4",
+     "best_san": "Bf4",
+     "best_score": -163,
+     "rated_move_score": -163,
+     "loss_cp": 0,
+     "nodes": 27744,
+     "quiescence_share": 0.846
+    },
+    "5": {
+     "best": "c1b2",
+     "best_san": "Bb2",
+     "best_score": -170,
+     "rated_move_score": -237,
+     "loss_cp": 67,
+     "nodes": 120890,
+     "quiescence_share": 0.921
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 88.437,
+    "seconds_used": 2.654,
+    "completed_depth_in_replay": 3,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r45-54-Rc7",
+   "round": 45,
+   "kind": "critical",
+   "move": "54...Rc7",
+   "fen": "1k6/6R1/8/p5P1/8/2r5/5PK1/8 b - - 0 54",
+   "side_to_move": "black",
+   "rated_move_uci": "c3c7",
+   "rated_move_san": "Rc7",
+   "acceptable_uci": [
+    "a5a4"
+   ],
+   "acceptable_san": [
+    "a4"
+   ],
+   "unacceptable_uci": "c3c7",
+   "minimum_correcting_depth": 7,
+   "score_margin_cp": 785,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "exchange into a pawn race: trading the last rook lets the g pawn queen alone",
+   "classification": "8 - exchange or promotion race",
+   "note": "The control plays Rc7 through depth 5 and needs depth 7 to see 785 cp. 54...a4 queens too and the control holds it at -133.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "c3c7",
+     "best_san": "Rc7",
+     "best_score": -129,
+     "rated_move_score": -129,
+     "loss_cp": 0,
+     "nodes": 155,
+     "quiescence_share": 0.89
+    },
+    "3": {
+     "best": "c3c7",
+     "best_san": "Rc7",
+     "best_score": -129,
+     "rated_move_score": -129,
+     "loss_cp": 0,
+     "nodes": 588,
+     "quiescence_share": 0.864
+    },
+    "4": {
+     "best": "c3c7",
+     "best_san": "Rc7",
+     "best_score": -165,
+     "rated_move_score": -165,
+     "loss_cp": 0,
+     "nodes": 2285,
+     "quiescence_share": 0.772
+    },
+    "5": {
+     "best": "c3c7",
+     "best_san": "Rc7",
+     "best_score": -135,
+     "rated_move_score": -135,
+     "loss_cp": 0,
+     "nodes": 7313,
+     "quiescence_share": 0.799
+    },
+    "6": {
+     "best": "a5a4",
+     "best_san": "a4",
+     "best_score": -133,
+     "rated_move_score": -161,
+     "loss_cp": 28,
+     "nodes": 25887,
+     "quiescence_share": 0.797
+    },
+    "7": {
+     "best": "a5a4",
+     "best_san": "a4",
+     "best_score": -133,
+     "rated_move_score": -918,
+     "loss_cp": 785,
+     "nodes": 201382,
+     "quiescence_share": 0.76
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 42.622,
+    "seconds_used": 1.242,
+    "completed_depth_in_replay": 5,
+    "replay_reproduced_rated_move": true
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 42620,
+     "budget_s": 1.33,
+     "move": "c3c7",
+     "san": "Rc7",
+     "completed_depth": 5,
+     "seconds": 1.12,
+     "avoided": false
+    },
+    {
+     "multiple": 2,
+     "clock_ms": 85240,
+     "budget_s": 2.66,
+     "move": "c3c7",
+     "san": "Rc7",
+     "completed_depth": 5,
+     "seconds": 2.56,
+     "avoided": false
+    },
+    {
+     "multiple": 4,
+     "clock_ms": 170480,
+     "budget_s": 5.33,
+     "move": "a5a4",
+     "san": "a4",
+     "completed_depth": 6,
+     "seconds": 4.8,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "r45-55-a4",
+   "round": 45,
+   "kind": "critical",
+   "move": "55...a4",
+   "fen": "1k6/2R5/8/p5P1/8/8/5PK1/8 b - - 0 55",
+   "side_to_move": "black",
+   "rated_move_uci": "a5a4",
+   "rated_move_san": "a4",
+   "acceptable_uci": [
+    "b8c7"
+   ],
+   "acceptable_san": [
+    "Kxc7"
+   ],
+   "unacceptable_uci": "a5a4",
+   "minimum_correcting_depth": 7,
+   "score_margin_cp": 29093,
+   "proof_type": "forced mate returned by full-window search",
+   "motif": "declining a free rook in a lost race; proven mate against at depth 7",
+   "classification": "12 - already lost position",
+   "note": "Both moves lose. a4 is a proven forced mate at depth 7 while Kxc7 is -899, so the fixture asserts the recapture, not a save.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "b8c7",
+     "best_san": "Kxc7",
+     "best_score": -165,
+     "rated_move_score": -737,
+     "loss_cp": 572,
+     "nodes": 30,
+     "quiescence_share": 0.9
+    },
+    "3": {
+     "best": "b8c7",
+     "best_san": "Kxc7",
+     "best_score": -133,
+     "rated_move_score": -721,
+     "loss_cp": 588,
+     "nodes": 38,
+     "quiescence_share": 0.605
+    },
+    "4": {
+     "best": "b8c7",
+     "best_san": "Kxc7",
+     "best_score": -161,
+     "rated_move_score": -753,
+     "loss_cp": 592,
+     "nodes": 136,
+     "quiescence_share": 0.721
+    },
+    "5": {
+     "best": "b8c7",
+     "best_san": "Kxc7",
+     "best_score": -918,
+     "rated_move_score": -918,
+     "loss_cp": 0,
+     "nodes": 2238,
+     "quiescence_share": 0.606
+    },
+    "6": {
+     "best": "b8c7",
+     "best_san": "Kxc7",
+     "best_score": -918,
+     "rated_move_score": -918,
+     "loss_cp": 0,
+     "nodes": 13466,
+     "quiescence_share": 0.867
+    },
+    "7": {
+     "best": "b8c7",
+     "best_san": "Kxc7",
+     "best_score": -899,
+     "rated_move_score": -29992,
+     "loss_cp": 29093,
+     "nodes": 4744,
+     "quiescence_share": 0.653
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 41.88,
+    "seconds_used": 0.936,
+    "completed_depth_in_replay": 6,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r46-29-a5",
+   "round": 46,
+   "kind": "context",
+   "move": "29.a5",
+   "fen": "r5k1/5rq1/1pp1p2p/3bPp2/PP2pP2/K1Q3P1/4P1B1/3R3R w - - 1 29",
+   "side_to_move": "white",
+   "rated_move_uci": "a4a5",
+   "rated_move_san": "a5",
+   "acceptable_uci": [
+    "a4a5"
+   ],
+   "acceptable_san": [
+    "a5"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 5,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the pawn break before the king walk",
+   "classification": "not an error",
+   "note": "Recorded so a future engine is not credited with fixing a move that was never wrong: loss 0 at depths 4, 5 and 6, and only 22 cp at depth 7.",
+   "enforced": false,
+   "depth_ladder": {
+    "2": {
+     "best": "a4a5",
+     "best_san": "a5",
+     "best_score": 9,
+     "rated_move_score": 9,
+     "loss_cp": 0,
+     "nodes": 3178,
+     "quiescence_share": 0.987
+    },
+    "3": {
+     "best": "h1h3",
+     "best_san": "Rh3",
+     "best_score": -22,
+     "rated_move_score": -63,
+     "loss_cp": 41,
+     "nodes": 22961,
+     "quiescence_share": 0.985
+    },
+    "4": {
+     "best": "a4a5",
+     "best_san": "a5",
+     "best_score": -63,
+     "rated_move_score": -63,
+     "loss_cp": 0,
+     "nodes": 25722,
+     "quiescence_share": 0.953
+    },
+    "5": {
+     "best": "a4a5",
+     "best_san": "a5",
+     "best_score": -129,
+     "rated_move_score": -129,
+     "loss_cp": 0,
+     "nodes": 141049,
+     "quiescence_share": 0.964
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 70.332,
+    "seconds_used": 2.112,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r46-30-Ka4",
+   "round": 46,
+   "kind": "critical",
+   "move": "30.Ka4",
+   "fen": "r5k1/5rq1/2p1p2p/p2bPp2/1P2pP2/K1Q3P1/4P1B1/3R3R w - - 0 30",
+   "side_to_move": "white",
+   "rated_move_uci": "a3a4",
+   "rated_move_san": "Ka4",
+   "acceptable_uci": [
+    "b4a5"
+   ],
+   "acceptable_san": [
+    "bxa5"
+   ],
+   "unacceptable_uci": "a3a4",
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 95,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "king walk into a forcing check sequence that wins the queen and then mates",
+   "classification": "1 - search horizon",
+   "note": "Highest-priority loss. Avoided at depth 4 (95 cp); understood at depth 6 (985 cp); after 30...axb4+ every White move is a proven mate at depth 6.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "b4a5",
+     "best_san": "bxa5",
+     "best_score": -19,
+     "rated_move_score": -129,
+     "loss_cp": 110,
+     "nodes": 895,
+     "quiescence_share": 0.953
+    },
+    "3": {
+     "best": "a3a4",
+     "best_san": "Ka4",
+     "best_score": -129,
+     "rated_move_score": -129,
+     "loss_cp": 0,
+     "nodes": 7605,
+     "quiescence_share": 0.969
+    },
+    "4": {
+     "best": "b4a5",
+     "best_san": "bxa5",
+     "best_score": -131,
+     "rated_move_score": -226,
+     "loss_cp": 95,
+     "nodes": 22786,
+     "quiescence_share": 0.95
+    },
+    "5": {
+     "best": "b4a5",
+     "best_san": "bxa5",
+     "best_score": -131,
+     "rated_move_score": -223,
+     "loss_cp": 92,
+     "nodes": 74531,
+     "quiescence_share": 0.944
+    },
+    "6": {
+     "best": "b4a5",
+     "best_san": "bxa5",
+     "best_score": -177,
+     "rated_move_score": -1162,
+     "loss_cp": 985,
+     "nodes": 295714,
+     "quiescence_share": 0.905
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 68.72,
+    "seconds_used": 1.606,
+    "completed_depth_in_replay": 3,
+    "replay_reproduced_rated_move": true
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 68720,
+     "budget_s": 2.15,
+     "move": "a3a4",
+     "san": "Ka4",
+     "completed_depth": 3,
+     "seconds": 1.42,
+     "avoided": false
+    },
+    {
+     "multiple": 2,
+     "clock_ms": 137440,
+     "budget_s": 4.29,
+     "move": "b4a5",
+     "san": "bxa5",
+     "completed_depth": 4,
+     "seconds": 4.13,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "r51-53-Qc5",
+   "round": 51,
+   "kind": "critical",
+   "move": "53.Qc5",
+   "fen": "5nk1/2R5/3P1p1r/P2q2p1/6P1/Q6P/7K/2R5 w - - 18 53",
+   "side_to_move": "white",
+   "rated_move_uci": "a3c5",
+   "rated_move_san": "Qc5",
+   "acceptable_uci": [
+    "a5a6"
+   ],
+   "acceptable_san": [
+    "a6"
+   ],
+   "unacceptable_uci": "a3c5",
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 161,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the winning passed pawn push is abandoned for a queen sortie",
+   "classification": "1 - search horizon",
+   "note": "First move of the collapse from +520 to a draw. 161 cp at depth 4.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "a3c5",
+     "best_san": "Qc5",
+     "best_score": 545,
+     "rated_move_score": 545,
+     "loss_cp": 0,
+     "nodes": 1932,
+     "quiescence_share": 0.978
+    },
+    "3": {
+     "best": "a3c5",
+     "best_san": "Qc5",
+     "best_score": 545,
+     "rated_move_score": 545,
+     "loss_cp": 0,
+     "nodes": 7878,
+     "quiescence_share": 0.958
+    },
+    "4": {
+     "best": "a5a6",
+     "best_san": "a6",
+     "best_score": 529,
+     "rated_move_score": 368,
+     "loss_cp": 161,
+     "nodes": 40913,
+     "quiescence_share": 0.902
+    },
+    "5": {
+     "best": "a5a6",
+     "best_san": "a6",
+     "best_score": 536,
+     "rated_move_score": 386,
+     "loss_cp": 150,
+     "nodes": 177975,
+     "quiescence_share": 0.913
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 44.894,
+    "seconds_used": 0.982,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 44890,
+     "budget_s": 1.4,
+     "move": "a3c5",
+     "san": "Qc5",
+     "completed_depth": 3,
+     "seconds": 1.35,
+     "avoided": false
+    },
+    {
+     "multiple": 2,
+     "clock_ms": 89780,
+     "budget_s": 2.81,
+     "move": "a5a6",
+     "san": "a6",
+     "completed_depth": 4,
+     "seconds": 2.51,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "r51-62-Ke3",
+   "round": 51,
+   "kind": "critical",
+   "move": "62.Ke3",
+   "fen": "2R2n1k/8/Q2P1p2/P5p1/6P1/8/3K1r2/2R3q1 w - - 8 62",
+   "side_to_move": "white",
+   "rated_move_uci": "d2e3",
+   "rated_move_san": "Ke3",
+   "acceptable_uci": [
+    "d2d3"
+   ],
+   "acceptable_san": [
+    "Kd3"
+   ],
+   "unacceptable_uci": "d2e3",
+   "minimum_correcting_depth": 6,
+   "score_margin_cp": 468,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "king walk into a forcing check sequence; the win is gone one ply later",
+   "classification": "1 - search horizon",
+   "note": "The last move at which White was still winning. +261 through depth 5, -230 at depth 6. The container replay completed depth 6 here and played Kd3.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "d2e3",
+     "best_san": "Ke3",
+     "best_score": 261,
+     "rated_move_score": 261,
+     "loss_cp": 0,
+     "nodes": 363,
+     "quiescence_share": 0.989
+    },
+    "3": {
+     "best": "d2e3",
+     "best_san": "Ke3",
+     "best_score": 261,
+     "rated_move_score": 261,
+     "loss_cp": 0,
+     "nodes": 637,
+     "quiescence_share": 0.917
+    },
+    "4": {
+     "best": "d2e3",
+     "best_san": "Ke3",
+     "best_score": 261,
+     "rated_move_score": 261,
+     "loss_cp": 0,
+     "nodes": 3063,
+     "quiescence_share": 0.903
+    },
+    "5": {
+     "best": "d2e3",
+     "best_san": "Ke3",
+     "best_score": 261,
+     "rated_move_score": 261,
+     "loss_cp": 0,
+     "nodes": 11324,
+     "quiescence_share": 0.878
+    },
+    "6": {
+     "best": "d2d3",
+     "best_san": "Kd3",
+     "best_score": 238,
+     "rated_move_score": -230,
+     "loss_cp": 468,
+     "nodes": 32795,
+     "quiescence_share": 0.843
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 39.135,
+    "seconds_used": 0.977,
+    "completed_depth_in_replay": 6,
+    "replay_reproduced_rated_move": false
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 39130,
+     "budget_s": 1.22,
+     "move": "d2d3",
+     "san": "Kd3",
+     "completed_depth": 6,
+     "seconds": 1.14,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "r51-66-Qc4",
+   "round": 51,
+   "kind": "critical",
+   "move": "66.Qc4",
+   "fen": "2R2n1k/8/Q2P1p2/P1K3p1/6P1/8/5r2/2q5 w - - 0 66",
+   "side_to_move": "white",
+   "rated_move_uci": "a6c4",
+   "rated_move_san": "Qc4",
+   "acceptable_uci": [
+    "c5b6"
+   ],
+   "acceptable_san": [
+    "Kb6"
+   ],
+   "unacceptable_uci": "a6c4",
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 395,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "queen trade into a lost pawn ending while blocking a check",
+   "classification": "1 - search horizon",
+   "note": "395 cp at depth 4, and the control completes depth 3 at the rated clock.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "a6c4",
+     "best_san": "Qc4",
+     "best_score": -145,
+     "rated_move_score": -145,
+     "loss_cp": 0,
+     "nodes": 398,
+     "quiescence_share": 0.985
+    },
+    "3": {
+     "best": "a6c4",
+     "best_san": "Qc4",
+     "best_score": -145,
+     "rated_move_score": -145,
+     "loss_cp": 0,
+     "nodes": 666,
+     "quiescence_share": 0.793
+    },
+    "4": {
+     "best": "c5b6",
+     "best_san": "Kb6",
+     "best_score": -220,
+     "rated_move_score": -615,
+     "loss_cp": 395,
+     "nodes": 4548,
+     "quiescence_share": 0.896
+    },
+    "5": {
+     "best": "c5b6",
+     "best_san": "Kb6",
+     "best_score": -220,
+     "rated_move_score": -615,
+     "loss_cp": 395,
+     "nodes": 10105,
+     "quiescence_share": 0.782
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 36.934,
+    "seconds_used": 1.112,
+    "completed_depth_in_replay": 5,
+    "replay_reproduced_rated_move": false
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 36930,
+     "budget_s": 1.15,
+     "move": "c5b6",
+     "san": "Kb6",
+     "completed_depth": 5,
+     "seconds": 1.11,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "r51-79-repetition",
+   "round": 51,
+   "kind": "objective_state",
+   "move": "79.Kb7 (the position the threefold repeated)",
+   "fen": "7r/PK1P1k2/5p2/2n3p1/6P1/8/8/8 w - - 11 80",
+   "side_to_move": "white",
+   "rated_move_uci": null,
+   "rated_move_san": null,
+   "acceptable_uci": [
+    "b7c6"
+   ],
+   "acceptable_san": [
+    "Kc6"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 6,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "two connected passers on a7 and d7 against a rook and knight; neither side makes progress",
+   "classification": "9 - repetition handling, and it was handled correctly",
+   "note": "Recorded to fix the objective state, not to gate anything. White is a rook and a knight down for the two passers, -720 by material. The control searched this to depth 10 and never found progress for either side: -670 at depth 4 through -731 at depth 10. Repeating scores 0 against roughly -700 for everything else, so accepting the threefold saved half a point from a lost position. The win was already gone at 62.Ke3.",
+   "enforced": false,
+   "depth_ladder": {
+    "4": {
+     "best": "b7c6",
+     "best_san": "Kc6",
+     "best_score": -670,
+     "rated_move_score": -670,
+     "loss_cp": 0,
+     "nodes": 3165,
+     "quiescence_share": 0.937
+    },
+    "5": {
+     "best": "b7c6",
+     "best_san": "Kc6",
+     "best_score": -671,
+     "rated_move_score": -671,
+     "loss_cp": 0,
+     "nodes": 9932,
+     "quiescence_share": 0.882
+    },
+    "6": {
+     "best": "b7c6",
+     "best_san": "Kc6",
+     "best_score": -699,
+     "rated_move_score": -699,
+     "loss_cp": 0,
+     "nodes": 52207,
+     "quiescence_share": 0.921
+    }
+   },
+   "deep_search": {
+    "depths_4_to_10": "-670, -671, -699, -688, -674, -731, -731",
+    "record": "tests/results/rated_v4/deep_r51_fortress.log"
+   },
+   "delta_pruning_changes_choice": false
+  },
+  {
+   "id": "r53-35-Rf7",
+   "round": 53,
+   "kind": "critical",
+   "move": "35...Rf7",
+   "fen": "1rb5/2p1r1k1/P2P1n2/2N3pp/1p2P3/3B2BP/6P1/1R4K1 b - - 0 35",
+   "side_to_move": "black",
+   "rated_move_uci": "e7f7",
+   "rated_move_san": "Rf7",
+   "acceptable_uci": [
+    "e7e8"
+   ],
+   "acceptable_san": [
+    "Re8"
+   ],
+   "unacceptable_uci": "e7f7",
+   "minimum_correcting_depth": 5,
+   "score_margin_cp": 87,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the c7 blockade square is conceded and the connected passers become decisive",
+   "classification": "1 - search horizon",
+   "note": "87 cp at depths 5 and 6. A stronger passed-pawn term does not change the choice at any depth the control reaches (probe_passed_pawn.log).",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "c7d6",
+     "best_san": "cxd6",
+     "best_score": -13,
+     "rated_move_score": -165,
+     "loss_cp": 152,
+     "nodes": 260,
+     "quiescence_share": 0.862
+    },
+    "3": {
+     "best": "e7f7",
+     "best_san": "Rf7",
+     "best_score": -156,
+     "rated_move_score": -156,
+     "loss_cp": 0,
+     "nodes": 2660,
+     "quiescence_share": 0.937
+    },
+    "4": {
+     "best": "e7f7",
+     "best_san": "Rf7",
+     "best_score": -182,
+     "rated_move_score": -182,
+     "loss_cp": 0,
+     "nodes": 10128,
+     "quiescence_share": 0.871
+    },
+    "5": {
+     "best": "e7e8",
+     "best_san": "Re8",
+     "best_score": -195,
+     "rated_move_score": -282,
+     "loss_cp": 87,
+     "nodes": 58819,
+     "quiescence_share": 0.918
+    },
+    "6": {
+     "best": "e7e8",
+     "best_san": "Re8",
+     "best_score": -220,
+     "rated_move_score": -307,
+     "loss_cp": 87,
+     "nodes": 223150,
+     "quiescence_share": 0.846
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 62.184,
+    "seconds_used": 1.867,
+    "completed_depth_in_replay": 4,
+    "replay_reproduced_rated_move": true
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 62180,
+     "budget_s": 1.94,
+     "move": "e7f7",
+     "san": "Rf7",
+     "completed_depth": 4,
+     "seconds": 1.87,
+     "avoided": false
+    },
+    {
+     "multiple": 2,
+     "clock_ms": 124360,
+     "budget_s": 3.89,
+     "move": "e7e8",
+     "san": "Re8",
+     "completed_depth": 5,
+     "seconds": 2.68,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "r53-52-Bc6",
+   "round": 53,
+   "kind": "critical",
+   "move": "52...Bc6",
+   "fen": "2r5/rBPb4/P7/6p1/7p/4B2P/5RP1/3k2K1 b - - 9 52",
+   "side_to_move": "black",
+   "rated_move_uci": "d7c6",
+   "rated_move_san": "Bc6",
+   "acceptable_uci": [
+    "g5g4"
+   ],
+   "acceptable_san": [
+    "g4"
+   ],
+   "unacceptable_uci": "d7c6",
+   "minimum_correcting_depth": 6,
+   "score_margin_cp": 29246,
+   "proof_type": "forced mate returned by full-window search",
+   "motif": "walking into mate at the end of a forced king march",
+   "classification": "1 - search horizon",
+   "note": "Proven mate against at depth 6; the control completed depth 5 at the rated clock.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "a7b7",
+     "best_san": "Rxb7",
+     "best_score": -368,
+     "rated_move_score": -495,
+     "loss_cp": 127,
+     "nodes": 235,
+     "quiescence_share": 0.911
+    },
+    "3": {
+     "best": "c8c7",
+     "best_san": "Rxc7",
+     "best_score": -465,
+     "rated_move_score": -495,
+     "loss_cp": 30,
+     "nodes": 2993,
+     "quiescence_share": 0.946
+    },
+    "4": {
+     "best": "d7c6",
+     "best_san": "Bc6",
+     "best_score": -647,
+     "rated_move_score": -647,
+     "loss_cp": 0,
+     "nodes": 11098,
+     "quiescence_share": 0.92
+    },
+    "5": {
+     "best": "d7c6",
+     "best_san": "Bc6",
+     "best_score": -647,
+     "rated_move_score": -647,
+     "loss_cp": 0,
+     "nodes": 48909,
+     "quiescence_share": 0.875
+    },
+    "6": {
+     "best": "g5g4",
+     "best_san": "g4",
+     "best_score": -748,
+     "rated_move_score": -29994,
+     "loss_cp": 29246,
+     "nodes": 307878,
+     "quiescence_share": 0.908
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 44.697,
+    "seconds_used": 1.343,
+    "completed_depth_in_replay": 5,
+    "replay_reproduced_rated_move": true
+   },
+   "clock_ladder": [
+    {
+     "multiple": 1,
+     "clock_ms": 44700,
+     "budget_s": 1.4,
+     "move": "d7c6",
+     "san": "Bc6",
+     "completed_depth": 5,
+     "seconds": 1.34,
+     "avoided": false
+    },
+    {
+     "multiple": 2,
+     "clock_ms": 89400,
+     "budget_s": 2.79,
+     "move": "d7c6",
+     "san": "Bc6",
+     "completed_depth": 5,
+     "seconds": 2.68,
+     "avoided": false
+    },
+    {
+     "multiple": 4,
+     "clock_ms": 178800,
+     "budget_s": 5.59,
+     "move": "d7c6",
+     "san": "Bc6",
+     "completed_depth": 5,
+     "seconds": 5.37,
+     "avoided": false
+    },
+    {
+     "multiple": 8,
+     "clock_ms": 357600,
+     "budget_s": 11.18,
+     "move": "g5g4",
+     "san": "g4",
+     "completed_depth": 6,
+     "seconds": 10.73,
+     "avoided": true
+    }
+   ]
+  },
+  {
+   "id": "round30-Bf4",
+   "round": 30,
+   "kind": "critical",
+   "move": "10.Bf4",
+   "fen": "r1bqk2r/pp2n1pp/1bn2p2/1B1p2B1/3N4/8/PPP2PPP/R2QK1NR w KQkq - 0 10",
+   "side_to_move": "white",
+   "rated_move_uci": "g5f4",
+   "rated_move_san": "Bf4",
+   "acceptable_uci": [],
+   "acceptable_san": [],
+   "unacceptable_uci": "g5f4",
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 315,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "Bxd4 then Qa5+ forks the loose Bb5",
+   "classification": "1 - search horizon",
+   "note": "The established round 30 regression, carried forward unchanged in substance: the engine must complete depth 4 and must not play g5f4.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "d1h5",
+     "best_san": "Qh5+",
+     "best_score": 26,
+     "rated_move_score": 3,
+     "loss_cp": 23,
+     "nodes": 1776,
+     "quiescence_share": 0.973
+    },
+    "3": {
+     "best": "g5f4",
+     "best_san": "Bf4",
+     "best_score": 31,
+     "rated_move_score": 31,
+     "loss_cp": 0,
+     "nodes": 10555,
+     "quiescence_share": 0.98
+    },
+    "4": {
+     "best": "d4c6",
+     "best_san": "Nxc6",
+     "best_score": -23,
+     "rated_move_score": -338,
+     "loss_cp": 315,
+     "nodes": 16865,
+     "quiescence_share": 0.856
+    },
+    "5": {
+     "best": "g5e3",
+     "best_san": "Be3",
+     "best_score": -24,
+     "rated_move_score": -332,
+     "loss_cp": 308,
+     "nodes": 113401,
+     "quiescence_share": 0.944
+    }
+   },
+   "delta_pruning_changes_choice": false
+  },
+  {
+   "id": "r47-63-e2",
+   "round": 47,
+   "kind": "control_win",
+   "move": "63...e2",
+   "fen": "7r/7r/1pb1k3/5p2/p5P1/P2pp3/RP1P2Rp/2B4K b - - 0 63",
+   "side_to_move": "black",
+   "rated_move_uci": "e3e2",
+   "rated_move_san": "e2",
+   "acceptable_uci": [
+    "e3e2"
+   ],
+   "acceptable_san": [
+    "e2"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 0,
+   "proof_type": "forced mate returned by full-window search",
+   "motif": "promotion race won by one tempo; mate found at depth 4",
+   "classification": "negative control",
+   "note": "Round 47 must stay solved: at depths 2 and 3 the control prefers Bxg2+ and only at depth 4 does e2 show as mate.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "c6g2",
+     "best_san": "Bxg2+",
+     "best_score": 1799,
+     "rated_move_score": 462,
+     "loss_cp": 1337,
+     "nodes": 470,
+     "quiescence_share": 0.917
+    },
+    "3": {
+     "best": "c6g2",
+     "best_san": "Bxg2+",
+     "best_score": 1799,
+     "rated_move_score": 462,
+     "loss_cp": 1337,
+     "nodes": 814,
+     "quiescence_share": 0.904
+    },
+    "4": {
+     "best": "e3e2",
+     "best_san": "e2",
+     "best_score": 29995,
+     "rated_move_score": 29995,
+     "loss_cp": 0,
+     "nodes": 8236,
+     "quiescence_share": 0.917
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 36.979,
+    "seconds_used": 0.953,
+    "completed_depth_in_replay": 4,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r48-26-Qxf6",
+   "round": 48,
+   "kind": "control_win",
+   "move": "26.Qxf6+",
+   "fen": "8/p1p2pkp/5r2/3rQ3/8/1PP1P3/PK4PP/5R2 w - - 0 26",
+   "side_to_move": "white",
+   "rated_move_uci": "e5f6",
+   "rated_move_san": "Qxf6+",
+   "acceptable_uci": [
+    "e5f6"
+   ],
+   "acceptable_san": [
+    "Qxf6+"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 2,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "queen sacrifice into a forced mating attack",
+   "classification": "negative control",
+   "note": "Round 48 must stay solved at depth 2.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "e5f6",
+     "best_san": "Qxf6+",
+     "best_score": 1961,
+     "rated_move_score": 1961,
+     "loss_cp": 0,
+     "nodes": 283,
+     "quiescence_share": 0.859
+    },
+    "3": {
+     "best": "e5f6",
+     "best_san": "Qxf6+",
+     "best_score": 1961,
+     "rated_move_score": 1961,
+     "loss_cp": 0,
+     "nodes": 1408,
+     "quiescence_share": 0.928
+    },
+    "4": {
+     "best": "e5f6",
+     "best_san": "Qxf6+",
+     "best_score": 1961,
+     "rated_move_score": 1961,
+     "loss_cp": 0,
+     "nodes": 4249,
+     "quiescence_share": 0.708
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 75.268,
+    "seconds_used": 1.455,
+    "completed_depth_in_replay": 5,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r49-53-h3",
+   "round": 49,
+   "kind": "control_win",
+   "move": "53...h3",
+   "fen": "8/4p3/1k6/1p2p3/p2pP2p/P7/8/3K4 b - - 0 53",
+   "side_to_move": "black",
+   "rated_move_uci": "h4h3",
+   "rated_move_san": "h3",
+   "acceptable_uci": [
+    "h4h3"
+   ],
+   "acceptable_san": [
+    "h3"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 3,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "outside passed pawn breaks through",
+   "classification": "negative control",
+   "note": "Round 49 must stay solved at depth 3.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "b6c5",
+     "best_san": "Kc5",
+     "best_score": 551,
+     "rated_move_score": 536,
+     "loss_cp": 15,
+     "nodes": 40,
+     "quiescence_share": 0.725
+    },
+    "3": {
+     "best": "h4h3",
+     "best_san": "h3",
+     "best_score": 572,
+     "rated_move_score": 572,
+     "loss_cp": 0,
+     "nodes": 191,
+     "quiescence_share": 0.806
+    },
+    "4": {
+     "best": "h4h3",
+     "best_san": "h3",
+     "best_score": 1362,
+     "rated_move_score": 1362,
+     "loss_cp": 0,
+     "nodes": 497,
+     "quiescence_share": 0.668
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 44.105,
+    "seconds_used": 1.325,
+    "completed_depth_in_replay": 7,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r50-35-d3",
+   "round": 50,
+   "kind": "control_win",
+   "move": "35...d3",
+   "fen": "8/5p2/8/2bk2p1/2np3p/r4P1P/P3R1P1/3K4 b - - 7 35",
+   "side_to_move": "black",
+   "rated_move_uci": "d4d3",
+   "rated_move_san": "d3",
+   "acceptable_uci": [
+    "d4d3"
+   ],
+   "acceptable_san": [
+    "d3"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 2,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "passed pawn plus bishop pair converts",
+   "classification": "negative control",
+   "note": "Round 50 must stay solved at depth 2.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "d4d3",
+     "best_san": "d3",
+     "best_score": 954,
+     "rated_move_score": 954,
+     "loss_cp": 0,
+     "nodes": 1134,
+     "quiescence_share": 0.974
+    },
+    "3": {
+     "best": "d4d3",
+     "best_san": "d3",
+     "best_score": 954,
+     "rated_move_score": 954,
+     "loss_cp": 0,
+     "nodes": 2586,
+     "quiescence_share": 0.945
+    },
+    "4": {
+     "best": "d4d3",
+     "best_san": "d3",
+     "best_score": 981,
+     "rated_move_score": 981,
+     "loss_cp": 0,
+     "nodes": 15346,
+     "quiescence_share": 0.844
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 61.021,
+    "seconds_used": 1.832,
+    "completed_depth_in_replay": 4,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r52-40-c7",
+   "round": 52,
+   "kind": "control_win",
+   "move": "40.c7",
+   "fen": "8/5pp1/2P1p3/6rk/NR5p/4P2P/5KP1/8 w - - 1 40",
+   "side_to_move": "white",
+   "rated_move_uci": "c6c7",
+   "rated_move_san": "c7",
+   "acceptable_uci": [
+    "c6c7"
+   ],
+   "acceptable_san": [
+    "c7"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 2,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "passed pawn one square from queening",
+   "classification": "negative control",
+   "note": "Round 52 must stay solved at depth 2.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "c6c7",
+     "best_san": "c7",
+     "best_score": 409,
+     "rated_move_score": 409,
+     "loss_cp": 0,
+     "nodes": 981,
+     "quiescence_share": 0.973
+    },
+    "3": {
+     "best": "c6c7",
+     "best_san": "c7",
+     "best_score": 409,
+     "rated_move_score": 409,
+     "loss_cp": 0,
+     "nodes": 1508,
+     "quiescence_share": 0.909
+    },
+    "4": {
+     "best": "c6c7",
+     "best_san": "c7",
+     "best_score": 938,
+     "rated_move_score": 938,
+     "loss_cp": 0,
+     "nodes": 6817,
+     "quiescence_share": 0.868
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 57.214,
+    "seconds_used": 1.718,
+    "completed_depth_in_replay": 5,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r52-55-Re4",
+   "round": 52,
+   "kind": "control_win",
+   "move": "55.Re4",
+   "fen": "8/8/4R3/8/N7/1k2P2P/3Q2PK/8 w - - 1 55",
+   "side_to_move": "white",
+   "rated_move_uci": "e6e4",
+   "rated_move_san": "Re4",
+   "acceptable_uci": [
+    "e6e4"
+   ],
+   "acceptable_san": [
+    "Re4"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 2,
+   "score_margin_cp": 0,
+   "proof_type": "forced mate returned by full-window search",
+   "motif": "mate in two",
+   "classification": "negative control",
+   "note": "Round 52's finish must stay solved at depth 2.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "e6e4",
+     "best_san": "Re4",
+     "best_score": 29997,
+     "rated_move_score": 29997,
+     "loss_cp": 0,
+     "nodes": 830,
+     "quiescence_share": 0.953
+    },
+    "3": {
+     "best": "e6e4",
+     "best_san": "Re4",
+     "best_score": 29997,
+     "rated_move_score": 29997,
+     "loss_cp": 0,
+     "nodes": 2064,
+     "quiescence_share": 0.96
+    },
+    "4": {
+     "best": "e6e4",
+     "best_san": "Re4",
+     "best_score": 29997,
+     "rated_move_score": 29997,
+     "loss_cp": 0,
+     "nodes": 3227,
+     "quiescence_share": 0.482
+    }
+   },
+   "delta_pruning_changes_choice": false,
+   "rated_game": {
+    "clock_before_s": 43.122,
+    "seconds_used": 0.091,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r55-18-h6",
+   "round": 55,
+   "kind": "before_the_mistake",
+   "move": "18...h6",
+   "fen": "r4r1k/p2bn1pp/qpnBp3/1R1p4/P1pP4/2P2N2/2PQBPPP/R5K1 b - - 5 18",
+   "side_to_move": "black",
+   "rated_move_uci": "h7h6",
+   "rated_move_san": "h6",
+   "acceptable_uci": [
+    "f8e8"
+   ],
+   "acceptable_san": [
+    "Rfe8"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 19,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the last quiet moment before the kingside is opened; Rfe8 keeps the f-file guarded",
+   "classification": "1 - tactical horizon",
+   "note": "Advisory. Recorded so the fixture set contains a position before the loss is forced, not only positions where it already is. 19 cp at depth 4, 31 cp at depth 5.",
+   "enforced": false,
+   "depth_ladder": {
+    "2": {
+     "best": "h7h6",
+     "best_san": "h6",
+     "best_score": -24,
+     "rated_move_score": -24,
+     "loss_cp": 0,
+     "nodes": 4907,
+     "quiescence_share": 0.992
+    },
+    "3": {
+     "best": "h7h6",
+     "best_san": "h6",
+     "best_score": -20,
+     "rated_move_score": -20,
+     "loss_cp": 0,
+     "nodes": 24162,
+     "quiescence_share": 0.984
+    },
+    "4": {
+     "best": "f8e8",
+     "best_san": "Rfe8",
+     "best_score": -15,
+     "rated_move_score": -34,
+     "loss_cp": 19,
+     "nodes": 150541,
+     "quiescence_share": 0.972
+    },
+    "5": {
+     "best": "f8e8",
+     "best_san": "Rfe8",
+     "best_score": 4,
+     "rated_move_score": -27,
+     "loss_cp": 31,
+     "nodes": 545822,
+     "quiescence_share": 0.957
+    }
+   },
+   "rated_game": {
+    "clock_before_s": 92.438,
+    "seconds_used": 2.777,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r55-19-g5",
+   "round": 55,
+   "kind": "earliest_recoverable",
+   "move": "19...g5",
+   "fen": "r4r1k/p2bn1p1/qpnBp2p/1R1p4/P1pP4/2P2N2/2P1BPPP/R1Q3K1 b - - 1 19",
+   "side_to_move": "black",
+   "rated_move_uci": "g7g5",
+   "rated_move_san": "g5",
+   "acceptable_uci": [
+    "f8f6"
+   ],
+   "acceptable_san": [
+    "Rf6"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 3,
+   "score_margin_cp": 90,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "g5 opens the g-file and the b1-h7 diagonal in front of our own king; Rf6 first holds the f-file",
+   "classification": "1 - tactical horizon",
+   "note": "The engine completed depth 2 in its 2.708 s and played g5. The correction appears at depth 3 and is worth 90 cp, rising to 102 cp at depth 5. A separate clock ladder on this FEN shows the engine stops playing g5 at four times the clock it had, where depth 3 completes.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "g7g5",
+     "best_san": "g5",
+     "best_score": -13,
+     "rated_move_score": -13,
+     "loss_cp": 0,
+     "nodes": 5536,
+     "quiescence_share": 0.993
+    },
+    "3": {
+     "best": "f8f6",
+     "best_san": "Rf6",
+     "best_score": -16,
+     "rated_move_score": -106,
+     "loss_cp": 90,
+     "nodes": 48015,
+     "quiescence_share": 0.988
+    },
+    "4": {
+     "best": "f8f7",
+     "best_san": "Rf7",
+     "best_score": -22,
+     "rated_move_score": -106,
+     "loss_cp": 84,
+     "nodes": 207085,
+     "quiescence_share": 0.976
+    },
+    "5": {
+     "best": "f8f7",
+     "best_san": "Rf7",
+     "best_score": -4,
+     "rated_move_score": -106,
+     "loss_cp": 102,
+     "nodes": 1082585,
+     "quiescence_share": 0.97
+    }
+   },
+   "rated_game": {
+    "clock_before_s": 90.161,
+    "seconds_used": 2.708,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r55-20-Nxd4",
+   "round": 55,
+   "kind": "earliest_recoverable",
+   "move": "20...Nxd4",
+   "fen": "r4r1k/p2bn3/qpnBp2p/1R1p2p1/P1pP3P/2P2N2/2P1BPP1/R1Q3K1 b - - 0 20",
+   "side_to_move": "black",
+   "rated_move_uci": "c6d4",
+   "rated_move_san": "Nxd4",
+   "acceptable_uci": [
+    "f8g8"
+   ],
+   "acceptable_san": [
+    "Rg8"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 5,
+   "score_margin_cp": 126,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the knight trade strips the last defender of f5 and hands White the h4-h5 lever",
+   "classification": "1 - tactical horizon",
+   "note": "Depth 2 was completed under the 2.641 s clock and rates Nxd4 as equal to the best move. The refutation needs depth 5, where the loss is 126 cp. This is the deepest single-move gap in rounds 54 to 56.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "c6d4",
+     "best_san": "Nxd4",
+     "best_score": -106,
+     "rated_move_score": -106,
+     "loss_cp": 0,
+     "nodes": 8756,
+     "quiescence_share": 0.996
+    },
+    "3": {
+     "best": "c6d4",
+     "best_san": "Nxd4",
+     "best_score": -106,
+     "rated_move_score": -106,
+     "loss_cp": 0,
+     "nodes": 32645,
+     "quiescence_share": 0.991
+    },
+    "4": {
+     "best": "f8g8",
+     "best_san": "Rg8",
+     "best_score": -102,
+     "rated_move_score": -106,
+     "loss_cp": 4,
+     "nodes": 102359,
+     "quiescence_share": 0.966
+    },
+    "5": {
+     "best": "f8g8",
+     "best_san": "Rg8",
+     "best_score": -104,
+     "rated_move_score": -230,
+     "loss_cp": 126,
+     "nodes": 387589,
+     "quiescence_share": 0.961
+    }
+   },
+   "rated_game": {
+    "clock_before_s": 87.953,
+    "seconds_used": 2.641,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r56-17-f4",
+   "round": 56,
+   "kind": "earliest_recoverable",
+   "move": "17.f4",
+   "fen": "r1bqr1k1/1pp2p1p/1p3npB/1P1pp1N1/P3P3/1QPP1P2/6PP/R4RK1 w - - 1 17",
+   "side_to_move": "white",
+   "rated_move_uci": "f3f4",
+   "rated_move_san": "f4",
+   "acceptable_uci": [
+    "c3c4"
+   ],
+   "acceptable_san": [
+    "c4"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 3,
+   "score_margin_cp": 74,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "f4 commits the kingside before the centre is settled; c4 or Kh1 keeps the tension",
+   "classification": "1 - tactical horizon",
+   "note": "74 cp at depth 3 and 51 cp at depth 4. The engine had 2.919 s. This is the last point in round 56 where a single different move is clearly better.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "f3f4",
+     "best_san": "f4",
+     "best_score": 73,
+     "rated_move_score": 73,
+     "loss_cp": 0,
+     "nodes": 11818,
+     "quiescence_share": 0.997
+    },
+    "3": {
+     "best": "c3c4",
+     "best_san": "c4",
+     "best_score": 81,
+     "rated_move_score": 7,
+     "loss_cp": 74,
+     "nodes": 25474,
+     "quiescence_share": 0.99
+    },
+    "4": {
+     "best": "g1h1",
+     "best_san": "Kh1",
+     "best_score": 58,
+     "rated_move_score": 7,
+     "loss_cp": 51,
+     "nodes": 209995,
+     "quiescence_share": 0.981
+    }
+   },
+   "rated_game": {
+    "clock_before_s": 97.222,
+    "seconds_used": 2.919,
+    "completed_depth_in_replay": 2,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r56-18-Nxf7",
+   "round": 56,
+   "kind": "invisible_to_the_control",
+   "move": "18.Nxf7",
+   "fen": "r1bqr1k1/1pp2p1p/1p4pB/1P1pp1N1/P3PPn1/1QPP4/6PP/R4RK1 w - - 1 18",
+   "side_to_move": "white",
+   "rated_move_uci": "g5f7",
+   "rated_move_san": "Nxf7",
+   "acceptable_uci": [],
+   "acceptable_san": [],
+   "unacceptable_uci": [
+    "g5f7"
+   ],
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "the knight sacrifice on f7 that loses the game; the control rates it +15 at every depth it can reach",
+   "classification": "4 - evaluation",
+   "note": "Advisory and deliberately not enforced: there is no depth in reach at which the control prefers anything else, so there is no correcting depth to assert. Recorded because it is the move that lost round 56 and because any future candidate that starts disliking Nxf7 here has found something the control cannot see.",
+   "enforced": false,
+   "depth_ladder": {
+    "2": {
+     "best": "g5f7",
+     "best_san": "Nxf7",
+     "best_score": 7,
+     "rated_move_score": 7,
+     "loss_cp": 0,
+     "nodes": 550,
+     "quiescence_share": 0.931
+    },
+    "3": {
+     "best": "g5f7",
+     "best_san": "Nxf7",
+     "best_score": 7,
+     "rated_move_score": 7,
+     "loss_cp": 0,
+     "nodes": 6963,
+     "quiescence_share": 0.977
+    },
+    "4": {
+     "best": "g5f7",
+     "best_san": "Nxf7",
+     "best_score": 15,
+     "rated_move_score": 15,
+     "loss_cp": 0,
+     "nodes": 25370,
+     "quiescence_share": 0.933
+    }
+   },
+   "rated_game": {
+    "clock_before_s": 94.803,
+    "seconds_used": 2.858,
+    "completed_depth_in_replay": 4,
+    "replay_reproduced_rated_move": true
+   }
+  },
+  {
+   "id": "r54-53-Ke5",
+   "round": 54,
+   "kind": "already_solved",
+   "move": "53...Ke5",
+   "fen": "6b1/8/3k4/8/3qP3/5B2/6K1/8 b - - 3 53",
+   "side_to_move": "black",
+   "rated_move_uci": "d6e5",
+   "rated_move_san": "Ke5",
+   "acceptable_uci": [
+    "d6e5"
+   ],
+   "acceptable_san": [
+    "Ke5"
+   ],
+   "unacceptable_uci": null,
+   "minimum_correcting_depth": 4,
+   "score_margin_cp": 0,
+   "proof_type": "control's own deeper search, no independent oracle",
+   "motif": "a won endgame where the shallow preference is wrong and depth 4 restores the played move",
+   "classification": "6 - endgame technique",
+   "note": "The rated move is itself the depth-4 best move; depths 2 and 3 prefer Bh7 by 129 and 90 cp. Enforced as a floor: a candidate must still choose Ke5 at depth 4. Round 54 was a win.",
+   "enforced": true,
+   "depth_ladder": {
+    "2": {
+     "best": "g8h7",
+     "best_san": "Bh7",
+     "best_score": 1006,
+     "rated_move_score": 877,
+     "loss_cp": 129,
+     "nodes": 186,
+     "quiescence_share": 0.812
+    },
+    "3": {
+     "best": "g8h7",
+     "best_san": "Bh7",
+     "best_score": 1006,
+     "rated_move_score": 916,
+     "loss_cp": 90,
+     "nodes": 1466,
+     "quiescence_share": 0.935
+    },
+    "4": {
+     "best": "d6e5",
+     "best_san": "Ke5",
+     "best_score": 1021,
+     "rated_move_score": 1021,
+     "loss_cp": 0,
+     "nodes": 4189,
+     "quiescence_share": 0.714
+    }
+   },
+   "rated_game": {
+    "clock_before_s": 44.174,
+    "seconds_used": 1.327,
+    "completed_depth_in_replay": 4,
+    "replay_reproduced_rated_move": true
+   }
+  }
+ ]
 }

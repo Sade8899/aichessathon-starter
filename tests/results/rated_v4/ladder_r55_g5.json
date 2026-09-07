@@ -1,0 +1,54 @@
+{
+  "source": "rated",
+  "fen": "r4r1k/p2bn1p1/qpnBp2p/1R1p4/P1pP4/2P2N2/2P1BPPP/R1Q3K1 b - - 1 19",
+  "rungs": [
+    {
+      "clock_ms": 87000,
+      "move": "g7g5",
+      "san": "g5",
+      "completed_depth": 2,
+      "seconds": 2.61,
+      "nodes": 54720
+    },
+    {
+      "clock_ms": 174000,
+      "move": "g7g5",
+      "san": "g5",
+      "completed_depth": 2,
+      "seconds": 5.221,
+      "nodes": 104640
+    },
+    {
+      "clock_ms": 348000,
+      "move": "f8f6",
+      "san": "Rf6",
+      "completed_depth": 3,
+      "seconds": 10.441,
+      "nodes": 220448
+    },
+    {
+      "clock_ms": 696000,
+      "move": "f8f6",
+      "san": "Rf6",
+      "completed_depth": 4,
+      "seconds": 18.315,
+      "nodes": 397706
+    },
+    {
+      "clock_ms": 1392000,
+      "move": "f8f6",
+      "san": "Rf6",
+      "completed_depth": 4,
+      "seconds": 41.76,
+      "nodes": 949120
+    },
+    {
+      "clock_ms": 2784000,
+      "move": "f8f6",
+      "san": "Rf6",
+      "completed_depth": 4,
+      "seconds": 83.521,
+      "nodes": 1814656
+    }
+  ]
+}

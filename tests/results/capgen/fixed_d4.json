@@ -1,0 +1,11 @@
+{
+  "depth": 4,
+  "groups": [
+    "rated",
+    "quiet"
+  ],
+  "positions": 61,
+  "mismatches": [],
+  "mismatch_count": 0,
+  "passed": true
+}

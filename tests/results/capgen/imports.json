@@ -1,0 +1,25 @@
+{
+  "attempts": [
+    {
+      "attempt": 0,
+      "import_seconds": 1.465,
+      "move": "g1f3",
+      "legal": true
+    },
+    {
+      "attempt": 1,
+      "import_seconds": 0.793,
+      "move": "g1f3",
+      "legal": true
+    },
+    {
+      "attempt": 2,
+      "import_seconds": 0.76,
+      "move": "g1f3",
+      "legal": true
+    }
+  ],
+  "worst_import_seconds": 1.465,
+  "within_90s_budget": true,
+  "passed": true
+}
