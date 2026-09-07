@@ -4,3 +4,8 @@ __pycache__/
 .ruff_cache/
 submission.zip
 *.pgn
+
+# Narrow exception to the *.pgn rule above: rated-game PGNs preserved as
+# submission evidence under a submission folder's games/ directory are the
+# record of what the uploaded engine actually played, so they are tracked.
+!submission*/games/*.pgn

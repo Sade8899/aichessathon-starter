@@ -1,0 +1,14 @@
+round  res        n bias_med bias_mean drift_med followed
+44     Loss      55       29     1077      -12       25
+45     Loss      65       12      891       -5       19
+46     Loss      28       40     3235       -4       11
+47     Win       60      -11    -1530        1       18
+48     Win       22     -102    -2808       -2       12
+49     Win       58      -24    -1080        6       22
+50     Win       34      -24     -969        9       16
+51     Draw      73       12       21        0       22
+52     Win       50      -60    -1286        5       21
+53     Loss      50       30     1218      -12       20
+------------------------------------------------------------
+all positions: n=495 static bias median +0 mean -88
+pv-followed pairs: n=186 realisation drift median +0 mean +147

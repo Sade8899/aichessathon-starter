@@ -1,0 +1,15 @@
+r46-30-Ka4   x1   clock=    68.7s budget=  2.15s depth=3 move=Ka4    repeats rated move
+r46-30-Ka4   x2   clock=   137.4s budget=  4.29s depth=4 move=bxa5   AVOIDED
+r51-62-Ke3   x1   clock=    39.1s budget=  1.22s depth=6 move=Kd3    AVOIDED
+r51-53-Qc5   x1   clock=    44.9s budget=  1.40s depth=3 move=Qc5    repeats rated move
+r51-53-Qc5   x2   clock=    89.8s budget=  2.81s depth=4 move=a6     AVOIDED
+r51-66-Qc4   x1   clock=    36.9s budget=  1.15s depth=5 move=Kb6    AVOIDED
+r53-35-Rf7   x1   clock=    62.2s budget=  1.94s depth=4 move=Rf7    repeats rated move
+r53-35-Rf7   x2   clock=   124.4s budget=  3.89s depth=5 move=Re8    AVOIDED
+r53-52-Bc6   x1   clock=    44.7s budget=  1.40s depth=5 move=Bc6    repeats rated move
+r53-52-Bc6   x2   clock=    89.4s budget=  2.79s depth=5 move=Bc6    repeats rated move
+r53-52-Bc6   x4   clock=   178.8s budget=  5.59s depth=5 move=Bc6    repeats rated move
+r53-52-Bc6   x8   clock=   357.6s budget= 11.18s depth=6 move=g4     AVOIDED
+r45-54-Rc7   x1   clock=    42.6s budget=  1.33s depth=5 move=Rc7    repeats rated move
+r45-54-Rc7   x2   clock=    85.2s budget=  2.66s depth=5 move=Rc7    repeats rated move
+r45-54-Rc7   x4   clock=   170.5s budget=  5.33s depth=6 move=a4     AVOIDED

@@ -1,0 +1,23 @@
+r44 12.Ned2      d5 Ned2     best=-36 played=-36 loss=+0 4.7s pv=Ned2 Qd6 b4 Nxc4 Nxc4
+r44 12.Ned2      d6 Ned2     best=-8 played=-8 loss=+0 41.0s pv=Ned2 Bf6 Re1 Qd6 b4
+r44 13.Re1       d5 b4       best=+0 played=-8 loss=+8 5.5s pv=b4 Nxc4 Nxc4 e4 Nfe5
+r44 13.Re1       d6 Re1      best=-14 played=-14 loss=+0 44.1s pv=Re1 Re8 b4 Nxc4 Nxc4 e4
+r44 14.b4        d5 Bxd5+    best=+1 played=-34 loss=+35 7.2s pv=Bxd5+ Qxd5 b4 Nc6 Nc4
+r44 14.b4        d6 a4       best=-16 played=-34 loss=+18 71.9s pv=a4 c5 b4 cxb4 Bxd5+ Qxd5
+r44 15.Nxc4      d5 Nxc4     best=-47 played=-47 loss=+0 4.8s pv=Nxc4 e4 dxe4 Nxb4 cxb4
+r44 15.Nxc4      d6 Nxc4     best=-47 played=-47 loss=+0 26.2s pv=Nxc4 e4 dxe4 Nxb4 cxb4 Bxa1
+r44 16.dxe4      d5 dxe4     best=-47 played=-47 loss=+0 3.6s pv=dxe4 Nxb4 cxb4 Bxa1 exf5
+r44 16.dxe4      d6 dxe4     best=-47 played=-47 loss=+0 25.9s pv=dxe4 Nxb4 cxb4 Bxa1 exf5
+r44 17.cxb4      d5 cxb4     best=-47 played=-47 loss=+0 3.7s pv=cxb4 Bxa1 exf5 Rxe1+ Nxe1
+r44 17.cxb4      d6 cxb4     best=-90 played=-90 loss=+0 27.5s pv=cxb4 Bxa1 exf5 Rxe1+ Nxe1 Bd4
+r44 18.exf5      d5 exf5     best=-80 played=-80 loss=+0 7.3s pv=exf5 Rxe1+ Nxe1 b5
+r44 18.exf5      d6 e5       best=-25 played=-102 loss=+77 62.8s pv=e5 Qd5 Bg5 Bd4
+r44 19.Nxe1      d5 Nxe1     best=-145 played=-145 loss=+0 1.8s pv=Nxe1 Qf8 Qb3 Qxf5 Nd6+
+r44 19.Nxe1      d6 Nxe1     best=-145 played=-145 loss=+0 7.0s pv=Nxe1 Qf8 Qb3 Qxf5 Nd6+ Qe6
+r44 20.Qb3       d5 g4       best=-129 played=-138 loss=+9 8.3s pv=g4 Qxb4 Nd3 Qc3 Qb3
+r44 20.Qb3       d6 Qd3      best=-138 played=-163 loss=+25 39.5s pv=Qd3 Qxf5 Qd8+ Qf8 Qd5+
+r44 21.Bf4       d5 Bb2      best=-170 played=-237 loss=+67 8.3s pv=Bb2 Bxb2 Qxb2 Be6 Qd4
+r44 21.Bf4       d6 Nd3      best=-172 played=-237 loss=+65 42.7s pv=Nd3 Be6 Nc5 Rf8 Nxe6 Qxe6
+r44 22.g3        d5 Be3      best=-343 played=-349 loss=+6 15.1s pv=Be3 b5 Qd1 Bf6 Na5
+r44 22.g3        d6 Be3      best=-343 played=-349 loss=+6 70.5s pv=Be3 b5 Qd1 Bf6 Na5 Bxa2
+done r44_middle

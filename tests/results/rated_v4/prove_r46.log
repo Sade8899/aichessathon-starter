@@ -1,0 +1,7 @@
+r46 after 30.Ka4           d4 Rb7         +223  nodes=38416 1.9s pv=Rb7 b5 Rxb5 Rb1
+r46 after 30.Ka4           d5 axb4+      +1162  nodes=51020 2.3s pv=axb4+ Kxb4 Qf8+ Qc5 Rb7+
+r46 after 30.Ka4           d6 axb4+      +1162  nodes=278791 16.0s pv=axb4+ Kxb4 Qf8+ Qc5 Rb7+ Kc3
+r46 after 30.Ka4           d7 axb4+     +29991 MATE nodes=1129866 53.5s pv=axb4+ Kxb4 Rb7+ Kc5 Rb5+ Kd4
+r46 after 30.bxa5          d4 Rfa7        +131  nodes=104776 5.5s pv=Rfa7 Ka4 Rxa5+ Qxa5
+r46 after 30.bxa5          d5 Rfa7        +177  nodes=317551 15.9s pv=Rfa7 Kb2 Rxa5 Rd2 Ra2+
+r46 after 30.bxa5          d6 Rfa7        +199  nodes=1860481 109.2s pv=Rfa7 Ka4 Rxa5+ Qxa5 Bb3+ Kxb3

@@ -1,0 +1,33 @@
+--- determinism.py ---
+{"fixed_depth_positions": 12, "repeatability": "passed", "colour_symmetry": "passed", "opening_repeats": ["g1f3", "g1f3", "g1f3", "g1f3", "g1f3"]}
+--- verify.py ---
+{
+  "targeted": "passed",
+  "reachable_positions": 500,
+  "clocks_ms": {
+    "1": {
+      "median": 0.12400549894664437,
+      "worst": 0.2580109976406675
+    },
+    "10": {
+      "median": 0.1136049995693611,
+      "worst": 0.40531799822929315
+    },
+    "50": {
+      "median": 1.7947809992620023,
+      "worst": 2.752024000074016
+    },
+    "100": {
+      "median": 3.3467504999862285,
+      "worst": 4.039081999508198
+    },
+    "500": {
+      "median": 15.309789498132886,
+      "worst": 16.809456999908434
+    }
+  },
+  "model_overhead_median": 0.00038806614196949183,
+  "model_overhead_worst": 0.07528857976567893
+}
+--- rated_v4 fixtures (working) ---
+enforced 15 / 15 passed True

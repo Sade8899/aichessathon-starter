@@ -1,0 +1,520 @@
+{
+  "17...Kh8": {
+    "move": "17...Kh8",
+    "fen": "r4rk1/1ppbqp2/5np1/p1bPp1Bp/P2nP3/2NB1N1P/1P3PP1/1R1Q1RK1 b - - 0 17",
+    "played": "g8h8",
+    "clock_before_s": 91.666,
+    "seconds_used": 2.752,
+    "depths": {
+      "5": {
+        "best": "Kg7",
+        "best_uci": "g8g7",
+        "best_score": 15,
+        "played_score": 1,
+        "loss_cp": 14,
+        "agrees": false,
+        "nodes": 390417,
+        "q_nodes": 380416,
+        "main_nodes": 10001,
+        "seconds": 23.842,
+        "pv": "Kg7 Bc4 Rg8",
+        "played_pv": "Kh8 Nxd4 exd4 Qf3 Kg7"
+      },
+      "6": {
+        "best": "Kg7",
+        "best_uci": "g8g7",
+        "best_score": 7,
+        "played_score": -2,
+        "loss_cp": 9,
+        "agrees": false,
+        "nodes": 1529798,
+        "q_nodes": 1407228,
+        "main_nodes": 122570,
+        "seconds": 106.516,
+        "pv": "Kg7 Rc1 Rh8 Nxd4 exd4 Nb5",
+        "played_pv": "Kh8 Nxd4 exd4 Qf3 Kg7"
+      }
+    }
+  },
+  "18...Rfd8": {
+    "move": "18...Rfd8",
+    "fen": "r4r1k/1ppbqp2/5np1/p1bPp2p/P2nP2B/2NB1N1P/1P3PP1/1R1Q1RK1 b - - 2 18",
+    "played": "f8d8",
+    "clock_before_s": 89.414,
+    "seconds_used": 2.684,
+    "depths": {
+      "5": {
+        "best": "Kg7",
+        "best_uci": "h8g7",
+        "best_score": 27,
+        "played_score": 19,
+        "loss_cp": 8,
+        "agrees": false,
+        "nodes": 454857,
+        "q_nodes": 443614,
+        "main_nodes": 11243,
+        "seconds": 27.897,
+        "pv": "Kg7 Bg5 Qd6 Rc1 Nxf3+",
+        "played_pv": "Rfd8 Rc1 b6 Bg5 Bd6"
+      },
+      "6": {
+        "best": "c6",
+        "best_uci": "c7c6",
+        "best_score": 19,
+        "played_score": 15,
+        "loss_cp": 4,
+        "agrees": false,
+        "nodes": 1840377,
+        "q_nodes": 1709248,
+        "main_nodes": 131129,
+        "seconds": 124.045,
+        "pv": "c6 Rc1 Qd6 Nxd4 exd4",
+        "played_pv": "Rfd8 Rc1 b6 Nxd4 Bxd4 Bg5"
+      }
+    }
+  },
+  "19...Qd6": {
+    "move": "19...Qd6",
+    "fen": "r2r3k/1ppbqp2/5np1/p1bPp2p/P2nP2B/1PNB1N1P/5PP1/1R1Q1RK1 b - - 0 19",
+    "played": "e7d6",
+    "clock_before_s": 87.23,
+    "seconds_used": 2.618,
+    "depths": {
+      "5": {
+        "best": "Qd6",
+        "best_uci": "e7d6",
+        "best_score": 22,
+        "played_score": 22,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 414307,
+        "q_nodes": 404647,
+        "main_nodes": 9660,
+        "seconds": 24.941,
+        "pv": "Qd6 Rb2 c6 Bg3 Nxf3+",
+        "played_pv": "Qd6 Rb2 c6 Bg3 Nxf3+"
+      },
+      "6": {
+        "best": "Kg7",
+        "best_uci": "h8g7",
+        "best_score": 14,
+        "played_score": 12,
+        "loss_cp": 2,
+        "agrees": false,
+        "nodes": 1179087,
+        "q_nodes": 1089182,
+        "main_nodes": 89905,
+        "seconds": 69.111,
+        "pv": "Kg7 Bg5 Rh8 Rb2 Qd6 Kh1",
+        "played_pv": "Qd6 Nxd4 exd4 Nb5 Bxb5 Bxb5"
+      }
+    }
+  },
+  "20...axb4": {
+    "move": "20...axb4",
+    "fen": "r2r3k/1ppb1p2/3q1np1/p1bPp2p/PP1nP2B/2NB1N1P/5PP1/1R1Q1RK1 b - - 0 20",
+    "played": "a5b4",
+    "clock_before_s": 85.112,
+    "seconds_used": 2.012,
+    "depths": {
+      "5": {
+        "best": "axb4",
+        "best_uci": "a5b4",
+        "best_score": 138,
+        "played_score": 138,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 152330,
+        "q_nodes": 146079,
+        "main_nodes": 6251,
+        "seconds": 6.64,
+        "pv": "axb4 Nxd4 exd4 Bg3 Qb6",
+        "played_pv": "axb4 Nxd4 exd4 Bg3 Qb6"
+      },
+      "6": {
+        "best": "axb4",
+        "best_uci": "a5b4",
+        "best_score": 133,
+        "played_score": 133,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 961020,
+        "q_nodes": 860541,
+        "main_nodes": 100479,
+        "seconds": 57.776,
+        "pv": "axb4 Nxd4 exd4 Qf3 Kg7",
+        "played_pv": "axb4 Nxd4 exd4 Qf3 Kg7"
+      }
+    }
+  },
+  "21...Nxb5": {
+    "move": "21...Nxb5",
+    "fen": "r2r3k/1ppb1p2/3q1np1/1NbPp2p/Pp1nP2B/3B1N1P/5PP1/1R1Q1RK1 b - - 1 21",
+    "played": "d4b5",
+    "clock_before_s": 83.6,
+    "seconds_used": 2.51,
+    "depths": {
+      "5": {
+        "best": "Nxb5",
+        "best_uci": "d4b5",
+        "best_score": 181,
+        "played_score": 181,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 300623,
+        "q_nodes": 294501,
+        "main_nodes": 6122,
+        "seconds": 17.275,
+        "pv": "Nxb5 axb5 Ra2 Bc4 Ra3",
+        "played_pv": "Nxb5 axb5 Ra2 Bc4 Ra3"
+      },
+      "6": {
+        "best": "Nxb5",
+        "best_uci": "d4b5",
+        "best_score": 158,
+        "played_score": 158,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 1614137,
+        "q_nodes": 1520957,
+        "main_nodes": 93180,
+        "seconds": 94.549,
+        "pv": "Nxb5 axb5 Ra2 Bc4 Ra3 Ra1",
+        "played_pv": "Nxb5 axb5 Ra2 Bc4 Ra3 Ra1"
+      }
+    }
+  },
+  "22...Nc3": {
+    "move": "22...Nc3",
+    "fen": "r2r3k/1ppb1p2/3q1np1/1nbPp1Np/Pp2P2B/3B3P/5PP1/1R1Q1RK1 b - - 1 22",
+    "played": "b5c3",
+    "clock_before_s": 81.59,
+    "seconds_used": 2.449,
+    "depths": {
+      "5": {
+        "best": "Nc3",
+        "best_uci": "b5c3",
+        "best_score": 301,
+        "played_score": 301,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 500476,
+        "q_nodes": 487621,
+        "main_nodes": 12855,
+        "seconds": 28.444,
+        "pv": "Nc3 Nxf7+ Kg7 Nxd6 Nxd1",
+        "played_pv": "Nc3 Nxf7+ Kg7 Nxd6 Nxd1"
+      },
+      "6": {
+        "best": "Nc3",
+        "best_uci": "b5c3",
+        "best_score": 301,
+        "played_score": 301,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 1959617,
+        "q_nodes": 1858744,
+        "main_nodes": 100873,
+        "seconds": 105.149,
+        "pv": "Nc3 Nxf7+ Kg7 Nxd6 Nxd1 Nxb7",
+        "played_pv": "Nc3 Nxf7+ Kg7 Nxd6 Nxd1 Nxb7"
+      }
+    }
+  },
+  "23...Kg7": {
+    "move": "23...Kg7",
+    "fen": "r2r3k/1ppb1N2/3q1np1/2bPp2p/Pp2P2B/2nB3P/5PP1/1R1Q1RK1 b - - 0 23",
+    "played": "h8g7",
+    "clock_before_s": 79.641,
+    "seconds_used": 2.391,
+    "depths": {
+      "5": {
+        "best": "Kg7",
+        "best_uci": "h8g7",
+        "best_score": 44,
+        "played_score": 44,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 83626,
+        "q_nodes": 79766,
+        "main_nodes": 3860,
+        "seconds": 4.299,
+        "pv": "Kg7 Nxd6 Nxd1 Nxb7 Nc3",
+        "played_pv": "Kg7 Nxd6 Nxd1 Nxb7 Nc3"
+      },
+      "6": {
+        "best": "Kg7",
+        "best_uci": "h8g7",
+        "best_score": 44,
+        "played_score": 44,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 503394,
+        "q_nodes": 482467,
+        "main_nodes": 20927,
+        "seconds": 22.657,
+        "pv": "Kg7 Nxd6 Nxd1 Nxb7 Nc3 Nxc5",
+        "played_pv": "Kg7 Nxd6 Nxd1 Nxb7 Nc3 Nxc5"
+      }
+    }
+  },
+  "24...Nxd1": {
+    "move": "24...Nxd1",
+    "fen": "r2r4/1ppb2k1/3N1np1/2bPp2p/Pp2P2B/2nB3P/5PP1/1R1Q1RK1 b - - 0 24",
+    "played": "c3d1",
+    "clock_before_s": 77.75,
+    "seconds_used": 1.979,
+    "depths": {
+      "5": {
+        "best": "Nxd1",
+        "best_uci": "c3d1",
+        "best_score": 44,
+        "played_score": 44,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 108476,
+        "q_nodes": 104432,
+        "main_nodes": 4044,
+        "seconds": 4.466,
+        "pv": "Nxd1 Nxb7 Nc3 Nxc5 Nxb1",
+        "played_pv": "Nxd1 Nxb7 Nc3 Nxc5 Nxb1"
+      },
+      "6": {
+        "best": "Nxd1",
+        "best_uci": "c3d1",
+        "best_score": 44,
+        "played_score": 44,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 849547,
+        "q_nodes": 797049,
+        "main_nodes": 52498,
+        "seconds": 41.574,
+        "pv": "Nxd1 Nxb7 Nc3 Nxc5 Nxb1",
+        "played_pv": "Nxd1 Nxb7 Nc3 Nxc5 Nxb1"
+      }
+    }
+  },
+  "25...Nc3": {
+    "move": "25...Nc3",
+    "fen": "r2r4/1Npb2k1/5np1/2bPp2p/Pp2P2B/3B3P/5PP1/1R1n1RK1 b - - 0 25",
+    "played": "d1c3",
+    "clock_before_s": 76.271,
+    "seconds_used": 1.567,
+    "depths": {
+      "5": {
+        "best": "Nc3",
+        "best_uci": "d1c3",
+        "best_score": 26,
+        "played_score": 26,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 201978,
+        "q_nodes": 191782,
+        "main_nodes": 10196,
+        "seconds": 8.768,
+        "pv": "Nc3 Nxc5 Nxb1 Rxb1",
+        "played_pv": "Nc3 Nxc5 Nxb1 Rxb1"
+      },
+      "6": {
+        "best": "Nc3",
+        "best_uci": "d1c3",
+        "best_score": 5,
+        "played_score": 5,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 1014782,
+        "q_nodes": 904834,
+        "main_nodes": 109948,
+        "seconds": 53.056,
+        "pv": "Nc3 Nxc5 Nxb1 Rxb1",
+        "played_pv": "Nc3 Nxc5 Nxb1 Rxb1"
+      }
+    }
+  },
+  "26...Nxb1": {
+    "move": "26...Nxb1",
+    "fen": "r2r4/2pb2k1/5np1/2NPp2p/Pp2P2B/2nB3P/5PP1/1R3RK1 b - - 0 26",
+    "played": "c3b1",
+    "clock_before_s": 75.204,
+    "seconds_used": 2.258,
+    "depths": {
+      "5": {
+        "best": "Nxb1",
+        "best_uci": "c3b1",
+        "best_score": 4,
+        "played_score": 4,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 97592,
+        "q_nodes": 92403,
+        "main_nodes": 5189,
+        "seconds": 4.208,
+        "pv": "Nxb1 Rxb1 Rab8 Bg3 Re8",
+        "played_pv": "Nxb1 Rxb1 Rab8 Bg3 Re8"
+      },
+      "6": {
+        "best": "Nxb1",
+        "best_uci": "c3b1",
+        "best_score": -58,
+        "played_score": -58,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 424991,
+        "q_nodes": 363885,
+        "main_nodes": 61106,
+        "seconds": 24.021,
+        "pv": "Nxb1 Rxb1 Rab8 Bb5 Bxb5 Ne6+",
+        "played_pv": "Nxb1 Rxb1 Rab8 Bb5 Bxb5 Ne6+"
+      }
+    }
+  },
+  "27...Rab8": {
+    "move": "27...Rab8",
+    "fen": "r2r4/2pb2k1/5np1/2NPp2p/Pp2P2B/3B3P/5PP1/1R4K1 b - - 0 27",
+    "played": "a8b8",
+    "clock_before_s": 73.446,
+    "seconds_used": 2.205,
+    "depths": {
+      "5": {
+        "best": "Rab8",
+        "best_uci": "a8b8",
+        "best_score": -83,
+        "played_score": -83,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 143735,
+        "q_nodes": 133431,
+        "main_nodes": 10304,
+        "seconds": 7.559,
+        "pv": "Rab8 Nxd7 Rxd7 Bb5 Rxb5",
+        "played_pv": "Rab8 Nxd7 Rxd7 Bb5 Rxb5"
+      },
+      "6": {
+        "best": "Rab8",
+        "best_uci": "a8b8",
+        "best_score": -83,
+        "played_score": -83,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 508424,
+        "q_nodes": 443742,
+        "main_nodes": 64682,
+        "seconds": 26.187,
+        "pv": "Rab8 Nxd7 Rxd7 Bb5 Rxb5",
+        "played_pv": "Rab8 Nxd7 Rxd7 Bb5 Rxb5"
+      }
+    }
+  },
+  "28...Bc8": {
+    "move": "28...Bc8",
+    "fen": "1r1r4/2pb2k1/5np1/P1NPp2p/1p2P2B/3B3P/5PP1/1R4K1 b - - 0 28",
+    "played": "d7c8",
+    "clock_before_s": 71.741,
+    "seconds_used": 2.154,
+    "depths": {
+      "5": {
+        "best": "Bc8",
+        "best_uci": "d7c8",
+        "best_score": -36,
+        "played_score": -36,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 186477,
+        "q_nodes": 174659,
+        "main_nodes": 11818,
+        "seconds": 9.473,
+        "pv": "Bc8 Bg5 Ra8 a6 Rb8",
+        "played_pv": "Bc8 Bg5 Ra8 a6 Rb8"
+      },
+      "6": {
+        "best": "Bc8",
+        "best_uci": "d7c8",
+        "best_score": -61,
+        "played_score": -61,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 560236,
+        "q_nodes": 488865,
+        "main_nodes": 71371,
+        "seconds": 30.05,
+        "pv": "Bc8 Bg5 Ra8 a6 Rb8 a7",
+        "played_pv": "Bc8 Bg5 Ra8 a6 Rb8 a7"
+      }
+    }
+  },
+  "29...Kf7": {
+    "move": "29...Kf7",
+    "fen": "1rbr4/2p3k1/P4np1/2NPp2p/1p2P2B/3B3P/5PP1/1R4K1 b - - 0 29",
+    "played": "g7f7",
+    "clock_before_s": 70.087,
+    "seconds_used": 1.583,
+    "depths": {
+      "5": {
+        "best": "Kf7",
+        "best_uci": "g7f7",
+        "best_score": -88,
+        "played_score": -88,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 218959,
+        "q_nodes": 208042,
+        "main_nodes": 10917,
+        "seconds": 10.74,
+        "pv": "Kf7 Bc4 Kg7 Nd3 Rd6",
+        "played_pv": "Kf7 Bc4 Kg7 Nd3 Rd6"
+      },
+      "6": {
+        "best": "Kf7",
+        "best_uci": "g7f7",
+        "best_score": -88,
+        "played_score": -88,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 609754,
+        "q_nodes": 538148,
+        "main_nodes": 71606,
+        "seconds": 33.68,
+        "pv": "Kf7 Bc4 Kg7 Nd3 Rd6 Bxf6+",
+        "played_pv": "Kf7 Bc4 Kg7 Nd3 Rd6 Bxf6+"
+      }
+    }
+  },
+  "30...Kg7": {
+    "move": "30...Kg7",
+    "fen": "1rbr4/2p2k2/P4np1/2NPp2p/1pB1P2B/7P/5PP1/1R4K1 b - - 2 30",
+    "played": "f7g7",
+    "clock_before_s": 69.004,
+    "seconds_used": 2.071,
+    "depths": {
+      "5": {
+        "best": "Ke7",
+        "best_uci": "f7e7",
+        "best_score": -114,
+        "played_score": -120,
+        "loss_cp": 6,
+        "agrees": false,
+        "nodes": 199398,
+        "q_nodes": 188507,
+        "main_nodes": 10891,
+        "seconds": 11.185,
+        "pv": "Ke7 Nd3 Rb6 Rxb4 Rxb4",
+        "played_pv": "Kg7 f3 Bd7 Be1 Bb5"
+      },
+      "6": {
+        "best": "Kg7",
+        "best_uci": "f7g7",
+        "best_score": -134,
+        "played_score": -134,
+        "loss_cp": 0,
+        "agrees": true,
+        "nodes": 603588,
+        "q_nodes": 534094,
+        "main_nodes": 69494,
+        "seconds": 33.802,
+        "pv": "Kg7 f3 Bd7 Be1 c6 Bxb4",
+        "played_pv": "Kg7 f3 Bd7 Be1 c6 Bxb4"
+      }
+    }
+  }
+}

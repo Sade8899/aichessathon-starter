@@ -1,0 +1,208 @@
+[
+  {
+    "id": "r46-30-Ka4",
+    "fen": "r5k1/5rq1/2p1p2p/p2bPp2/1P2pP2/K1Q3P1/4P1B1/3R3R w - - 0 30",
+    "rated_move": "a3a4",
+    "rated_clock_ms": 68720,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 68720,
+        "budget_s": 2.15,
+        "move": "a3a4",
+        "san": "Ka4",
+        "completed_depth": 3,
+        "seconds": 1.42,
+        "avoided": false
+      },
+      {
+        "multiple": 2,
+        "clock_ms": 137440,
+        "budget_s": 4.29,
+        "move": "b4a5",
+        "san": "bxa5",
+        "completed_depth": 4,
+        "seconds": 4.13,
+        "avoided": true
+      }
+    ]
+  },
+  {
+    "id": "r51-62-Ke3",
+    "fen": "2R2n1k/8/Q2P1p2/P5p1/6P1/8/3K1r2/2R3q1 w - - 8 62",
+    "rated_move": "d2e3",
+    "rated_clock_ms": 39130,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 39130,
+        "budget_s": 1.22,
+        "move": "d2d3",
+        "san": "Kd3",
+        "completed_depth": 6,
+        "seconds": 1.14,
+        "avoided": true
+      }
+    ]
+  },
+  {
+    "id": "r51-53-Qc5",
+    "fen": "5nk1/2R5/3P1p1r/P2q2p1/6P1/Q6P/7K/2R5 w - - 18 53",
+    "rated_move": "a3c5",
+    "rated_clock_ms": 44890,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 44890,
+        "budget_s": 1.4,
+        "move": "a3c5",
+        "san": "Qc5",
+        "completed_depth": 3,
+        "seconds": 1.35,
+        "avoided": false
+      },
+      {
+        "multiple": 2,
+        "clock_ms": 89780,
+        "budget_s": 2.81,
+        "move": "a5a6",
+        "san": "a6",
+        "completed_depth": 4,
+        "seconds": 2.51,
+        "avoided": true
+      }
+    ]
+  },
+  {
+    "id": "r51-66-Qc4",
+    "fen": "2R2n1k/8/Q2P1p2/P1K3p1/6P1/8/5r2/2q5 w - - 0 66",
+    "rated_move": "a6c4",
+    "rated_clock_ms": 36930,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 36930,
+        "budget_s": 1.15,
+        "move": "c5b6",
+        "san": "Kb6",
+        "completed_depth": 5,
+        "seconds": 1.11,
+        "avoided": true
+      }
+    ]
+  },
+  {
+    "id": "r53-35-Rf7",
+    "fen": "1rb5/2p1r1k1/P2P1n2/2N3pp/1p2P3/3B2BP/6P1/1R4K1 b - - 0 35",
+    "rated_move": "e7f7",
+    "rated_clock_ms": 62180,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 62180,
+        "budget_s": 1.94,
+        "move": "e7f7",
+        "san": "Rf7",
+        "completed_depth": 4,
+        "seconds": 1.87,
+        "avoided": false
+      },
+      {
+        "multiple": 2,
+        "clock_ms": 124360,
+        "budget_s": 3.89,
+        "move": "e7e8",
+        "san": "Re8",
+        "completed_depth": 5,
+        "seconds": 2.68,
+        "avoided": true
+      }
+    ]
+  },
+  {
+    "id": "r53-52-Bc6",
+    "fen": "2r5/rBPb4/P7/6p1/7p/4B2P/5RP1/3k2K1 b - - 9 52",
+    "rated_move": "d7c6",
+    "rated_clock_ms": 44700,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 44700,
+        "budget_s": 1.4,
+        "move": "d7c6",
+        "san": "Bc6",
+        "completed_depth": 5,
+        "seconds": 1.34,
+        "avoided": false
+      },
+      {
+        "multiple": 2,
+        "clock_ms": 89400,
+        "budget_s": 2.79,
+        "move": "d7c6",
+        "san": "Bc6",
+        "completed_depth": 5,
+        "seconds": 2.68,
+        "avoided": false
+      },
+      {
+        "multiple": 4,
+        "clock_ms": 178800,
+        "budget_s": 5.59,
+        "move": "d7c6",
+        "san": "Bc6",
+        "completed_depth": 5,
+        "seconds": 5.37,
+        "avoided": false
+      },
+      {
+        "multiple": 8,
+        "clock_ms": 357600,
+        "budget_s": 11.18,
+        "move": "g5g4",
+        "san": "g4",
+        "completed_depth": 6,
+        "seconds": 10.73,
+        "avoided": true
+      }
+    ]
+  },
+  {
+    "id": "r45-54-Rc7",
+    "fen": "1k6/6R1/8/p5P1/8/2r5/5PK1/8 b - - 0 54",
+    "rated_move": "c3c7",
+    "rated_clock_ms": 42620,
+    "rungs": [
+      {
+        "multiple": 1,
+        "clock_ms": 42620,
+        "budget_s": 1.33,
+        "move": "c3c7",
+        "san": "Rc7",
+        "completed_depth": 5,
+        "seconds": 1.12,
+        "avoided": false
+      },
+      {
+        "multiple": 2,
+        "clock_ms": 85240,
+        "budget_s": 2.66,
+        "move": "c3c7",
+        "san": "Rc7",
+        "completed_depth": 5,
+        "seconds": 2.56,
+        "avoided": false
+      },
+      {
+        "multiple": 4,
+        "clock_ms": 170480,
+        "budget_s": 5.33,
+        "move": "a5a4",
+        "san": "a4",
+        "completed_depth": 6,
+        "seconds": 4.8,
+        "avoided": true
+      }
+    ]
+  }
+]

@@ -1,0 +1,52 @@
+r44 40.Ke4       d5 Nc4      best=-350 played=-355 loss=+5 3.6s pv=Nc4 Bg2+ Ke3 Rc2 Kd4
+r44 40.Ke4       d6 Ke4      best=-356 played=-356 loss=+0 6.2s pv=Ke4 a5 Nc4 Re2+ Kf3 Rg2
+r44 40.Ke4       d7 f5       best=-347 played=-352 loss=+5 52.2s pv=f5 b5 Kg3 Rd3 Kf4 Rd2 Ke4 a5
+r44 41.Nxg2      d5 Nxg2     best=-348 played=-348 loss=+0 0.5s pv=Nxg2 Rxg2 g5 h6 Kf5
+r44 41.Nxg2      d6 Nxg2     best=-365 played=-365 loss=+0 1.4s pv=Nxg2 Rxg2 g5 a5 Bd4 Re2+
+r44 41.Nxg2      d7 Nxg2     best=-357 played=-357 loss=+0 4.6s pv=Nxg2 Rxg2 Kf3 Rc2 Bd4 h6 Ke4
+r44 42.Kf3       d5 Kf3      best=-357 played=-357 loss=+0 1.3s pv=Kf3 Rc2 Bd4 h6 Ke4
+r44 42.Kf3       d6 Kf3      best=-374 played=-374 loss=+0 5.6s pv=Kf3 Rc2 Ke4 a5 Kd3 Rc8
+r44 42.Kf3       d7 Kf3      best=-359 played=-359 loss=+0 14.3s pv=Kf3 Rc2 Ke4 a5 Kd3 Rc8 f5
+r44 43.Ke3       d5 Ke3      best=-358 played=-358 loss=+0 1.1s pv=Ke3 Rg2 g5 h6 Kf3
+r44 43.Ke3       d6 Ke3      best=-377 played=-377 loss=+0 4.0s pv=Ke3 Rg2 g5 h5 gxh6 gxh6
+r44 43.Ke3       d7 Ke3      best=-357 played=-357 loss=+0 12.7s pv=Ke3 Rg2 Kf3 Rc2 Bd4 g6 Ke4 Ke6
+r44 44.Kd3       d5 Bd4      best=-354 played=-385 loss=+31 1.3s pv=Bd4 h6 f5 g6 Ke4
+r44 44.Kd3       d6 Bd4      best=-373 played=-385 loss=+12 6.0s pv=Bd4 h6 f5 Rg2 Kf4 Re2
+r44 44.Kd3       d7 Bd4      best=-360 played=-362 loss=+2 19.6s pv=Bd4 g6 Kd3 Rc8 g5 Ke6 Bxb6
+r44 45.g5        d5 g5       best=-362 played=-362 loss=+0 1.1s pv=g5 h6 gxh6 gxh6 f5
+r44 45.g5        d6 g5       best=-383 played=-383 loss=+0 3.6s pv=g5 h5 gxh6 gxh6 f5
+r44 45.g5        d7 g5       best=-373 played=-373 loss=+0 14.0s pv=g5 b5 Bd4 a5 Bb6 a4
+r44 46.Kd4       d5 Bd4      best=-373 played=-374 loss=+1 2.0s pv=Bd4 a5 Bb6 a4 Bd4
+r44 46.Kd4       d6 Kd4      best=-393 played=-393 loss=+0 4.7s pv=Kd4 h6 gxh6 gxh6 f5
+r44 46.Kd4       d7 Kd4      best=-379 played=-379 loss=+0 18.3s pv=Kd4 h6 gxh6 gxh6 Kc5 a6 f5
+r44 47.Kc4       d5 Kc4      best=-363 played=-363 loss=+0 1.7s pv=Kc4 a5 Kb5 Ra2 f5
+r44 47.Kc4       d6 Kc4      best=-346 played=-346 loss=+0 6.4s pv=Kc4 a5 Kb5 Ra2 Bc7 h5
+r44 47.Kc4       d7 Kc4      best=-409 played=-409 loss=+0 14.7s pv=Kc4 a5 Bd4 h6 gxh6 gxh6 f5
+r44 48.Kb5       d5 Bd4      best=-409 played=-440 loss=+31 2.6s pv=Bd4 h5 gxh6 gxh6 f5
+r44 48.Kb5       d6 Kb3      best=-412 played=-464 loss=+52 7.5s pv=Kb3 h6 gxh6 gxh6 Ka4 Ra2+
+r44 48.Kb5       d7 Kb3      best=-412 played=-541 loss=+129 20.6s pv=Kb3 h6 gxh6 gxh6 Ka4 Ra2+ Kb5
+r44 49.Kxa5      d5 Kxa5     best=-541 played=-541 loss=+0 1.8s pv=Kxa5 b2 Bxb2 Rxb2 f5
+r44 49.Kxa5      d6 f5       best=-574 played=-577 loss=+3 6.3s pv=f5 b2 g6+ Ke7 Bxb2 Rxb2+
+r44 49.Kxa5      d7 Kxa5     best=-616 played=-616 loss=+0 10.9s pv=Kxa5 b2 Bxb2 Rxb2 f5 Rf2 g6+
+r44 50.Bxb2      d5 Bxb2     best=-616 played=-616 loss=+0 0.4s pv=Bxb2 Rxb2 f5 Rf2 g6+
+r44 50.Bxb2      d6 Bxb2     best=-616 played=-616 loss=+0 2.3s pv=Bxb2 Rxb2 f5 Rf2 g6+ hxg6
+r44 50.Bxb2      d7 Bxb2     best=-666 played=-666 loss=+0 6.3s pv=Bxb2 Rxb2 Ka4 Kg6 Ka3 Rf2 Kb3
+r44 51.Ka4       d5 Ka4      best=-666 played=-666 loss=+0 0.1s pv=Ka4 Kg6 Ka3 Rf2 Kb3
+r44 51.Ka4       d6 Ka4      best=-677 played=-677 loss=+0 0.6s pv=Ka4 Rf2 Kb5 Rxf4 Kc6 Ke6
+r44 51.Ka4       d7 f5       best=-710 played=-787 loss=+77 5.0s pv=f5 g6 fxg6+ Kxg6 Ka4 Kxg5 Ka5
+r44 52.Kb5       d5 Kb5      best=-767 played=-767 loss=+0 0.1s pv=Kb5 Rxf4 Kc5 Kg6 Kd5
+r44 52.Kb5       d6 Kb5      best=-767 played=-767 loss=+0 0.5s pv=Kb5 Rxf4 Kc5 Kg6 Kd5 Kxg5
+r44 52.Kb5       d7 Kb5      best=-778 played=-778 loss=+0 1.3s pv=Kb5 Rxf4 Kc5 Kg6 Kd5 Rf2 Ke5
+r44 53.g6        d5 g6       best=-754 played=-754 loss=+0 0.3s pv=g6 hxg6 Kc4 Rxf4+ Kd3
+r44 53.g6        d6 Kc4      best=-767 played=-772 loss=+5 1.1s pv=Kc4 Rxf4+ Kc5 Kf5 Kd5 Kxg5
+r44 53.g6        d7 g6       best=-768 played=-768 loss=+0 4.8s pv=g6 hxg6 Kc4 Rxf4+ Kd3 g5 Ke3
+r44 54.Kc4       d5 Kc4      best=-768 played=-768 loss=+0 0.1s pv=Kc4 Rxf4+ Kd3 g5 Ke3
+r44 54.Kc4       d6 Kc4      best=-780 played=-780 loss=+0 0.7s pv=Kc4 Rxf4+ Kd3 Ke5 Ke3 g5
+r44 54.Kc4       d7 Kc4      best=-780 played=-780 loss=+0 2.2s pv=Kc4 Rxf4+ Kd3 Ke5 Ke2 g5 Ke3
+r44 55.Kd3       d5 Kd3      best=-780 played=-780 loss=+0 0.1s pv=Kd3 Ke5 Ke2 g5 Ke3
+r44 55.Kd3       d6 Kd3      best=-799 played=-799 loss=+0 1.1s pv=Kd3 g5 Ke2 g4 Ke3 g5
+r44 55.Kd3       d7 Kd3      best=-791 played=-791 loss=+0 2.2s pv=Kd3 Ke5 Ke3 g5 Ke2 g4 Ke3
+r44 56.Kd2       d5 Ke3      best=-783 played=-783 loss=+0 0.2s pv=Ke3 g5 Ke2 g4 Ke3
+r44 56.Kd2       d6 Ke3      best=-805 played=-817 loss=+12 1.4s pv=Ke3 g5 Kd3 g4 Ke3 Rf3+
+r44 56.Kd2       d7 Kd2      best=-798 played=-798 loss=+0 2.8s pv=Kd2 Kd4 Ke2 g5 Ke1 Ke3 Kd1
+done r44_ending

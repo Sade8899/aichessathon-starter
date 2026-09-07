@@ -1,0 +1,15 @@
+r51 repetition (White to move) d4 Kc6 -670 nodes 3165 0.1s pv Kc6 Ne6 Kd5 Ke7
+r51 repetition (White to move) d5 Kc6 -671 nodes 9932 0.5s pv Kc6 Ne6 Kb7 Nc5+ Kc6
+r51 repetition (White to move) d6 Kc6 -699 nodes 52207 3.1s pv Kc6 Ne4 Kb7 Nd6+ Kc6 Ke6
+r51 repetition (White to move) d7 Kc6 -688 nodes 57031 3.9s pv Kc6 Ne4 Kb7 Nd6+ Kc7 Ke7 Kc6
+r51 repetition (White to move) d8 Kc6 -674 nodes 139091 7.0s pv Kc6 Nxd7 Kxd7 Ra8 Kc6 Rxa7 Kd5 Ra2
+r51 repetition (White to move) d9 Kc6 -731 nodes 368444 26.7s pv Kc6 Ne4 Kb7 Nd6+ Kc6 Ke7 Kc7 Nb5+ Kb6
+r51 repetition (White to move) d10 Kc6 -731 nodes 1527578 84.7s pv Kc6 Ne4 Kb7 Nd6+ Kc6 Ke7 Kc7 Nb5+ Kb7 Nxa7
+r51 repetition (White to move) d11 Kc6 -778 nodes 4458558 336.9s pv Kc6 Ne4 Kd5 Nf2 Kc6 Rd8 Kd6 Nxg4
+r51 repetition (Black to move) d4 Ke6+ 860 nodes 2531 0.1s pv Ke6+ Kc6 Nxd7 Kb5
+r51 repetition (Black to move) d5 Ke6+ 876 nodes 13052 0.5s pv Ke6+ Kc6 Nxd7 Kb7 Nc5+
+r51 repetition (Black to move) d6 Ke6+ 876 nodes 33868 1.9s pv Ke6+ Kc6 Nxd7 Kb7 Nc5+ Kc6
+r51 repetition (Black to move) d7 Ke6+ 883 nodes 147184 5.9s pv Ke6+ Kc6 Nxd7 Kb7 Nc5+ Kc6 Ne4
+r51 repetition (Black to move) d8 Ke6+ 882 nodes 363159 24.5s pv Ke6+ Kc6 Nxd7 Kb7 Nc5+ Kc6 Ne4 Kb5
+r51 repetition (Black to move) d9 Ke6+ 892 nodes 1489682 65.5s pv Ke6+ Kc6 Nxd7 Kb7 Nc5+ Kc6 Ne4 Kb7
+r51 repetition (Black to move) d10 Ke6+ 892 nodes 4612140 315.9s pv Ke6+ Kc7 Nxd7 Kb7 Nc5+ Kc6

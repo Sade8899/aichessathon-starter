@@ -1,0 +1,21 @@
+r53 31...Re8     d5 Re8      best=-81 played=-81 loss=+0 8.8s pv=Re8 a7 Ra8 Bb5 Re7
+r53 31...Re8     d6 Re8      best=-77 played=-77 loss=+0 30.5s pv=Re8 fxe5 Rxe5 Bg3 Re7 a7
+r53 32...Rxe5    d5 Rxe5     best=-83 played=-83 loss=+0 3.9s pv=Rxe5 Bg3 Re7 e5 Nd7
+r53 32...Rxe5    d6 Rxe5     best=-108 played=-108 loss=+0 17.4s pv=Rxe5 Bg3 Re7 e5 Nd7 a7
+r53 33...g5      d5 Kf7      best=-61 played=-114 loss=+53 7.4s pv=Kf7 a7 Ra8 Rf1 g5
+r53 33...g5      d6 Kf7      best=-82 played=-139 loss=+57 43.0s pv=Kf7 Rf1 g5 Bg3 Re7
+r53 34...Re7     d5 Re7      best=-156 played=-156 loss=+0 8.6s pv=Re7 d6 Rf7 dxc7 Rb6
+r53 34...Re7     d6 Re7      best=-182 played=-182 loss=+0 29.4s pv=Re7 d6 Rf7 dxc7 Rb6 Be5
+r53 35...Rf7     d5 Re8      best=-195 played=-282 loss=+87 4.3s pv=Re8 e5 Nd7 dxc7 Rb6
+r53 35...Rf7     d6 Re8      best=-220 played=-307 loss=+87 18.0s pv=Re8 e5 Nd5 d7 Bxd7
+r53 36...Ra8     d5 Ra8      best=-293 played=-293 loss=+0 9.2s pv=Ra8 Rxb4 Bd7
+r53 36...Ra8     d6 Ra8      best=-291 played=-291 loss=+0 30.1s pv=Ra8 Rxb4 Ra7 Bc4 Rfxc7 Bxc7
+r53 37...Re7     d5 Re7      best=-307 played=-307 loss=+0 6.3s pv=Re7 Bd6 Re8 e5 Nd7
+r53 37...Re7     d6 Nd7      best=-285 played=-307 loss=+22 35.9s pv=Nd7 Bxf7 Kxf7 Rf1+ Kg6
+r53 38...Re8     d5 Re8      best=-307 played=-307 loss=+0 4.6s pv=Re8 e5 Nd7 Nxd7 Bxd7
+r53 38...Re8     d6 Re8      best=-307 played=-307 loss=+0 20.3s pv=Re8 e5 Nd7 Nxd7 Bxd7 Rxb4
+r53 39...Nd7     d5 Nd7      best=-294 played=-294 loss=+0 9.4s pv=Nd7 Nxd7 Bxd7 Be2 Bf5
+r53 39...Nd7     d6 Nd7      best=-315 played=-315 loss=+0 37.0s pv=Nd7 Nxd7 Bxd7 Rxb4 Kg6
+r53 40...Bxd7    d5 Bxd7     best=-304 played=-304 loss=+0 2.1s pv=Bxd7 Rxb4 Kg6 Rb7 Be6
+r53 40...Bxd7    d6 Bxd7     best=-318 played=-318 loss=+0 10.8s pv=Bxd7 Rxb4 Be6 Bd3 Bd5 Kf2
+done r53_passer

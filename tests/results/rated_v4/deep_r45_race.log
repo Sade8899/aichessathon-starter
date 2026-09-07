@@ -1,0 +1,53 @@
+r45 44...Re1+    d5 Rf8      best=-114 played=-118 loss=+4 1.4s pv=Rf8 Rxc3 Re2 Rc7 Rfxf2
+r45 44...Re1+    d6 Re1+     best=-141 played=-141 loss=+0 8.7s pv=Re1+ Rxe1 Rxe1+ Kg2 Re2 Rxc3
+r45 44...Re1+    d7 Re1+     best=-126 played=-126 loss=+0 32.3s pv=Re1+ Rxe1 Rxe1+ Kg2 Rc1
+r45 44...Re1+    d8 Re2      best=-132 played=-146 loss=+14 169.8s pv=Re2 Rxc3 Rxa2 f3 Rd2 f4 gxf4
+r45 45...Rxe1+   d5 Rxe1+    best=-126 played=-126 loss=+0 0.1s pv=Rxe1+ Kg2 Rc1 Rc7 c2
+r45 45...Rxe1+   d6 Rxe1+    best=-146 played=-146 loss=+0 0.6s pv=Rxe1+ Kg2 Rc1 Rc7 Kb8 Rh7
+r45 45...Rxe1+   d7 Rxe1+    best=-117 played=-117 loss=+0 1.9s pv=Rxe1+ Kg2 Rc1 Rc5 Rc2 Rxg5 Rxa2
+r45 45...Rxe1+   d8 Rxe1+    best=-138 played=-138 loss=+0 6.8s pv=Rxe1+ Kg2 Rc1 Rg6 Rd1 Rxg5 Rxd3 Rb5
+r45 46...Rc1     d5 Rc1      best=-117 played=-117 loss=+0 0.6s pv=Rc1 Rc5 Rc2 Rxg5 Rxa2
+r45 46...Rc1     d6 Rc1      best=-138 played=-138 loss=+0 2.4s pv=Rc1 Rg6 Rd1 Rxg5 Rxd3 Rb5
+r45 46...Rc1     d7 Re2      best=-147 played=-150 loss=+3 10.1s pv=Re2 Rxc3 Rxa2 Kf3 g4+ Ke3
+r45 46...Rc1     d8 Re2      best=-166 played=-166 loss=+0 35.2s pv=Re2 Rxc3 Rxa2 Kf3 Rb2 Rc7 Kb8 Rh7
+r45 47...Ra1     d5 Ra1      best=-150 played=-150 loss=+0 0.9s pv=Ra1 Rxc3 Rxa2 Rc5 Rd2
+r45 47...Ra1     d6 g4       best=-159 played=-166 loss=+7 4.0s pv=g4 a4 c2 f3 gxf3+ Kxf3
+r45 47...Ra1     d7 g4       best=-139 played=-147 loss=+8 11.7s pv=g4 Rc8+ Kb7 Rc4 Ra1 a4 c2
+r45 47...Ra1     d8 g4       best=-144 played=-166 loss=+22 53.4s pv=g4 a4 c2 Rc4 a5 f3 gxf3+
+r45 48...Rxa2    d5 Rxa2     best=-147 played=-147 loss=+0 0.2s pv=Rxa2 Kf3 g4+ Ke3 Rb2
+r45 48...Rxa2    d6 Rxa2     best=-166 played=-166 loss=+0 0.9s pv=Rxa2 Kf3 Rb2 Rc7 Kb8 Rh7
+r45 48...Rxa2    d7 Rxa2     best=-155 played=-155 loss=+0 2.4s pv=Rxa2 Kf3 Kb7 Ke3 Rb2 f4 gxf4+
+r45 48...Rxa2    d8 Rxa2     best=-171 played=-171 loss=+0 11.2s pv=Rxa2 Rc5 g4 Rc4 Rd2 Rxg4 Rxd3 Rb4
+r45 49...Kb8     d5 Rd2      best=-122 played=-127 loss=+5 1.0s pv=Rd2 Rc3 Kb7 Kf3
+r45 49...Kb8     d6 Rd2      best=-145 played=-157 loss=+12 3.4s pv=Rd2 Rg7 Rxd3 Rxg5 Kb7
+r45 49...Kb8     d7 Rd2      best=-131 played=-143 loss=+12 11.1s pv=Rd2 Rg7 Rxd3 Rxg5 Kb7
+r45 49...Kb8     d8 Rd2      best=-150 played=-166 loss=+16 52.5s pv=Rd2 Rg7 Rxd3 Rxg5 Kb7
+r45 50...Rd2     d5 Ra3      best=-143 played=-143 loss=+0 1.0s pv=Ra3 Rxg5 Rxd3 Rc5 Rxg3+
+r45 50...Rd2     d6 Ra3      best=-166 played=-166 loss=+0 3.6s pv=Ra3 Rxg5 Rxd3 Rc5 Rd2 Kf3
+r45 50...Rd2     d7 Ra3      best=-154 played=-154 loss=+0 13.5s pv=Ra3 Rxg5 Rxd3 Rc5 Rd2 Kf3 Rxf2+
+r45 50...Rd2     d8 Rd2      best=-158 played=-158 loss=+0 53.5s pv=Rd2 Rxg5 Rxd3 Rc5 Kb7 f4 Kb6 Rh5
+r45 51...Rxd3    d5 Rxd3     best=-154 played=-154 loss=+0 0.4s pv=Rxd3 Rc5 Rd2 Kf3 Kb7
+r45 51...Rxd3    d6 Rxd3     best=-158 played=-158 loss=+0 1.7s pv=Rxd3 Rc5 Kb7 f4 Kb6 Rh5
+r45 51...Rxd3    d7 Rxd3     best=-150 played=-150 loss=+0 6.0s pv=Rxd3 Rg7 Rc3 Rh7 Rc7
+r45 51...Rxd3    d8 Rxd3     best=-161 played=-161 loss=+0 26.0s pv=Rxd3 f4 a6 Rc5 Kb7 f5 Kb6
+r45 52...Rc3     d5 Rc3      best=-150 played=-150 loss=+0 0.8s pv=Rc3 Rh7 Rc7 Rh8+ Kb7
+r45 52...Rc3     d6 a5       best=-151 played=-164 loss=+13 6.1s pv=a5 f4 Kc8 Ra7 Rd2+ Kf3
+r45 52...Rc3     d7 a5       best=-143 played=-152 loss=+9 16.7s pv=a5 f4 a4 Rh7 a3 f5 a2
+r45 52...Rc3     d8 a5       best=-147 played=-165 loss=+18 72.8s pv=a5 Kf1 a4 Ke2 Rc3 Rh7 Rc7 Rh5
+r45 53...a5      d5 a5       best=-141 played=-141 loss=+0 0.8s pv=a5 Rh7 Rc7 Rh8+ Kb7
+r45 53...a5      d6 a5       best=-165 played=-165 loss=+0 2.8s pv=a5 g5 Rc7 Rxc7 Kxc7 Kf3
+r45 53...a5      d7 Rc7      best=-146 played=-146 loss=+0 11.8s pv=Rc7 Rg5 Kb7 Rh5 Kb6 Kf3 a5
+r45 53...a5      d8 a5       best=-133 played=-133 loss=+0 36.9s pv=a5 g5 a4 g6 a3 Re7 a2 g7
+r45 54...Rc7     d5 Rc7      best=-135 played=-135 loss=+0 0.3s pv=Rc7 Rg6 Kb7 Rh6 Rc2
+r45 54...Rc7     d6 a4       best=-133 played=-161 loss=+28 1.3s pv=a4 g6 a3 Re7 a2 g7
+r45 54...Rc7     d7 a4       best=-133 played=-918 loss=+785 9.5s pv=a4 g6 a3 Re7 a2 g7 a1=Q
+r45 54...Rc7     d8 a4       best=-133 played=-918 loss=+785 38.6s pv=a4 g6 a3 Re7 a2 g7 a1=Q g8=Q+
+r45 55...a4      d5 Kxc7     best=-918 played=-918 loss=+0 0.2s pv=Kxc7 g6 Kd6 g7 Kd5
+r45 55...a4      d6 Kxc7     best=-918 played=-918 loss=+0 1.0s pv=Kxc7 g6 Kd6 g7 Kd5 g8=Q+
+r45 55...a4      d7 Kxc7     best=-899 played=-29992 loss=+29093 1.2s pv=Kxc7 g6 a4 g7 a3 g8=Q Kd6
+r45 55...a4      d8 Kxc7     best=-939 played=-29992 loss=+29053 5.3s pv=Kxc7 g6 a4 g7 Kd6 g8=Q Kc5 Kf3
+r45 56...Kxc7    d5 Kxc7     best=-899 played=-899 loss=+0 0.0s pv=Kxc7 g7 a3 g8=Q Kd6
+r45 56...Kxc7    d6 Kxc7     best=-939 played=-939 loss=+0 0.1s pv=Kxc7 g7 Kd6 g8=Q Kc5 Kf3
+r45 56...Kxc7    d7 Kxc7     best=-920 played=-920 loss=+0 0.4s pv=Kxc7 g7 Kd6 g8=Q Kc5 Kf3 a3
+r45 56...Kxc7    d8 Kxc7     best=-966 played=-966 loss=+0 1.2s pv=Kxc7 g7 Kd6 g8=Q Kc5 Kf3 Kd6 Ke4
+done r45_race

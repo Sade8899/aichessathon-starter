@@ -1,0 +1,341 @@
+{
+  "probe": "king safety separability",
+  "cases": [
+    {
+      "id": "r46-30-Ka4",
+      "fen": "r5k1/5rq1/2p1p2p/p2bPp2/1P2pP2/K1Q3P1/4P1B1/3R3R w - - 0 30",
+      "played": "a3a4",
+      "moves": [
+        {
+          "uci": "d1d5",
+          "static": 316,
+          "attacked_ring": 1,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "g2e4",
+          "static": 77,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1h6",
+          "static": 65,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3c6",
+          "static": 41,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "b4a5",
+          "static": 41,
+          "attacked_ring": 2,
+          "shield": 0,
+          "own_file_pawns": 1
+        },
+        {
+          "uci": "g3g4",
+          "static": -51,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3c4",
+          "static": -52,
+          "attacked_ring": 1,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3c5",
+          "static": -55,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "g2f3",
+          "static": -55,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "e2e3",
+          "static": -59,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1h5",
+          "static": -62,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3b3",
+          "static": -63,
+          "attacked_ring": 2,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "a3a4",
+          "static": -64,
+          "attacked_ring": 4,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1h4",
+          "static": -65,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "b4b5",
+          "static": -65,
+          "attacked_ring": 3,
+          "shield": 0,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1d2",
+          "static": -66,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3e3",
+          "static": -67,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3c2",
+          "static": -67,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1d4",
+          "static": -67,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1h2",
+          "static": -68,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3d4",
+          "static": -71,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1h3",
+          "static": -71,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1d3",
+          "static": -71,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "a3b2",
+          "static": -73,
+          "attacked_ring": 2,
+          "shield": 0,
+          "own_file_pawns": 1
+        },
+        {
+          "uci": "c3b2",
+          "static": -75,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3d3",
+          "static": -76,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "g2h3",
+          "static": -77,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1a1",
+          "static": -79,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3f3",
+          "static": -81,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3c1",
+          "static": -82,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "g2f1",
+          "static": -83,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3a1",
+          "static": -84,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3d2",
+          "static": -85,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1c1",
+          "static": -85,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1b1",
+          "static": -89,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1g1",
+          "static": -92,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1f1",
+          "static": -92,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "c3e1",
+          "static": -95,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "h1e1",
+          "static": -100,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1f1",
+          "static": -104,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1e1",
+          "static": -106,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d1g1",
+          "static": -110,
+          "attacked_ring": 3,
+          "shield": 1,
+          "own_file_pawns": 0
+        }
+      ]
+    },
+    {
+      "id": "r51-62-Ke3",
+      "fen": "2R2n1k/8/Q2P1p2/P5p1/6P1/8/3K1r2/2R3q1 w - - 8 62",
+      "played": "d2e3",
+      "moves": [
+        {
+          "uci": "a6e2",
+          "static": 415,
+          "attacked_ring": 4,
+          "shield": 0,
+          "own_file_pawns": 1
+        },
+        {
+          "uci": "d2d3",
+          "static": 391,
+          "attacked_ring": 3,
+          "shield": 0,
+          "own_file_pawns": 1
+        },
+        {
+          "uci": "d2e3",
+          "static": 388,
+          "attacked_ring": 5,
+          "shield": 0,
+          "own_file_pawns": 0
+        },
+        {
+          "uci": "d2c3",
+          "static": 377,
+          "attacked_ring": 3,
+          "shield": 0,
+          "own_file_pawns": 0
+        }
+      ]
+    }
+  ]
+}

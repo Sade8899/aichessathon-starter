@@ -1,0 +1,41 @@
+{
+  "fen": "r5k1/5rq1/2p1p2p/p2bPp2/KP2pP2/2Q3P1/4P1B1/3R3R b - - 1 30",
+  "rungs": [
+    {
+      "depth": 4,
+      "best": "Rb7",
+      "score": 223,
+      "forced_mate": false,
+      "nodes": 38416,
+      "seconds": 1.958,
+      "pv": "Rb7 b5 Rxb5 Rb1"
+    },
+    {
+      "depth": 5,
+      "best": "axb4+",
+      "score": 1162,
+      "forced_mate": false,
+      "nodes": 51020,
+      "seconds": 1.859,
+      "pv": "axb4+ Kxb4 Qf8+ Qc5 Rb7+"
+    },
+    {
+      "depth": 6,
+      "best": "axb4+",
+      "score": 1162,
+      "forced_mate": false,
+      "nodes": 278791,
+      "seconds": 13.78,
+      "pv": "axb4+ Kxb4 Qf8+ Qc5 Rb7+ Kc3"
+    },
+    {
+      "depth": 7,
+      "best": "axb4+",
+      "score": 29991,
+      "forced_mate": true,
+      "nodes": 1129866,
+      "seconds": 40.28,
+      "pv": "axb4+ Kxb4 Rb7+ Kc5 Rb5+ Kd4"
+    }
+  ]
+}

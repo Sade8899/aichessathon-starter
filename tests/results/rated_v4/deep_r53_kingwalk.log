@@ -1,0 +1,29 @@
+r53 41...Kg6     d5 Be6      best=-312 played=-323 loss=+11 10.3s pv=Be6 Bd3 Bd5 Kf2 h4
+r53 41...Kg6     d6 Be6      best=-325 played=-345 loss=+20 48.1s pv=Be6 Bd3 Bd5 Rb8 g4 a7
+r53 42...Rc8     d5 Rc8      best=-333 played=-333 loss=+0 7.0s pv=Rc8 e6 Bc6 a7 Be4
+r53 42...Rc8     d6 Rc8      best=-352 played=-352 loss=+0 32.2s pv=Rc8 e6 Bc6 a7 Be4 e7
+r53 43...Kf5     d5 Kf5      best=-323 played=-323 loss=+0 2.6s pv=Kf5 Kf2 Re8 Bd5 Rxa6
+r53 43...Kf5     d6 Kf5      best=-338 played=-338 loss=+0 15.2s pv=Kf5 Kf2 h4 Bd3+ Ke6 Rb7
+r53 44...Ke6     d5 Ke6      best=-327 played=-327 loss=+0 0.9s pv=Ke6 Be4 Ra7 Kf2 h4
+r53 44...Ke6     d6 Ke6      best=-341 played=-341 loss=+0 4.1s pv=Ke6 Kf2 Kd5 Ke3 Ra7 Be4+
+r53 45...Ra7     d5 Ra7      best=-330 played=-330 loss=+0 2.9s pv=Ra7 Kf2 Kf7 Ke3 Raxc7
+r53 45...Ra7     d6 Ra7      best=-436 played=-436 loss=+0 12.5s pv=Ra7 Bb7 h4 Bxc8 Bxc8 Rb8
+r53 46...h4      d5 h4       best=-437 played=-437 loss=+0 2.0s pv=h4 Bxc8 Bxc8 Rb8 Bxa6
+r53 46...h4      d6 Kf5      best=-442 played=-453 loss=+11 9.1s pv=Kf5 Bxc8 Bxc8 Rb8 Bxa6 c8=Q+
+r53 47...Kxe5    d5 Kxe5     best=-314 played=-314 loss=+0 0.9s pv=Kxe5 Bd6+ Kf5 Bxc8 Bxc8
+r53 47...Kxe5    d6 Kxe5     best=-333 played=-333 loss=+0 6.4s pv=Kxe5 Bb2+ Kf4 Rf6+ Ke3 Bc1+
+r53 48...Kf4     d5 Kf4      best=-333 played=-333 loss=+0 1.0s pv=Kf4 Rf6+ Ke3 Bc1+ Kd4
+r53 48...Kf4     d6 Kf4      best=-354 played=-354 loss=+0 4.4s pv=Kf4 Rf6+ Ke3 Bc1+ Ke2 Bxc8
+r53 49...Ke3     d5 Ke3      best=-453 played=-453 loss=+0 0.5s pv=Ke3 Rd6 Rxc7 Bd4+ Kf4
+r53 49...Ke3     d6 Ke3      best=-453 played=-453 loss=+0 2.2s pv=Ke3 Rd6 Rxc7 Bd4+ Kf4 Bxa7
+r53 50...Ke2     d5 Ke2      best=-368 played=-368 loss=+0 1.5s pv=Ke2 Rf2+ Ke1 Be3 Rxb7
+r53 50...Ke2     d6 Ke2      best=-454 played=-454 loss=+0 5.1s pv=Ke2 Rd6 Bg4 hxg4 Rxc7 Bf3+
+r53 51...Kd1     d5 Kd1      best=-465 played=-465 loss=+0 1.6s pv=Kd1 Be3 Rxc7 Rf1+ Ke2
+r53 51...Kd1     d6 Kd1      best=-647 played=-647 loss=+0 5.9s pv=Kd1 Be3 Bc6 Bxc8 Rxc7 Bg4+
+r53 52...Bc6     d5 Bc6      best=-647 played=-647 loss=+0 2.6s pv=Bc6 Bxc8 Rxc7 Bg4+ Ke1
+r53 52...Bc6     d6 g4       best=-748 played=-29994 loss=+29246 17.0s pv=g4 Bxc8 Bxc8 Bxa7 gxh3 Rf8
+r53 53...Rxc7    d5 Rxc7     best=-981 played=-981 loss=+0 0.7s pv=Rxc7 Bg4+ Bf3 Bxf3+ Ke1
+r53 53...Rxc7    d6 Bf3      best=-1610 played=-29994 loss=+28384 9.3s pv=Bf3 Bxa7 Be2 Rxe2 Kc1
+r53 54...Bf3     d5 Bf3      best=-29996 played=-29996 loss=+0 0.6s pv=Bf3 Bxf3+ Ke1 Rf1#
+r53 54...Bf3     d6 Bf3      best=-29996 played=-29996 loss=+0 2.3s pv=Bf3 Bxf3+ Ke1 Rf1#
+done r53_kingwalk

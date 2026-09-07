@@ -1,0 +1,66 @@
+r44-14-b4            d2 control=b4          +7 passer=b4          +7
+r44-14-b4            d3 control=b4          +7 passer=b4          +7
+r44-14-b4            d4 control=b4         -14 passer=b4         -14
+r44-14-b4            d5 control=Bxd5+       +1 passer=Bxd5+       +1
+r44-21-Bf4           d2 control=Nd6+      -145 passer=Nd6+      -145
+r44-21-Bf4           d3 control=Bf4       -138 passer=Bf4       -138
+r44-21-Bf4           d4 control=Bf4       -163 passer=Bf4       -163
+r44-21-Bf4           d5 control=Bb2       -170 passer=Bb2       -170
+r45-54-Rc7           d2 control=Rc7       -129 passer=Rc7       -135
+r45-54-Rc7           d3 control=Rc7       -129 passer=Rc7       -135
+r45-54-Rc7           d4 control=Rc7       -165 passer=a4        -167  CHANGED
+r45-54-Rc7           d5 control=Rc7       -135 passer=a4        -114  CHANGED
+r45-55-a4            d2 control=Kxc7      -165 passer=Kxc7      -171
+r45-55-a4            d3 control=Kxc7      -133 passer=Kxc7      -139
+r45-55-a4            d4 control=Kxc7      -161 passer=Kxc7      -193
+r45-55-a4            d5 control=Kxc7      -918 passer=Kxc7      -904
+r46-29-a5            d2 control=a5          +9 passer=a5          +9
+r46-29-a5            d3 control=Rh3        -22 passer=Rh3        -22
+r46-29-a5            d4 control=a5         -63 passer=a5         -63
+r46-29-a5            d5 control=a5        -129 passer=a5        -129
+r46-30-Ka4           d2 control=bxa5       -19 passer=bxa5       -16
+r46-30-Ka4           d3 control=Ka4       -129 passer=Ka4       -129
+r46-30-Ka4           d4 control=bxa5      -131 passer=bxa5      -131
+r46-30-Ka4           d5 control=bxa5      -131 passer=bxa5      -131
+r51-53-Qc5           d2 control=Qc5       +545 passer=Qc5       +565
+r51-53-Qc5           d3 control=Qc5       +545 passer=a6        +576  CHANGED
+r51-53-Qc5           d4 control=a6        +529 passer=a6        +561
+r51-53-Qc5           d5 control=a6        +536 passer=a6        +568
+r51-62-Ke3           d2 control=Ke3       +261 passer=Ke3       +281
+r51-62-Ke3           d3 control=Ke3       +261 passer=Ke3       +281
+r51-62-Ke3           d4 control=Ke3       +261 passer=Ke3       +281
+r51-62-Ke3           d5 control=Ke3       +261 passer=Ke3       +281
+r51-66-Qc4           d2 control=Qc4       -145 passer=Qc4       -123
+r51-66-Qc4           d3 control=Qc4       -145 passer=Qc4       -123
+r51-66-Qc4           d4 control=Kb6       -220 passer=Kb6       -198
+r51-66-Qc4           d5 control=Kb6       -220 passer=Kb6       -198
+r53-35-Rf7           d2 control=cxd6       -13 passer=cxd6       -28
+r53-35-Rf7           d3 control=Rf7       -156 passer=Rf7       -214
+r53-35-Rf7           d4 control=Rf7       -182 passer=Rf7       -263
+r53-35-Rf7           d5 control=Re8       -195 passer=Re8       -254
+r53-52-Bc6           d2 control=Rxb7      -368 passer=Rxb7      -470
+r53-52-Bc6           d3 control=Rxc7      -465 passer=Rxa6      -485  CHANGED
+r53-52-Bc6           d4 control=Bc6       -647 passer=Bc6       -669
+r53-52-Bc6           d5 control=Bc6       -647 passer=Bc6       -669
+r47-63-e2            d2 control=Bxg2+    +1799 passer=Bxg2+    +1799
+r47-63-e2            d3 control=Bxg2+    +1799 passer=Bxg2+    +1799
+r47-63-e2            d4 control=e2      +29995 passer=e2      +29995
+r48-26-Qxf6          d2 control=Qxf6+    +1961 passer=Qxf6+    +1961
+r48-26-Qxf6          d3 control=Qxf6+    +1961 passer=Qxf6+    +1961
+r48-26-Qxf6          d4 control=Qxf6+    +1961 passer=Qxf6+    +1961
+r49-53-h3            d2 control=Kc5       +551 passer=h3        +568  CHANGED
+r49-53-h3            d3 control=h3        +572 passer=h3        +627
+r49-53-h3            d4 control=h3       +1362 passer=h3       +1368
+r50-35-d3            d2 control=d3        +954 passer=d3        +976
+r50-35-d3            d3 control=d3        +954 passer=d3        +976
+r50-35-d3            d4 control=d3        +981 passer=d3       +1003
+r52-40-c7            d2 control=c7        +409 passer=c7        +461
+r52-40-c7            d3 control=c7        +409 passer=c7        +461
+r52-40-c7            d4 control=c7        +938 passer=c7        +993
+r52-55-Re4           d2 control=Re4     +29997 passer=Re4     +29997
+r52-55-Re4           d3 control=Re4     +29997 passer=Re4     +29997
+r52-55-Re4           d4 control=Re4     +29997 passer=Re4     +29997
+round30-Bf4          d2 control=Qh5+       +26 passer=Qh5+       +26
+round30-Bf4          d3 control=Bf4        +31 passer=Bf4        +31
+round30-Bf4          d4 control=Nxc6       -23 passer=Nxc6       -23
+round30-Bf4          d5 control=Be3        -24 passer=Be3        -24

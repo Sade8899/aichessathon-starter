@@ -16,3 +16,9 @@ tests/qcap_candidate/8e7001995c76c1d3a3ad31b7054351b9436d2e64be4078ba53a5d24c9c7
 tests/tournament/**/*.json text eol=lf
 harness/**/*.py text eol=lf
 baselines/**/*.py text eol=lf
+
+# Preserved rated PGNs are evidence identified by their raw-byte SHA-256 in the
+# submission manifest. They arrive LF; core.autocrlf=true would rewrite them on
+# checkout and break every recorded hash. -text disables conversion, !eol drops
+# any inherited eol setting.
+submission*/games/*.pgn -text !eol
