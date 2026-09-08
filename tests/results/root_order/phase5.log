@@ -1,0 +1,20 @@
+r45-54-Rc7           ctl d6.0 a5a4   | A dd-1.0 dn-3% prep0.0%->c3c7 | B dd+0.0 dn-2% prep0.0% | C dd+0.0 dn-2% prep0.0% | D dd+0.0 dn+1% prep1.1% | E dd+0.0 dn+0% prep0.0%
+r46-30-Ka4           ctl d4.0 b4a5   | A dd+0.0 dn+1% prep0.0% | B dd+0.0 dn+1% prep0.0% | C dd+0.0 dn+1% prep0.0% | D dd+0.0 dn+4% prep30.8% | E dd+0.0 dn+0% prep0.0%
+r53-35-Rf7           ctl d5.0 e7e8   | A dd+0.0 dn+1% prep0.0% | B dd+0.0 dn-0% prep0.0% | C dd+0.0 dn+0% prep0.0% | D dd+0.0 dn-20% prep28.3% | E dd+0.0 dn+1% prep0.0%
+r55-19-g5            ctl d3.0 f8f6   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn+0% prep0.0% | C dd+0.0 dn-0% prep0.0% | D dd+0.0 dn+3% prep3.8% | E dd+0.0 dn+0% prep0.0%
+r55-20-Nxd4          ctl d2.0 c6d4   | A dd+0.0 dn-0% prep0.0% | B dd+0.0 dn-0% prep0.0% | C dd+0.0 dn-0% prep0.0% | D dd+0.0 dn-1% prep8.6% | E dd+0.0 dn+1% prep0.0%
+r56-17-f4            ctl d3.0 c3c4   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn-6% prep0.0% | C dd+0.0 dn-9% prep0.0% | D dd+0.0 dn+2% prep3.1% | E dd+0.0 dn+0% prep0.0%
+r45-55-a4            ctl d9.0 b8c7   | A dd+0.0 dn+5% prep0.0% | B dd+0.0 dn+5% prep0.0% | C dd+0.0 dn+6% prep0.0% | D dd+0.0 dn-21% prep21.4% | E dd+0.0 dn+0% prep0.0%
+r51-53-Qc5           ctl d4.0 a5a6   | A dd+0.0 dn-0% prep0.0% | B dd+0.0 dn+1% prep0.0% | C dd+0.0 dn+2% prep0.0% | D dd+0.0 dn-0% prep13.5% | E dd+0.0 dn+0% prep0.0%
+r51-62-Ke3           ctl d7.0 d2d3   | A dd+0.0 dn-1% prep0.0% | B dd+0.0 dn-0% prep0.0% | C dd+0.0 dn-2% prep0.0% | D dd+0.0 dn+1% prep18.3% | E dd+0.0 dn-0% prep0.0%
+r51-66-Qc4           ctl d7.0 c5b6   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn+0% prep0.0% | C dd+0.0 dn-1% prep0.0% | D dd-1.0 dn+6% prep4.7% | E dd+0.0 dn+0% prep0.0%
+r53-52-Bc6           ctl d5.0 d7c6   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn-2% prep0.0% | C dd+0.0 dn-3% prep0.0% | D dd+0.0 dn-3% prep21.9% | E dd+0.0 dn-0% prep0.0%->d7g4
+round30-Bf4          ctl d4.0 d1h5   | A dd+0.0 dn-1% prep0.0% | B dd+0.0 dn-1% prep0.0%->d4c6 | C dd+0.0 dn-1% prep0.0%->d4c6 | D dd+0.0 dn-18% prep25.5% | E dd+0.0 dn-1% prep0.0%->g5e3
+r47-63-e2            ctl d4.0 e3e2   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn+0% prep0.0% | C dd+0.0 dn+2% prep0.0% | D dd+0.0 dn+11% prep2.8% | E dd+0.0 dn+0% prep0.0%
+r48-26-Qxf6          ctl d5.0 e5f6   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn-1% prep0.0% | C dd+0.0 dn+6% prep0.0% | D dd+0.0 dn+32% prep9.3% | E dd+0.0 dn+0% prep0.0%
+r49-53-h3            ctl d8.0 h4h3   | A dd+0.0 dn+2% prep0.0% | B dd+0.0 dn+4% prep0.0% | C dd+0.0 dn+5% prep0.0% | D dd+0.0 dn+6% prep26.2% | E dd+0.0 dn+2% prep0.0%
+r50-35-d3            ctl d5.0 d4d3   | A dd+0.0 dn-1% prep0.0% | B dd+0.0 dn-19% prep0.0% | C dd+0.0 dn-7% prep0.0% | D dd+0.0 dn-2% prep26.2% | E dd+0.0 dn-1% prep0.0%
+r52-40-c7            ctl d6.0 c6c7   | A dd+0.0 dn-0% prep0.0% | B dd+0.0 dn-30% prep0.0% | C dd+0.0 dn-23% prep0.0% | D dd+0.0 dn-11% prep15.1% | E dd+0.0 dn+0% prep0.0%
+r52-55-Re4           ctl d2.0 e6e4   | A dd+0.0 dn+0% prep0.0% | B dd+0.0 dn+0% prep0.0% | C dd+0.0 dn-6% prep0.0% | D dd+0.0 dn+0% prep0.0% | E dd+0.0 dn+0% prep0.0%
+r54-53-Ke5           ctl d5.0 g8h7   | A dd+0.0 dn+1% prep0.0% | B dd+0.0 dn+1% prep0.0% | C dd+0.0 dn+2% prep0.0% | D dd+0.0 dn+1% prep10.1% | E dd+0.0 dn+1% prep0.0%->d6e5
+WROTE C:\Users\ss26g21\OneDrive - University of Southampton\Desktop\personal project\chessathon optiver\aichessathon-starter\tests\results\root_order\phase5_policies.json

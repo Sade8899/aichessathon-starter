@@ -1,0 +1,2162 @@
+{
+ "summary": {
+  "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "fixtures": 25,
+  "oracle_stable": 20,
+  "oracle_unstable": 5,
+  "live_disagreements_vs_stable_oracle": 4,
+  "disagreement_rate": 0.2,
+  "buckets": {
+   "harmless<15": 2,
+   "material>=15": 1,
+   "consequential>=40_or_class": 1,
+   "mate": 0
+  },
+  "targets_live_matches_stable_oracle": 3,
+  "targets": {
+   "r45-54-Rc7": {
+    "live_depth": 6,
+    "live_move": "a5a4",
+    "oracle_depth": 7,
+    "oracle_best": "a5a4",
+    "stable": true,
+    "match": true,
+    "cp_loss": 0,
+    "oracle_best_clamped_in_live": false,
+    "oracle_best_index": 1
+   },
+   "r46-30-Ka4": {
+    "live_depth": 4,
+    "live_move": "b4a5",
+    "oracle_depth": 6,
+    "oracle_best": "b4a5",
+    "stable": true,
+    "match": true,
+    "cp_loss": 0,
+    "oracle_best_clamped_in_live": false,
+    "oracle_best_index": 2
+   },
+   "r53-35-Rf7": {
+    "live_depth": 5,
+    "live_move": "e7e8",
+    "oracle_depth": 6,
+    "oracle_best": "e7e8",
+    "stable": true,
+    "match": true,
+    "cp_loss": 0,
+    "oracle_best_clamped_in_live": false,
+    "oracle_best_index": 1
+   },
+   "r55-19-g5": {
+    "live_depth": 3,
+    "live_move": "f8f6",
+    "oracle_depth": 5,
+    "oracle_best": "f8f7",
+    "stable": true,
+    "match": false,
+    "cp_loss": 9,
+    "oracle_best_clamped_in_live": false,
+    "oracle_best_index": 5
+   },
+   "r55-20-Nxd4": {
+    "live_depth": 2,
+    "live_move": "c6d4",
+    "oracle_depth": 5,
+    "oracle_best": "f8g8",
+    "stable": true,
+    "match": false,
+    "cp_loss": 126,
+    "oracle_best_clamped_in_live": false,
+    "oracle_best_index": 6
+   },
+   "r56-17-f4": {
+    "live_depth": 3,
+    "live_move": "c3c4",
+    "oracle_depth": 5,
+    "oracle_best": "g1h1",
+    "stable": true,
+    "match": false,
+    "cp_loss": 7,
+    "oracle_best_clamped_in_live": false,
+    "oracle_best_index": 4
+   }
+  }
+ },
+ "rows": [
+  {
+   "id": "r44-14-b4",
+   "target": false,
+   "enforced": false,
+   "side_to_move": "white",
+   "kind": "earliest_recoverable",
+   "oracle_depth": 6,
+   "oracle_stable": false,
+   "oracle_best": "a2a4",
+   "oracle_best_prev": "c4d5",
+   "live_completed_depth": 4,
+   "live_committed": "b2b4",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 18,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "b2b4",
+     "cp_loss_vs_oracle": 18,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 589
+    },
+    {
+     "depth": 2,
+     "move": "b2b4",
+     "cp_loss_vs_oracle": 18,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 6012
+    },
+    {
+     "depth": 3,
+     "move": "b2b4",
+     "cp_loss_vs_oracle": 18,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 32561
+    },
+    {
+     "depth": 4,
+     "move": "b2b4",
+     "cp_loss_vs_oracle": 18,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 81843
+    },
+    {
+     "depth": 5,
+     "move": "c4d5",
+     "cp_loss_vs_oracle": 9,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 274003
+    },
+    {
+     "depth": 6,
+     "move": "a2a4",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1195266
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "a2a4",
+    "index_in_search_order": 1,
+    "n_root_moves": 34,
+    "iter_score_for_oracle_best": -18,
+    "clamped": false,
+    "committed_live": "b2b4",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r44-21-Bf4",
+   "target": false,
+   "enforced": false,
+   "side_to_move": "white",
+   "kind": "earliest_recoverable",
+   "oracle_depth": 6,
+   "oracle_stable": false,
+   "oracle_best": "e1d3",
+   "oracle_best_prev": "c1b2",
+   "live_completed_depth": 4,
+   "live_committed": "c1f4",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 65,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "c4d6",
+     "cp_loss_vs_oracle": 23,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 223
+    },
+    {
+     "depth": 2,
+     "move": "c4d6",
+     "cp_loss_vs_oracle": 23,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1589
+    },
+    {
+     "depth": 3,
+     "move": "c1f4",
+     "cp_loss_vs_oracle": 65,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 16356
+    },
+    {
+     "depth": 4,
+     "move": "c1f4",
+     "cp_loss_vs_oracle": 65,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 58783
+    },
+    {
+     "depth": 5,
+     "move": "c1b2",
+     "cp_loss_vs_oracle": 39,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 295090
+    },
+    {
+     "depth": 6,
+     "move": "e1d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 730790
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "e1d3",
+    "index_in_search_order": 5,
+    "n_root_moves": 41,
+    "iter_score_for_oracle_best": -189,
+    "clamped": false,
+    "committed_live": "c1f4",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r45-54-Rc7",
+   "target": true,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "critical",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "a5a4",
+   "oracle_best_prev": "a5a4",
+   "live_completed_depth": 6,
+   "live_committed": "a5a4",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a5a4",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 75
+    },
+    {
+     "depth": 2,
+     "move": "c3c7",
+     "cp_loss_vs_oracle": 785,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 464
+    },
+    {
+     "depth": 3,
+     "move": "c3c7",
+     "cp_loss_vs_oracle": 785,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1423
+    },
+    {
+     "depth": 4,
+     "move": "c3c7",
+     "cp_loss_vs_oracle": 785,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 7416
+    },
+    {
+     "depth": 5,
+     "move": "c3c7",
+     "cp_loss_vs_oracle": 785,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 23417
+    },
+    {
+     "depth": 6,
+     "move": "a5a4",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 99901
+    }
+   ],
+   "late_analysis": {
+    "iteration": 6,
+    "oracle_best": "a5a4",
+    "index_in_search_order": 1,
+    "n_root_moves": 17,
+    "iter_score_for_oracle_best": -133,
+    "clamped": false,
+    "committed_live": "a5a4",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r45-55-a4",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "critical",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "b8c7",
+   "oracle_best_prev": "b8c7",
+   "live_completed_depth": 9,
+   "live_committed": "b8c7",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "b8c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 3
+    },
+    {
+     "depth": 2,
+     "move": "b8c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 33
+    },
+    {
+     "depth": 3,
+     "move": "b8c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 71
+    },
+    {
+     "depth": 4,
+     "move": "b8c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 205
+    },
+    {
+     "depth": 5,
+     "move": "a5a4",
+     "cp_loss_vs_oracle": 29093,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": false,
+     "nodes": 4041
+    },
+    {
+     "depth": 6,
+     "move": "a5a4",
+     "cp_loss_vs_oracle": 29093,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": false,
+     "nodes": 22611
+    }
+   ],
+   "late_analysis": {
+    "iteration": 9,
+    "oracle_best": "b8c7",
+    "index_in_search_order": 0,
+    "n_root_moves": 3,
+    "iter_score_for_oracle_best": -920,
+    "clamped": false,
+    "committed_live": "b8c7",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r46-29-a5",
+   "target": false,
+   "enforced": false,
+   "side_to_move": "white",
+   "kind": "context",
+   "oracle_depth": 6,
+   "oracle_stable": true,
+   "oracle_best": "a4a5",
+   "oracle_best_prev": "a4a5",
+   "live_completed_depth": 4,
+   "live_committed": "a4a5",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 514
+    },
+    {
+     "depth": 2,
+     "move": "a4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 3947
+    },
+    {
+     "depth": 3,
+     "move": "h1h3",
+     "cp_loss_vs_oracle": 95,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 30921
+    },
+    {
+     "depth": 4,
+     "move": "a4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 46778
+    },
+    {
+     "depth": 5,
+     "move": "a4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 172261
+    },
+    {
+     "depth": 6,
+     "move": "a4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 437900
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "a4a5",
+    "index_in_search_order": 1,
+    "n_root_moves": 41,
+    "iter_score_for_oracle_best": -63,
+    "clamped": false,
+    "committed_live": "a4a5",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r46-30-Ka4",
+   "target": true,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "critical",
+   "oracle_depth": 6,
+   "oracle_stable": true,
+   "oracle_best": "b4a5",
+   "oracle_best_prev": "b4a5",
+   "live_completed_depth": 4,
+   "live_committed": "b4a5",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "b4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 112
+    },
+    {
+     "depth": 2,
+     "move": "b4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 664
+    },
+    {
+     "depth": 3,
+     "move": "a3a4",
+     "cp_loss_vs_oracle": 985,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 18291
+    },
+    {
+     "depth": 4,
+     "move": "b4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 34583
+    },
+    {
+     "depth": 5,
+     "move": "b4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 84502
+    },
+    {
+     "depth": 6,
+     "move": "b4a5",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 201007
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "b4a5",
+    "index_in_search_order": 2,
+    "n_root_moves": 42,
+    "iter_score_for_oracle_best": -131,
+    "clamped": false,
+    "committed_live": "b4a5",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r51-53-Qc5",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "critical",
+   "oracle_depth": 6,
+   "oracle_stable": true,
+   "oracle_best": "a5a6",
+   "oracle_best_prev": "a5a6",
+   "live_completed_depth": 4,
+   "live_committed": "a5a6",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a5a6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 844
+    },
+    {
+     "depth": 2,
+     "move": "a3c5",
+     "cp_loss_vs_oracle": 142,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 3507
+    },
+    {
+     "depth": 3,
+     "move": "a3c5",
+     "cp_loss_vs_oracle": 142,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 11352
+    },
+    {
+     "depth": 4,
+     "move": "a5a6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 38381
+    },
+    {
+     "depth": 5,
+     "move": "a5a6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 166387
+    },
+    {
+     "depth": 6,
+     "move": "a5a6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 737457
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "a5a6",
+    "index_in_search_order": 1,
+    "n_root_moves": 42,
+    "iter_score_for_oracle_best": 529,
+    "clamped": false,
+    "committed_live": "a5a6",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r51-62-Ke3",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "critical",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "d2d3",
+   "oracle_best_prev": "d2d3",
+   "live_completed_depth": 7,
+   "live_committed": "d2d3",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "d2e3",
+     "cp_loss_vs_oracle": 492,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 197
+    },
+    {
+     "depth": 2,
+     "move": "d2e3",
+     "cp_loss_vs_oracle": 492,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 528
+    },
+    {
+     "depth": 3,
+     "move": "d2e3",
+     "cp_loss_vs_oracle": 492,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 764
+    },
+    {
+     "depth": 4,
+     "move": "d2e3",
+     "cp_loss_vs_oracle": 492,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1951
+    },
+    {
+     "depth": 5,
+     "move": "d2e3",
+     "cp_loss_vs_oracle": 492,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 4176
+    },
+    {
+     "depth": 6,
+     "move": "d2d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 20137
+    }
+   ],
+   "late_analysis": {
+    "iteration": 7,
+    "oracle_best": "d2d3",
+    "index_in_search_order": 0,
+    "n_root_moves": 4,
+    "iter_score_for_oracle_best": 262,
+    "clamped": false,
+    "committed_live": "d2d3",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r51-66-Qc4",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "critical",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "c5b6",
+   "oracle_best_prev": "c5b6",
+   "live_completed_depth": 7,
+   "live_committed": "c5b6",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a6c4",
+     "cp_loss_vs_oracle": 370,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 234
+    },
+    {
+     "depth": 2,
+     "move": "a6c4",
+     "cp_loss_vs_oracle": 370,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 791
+    },
+    {
+     "depth": 3,
+     "move": "a6c4",
+     "cp_loss_vs_oracle": 370,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1445
+    },
+    {
+     "depth": 4,
+     "move": "c5b6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 6117
+    },
+    {
+     "depth": 5,
+     "move": "c5b6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 9514
+    },
+    {
+     "depth": 6,
+     "move": "c5b6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 32107
+    }
+   ],
+   "late_analysis": {
+    "iteration": 7,
+    "oracle_best": "c5b6",
+    "index_in_search_order": 0,
+    "n_root_moves": 6,
+    "iter_score_for_oracle_best": -225,
+    "clamped": false,
+    "committed_live": "c5b6",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r51-79-repetition",
+   "target": false,
+   "enforced": false,
+   "side_to_move": "white",
+   "kind": "objective_state",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "b7c6",
+   "oracle_best_prev": "b7c6",
+   "live_completed_depth": 7,
+   "live_committed": "b7c6",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "b7c6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 22
+    },
+    {
+     "depth": 2,
+     "move": "b7c6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 780
+    },
+    {
+     "depth": 3,
+     "move": "b7c6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1471
+    },
+    {
+     "depth": 4,
+     "move": "b7c6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 4468
+    },
+    {
+     "depth": 5,
+     "move": "b7c6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 13544
+    },
+    {
+     "depth": 6,
+     "move": "b7c6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 29783
+    }
+   ],
+   "late_analysis": {
+    "iteration": 7,
+    "oracle_best": "b7c6",
+    "index_in_search_order": 0,
+    "n_root_moves": 3,
+    "iter_score_for_oracle_best": -688,
+    "clamped": false,
+    "committed_live": "b7c6",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r53-35-Rf7",
+   "target": true,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "critical",
+   "oracle_depth": 6,
+   "oracle_stable": true,
+   "oracle_best": "e7e8",
+   "oracle_best_prev": "e7e8",
+   "live_completed_depth": 5,
+   "live_committed": "e7e8",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "c7d6",
+     "cp_loss_vs_oracle": 197,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 249
+    },
+    {
+     "depth": 2,
+     "move": "c7d6",
+     "cp_loss_vs_oracle": 197,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 534
+    },
+    {
+     "depth": 3,
+     "move": "e7f7",
+     "cp_loss_vs_oracle": 87,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 4734
+    },
+    {
+     "depth": 4,
+     "move": "e7f7",
+     "cp_loss_vs_oracle": 87,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 14417
+    },
+    {
+     "depth": 5,
+     "move": "e7e8",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 60729
+    },
+    {
+     "depth": 6,
+     "move": "e7e8",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 196664
+    }
+   ],
+   "late_analysis": {
+    "iteration": 5,
+    "oracle_best": "e7e8",
+    "index_in_search_order": 1,
+    "n_root_moves": 36,
+    "iter_score_for_oracle_best": -195,
+    "clamped": false,
+    "committed_live": "e7e8",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r53-52-Bc6",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "critical",
+   "oracle_depth": 6,
+   "oracle_stable": false,
+   "oracle_best": "g5g4",
+   "oracle_best_prev": "d7c6",
+   "live_completed_depth": 5,
+   "live_committed": "d7c6",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 29246,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a7b7",
+     "cp_loss_vs_oracle": 636,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 376
+    },
+    {
+     "depth": 2,
+     "move": "a7b7",
+     "cp_loss_vs_oracle": 636,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 887
+    },
+    {
+     "depth": 3,
+     "move": "c8c7",
+     "cp_loss_vs_oracle": 29248,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": false,
+     "nodes": 3346
+    },
+    {
+     "depth": 4,
+     "move": "d7c6",
+     "cp_loss_vs_oracle": 29246,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": false,
+     "nodes": 13640
+    },
+    {
+     "depth": 5,
+     "move": "d7c6",
+     "cp_loss_vs_oracle": 29246,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": false,
+     "nodes": 18579
+    },
+    {
+     "depth": 6,
+     "move": "g5g4",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 175355
+    }
+   ],
+   "late_analysis": {
+    "iteration": 5,
+    "oracle_best": "g5g4",
+    "index_in_search_order": 5,
+    "n_root_moves": 21,
+    "iter_score_for_oracle_best": -708,
+    "clamped": true,
+    "committed_live": "d7c6",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "round30-Bf4",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "critical",
+   "oracle_depth": 5,
+   "oracle_stable": false,
+   "oracle_best": "g5e3",
+   "oracle_best_prev": "d4c6",
+   "live_completed_depth": 4,
+   "live_committed": "d1h5",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 261,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "g5f4",
+     "cp_loss_vs_oracle": 308,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 454
+    },
+    {
+     "depth": 2,
+     "move": "d1h5",
+     "cp_loss_vs_oracle": 261,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 2273
+    },
+    {
+     "depth": 3,
+     "move": "g5f4",
+     "cp_loss_vs_oracle": 308,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 10755
+    },
+    {
+     "depth": 4,
+     "move": "d1h5",
+     "cp_loss_vs_oracle": 261,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 24014
+    },
+    {
+     "depth": 5,
+     "move": "g5e3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 110162
+    },
+    {
+     "depth": 6,
+     "move": "g5e3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 358722
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "g5e3",
+    "index_in_search_order": 1,
+    "n_root_moves": 48,
+    "iter_score_for_oracle_best": -24,
+    "clamped": false,
+    "committed_live": "d1h5",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r47-63-e2",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "control_win",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "e3e2",
+   "oracle_best_prev": "e3e2",
+   "live_completed_depth": 4,
+   "live_committed": "e3e2",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "c6g2",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 76
+    },
+    {
+     "depth": 2,
+     "move": "c6g2",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 645
+    },
+    {
+     "depth": 3,
+     "move": "c6g2",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 1465
+    },
+    {
+     "depth": 4,
+     "move": "e3e2",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 19744
+    }
+   ],
+   "late_analysis": {
+    "iteration": 4,
+    "oracle_best": "e3e2",
+    "index_in_search_order": 14,
+    "n_root_moves": 39,
+    "iter_score_for_oracle_best": 29995,
+    "clamped": false,
+    "committed_live": "e3e2",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r48-26-Qxf6",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "control_win",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "e5f6",
+   "oracle_best_prev": "e5f6",
+   "live_completed_depth": 5,
+   "live_committed": "e5f6",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "e5f6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 121
+    },
+    {
+     "depth": 2,
+     "move": "e5f6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 381
+    },
+    {
+     "depth": 3,
+     "move": "e5f6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 1543
+    },
+    {
+     "depth": 4,
+     "move": "e5f6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 4836
+    },
+    {
+     "depth": 5,
+     "move": "e5f6",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 25910
+    }
+   ],
+   "late_analysis": {
+    "iteration": 5,
+    "oracle_best": "e5f6",
+    "index_in_search_order": 0,
+    "n_root_moves": 40,
+    "iter_score_for_oracle_best": 29995,
+    "clamped": false,
+    "committed_live": "e5f6",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r49-53-h3",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "control_win",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "h4h3",
+   "oracle_best_prev": "h4h3",
+   "live_completed_depth": 8,
+   "live_committed": "h4h3",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "b6c5",
+     "cp_loss_vs_oracle": 911,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 12
+    },
+    {
+     "depth": 2,
+     "move": "b6c5",
+     "cp_loss_vs_oracle": 911,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 68
+    },
+    {
+     "depth": 3,
+     "move": "b6c5",
+     "cp_loss_vs_oracle": 911,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 322
+    },
+    {
+     "depth": 4,
+     "move": "h4h3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 761
+    },
+    {
+     "depth": 5,
+     "move": "h4h3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 2011
+    },
+    {
+     "depth": 6,
+     "move": "h4h3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 5263
+    }
+   ],
+   "late_analysis": {
+    "iteration": 8,
+    "oracle_best": "h4h3",
+    "index_in_search_order": 0,
+    "n_root_moves": 11,
+    "iter_score_for_oracle_best": 1519,
+    "clamped": false,
+    "committed_live": "h4h3",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r50-35-d3",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "control_win",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "d4d3",
+   "oracle_best_prev": "d4d3",
+   "live_completed_depth": 5,
+   "live_committed": "d4d3",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a3e3",
+     "cp_loss_vs_oracle": 177,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 292
+    },
+    {
+     "depth": 2,
+     "move": "d4d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1700
+    },
+    {
+     "depth": 3,
+     "move": "d4d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 2880
+    },
+    {
+     "depth": 4,
+     "move": "d4d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 13388
+    },
+    {
+     "depth": 5,
+     "move": "d4d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 73240
+    },
+    {
+     "depth": 6,
+     "move": "d4d3",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 181330
+    }
+   ],
+   "late_analysis": {
+    "iteration": 5,
+    "oracle_best": "d4d3",
+    "index_in_search_order": 0,
+    "n_root_moves": 30,
+    "iter_score_for_oracle_best": 981,
+    "clamped": false,
+    "committed_live": "d4d3",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r52-40-c7",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "control_win",
+   "oracle_depth": 7,
+   "oracle_stable": true,
+   "oracle_best": "c6c7",
+   "oracle_best_prev": "c6c7",
+   "live_completed_depth": 6,
+   "live_committed": "c6c7",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "a4c3",
+     "cp_loss_vs_oracle": 801,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 187
+    },
+    {
+     "depth": 2,
+     "move": "c6c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1506
+    },
+    {
+     "depth": 3,
+     "move": "c6c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 4445
+    },
+    {
+     "depth": 4,
+     "move": "c6c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 7402
+    },
+    {
+     "depth": 5,
+     "move": "c6c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 21410
+    },
+    {
+     "depth": 6,
+     "move": "c6c7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 66120
+    }
+   ],
+   "late_analysis": {
+    "iteration": 6,
+    "oracle_best": "c6c7",
+    "index_in_search_order": 0,
+    "n_root_moves": 26,
+    "iter_score_for_oracle_best": 1098,
+    "clamped": false,
+    "committed_live": "c6c7",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r52-55-Re4",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "control_win",
+   "oracle_depth": 6,
+   "oracle_stable": true,
+   "oracle_best": "e6e4",
+   "oracle_best_prev": "e6e4",
+   "live_completed_depth": 2,
+   "live_committed": "e6e4",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "e6b6",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 677
+    },
+    {
+     "depth": 2,
+     "move": "e6e4",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": true,
+     "oracle_is_mate": true,
+     "nodes": 1653
+    }
+   ],
+   "late_analysis": {
+    "iteration": 2,
+    "oracle_best": "e6e4",
+    "index_in_search_order": 7,
+    "n_root_moves": 39,
+    "iter_score_for_oracle_best": 29997,
+    "clamped": false,
+    "committed_live": "e6e4",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r55-18-h6",
+   "target": false,
+   "enforced": false,
+   "side_to_move": "black",
+   "kind": "before_the_mistake",
+   "oracle_depth": 5,
+   "oracle_stable": true,
+   "oracle_best": "f8e8",
+   "oracle_best_prev": "f8e8",
+   "live_completed_depth": 3,
+   "live_committed": "h7h6",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 31,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "h7h5",
+     "cp_loss_vs_oracle": 42,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1428
+    },
+    {
+     "depth": 2,
+     "move": "h7h6",
+     "cp_loss_vs_oracle": 31,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 11273
+    },
+    {
+     "depth": 3,
+     "move": "h7h6",
+     "cp_loss_vs_oracle": 31,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 67865
+    },
+    {
+     "depth": 4,
+     "move": "f8e8",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 271337
+    },
+    {
+     "depth": 5,
+     "move": "f8e8",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1231481
+    }
+   ],
+   "late_analysis": {
+    "iteration": 3,
+    "oracle_best": "f8e8",
+    "index_in_search_order": 16,
+    "n_root_moves": 37,
+    "iter_score_for_oracle_best": -37,
+    "clamped": false,
+    "committed_live": "h7h6",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r55-19-g5",
+   "target": true,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "earliest_recoverable",
+   "oracle_depth": 5,
+   "oracle_stable": true,
+   "oracle_best": "f8f7",
+   "oracle_best_prev": "f8f7",
+   "live_completed_depth": 3,
+   "live_committed": "f8f6",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 9,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "g7g5",
+     "cp_loss_vs_oracle": 102,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1172
+    },
+    {
+     "depth": 2,
+     "move": "g7g5",
+     "cp_loss_vs_oracle": 102,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 9089
+    },
+    {
+     "depth": 3,
+     "move": "f8f6",
+     "cp_loss_vs_oracle": 9,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 71275
+    },
+    {
+     "depth": 4,
+     "move": "f8f6",
+     "cp_loss_vs_oracle": 9,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 265768
+    },
+    {
+     "depth": 5,
+     "move": "f8f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1424847
+    }
+   ],
+   "late_analysis": {
+    "iteration": 3,
+    "oracle_best": "f8f7",
+    "index_in_search_order": 5,
+    "n_root_moves": 37,
+    "iter_score_for_oracle_best": -20,
+    "clamped": false,
+    "committed_live": "f8f6",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r55-20-Nxd4",
+   "target": true,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "earliest_recoverable",
+   "oracle_depth": 5,
+   "oracle_stable": true,
+   "oracle_best": "f8g8",
+   "oracle_best_prev": "f8g8",
+   "live_completed_depth": 2,
+   "live_committed": "c6d4",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 126,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "c6d4",
+     "cp_loss_vs_oracle": 126,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 4605
+    },
+    {
+     "depth": 2,
+     "move": "c6d4",
+     "cp_loss_vs_oracle": 126,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 10561
+    },
+    {
+     "depth": 3,
+     "move": "c6d4",
+     "cp_loss_vs_oracle": 126,
+     "agrees_with_oracle": false,
+     "result_class_change": true,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 108820
+    },
+    {
+     "depth": 4,
+     "move": "f8g8",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 204432
+    },
+    {
+     "depth": 5,
+     "move": "f8g8",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 797141
+    },
+    {
+     "depth": 6,
+     "move": "f8f3",
+     "cp_loss_vs_oracle": 19,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 2458699
+    }
+   ],
+   "late_analysis": {
+    "iteration": 2,
+    "oracle_best": "f8g8",
+    "index_in_search_order": 6,
+    "n_root_moves": 38,
+    "iter_score_for_oracle_best": -135,
+    "clamped": false,
+    "committed_live": "c6d4",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r56-17-f4",
+   "target": true,
+   "enforced": true,
+   "side_to_move": "white",
+   "kind": "earliest_recoverable",
+   "oracle_depth": 5,
+   "oracle_stable": true,
+   "oracle_best": "g1h1",
+   "oracle_best_prev": "g1h1",
+   "live_completed_depth": 3,
+   "live_committed": "c3c4",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 7,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "f3f4",
+     "cp_loss_vs_oracle": 62,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1599
+    },
+    {
+     "depth": 2,
+     "move": "f3f4",
+     "cp_loss_vs_oracle": 62,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 14968
+    },
+    {
+     "depth": 3,
+     "move": "c3c4",
+     "cp_loss_vs_oracle": 7,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 69775
+    },
+    {
+     "depth": 4,
+     "move": "g1h1",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 306046
+    },
+    {
+     "depth": 5,
+     "move": "g1h1",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 757498
+    }
+   ],
+   "late_analysis": {
+    "iteration": 3,
+    "oracle_best": "g1h1",
+    "index_in_search_order": 4,
+    "n_root_moves": 37,
+    "iter_score_for_oracle_best": 64,
+    "clamped": false,
+    "committed_live": "c3c4",
+    "committed_matches_oracle": false
+   }
+  },
+  {
+   "id": "r56-18-Nxf7",
+   "target": false,
+   "enforced": false,
+   "side_to_move": "white",
+   "kind": "invisible_to_the_control",
+   "oracle_depth": 6,
+   "oracle_stable": true,
+   "oracle_best": "g5f7",
+   "oracle_best_prev": "g5f7",
+   "live_completed_depth": 5,
+   "live_committed": "g5f7",
+   "live_matches_oracle": true,
+   "live_cp_loss_vs_oracle": 0,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "g5f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 428
+    },
+    {
+     "depth": 2,
+     "move": "g5f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 877
+    },
+    {
+     "depth": 3,
+     "move": "g5f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 3913
+    },
+    {
+     "depth": 4,
+     "move": "g5f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 11295
+    },
+    {
+     "depth": 5,
+     "move": "g5f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 64111
+    },
+    {
+     "depth": 6,
+     "move": "g5f7",
+     "cp_loss_vs_oracle": 0,
+     "agrees_with_oracle": true,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 202442
+    }
+   ],
+   "late_analysis": {
+    "iteration": 5,
+    "oracle_best": "g5f7",
+    "index_in_search_order": 0,
+    "n_root_moves": 38,
+    "iter_score_for_oracle_best": 15,
+    "clamped": false,
+    "committed_live": "g5f7",
+    "committed_matches_oracle": true
+   }
+  },
+  {
+   "id": "r54-53-Ke5",
+   "target": false,
+   "enforced": true,
+   "side_to_move": "black",
+   "kind": "already_solved",
+   "oracle_depth": 7,
+   "oracle_stable": false,
+   "oracle_best": "d4e3",
+   "oracle_best_prev": "d6e5",
+   "live_completed_depth": 5,
+   "live_committed": "g8h7",
+   "live_matches_oracle": false,
+   "live_cp_loss_vs_oracle": 2,
+   "per_depth": [
+    {
+     "depth": 1,
+     "move": "g8e6",
+     "cp_loss_vs_oracle": 90,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 76
+    },
+    {
+     "depth": 2,
+     "move": "g8h7",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 531
+    },
+    {
+     "depth": 3,
+     "move": "g8h7",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 1896
+    },
+    {
+     "depth": 4,
+     "move": "d6e5",
+     "cp_loss_vs_oracle": 1,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 6665
+    },
+    {
+     "depth": 5,
+     "move": "g8h7",
+     "cp_loss_vs_oracle": 2,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 55063
+    },
+    {
+     "depth": 6,
+     "move": "d6e5",
+     "cp_loss_vs_oracle": 1,
+     "agrees_with_oracle": false,
+     "result_class_change": false,
+     "committed_is_mate": false,
+     "oracle_is_mate": false,
+     "nodes": 301858
+    }
+   ],
+   "late_analysis": {
+    "iteration": 5,
+    "oracle_best": "d4e3",
+    "index_in_search_order": 2,
+    "n_root_moves": 35,
+    "iter_score_for_oracle_best": 986,
+    "clamped": false,
+    "committed_live": "g8h7",
+    "committed_matches_oracle": false
+   }
+  }
+ ]
+}
