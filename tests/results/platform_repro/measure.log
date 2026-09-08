@@ -1,0 +1,136 @@
+[.] r44-14-b4            platD=3 corrD=5 ref d5/UNSTABLE->c4d5  B=b2b4(35) A(md3)=b2b4 corr=0.0 bad=1.0  => UNRESOLVED []
+[.] r44-21-Bf4           platD=3 corrD=5 ref d5/UNSTABLE->c1b2  B=c1f4(67) A(md3)=c1f4 corr=0.0 bad=1.0  => UNRESOLVED []
+[T] r45-54-Rc7           platD=5 corrD=6 ref d7/stable->a5a4  B=c3c7(785) A(md5)=c3c7 corr=0.0 bad=1.0  => REPRODUCES LOCALLY ['HORIZON+1', 'ENDGAME/PASSED-PAWN']
+[F] r45-55-a4            platD=6 corrD=1 ref d8/stable->b8c7  B=b8c7(0) A(md6)=a5a4 corr=0.0 bad=1.0  => REPRODUCES LOCALLY []
+[.] r46-29-a5            platD=2 corrD=4 ref d5/stable->a4a5  B=a4a5(0) A(md3)=h1h3 corr=0.0 bad=0.0  => NEGATIVE-CONTROL-DRIFT []
+[T] r46-30-Ka4           platD=3 corrD=4 ref d5/stable->b4a5  B=a3a4(46) A(md4)=b4a5 corr=0.8 bad=0.2  => PLATFORM-SPEED ARTIFACT ['QUIESCENCE-BOUNDARY', 'HORIZON+1']
+[F] r51-53-Qc5           platD=2 corrD=4 ref d5/stable->a5a6  B=a3c5(150) A(md3)=a3c5 corr=0.0 bad=1.0  => REPRODUCES LOCALLY ['HORIZON+2']
+[F] r51-62-Ke3           platD=6 corrD=6 ref d8/stable->d2d3  B=d2e3(361) A(md6)=d2d3 corr=1.0 bad=0.0  => PLATFORM-SPEED ARTIFACT []
+[F] r51-66-Qc4           platD=5 corrD=4 ref d8/stable->c5b6  B=c5b6(0) A(md5)=c5b6 corr=1.0 bad=0.0  => UNRESOLVED []
+[.] r51-79-repetition    platD=None corrD=1 ref d8/stable->b7c6  B=None(None) A(md6)=b7c6 corr=1.0 bad=0.0  => NEGATIVE-CONTROL-OK []
+[T] r53-35-Rf7           platD=4 corrD=5 ref d5/UNSTABLE->e7e8  B=e7f7(87) A(md5)=e7e8 corr=1.0 bad=0.0  => UNRESOLVED []
+[F] r53-52-Bc6           platD=5 corrD=6 ref d6/UNSTABLE->g5g4  B=d7c6(29246) A(md5)=d7c6 corr=0.0 bad=1.0  => UNRESOLVED []
+[F] round30-Bf4          platD=None corrD=5 ref d5/UNSTABLE->g5e3  B=None(None) A(md4)=d1h5 corr=0.0 bad=0.0  => UNRESOLVED []
+[.] r47-63-e2            platD=4 corrD=4 ref d7/stable->e3e2  B=e3e2(0) A(md4)=e3e2 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[.] r48-26-Qxf6          platD=5 corrD=1 ref d7/stable->e5f6  B=e5f6(0) A(md5)=e5f6 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[.] r49-53-h3            platD=7 corrD=4 ref d8/stable->h4h3  B=h4h3(0) A(md8)=h4h3 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[.] r50-35-d3            platD=4 corrD=2 ref d7/stable->d4d3  B=d4d3(0) A(md5)=d4d3 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[.] r52-40-c7            platD=5 corrD=2 ref d7/stable->c6c7  B=c6c7(0) A(md5)=c6c7 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[.] r52-55-Re4           platD=2 corrD=2 ref d6/stable->e6e4  B=e6e4(0) A(md2)=e6e4 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[.] r55-18-h6            platD=2 corrD=4 ref d5/stable->f8e8  B=h7h6(31) A(md3)=h7h6 corr=0.0 bad=1.0  => NEGATIVE-CONTROL-DRIFT []
+[T] r55-19-g5            platD=2 corrD=3 ref d5/stable->f8f7  B=g7g5(102) A(md3)=f8f6 corr=1.0 bad=0.0  => PLATFORM-SPEED ARTIFACT ['HORIZON+1']
+[T] r55-20-Nxd4          platD=2 corrD=4 ref d5/stable->f8g8  B=c6d4(126) A(md2)=c6d4 corr=0.0 bad=1.0  => REPRODUCES LOCALLY ['HORIZON+2']
+[T] r56-17-f4            platD=2 corrD=3 ref d5/stable->g1h1  B=f3f4(62) A(md3)=c3c4 corr=1.0 bad=0.0  => PLATFORM-SPEED ARTIFACT ['HORIZON+1']
+[.] r56-18-Nxf7          platD=4 corrD=1 ref d6/stable->g5f7  B=g5f7(0) A(md5)=g5f7 corr=1.0 bad=1.0  => NEGATIVE-CONTROL-OK []
+[F] r54-53-Ke5           platD=4 corrD=None ref d7/UNSTABLE->d4e3  B=d6e5(1) A(md5)=g8h7 corr=0.0 bad=0.0  => UNRESOLVED []
+SUMMARY {
+ "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+ "corpus_rounds": "30, 44-56 (INCOMPLETE: 57-66 missing)",
+ "fixtures": 25,
+ "stable_failures": 9,
+ "reproduces_locally": 4,
+ "platform_speed_artifact": 4,
+ "reproduced_consequential": 3,
+ "reproduced_consequential_ids": [
+  "r45-54-Rc7",
+  "r51-53-Qc5",
+  "r55-20-Nxd4"
+ ],
+ "primary_category_counts": {
+  "REPRODUCES LOCALLY": 4,
+  "PLATFORM-SPEED ARTIFACT": 4,
+  "UNRESOLVED": 1
+ },
+ "reproduced_secondary_counts": {
+  "HORIZON": 3,
+  "ENDGAME/PASSED-PAWN": 1
+ },
+ "reproduced_colour_split": {
+  "black": 3,
+  "white": 1
+ },
+ "negative_controls": 6,
+ "negative_controls_ok": 6,
+ "targets": {
+  "r45-54-Rc7": {
+   "platform_depth": 5,
+   "correcting_depth": 6,
+   "B_move": "c3c7",
+   "B_cp_loss": 785,
+   "A_move_mode": "c3c7",
+   "A_depth_median": 5,
+   "primary": "REPRODUCES LOCALLY",
+   "secondary": [
+    "HORIZON+1",
+    "ENDGAME/PASSED-PAWN"
+   ]
+  },
+  "r46-30-Ka4": {
+   "platform_depth": 3,
+   "correcting_depth": 4,
+   "B_move": "a3a4",
+   "B_cp_loss": 46,
+   "A_move_mode": "b4a5",
+   "A_depth_median": 4,
+   "primary": "PLATFORM-SPEED ARTIFACT",
+   "secondary": [
+    "QUIESCENCE-BOUNDARY",
+    "HORIZON+1"
+   ]
+  },
+  "r53-35-Rf7": {
+   "platform_depth": 4,
+   "correcting_depth": 5,
+   "B_move": "e7f7",
+   "B_cp_loss": 87,
+   "A_move_mode": "e7e8",
+   "A_depth_median": 5,
+   "primary": "UNRESOLVED",
+   "secondary": []
+  },
+  "r55-19-g5": {
+   "platform_depth": 2,
+   "correcting_depth": 3,
+   "B_move": "g7g5",
+   "B_cp_loss": 102,
+   "A_move_mode": "f8f6",
+   "A_depth_median": 3,
+   "primary": "PLATFORM-SPEED ARTIFACT",
+   "secondary": [
+    "HORIZON+1"
+   ]
+  },
+  "r55-20-Nxd4": {
+   "platform_depth": 2,
+   "correcting_depth": 4,
+   "B_move": "c6d4",
+   "B_cp_loss": 126,
+   "A_move_mode": "c6d4",
+   "A_depth_median": 2,
+   "primary": "REPRODUCES LOCALLY",
+   "secondary": [
+    "HORIZON+2"
+   ]
+  },
+  "r56-17-f4": {
+   "platform_depth": 2,
+   "correcting_depth": 3,
+   "B_move": "f3f4",
+   "B_cp_loss": 62,
+   "A_move_mode": "c3c4",
+   "A_depth_median": 3,
+   "primary": "PLATFORM-SPEED ARTIFACT",
+   "secondary": [
+    "HORIZON+1"
+   ]
+  }
+ },
+ "decision_gate": {
+  "g1_ge3_reproduce_under_platform": true,
+  "g2_ge60pct_share_mechanism": true,
+  "g2_share_value": 1.0,
+  "g3_mechanism_affects_completed_iteration": "SEE_ANALYSIS",
+  "g4_negative_controls_present": true
+ }
+}
+WROTE C:\Users\ss26g21\OneDrive - University of Southampton\Desktop\personal project\chessathon optiver\aichessathon-starter\tests\results\platform_repro\measure.json
