@@ -1,0 +1,119 @@
+{
+  "clock_ms": 20000,
+  "reps": 4,
+  "positions": 6,
+  "method": "alternating paired repetitions; cold pass reported separately",
+  "candidate_nnue_status": "loaded 411fa3e94a066284",
+  "candidate_uses_fused_path": true,
+  "cold": {
+    "control": {
+      "move": "g1f3",
+      "seconds": 0.45813929999712855,
+      "nodes": 12911,
+      "nps": 28181.385006876557
+    },
+    "candidate": {
+      "move": "d2d4",
+      "seconds": 0.44678220001515,
+      "nodes": 9443,
+      "nps": 21135.577916219125
+    },
+    "note": "first search after import; includes any cache and branch warm-up"
+  },
+  "warm_control": {
+    "nps_mean": 21929.1,
+    "nps_median": 21784.6,
+    "nodes_total": 252294,
+    "seconds_total": 11.15
+  },
+  "warm_candidate": {
+    "nps_mean": 21041.7,
+    "nps_median": 21547.4,
+    "nodes_total": 250610,
+    "seconds_total": 11.59
+  },
+  "nps_ratio": 0.9595,
+  "nps_loss_pct": 4.05,
+  "gate_max_loss_pct": 10.0,
+  "throughput_gate_passes": true,
+  "per_position": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "control_nps": 27319.9,
+      "candidate_nps": 22333.1,
+      "nps_loss_pct": 18.25,
+      "same_move_reps": "0/4",
+      "control_moves": [
+        "g1f3"
+      ],
+      "candidate_moves": [
+        "d2d4"
+      ]
+    },
+    {
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "control_nps": 21007.7,
+      "candidate_nps": 20383.2,
+      "nps_loss_pct": 2.97,
+      "same_move_reps": "0/4",
+      "control_moves": [
+        "b1c3"
+      ],
+      "candidate_moves": [
+        "d2d4"
+      ]
+    },
+    {
+      "fen": "r4rk1/p1pq2pp/1np3p1/4P3/1P1p1BP1/1P3P2/P2Q4/2RK1B1R w - - 0 22",
+      "control_nps": 21246.7,
+      "candidate_nps": 22030.6,
+      "nps_loss_pct": -3.69,
+      "same_move_reps": "0/4",
+      "control_moves": [
+        "e5e6"
+      ],
+      "candidate_moves": [
+        "f1d3"
+      ]
+    },
+    {
+      "fen": "r2q1rk1/pp2ppbp/2np1np1/8/2PNP3/2N1B3/PP2BPPP/R2Q1RK1 b - - 0 10",
+      "control_nps": 21456.2,
+      "candidate_nps": 21258.1,
+      "nps_loss_pct": 0.92,
+      "same_move_reps": "0/4",
+      "control_moves": [
+        "d8a5"
+      ],
+      "candidate_moves": [
+        "c6b4"
+      ]
+    },
+    {
+      "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+      "control_nps": 23086.5,
+      "candidate_nps": 22142.7,
+      "nps_loss_pct": 4.09,
+      "same_move_reps": "4/4",
+      "control_moves": [
+        "b4f4"
+      ],
+      "candidate_moves": [
+        "b4f4"
+      ]
+    },
+    {
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+      "control_nps": 17457.5,
+      "candidate_nps": 18102.3,
+      "nps_loss_pct": -3.69,
+      "same_move_reps": "4/4",
+      "control_moves": [
+        "d1d8"
+      ],
+      "candidate_moves": [
+        "d1d8"
+      ]
+    }
+  ]
+}

@@ -217,41 +217,38 @@ def test_model_trains(boards: list[chess.Board]) -> None:
 
 
 def test_quantization(boards: list[chess.Board]) -> None:
-    """Float and quantized inference must agree, and the agent must match the reference.
+    """The deployed artifact must agree with the reference, and reject a bad file.
 
-    The agent's Numba kernel is a separate implementation from the trainer's reference
-    integer path. If they diverge, the metrics measured offline describe a different
-    evaluator from the one that plays.
+    This runs against the REAL packed weights and the REAL trained checkpoint, not a
+    random model, because the artifact that ships is the thing worth testing. The agent's
+    Numba kernel is a separate implementation from the trainer's reference integer path;
+    if they diverge, every offline metric describes a different evaluator from the one
+    that plays.
     """
     import nnue_train as trainer
     import torch
 
-    torch.manual_seed(20260909)
-    residual_class = nn_features.build_torch_model()
+    screening = REPO / "tests" / "results" / "nnue" / "model" / "screening.json"
+    shipped = REPO / "nnue_weights.npz"
+    if not screening.exists() or not shipped.exists():
+        print("[skip] no packed weights yet")
+        return
+    winner = json.loads(screening.read_text(encoding="utf-8"))["winner"]
+    model_dir = REPO / pathlib.Path(winner["model_dir"])
+    hidden = winner["hidden"]
+
+    residual_class = nn_features.build_torch_model(hidden)
     model = residual_class()
-    with torch.no_grad():
-        # Give the heads enough magnitude that the test is not trivially satisfied by a
-        # near-zero model, but keep the output in the range the engine actually deploys
-        # (the correction is clamped to +/-250 cp), so the drift measured is the drift
-        # that matters rather than drift on outputs the engine would clamp away anyway.
-        model.head_mg.weight.mul_(1.5)
-        model.head_eg.weight.mul_(1.5)
+    model.load_state_dict(torch.load(model_dir / "float_model.pt", weights_only=True))
     model.eval()
 
-    quant = trainer.quantize(model)
-    packed = REPO / "tests" / "results" / "nnue" / "model" / "_invariant_weights.npz"
-    packed.parent.mkdir(parents=True, exist_ok=True)
-    with packed.open("wb") as handle:
-        np.savez(
-            handle,
-            embed_q=quant["embed_q"],
-            aux_w_q=quant["aux_w_q"],
-            aux_b_q=quant["aux_b_q"],
-            mg_q=quant["mg_q"],
-            eg_q=quant["eg_q"],
-            scales=np.array([quant["mg_scale"], quant["eg_scale"]], dtype=np.float64),
-            biases=np.array([quant["mg_bias"], quant["eg_bias"]], dtype=np.float64),
-        )
+    with np.load(model_dir / "quantized.npz") as data:
+        quant = {
+            "embed_q": data["embed_q"], "aux_w_q": data["aux_w_q"],
+            "aux_b_q": data["aux_b_q"], "mg_q": data["mg_q"], "eg_q": data["eg_q"],
+            "mg_scale": float(data["scales"][0]), "eg_scale": float(data["scales"][1]),
+            "mg_bias": float(data["biases"][0]), "eg_bias": float(data["biases"][1]),
+        }
 
     n = len(boards)
     indices = np.zeros((n, 32), dtype=np.int64)
@@ -269,10 +266,8 @@ def test_quantization(boards: list[chess.Board]) -> None:
     with torch.no_grad():
         float_cp = (
             model(
-                torch.from_numpy(indices),
-                torch.from_numpy(mask),
-                torch.from_numpy(aux),
-                torch.from_numpy(phase),
+                torch.from_numpy(indices), torch.from_numpy(mask),
+                torch.from_numpy(aux), torch.from_numpy(phase),
             ).numpy()
             * trainer.OUTPUT_SCALE
         )
@@ -286,44 +281,50 @@ def test_quantization(boards: list[chess.Board]) -> None:
     )
     check("no NaN or inf in quantized output", bool(np.isfinite(quant_cp).all()))
 
-    # The agent's own Numba kernel against the reference integer path.
-    stash = REPO / "nnue_weights.npz"
-    backup = stash.read_bytes() if stash.exists() else None
+    agent_mod = load(REPO / "agent_nnue.py", "invariant_agent_nnue")
+    if not getattr(agent_mod, "_nnue_ready", False):
+        check("agent loaded the shipped weights", False, agent_mod._nnue_status)
+        return
+    check("agent loaded the shipped weights", True, agent_mod._nnue_status)
+    check("agent width matches the trained model", hidden == agent_mod.NNUE_HIDDEN,
+          f"{agent_mod.NNUE_HIDDEN} vs {hidden}")
+
+    agent_cp = np.array([agent_mod.nnue_correction(b) for b in boards], dtype=np.float64)
+    expected = np.clip(quant_cp, -agent_mod.NNUE_CLAMP, agent_mod.NNUE_CLAMP)
+    delta = np.abs(agent_cp - expected)
+    check(
+        "agent Numba kernel matches the reference integer path",
+        float(delta.max()) <= 1.0,
+        f"max {delta.max():.4f} cp, mean {delta.mean():.6f}",
+    )
+    asym = [
+        b.fen() for b in boards
+        if agent_mod.nnue_correction(b) != agent_mod.nnue_correction(b.mirror())
+    ]
+    check("deployed correction is exactly colour-symmetric", not asym,
+          f"{len(asym)}/{len(boards)} asymmetric")
+    over = [b.fen() for b in boards if abs(agent_mod.nnue_correction(b)) > agent_mod.NNUE_CLAMP]
+    check("correction never exceeds the clamp", not over, f"{len(over)} over")
+
+    # A corrupted or substituted weight file must disable the network, not play with it.
+    backup = shipped.read_bytes()
     try:
-        stash.write_bytes(packed.read_bytes())
-        agent_mod = load(REPO / "agent_nnue.py", "invariant_agent_nnue")
-        if not getattr(agent_mod, "_nnue_ready", False):
-            check("agent loaded the invariant weights", False, agent_mod._nnue_status)
-            return
-        agent_cp = np.array([agent_mod.nnue_correction(b) for b in boards], dtype=np.float64)
-        expected = np.clip(quant_cp, -agent_mod.NNUE_CLAMP, agent_mod.NNUE_CLAMP)
-        delta = np.abs(agent_cp - expected)
+        payload = bytearray(backup)
+        payload[-64:] = bytes(64)
+        shipped.write_bytes(bytes(payload))
+        tampered = load(REPO / "agent_nnue.py", "invariant_tampered_agent")
         check(
-            "agent Numba kernel matches the reference integer path",
-            float(delta.max()) <= 1.0,
-            f"max {delta.max():.3f} cp, mean {delta.mean():.4f}",
+            "a tampered weight file is rejected and the engine falls back",
+            not tampered._nnue_ready and "mismatch" in tampered._nnue_status,
+            tampered._nnue_status,
         )
-        # colour symmetry of the deployed evaluator
-        asym = [
-            b.fen()
-            for b in boards[:200]
-            if agent_mod.nnue_correction(b) != agent_mod.nnue_correction(b.mirror())
-        ]
+        board = chess.Board()
         check(
-            "deployed correction is exactly colour-symmetric",
-            not asym,
-            f"{len(asym)} asymmetric" + (f" e.g. {asym[0]}" if asym else ""),
+            "the fallback still returns a legal move",
+            chess.Move.from_uci(tampered.get_move(board.fen(), 3000)) in board.legal_moves,
         )
-        bounded = [
-            b.fen() for b in boards if abs(agent_mod.nnue_correction(b)) > agent_mod.NNUE_CLAMP
-        ]
-        check("correction never exceeds the clamp", not bounded, f"{len(bounded)} over")
     finally:
-        if backup is not None:
-            stash.write_bytes(backup)
-        elif stash.exists():
-            stash.unlink()
-        packed.unlink(missing_ok=True)
+        shipped.write_bytes(backup)
 
 
 # ------------------------------------------------------------------- engine invariants

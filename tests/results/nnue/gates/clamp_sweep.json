@@ -1,0 +1,110 @@
+{
+  "test": {
+    "baseline_mae": 304.57,
+    "by_clamp": {
+      "25": {
+        "corrected_mae": 297.7,
+        "improvement_cp": 6.86,
+        "improvement_pct": 2.25,
+        "saturated_fraction": 0.8688,
+        "mean_abs_correction_cp": 23.38
+      },
+      "50": {
+        "corrected_mae": 292.29,
+        "improvement_cp": 12.28,
+        "improvement_pct": 4.03,
+        "saturated_fraction": 0.7348,
+        "mean_abs_correction_cp": 43.45
+      },
+      "75": {
+        "corrected_mae": 288.1,
+        "improvement_cp": 16.47,
+        "improvement_pct": 5.41,
+        "saturated_fraction": 0.613,
+        "mean_abs_correction_cp": 60.27
+      },
+      "100": {
+        "corrected_mae": 284.75,
+        "improvement_cp": 19.82,
+        "improvement_pct": 6.51,
+        "saturated_fraction": 0.4981,
+        "mean_abs_correction_cp": 74.13
+      },
+      "150": {
+        "corrected_mae": 280.45,
+        "improvement_cp": 24.11,
+        "improvement_pct": 7.92,
+        "saturated_fraction": 0.301,
+        "mean_abs_correction_cp": 93.87
+      },
+      "200": {
+        "corrected_mae": 277.98,
+        "improvement_cp": 26.59,
+        "improvement_pct": 8.73,
+        "saturated_fraction": 0.1553,
+        "mean_abs_correction_cp": 104.99
+      },
+      "250": {
+        "corrected_mae": 276.75,
+        "improvement_cp": 27.82,
+        "improvement_pct": 9.13,
+        "saturated_fraction": 0.0671,
+        "mean_abs_correction_cp": 110.32
+      }
+    }
+  },
+  "holdout": {
+    "baseline_mae": 370.56,
+    "by_clamp": {
+      "25": {
+        "corrected_mae": 361.39,
+        "improvement_cp": 9.17,
+        "improvement_pct": 2.47,
+        "saturated_fraction": 0.8663,
+        "mean_abs_correction_cp": 23.32
+      },
+      "50": {
+        "corrected_mae": 353.47,
+        "improvement_cp": 17.09,
+        "improvement_pct": 4.61,
+        "saturated_fraction": 0.742,
+        "mean_abs_correction_cp": 43.43
+      },
+      "75": {
+        "corrected_mae": 346.62,
+        "improvement_cp": 23.94,
+        "improvement_pct": 6.46,
+        "saturated_fraction": 0.6197,
+        "mean_abs_correction_cp": 60.41
+      },
+      "100": {
+        "corrected_mae": 340.77,
+        "improvement_cp": 29.79,
+        "improvement_pct": 8.04,
+        "saturated_fraction": 0.5117,
+        "mean_abs_correction_cp": 74.52
+      },
+      "150": {
+        "corrected_mae": 331.55,
+        "improvement_cp": 39.0,
+        "improvement_pct": 10.53,
+        "saturated_fraction": 0.3178,
+        "mean_abs_correction_cp": 95.09
+      },
+      "200": {
+        "corrected_mae": 325.42,
+        "improvement_cp": 45.14,
+        "improvement_pct": 12.18,
+        "saturated_fraction": 0.1716,
+        "mean_abs_correction_cp": 107.17
+      },
+      "250": {
+        "corrected_mae": 321.89,
+        "improvement_cp": 48.66,
+        "improvement_pct": 13.13,
+        "saturated_fraction": 0.0815,
+        "mean_abs_correction_cp": 113.28
+      }
+    }
+  }
+}

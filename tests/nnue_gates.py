@@ -114,6 +114,12 @@ def main() -> None:
     ap.add_argument("--control", type=pathlib.Path, default=REPO / "agent.py")
     ap.add_argument("--candidate", type=pathlib.Path, default=REPO / "agent_nnue.py")
     ap.add_argument("--depths", default="2,3,4,5")
+    ap.add_argument(
+        "--clamp",
+        type=int,
+        default=0,
+        help="override the candidate correction clamp, to test a tighter bound",
+    )
     ap.add_argument("--out", type=pathlib.Path, default=OUT / "rated_v5_gate.json")
     args = ap.parse_args()
 
@@ -124,7 +130,13 @@ def main() -> None:
     control = load_module(args.control, "gate_control")
     candidate = load_module(args.candidate, "gate_candidate")
     candidate_status = getattr(candidate, "_nnue_status", "n/a")
-    print("candidate NNUE status:", candidate_status, flush=True)
+    if args.clamp:
+        # _nnue_blend reads the module global, so this changes the deployed bound for
+        # this run without editing the shipped source.
+        candidate.NNUE_CLAMP = args.clamp
+        candidate._eval_table = [None] * len(candidate._eval_table)
+    clamp_used = getattr(candidate, "NNUE_CLAMP", None)
+    print("candidate NNUE status:", candidate_status, "| clamp:", clamp_used, flush=True)
 
     print("sweeping control...", flush=True)
     control_sweep = sweep(control, cases, depths)
@@ -258,6 +270,7 @@ def main() -> None:
     report = {
         "depths": list(depths),
         "candidate_nnue_status": candidate_status,
+        "correction_clamp_cp": clamp_used,
         "class_a_failures_found": len(class_a),
         "class_a_fixtures_corrected": corrected_fixtures,
         "class_a_detail": class_a,

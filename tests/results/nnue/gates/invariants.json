@@ -63,7 +63,7 @@
     {
       "check": "float and quantized agree within 10 cp (median)",
       "passed": true,
-      "detail": "median 2.352 cp, p95 6.133, max 9.508"
+      "detail": "median 1.733 cp, p95 5.822, max 8.327"
     },
     {
       "check": "no NaN or inf in quantized output",
@@ -71,14 +71,24 @@
       "detail": ""
     },
     {
+      "check": "agent loaded the shipped weights",
+      "passed": true,
+      "detail": "loaded 411fa3e94a066284"
+    },
+    {
+      "check": "agent width matches the trained model",
+      "passed": true,
+      "detail": "64 vs 64"
+    },
+    {
       "check": "agent Numba kernel matches the reference integer path",
       "passed": true,
-      "detail": "max 0.992 cp, mean 0.1939"
+      "detail": "max 0.9978 cp, mean 0.488955"
     },
     {
       "check": "deployed correction is exactly colour-symmetric",
       "passed": true,
-      "detail": "0 asymmetric"
+      "detail": "0/400 asymmetric"
     },
     {
       "check": "correction never exceeds the clamp",
@@ -86,9 +96,14 @@
       "detail": "0 over"
     },
     {
-      "check": "fallback is byte-for-byte the control's evaluation",
+      "check": "a tampered weight file is rejected and the engine falls back",
       "passed": true,
-      "detail": "0/300 differ"
+      "detail": "weight hash mismatch (fccf638f4ed9bbf7); handcrafted only"
+    },
+    {
+      "check": "the fallback still returns a legal move",
+      "passed": true,
+      "detail": ""
     },
     {
       "check": "checkmate found in one: legal reply",

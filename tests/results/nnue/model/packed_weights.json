@@ -1,0 +1,57 @@
+{
+  "path": "nnue_weights.npz",
+  "bytes": 51680,
+  "sha256": "411fa3e94a0662842af77aa9e2409b4b67cb41930e6070dd9140470e42bd2a49",
+  "arrays": {
+    "embed_q": {
+      "shape": [
+        768,
+        64
+      ],
+      "dtype": "int8"
+    },
+    "aux_w_q": {
+      "shape": [
+        64,
+        6
+      ],
+      "dtype": "int8"
+    },
+    "aux_b_q": {
+      "shape": [
+        64
+      ],
+      "dtype": "int32"
+    },
+    "mg_q": {
+      "shape": [
+        64
+      ],
+      "dtype": "int8"
+    },
+    "eg_q": {
+      "shape": [
+        64
+      ],
+      "dtype": "int8"
+    },
+    "scales": {
+      "shape": [
+        2
+      ],
+      "dtype": "float64"
+    },
+    "biases": {
+      "shape": [
+        2
+      ],
+      "dtype": "float64"
+    }
+  },
+  "int8_peaks": {
+    "embed_q": 85,
+    "aux_w_q": 56,
+    "mg_q": 127,
+    "eg_q": 127
+  }
+}
