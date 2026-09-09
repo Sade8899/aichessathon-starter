@@ -14,3 +14,10 @@ submission.zip
 # never shipped, never imported by agent.py, and several are GPL/AGPL, so the
 # binaries stay untracked; tests/external_engines.json records their provenance.
 tests/external_engines/
+
+# NNUE experiment intermediates. Generated games, labelled positions and training
+# datasets are large, reproducible from the manifests, and must never reach a
+# submission. The manifests, metrics and reports under tests/results/nnue/ are tracked.
+tests/results/nnue/games/
+tests/results/nnue/labels/
+tests/results/nnue/dataset/

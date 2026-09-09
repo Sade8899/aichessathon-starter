@@ -1,0 +1,75 @@
+{
+  "host": "Intel Core i7-8700, 6 physical cores, 12 logical",
+  "execution": "native Windows",
+  "why_not_docker": "The benchmark opponents are Windows .exe binaries and cannot run in a Linux container. Game generation is therefore native; Docker is used for the agent-only platform-reproduction gates, where no external engine is needed.",
+  "thread_env": {
+    "OMP_NUM_THREADS": "1",
+    "MKL_NUM_THREADS": "1",
+    "OPENBLAS_NUM_THREADS": "1",
+    "NUMEXPR_NUM_THREADS": "1",
+    "TORCH_NUM_THREADS": "1"
+  },
+  "rejected_configuration": "24 workers (previously rejected, not retried)",
+  "games_identical_across_levels": true,
+  "calibration_offset": 100,
+  "levels": [
+    {
+      "workers": 1,
+      "games": 12,
+      "elapsed_seconds": 194.04,
+      "games_per_hour": 222.6,
+      "positions": 983,
+      "positions_per_hour": 18237.2,
+      "control_move_ms_median": 252.7,
+      "control_move_ms_mean": 263.23,
+      "mean_plies": 81.9,
+      "failures": 0,
+      "move_time_inflation_vs_1worker": 1.0,
+      "degradation_exceeds_10pct": false
+    },
+    {
+      "workers": 2,
+      "games": 12,
+      "elapsed_seconds": 104.88,
+      "games_per_hour": 411.9,
+      "positions": 1014,
+      "positions_per_hour": 34806.3,
+      "control_move_ms_median": 252.76,
+      "control_move_ms_mean": 271.72,
+      "mean_plies": 84.5,
+      "failures": 0,
+      "move_time_inflation_vs_1worker": 1.0,
+      "degradation_exceeds_10pct": false
+    },
+    {
+      "workers": 4,
+      "games": 12,
+      "elapsed_seconds": 51.22,
+      "games_per_hour": 843.5,
+      "positions": 926,
+      "positions_per_hour": 65087.8,
+      "control_move_ms_median": 256.81,
+      "control_move_ms_mean": 259.6,
+      "mean_plies": 77.2,
+      "failures": 0,
+      "move_time_inflation_vs_1worker": 1.016,
+      "degradation_exceeds_10pct": false
+    },
+    {
+      "workers": 6,
+      "games": 12,
+      "elapsed_seconds": 40.29,
+      "games_per_hour": 1072.3,
+      "positions": 914,
+      "positions_per_hour": 81674.8,
+      "control_move_ms_median": 259.59,
+      "control_move_ms_mean": 260.08,
+      "mean_plies": 76.2,
+      "failures": 0,
+      "move_time_inflation_vs_1worker": 1.027,
+      "degradation_exceeds_10pct": false
+    }
+  ],
+  "selected_workers": 6,
+  "selection_rule": "highest positions/hour among levels with <=10% control move-time inflation"
+}
