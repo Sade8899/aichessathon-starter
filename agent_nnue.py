@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import math
 import os
+import sys
 import time
 from collections import Counter
 from dataclasses import dataclass
@@ -379,14 +380,36 @@ def _nnue_bias_table(aux_w: np.ndarray, aux_b: np.ndarray) -> np.ndarray:
     return table
 
 
+def _nnue_weights_path() -> str | None:
+    """Find the weight file beside this module.
+
+    On the platform the zip root leads sys.path and `__file__` is always set, so the
+    first candidate is the one that resolves. The fallbacks exist because the repo's own
+    fixture harness execs an agent's source text without setting `__file__`, and a
+    NameError there would break the import rather than degrade it.
+    """
+    candidates = []
+    module_file = globals().get("__file__")
+    if module_file:
+        candidates.append(os.path.dirname(os.path.abspath(module_file)))
+    if sys.path and sys.path[0]:
+        candidates.append(os.path.abspath(sys.path[0]))
+    candidates.append(os.getcwd())
+    for directory in candidates:
+        candidate = os.path.join(directory, NNUE_WEIGHTS)
+        if os.path.exists(candidate):
+            return candidate
+    return None
+
+
 def load_nnue() -> str:
     """Load and validate the weights. Any failure keeps the control's exact behaviour."""
     global _NNUE_EMBED, _NNUE_BIAS, _NNUE_MG, _NNUE_EG
     global _NNUE_MG_SCALE, _NNUE_EG_SCALE, _NNUE_MG_BIAS, _NNUE_EG_BIAS
     global _nnue_ready, _nnue_status
 
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), NNUE_WEIGHTS)
-    if not os.path.exists(path):
+    path = _nnue_weights_path()
+    if path is None:
         _nnue_status = "weights missing; handcrafted evaluation only"
         return _nnue_status
     try:
