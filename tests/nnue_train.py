@@ -298,6 +298,7 @@ def main() -> None:
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--patience", type=int, default=6)
     ap.add_argument("--hidden", type=int, default=nn_features.HIDDEN)
+    ap.add_argument("--seed", type=int, default=SEED)
     ap.add_argument("--tag", default="", help="name this architecture in the outputs")
     ap.add_argument("--data", type=pathlib.Path, default=DATASET / "labelled.jsonl")
     args = ap.parse_args()
@@ -306,7 +307,7 @@ def main() -> None:
     from torch import nn
 
     torch.set_num_threads(6)  # training only; inference is pinned to one thread
-    set_seeds(SEED)
+    set_seeds(args.seed)
     global MODELDIR
     if args.tag:
         MODELDIR = MODELDIR.parent / f"model_{args.tag}"
@@ -411,7 +412,7 @@ def main() -> None:
     q = quantize(model)
 
     report: dict = {
-        "seed": SEED,
+        "seed": args.seed,
         "output_scale_cp": OUTPUT_SCALE,
         "correction_clamp_cp": CORRECTION_CLAMP,
         "target_clipped_for_training": True,
