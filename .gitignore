@@ -39,3 +39,9 @@ nnue_v2_weights.npz
 # checkpoints, metrics and reports under tests/results/nnue/v2/ are tracked.
 tests/results/nnue/v2/snapshots/
 tests/results/nnue/v2/*/candidate.zip
+
+# Narrow exception to the *.pgn rule: the V2 arena PGNs are the per-game evidence behind
+# the accept/reject decision, so a reader can inspect a result rather than trust a mean.
+# They are small (a few hundred KB) and are named in FINAL_NNUE_V2_REPORT.md.
+!tests/results/nnue/v2/*/arena_*.pgn
+!tests/results/nnue/v2/*/h2h*.pgn
