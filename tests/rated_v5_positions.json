@@ -1,0 +1,494 @@
+{
+  "description": "Regression fixtures from rated rounds 57-78, all played by the working agent.py 65ec40ce.... Critical fixtures are moves the control's own deeper fixed-depth search rejects by at least 100 cp; solved controls are moves actually played in games the engine won or correctly drew, including round 78's passed-pawn defence and conversion and round 77's accurate threefold draw.",
+  "subject": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "method": "Every FEN, clock and played move is taken from the validated PGN corpus via tests/rated_v5.py scan; none is hand-typed. clock_ms is the platform clock remaining before that move, so repro reproduces the real decision.",
+  "rule": "A critical fixture with enforced=true is satisfied when, at minimum_correcting_depth, the source's fixed-depth choice is anything other than unacceptable_uci -- the rated move. The alternative the control prefers varies with depth and is recorded in control_prefers_by_depth as context, not asserted. A solved_control with enforced=true must keep acceptable_uci, the move actually played in a game the engine won or correctly drew. Fixtures with enforced=false are context and never gate a candidate; where a solved control is context at fixed depth it is still asserted by the five cold repetitions at the real clock in repro_5x.json.",
+  "positions": [
+    {
+      "id": "r57-22-e6",
+      "round": 57,
+      "kind": "critical",
+      "move": "22.e6",
+      "fen": "r4rk1/p1pq2pp/1np3p1/4P3/1P1p1BP1/1P3P2/P2Q4/2RK1B1R w - - 0 22",
+      "side_to_move": "white",
+      "clock_ms": 83356,
+      "seconds_used_rated": 2.503,
+      "rated_move_uci": "e5e6",
+      "rated_move_san": "22.e6",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "e5e6"
+      ],
+      "minimum_correcting_depth": 5,
+      "score_margin_cp": 124,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "advances the passer instead of developing with tempo by Bc4+",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "e5e6",
+        "3": "e5e6",
+        "4": "e5e6",
+        "5": "f1c4",
+        "6": "f1c4"
+      },
+      "deeper_search": {
+        "5": {
+          "best": "f1c4",
+          "loss_cp": 124
+        },
+        "6": {
+          "best": "f1c4",
+          "loss_cp": 138
+        },
+        "7": {
+          "best": "h1h3",
+          "loss_cp": 139
+        }
+      }
+    },
+    {
+      "id": "r57-24-Bxc7",
+      "round": 57,
+      "kind": "critical",
+      "move": "24.Bxc7",
+      "fen": "r4rk1/p1p3pp/1np1q1p1/8/1P1p1BP1/1P3P2/P2Q2B1/2RK3R w - - 0 24",
+      "side_to_move": "white",
+      "clock_ms": 79410,
+      "seconds_used_rated": 2.384,
+      "rated_move_uci": "f4c7",
+      "rated_move_san": "24.Bxc7",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "f4c7"
+      ],
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 147,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "grabs a pawn and lets the d4 passer and the back rank become the story",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "d2d4",
+        "3": "f4c7",
+        "4": "h1e1",
+        "5": "h1e1",
+        "6": "h1e1"
+      }
+    },
+    {
+      "id": "r57-33-Rc3",
+      "round": 57,
+      "kind": "critical",
+      "move": "33.Rc3",
+      "fen": "6k1/p5pp/2p3p1/6B1/1P4P1/1P2pq2/P7/1KR5 w - - 0 33",
+      "side_to_move": "white",
+      "clock_ms": 65649,
+      "seconds_used_rated": 1.971,
+      "rated_move_uci": "c1c3",
+      "rated_move_san": "33.Rc3",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "c1c3"
+      ],
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 137,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "rook leaves the c4 square from which it both holds and attacks",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "b1b2",
+        "3": "c1c3",
+        "4": "c1c3",
+        "5": "c1c4",
+        "6": "b1b2"
+      }
+    },
+    {
+      "id": "r57-59-Kd3",
+      "round": 57,
+      "kind": "critical",
+      "move": "59.Kd3",
+      "fen": "8/p4kp1/8/6pp/P4q2/1PB5/3Kp3/2R5 w - - 16 59",
+      "side_to_move": "white",
+      "clock_ms": 39641,
+      "seconds_used_rated": 1.154,
+      "rated_move_uci": "d2d3",
+      "rated_move_san": "59.Kd3",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "d2d3"
+      ],
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 705,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "the e2 pawn is one square from promotion and Kd3 abandons the stopper",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "d2c2",
+        "3": "d2c2",
+        "4": "d2c2",
+        "5": "d2c2",
+        "6": "d2c2"
+      }
+    },
+    {
+      "id": "r58-55-Rh2",
+      "round": 58,
+      "kind": "critical",
+      "move": "55...Rh2",
+      "fen": "7r/1p1Pk3/5p2/R3pBb1/P7/2r1PK2/8/4R3 b - - 4 55",
+      "side_to_move": "black",
+      "clock_ms": 42930,
+      "seconds_used_rated": 1.29,
+      "rated_move_uci": "h8h2",
+      "rated_move_san": "55...Rh2",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "h8h2"
+      ],
+      "minimum_correcting_depth": 4,
+      "score_margin_cp": 128,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "ignores the white d7 pawn, one square from promotion",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "h8h2",
+        "3": "h8h2",
+        "4": "c3c4",
+        "5": "c3a3",
+        "6": "b7b6"
+      },
+      "deeper_search": {
+        "5": {
+          "best": "c3a3",
+          "loss_cp": 128
+        },
+        "6": {
+          "best": "b7b6",
+          "loss_cp": 328
+        },
+        "7": {
+          "best": "b7b6",
+          "loss_cp": 429
+        }
+      }
+    },
+    {
+      "id": "r58-56-e4+",
+      "round": 58,
+      "kind": "critical",
+      "move": "56...e4+",
+      "fen": "R7/1p1Pk3/5p2/4pBb1/P7/2r1PK2/7r/4R3 b - - 6 56",
+      "side_to_move": "black",
+      "clock_ms": 42140,
+      "seconds_used_rated": 1.266,
+      "rated_move_uci": "e5e4",
+      "rated_move_san": "56...e4+",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "e5e4"
+      ],
+      "minimum_correcting_depth": 5,
+      "score_margin_cp": 101,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "spends a tempo on a check while d7 is one square from promotion",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "e5e4",
+        "3": "e5e4",
+        "4": "e5e4",
+        "5": "h2d2",
+        "6": "h2d2"
+      },
+      "deeper_search": {
+        "5": {
+          "best": "h2d2",
+          "loss_cp": 101
+        },
+        "6": {
+          "best": "h2d2",
+          "loss_cp": 101
+        },
+        "7": {
+          "best": "h2d2",
+          "loss_cp": 147
+        }
+      }
+    },
+    {
+      "id": "r58-84-Bd4",
+      "round": 58,
+      "kind": "critical",
+      "move": "84...Bd4",
+      "fen": "8/5RR1/1k3p2/1p2bK2/r3P3/3B4/8/8 b - - 15 84",
+      "side_to_move": "black",
+      "clock_ms": 28882,
+      "seconds_used_rated": 0.701,
+      "rated_move_uci": "e5d4",
+      "rated_move_san": "84...Bd4",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "e5d4"
+      ],
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 132,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "in a lost two-rook ending, walks the king into the wrong box",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "b6c5",
+        "3": "b6c5",
+        "4": "b6c5",
+        "5": "b6c5",
+        "6": "b5b4"
+      }
+    },
+    {
+      "id": "r66-49-e5",
+      "round": 66,
+      "kind": "critical",
+      "move": "49...e5",
+      "fen": "6r1/1R4P1/3kp3/P2p4/1P2n3/5N2/1K6/8 b - - 0 49",
+      "side_to_move": "black",
+      "clock_ms": 48979,
+      "seconds_used_rated": 1.471,
+      "rated_move_uci": "e6e5",
+      "rated_move_san": "49...e5",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "e6e5"
+      ],
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 146,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "pushes an own pawn while the white g7 passer and a5/b4 pair advance",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "g8c8",
+        "3": "g8c8",
+        "4": "e6e5",
+        "5": "g8c8",
+        "6": "g8c8"
+      },
+      "deeper_search": {
+        "5": {
+          "best": "g8c8",
+          "loss_cp": 146
+        },
+        "6": {
+          "best": "g8c8",
+          "loss_cp": 123
+        },
+        "7": {
+          "best": "g8a8",
+          "loss_cp": 105
+        }
+      }
+    },
+    {
+      "id": "r66-55-Kf6",
+      "round": 66,
+      "kind": "critical",
+      "move": "55...Kf6",
+      "fen": "6r1/P3k1P1/8/3pNn2/1P4R1/8/1K6/8 b - - 0 55",
+      "side_to_move": "black",
+      "clock_ms": 43737,
+      "seconds_used_rated": 1.314,
+      "rated_move_uci": "e7f6",
+      "rated_move_san": "55...Kf6",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "e7f6"
+      ],
+      "minimum_correcting_depth": 5,
+      "score_margin_cp": 221,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "chases the g7 pawn while the a7 pawn, also on the 7th, queens",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "e7f6",
+        "3": "e7f6",
+        "4": "e7f6",
+        "5": "e7d6",
+        "6": "e7d6"
+      },
+      "deeper_search": {
+        "5": {
+          "best": "e7d6",
+          "loss_cp": 221
+        },
+        "6": {
+          "best": "e7d6",
+          "loss_cp": 221
+        },
+        "7": {
+          "best": "e7d6",
+          "loss_cp": 268
+        }
+      }
+    },
+    {
+      "id": "r77-33-Rc7+",
+      "round": 77,
+      "kind": "solved_control",
+      "move": "33.Rc7+",
+      "fen": "2R5/p4kpp/4p3/3r1p2/1r1PN1P1/4b2P/4P1K1/5R2 w - - 2 33",
+      "side_to_move": "white",
+      "clock_ms": 66496,
+      "seconds_used_rated": 1.997,
+      "rated_move_uci": "c8c7",
+      "rated_move_san": "33.Rc7+",
+      "acceptable_uci": [
+        "c8c7"
+      ],
+      "acceptable_san": [
+        "33.Rc7+"
+      ],
+      "unacceptable_uci": null,
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 0,
+      "proof_type": "the move actually played in a game the engine won or correctly drew",
+      "note": "an accurate rook check in the drawn ending",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "c8c7",
+        "3": "g4f5",
+        "4": "g4f5",
+        "5": "g4f5",
+        "6": "g4f5"
+      }
+    },
+    {
+      "id": "r77-53-Rc7+",
+      "round": 77,
+      "kind": "solved_control",
+      "move": "53.Rc7+",
+      "fen": "8/3R4/4p1Kp/8/2kb2Nr/7P/8/8 w - - 14 53",
+      "side_to_move": "white",
+      "clock_ms": 44883,
+      "seconds_used_rated": 1.33,
+      "rated_move_uci": "d7c7",
+      "rated_move_san": "53.Rc7+",
+      "acceptable_uci": [
+        "d7c7"
+      ],
+      "acceptable_san": [
+        "53.Rc7+"
+      ],
+      "unacceptable_uci": null,
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 0,
+      "proof_type": "the move actually played in a game the engine won or correctly drew",
+      "note": "the accurate threefold repetition, correctly taken and not a failure",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "d7c7",
+        "3": "g6f7",
+        "4": "d7c7",
+        "5": "d7c7",
+        "6": "d7c7"
+      }
+    },
+    {
+      "id": "r78-48-Kf6",
+      "round": 78,
+      "kind": "solved_control",
+      "move": "48...Kf6",
+      "fen": "5r2/4k2P/3p2P1/p1pb3K/1p6/8/8/8 b - - 0 48",
+      "side_to_move": "black",
+      "clock_ms": 48869,
+      "seconds_used_rated": 1.468,
+      "rated_move_uci": "e7f6",
+      "rated_move_san": "48...Kf6",
+      "acceptable_uci": [
+        "e7f6"
+      ],
+      "acceptable_san": [
+        "48...Kf6"
+      ],
+      "unacceptable_uci": null,
+      "minimum_correcting_depth": 3,
+      "score_margin_cp": 0,
+      "proof_type": "the move actually played in a game the engine won or correctly drew",
+      "note": "successful defence against the connected h7 and g6 passers",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "a5a4",
+        "3": "e7f6",
+        "4": "e7f6",
+        "5": "d5f3",
+        "6": "d5f3"
+      }
+    },
+    {
+      "id": "r78-55-Be4",
+      "round": 78,
+      "kind": "solved_control",
+      "move": "55...Be4",
+      "fen": "8/6K1/3p2b1/2p1k3/pp6/8/8/8 b - - 1 55",
+      "side_to_move": "black",
+      "clock_ms": 43466,
+      "seconds_used_rated": 0.905,
+      "rated_move_uci": "g6e4",
+      "rated_move_san": "55...Be4",
+      "acceptable_uci": [
+        "g6e4"
+      ],
+      "acceptable_san": [
+        "55...Be4"
+      ],
+      "unacceptable_uci": null,
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 0,
+      "proof_type": "the move actually played in a game the engine won or correctly drew",
+      "note": "conversion of the a4/b4 passers; every alternative also wins",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "g6e4",
+        "3": "g6e4",
+        "4": "a4a3",
+        "5": "a4a3",
+        "6": "g6e4"
+      }
+    },
+    {
+      "id": "r78-60-b1=Q",
+      "round": 78,
+      "kind": "solved_control",
+      "move": "60...b1=Q",
+      "fen": "8/8/3p4/2p1k3/4b3/8/pp3K2/8 b - - 1 60",
+      "side_to_move": "black",
+      "clock_ms": 40317,
+      "seconds_used_rated": 1.211,
+      "rated_move_uci": "b2b1q",
+      "rated_move_san": "60...b1=Q",
+      "acceptable_uci": [
+        "b2b1q"
+      ],
+      "acceptable_san": [
+        "60...b1=Q"
+      ],
+      "unacceptable_uci": null,
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 0,
+      "proof_type": "the move actually played in a game the engine won or correctly drew",
+      "note": "promotion; the faster mate by Kf4 also wins, so both are acceptable",
+      "enforced": true,
+      "control_prefers_by_depth": {
+        "2": "b2b1q",
+        "3": "b2b1q",
+        "4": "b2b1q",
+        "5": "e5f4",
+        "6": "e5f4"
+      }
+    }
+  ]
+}

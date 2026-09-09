@@ -1,0 +1,141 @@
+{
+  "study": "rated rounds 57-78",
+  "date": "2026-09-09",
+  "verdict": "DIAGNOSIS ONLY",
+  "agent_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "agent_bytes": 39396,
+  "agent_lines": 1046,
+  "agent_modified": false,
+  "corpus": {
+    "rounds": [
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78
+    ],
+    "retrieved_this_session": [
+      63
+    ],
+    "unavailable": [],
+    "validation_passed": true,
+    "record": {
+      "wins": 12,
+      "draws": 3,
+      "losses": 7
+    },
+    "losses": [
+      57,
+      58,
+      66,
+      70,
+      72,
+      74,
+      76
+    ],
+    "draws": [
+      61,
+      64,
+      77
+    ]
+  },
+  "reproduction": {
+    "repeats_per_fixture": 5,
+    "A_reliably_reproduces": [
+      "r57-22-e6",
+      "r58-55-Rh2",
+      "r58-56-e4+",
+      "r66-49-e5",
+      "r66-55-Kf6"
+    ],
+    "B_intermittent": [
+      "r57-24-Bxc7",
+      "r57-33-Rc3"
+    ],
+    "C_platform_speed_artefact": [
+      "r57-59-Kd3",
+      "r58-84-Bd4"
+    ],
+    "D_unstable": [],
+    "E_solved_control": [
+      "r77-33-Rc7+",
+      "r77-53-Rc7+",
+      "r78-48-Kf6",
+      "r78-55-Be4",
+      "r78-60-b1=Q"
+    ]
+  },
+  "root_cause": {
+    "primary": "remaining search horizon",
+    "evidence": "every class A failure is committed at the depth actually completed and rejected 1-2 ply deeper, with the loss growing at depth 6 and 7",
+    "passed_pawn_term": {
+      "exists": true,
+      "location": "agent.py evaluate() lines 100-113 and numeric_evaluate() 258-275",
+      "value_for_seventh_rank_passer_cp": [
+        38,
+        58
+      ],
+      "colour_symmetric": true,
+      "duplicated": false,
+      "reference_numba_equal": true,
+      "unstoppable_passer_in_any_class_A_failure": false
+    }
+  },
+  "candidate_gate": {
+    "condition_1_two_failures_share_deficiency": true,
+    "condition_2_signal_separates_failures_from_controls": false,
+    "conditions_3_to_6": "not reached",
+    "outcome": "gate fails at condition 2; no candidate built"
+  },
+  "probe": {
+    "weights": [
+      20,
+      40,
+      80
+    ],
+    "depths": [
+      4,
+      5
+    ],
+    "comparisons": 84,
+    "fixed": [],
+    "broke": [
+      "r58-84-Bd4",
+      "r58-84-Bd4",
+      "r57-33-Rc3",
+      "r58-84-Bd4",
+      "r66-49-e5"
+    ]
+  },
+  "fixture_corpora_on_control": {
+    "rated_v4_enforced": "19/19",
+    "rated_v5_enforced": "14/14"
+  },
+  "evidence": {
+    "deeper.json": "446cfc489e39a95f1d8c0708c8fb81edbe5e8d3980f36ac474c6c3eae20fc5b9",
+    "per_fixture.csv": "ba85567666dc35e62f84fd32b5c70b3bacffe7b5b4ebb895b277fe5b1d2cdd98",
+    "probe_passer.json": "f86daf3fc543cda0b1dcbc8eaeca6114496287bdc9b2c71b6e35c615bfe99806",
+    "repro_5x.json": "45103aa49ae5ed6b848a5a23b04456d3cc6fe99b0da499a427b40ba4f4663dcd",
+    "scan_losses.json": "e3e9ced9e5600ee4dade2d9a47e4594939c49feeaab0036f9d7a5f88116cfcb6",
+    "v4_fixtures_control.json": "46c0eb296fc26d503a31198ca8217c44bb843152bc0d30f8d3acf6b4ec7d42fa",
+    "v5_fixtures_control.json": "23c7d900d39c85b873306a5d6a42814062c48042d485cd7b6311cb73d1fcd69f",
+    "validation.json": "6b331222eb64460e685d4e02a7fa8979ff7c2c7cf5896289ecdfd7ee1c63ec1c"
+  }
+}
