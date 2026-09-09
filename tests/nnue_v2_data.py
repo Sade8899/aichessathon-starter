@@ -115,13 +115,9 @@ def _passer_defence(board: chess.Board) -> bool:
     Round 78 was lost defending a passed pawn, so positions with an advanced passer are
     deliberately over-sampled rather than left to chance.
     """
-    for square in board.pieces(chess.PAWN, chess.WHITE):
-        if chess.square_rank(square) >= 5:
-            return True
-    for square in board.pieces(chess.PAWN, chess.BLACK):
-        if chess.square_rank(square) <= 2:
-            return True
-    return False
+    if any(chess.square_rank(sq) >= 5 for sq in board.pieces(chess.PAWN, chess.WHITE)):
+        return True
+    return any(chess.square_rank(sq) <= 2 for sq in board.pieces(chess.PAWN, chess.BLACK))
 
 
 def select_parents(target: int, seed: int) -> list[dict[str, Any]]:
@@ -168,7 +164,7 @@ def select_parents(target: int, seed: int) -> list[dict[str, Any]]:
         by_split.setdefault(row["split"], []).append(row)
     total = sum(len(v) for v in by_split.values())
     chosen: list[dict[str, Any]] = []
-    for split, bucket in by_split.items():
+    for bucket in by_split.values():
         quota = max(1, round(target * len(bucket) / total))
         chosen.extend(bucket[:quota])
     rng.shuffle(chosen)

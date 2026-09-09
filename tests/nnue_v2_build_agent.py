@@ -98,7 +98,9 @@ BLOCK = '''# ===== NNUE-V2 BLOCK BEGIN =====
 NNUE_HIDDEN = 32
 NNUE_CLAMP = 250  # the correction may never move the evaluation more than this
 NNUE_WEIGHTS = "nnue_v2_weights.npz"
-NNUE_SHA256 = "__WEIGHT_SHA256__"  # set by tests/nnue_v2_pack.py when the weights ship
+# Set by tests/nnue_v2_pack.py when the weights are packed. A mismatch degrades the
+# agent to the control rather than playing on weights it cannot vouch for.
+NNUE_SHA256 = "__WEIGHT_SHA256__"
 
 _NNUE_DEBRUIJN = np.uint64(0x03F79D71B4CB0A89)
 _NNUE_INDEX = np.array(

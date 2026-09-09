@@ -332,7 +332,9 @@ compiled_evaluate(chess.Board())
 NNUE_HIDDEN = 32
 NNUE_CLAMP = 250  # the correction may never move the evaluation more than this
 NNUE_WEIGHTS = "nnue_v2_weights.npz"
-NNUE_SHA256 = ""  # set by tests/nnue_v2_pack.py when the weights ship
+# Set by tests/nnue_v2_pack.py when the weights are packed. A mismatch degrades the
+# agent to the control rather than playing on weights it cannot vouch for.
+NNUE_SHA256 = "51a939297a866243581aa5a70bf6aadb5195c46c77230712378c69f81d795319"
 
 _NNUE_DEBRUIJN = np.uint64(0x03F79D71B4CB0A89)
 _NNUE_INDEX = np.array(

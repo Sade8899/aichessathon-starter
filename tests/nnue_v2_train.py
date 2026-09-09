@@ -722,7 +722,7 @@ def main() -> None:
         name: np.flatnonzero(split_of == name)
         for name in ("train", "validation", "test", "holdout")
     }
-    print({k: int(len(v)) for k, v in split_groups.items()})
+    print({k: len(v) for k, v in split_groups.items()})
 
     results = []
     for variant in args.variants.split(","):

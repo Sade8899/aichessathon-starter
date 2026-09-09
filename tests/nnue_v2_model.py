@@ -42,10 +42,10 @@ __all__ = [
     "NUM_SQUARES",
     "PHASE_MAX",
     "active_features",
-    "material_phase",
-    "phase_blend",
     "build_v2_model",
+    "material_phase",
     "parameter_count",
+    "phase_blend",
 ]
 
 HIDDEN = 32
@@ -99,7 +99,6 @@ def build_v2_model(hidden: int = HIDDEN, clamp_cp: int = CLAMP_CP) -> Any:
 
         def raw(self, indices: Any, mask: Any, aux: Any, phase: Any) -> tuple[Any, Any]:
             """Return (unbounded residual in cp, confidence in [0, 1])."""
-            import torch
 
             hidden_act = torch.clamp(self.accumulate(indices, mask, aux), 0.0, 1.0)
             mg = self.head_mg(hidden_act).squeeze(-1)
@@ -110,7 +109,6 @@ def build_v2_model(hidden: int = HIDDEN, clamp_cp: int = CLAMP_CP) -> Any:
 
         def forward(self, indices: Any, mask: Any, aux: Any, phase: Any) -> Any:
             """The deployed correction: confidence * bounded residual."""
-            import torch
 
             residual, confidence = self.raw(indices, mask, aux, phase)
             bounded = torch.clamp(residual, -self.clamp_cp, self.clamp_cp)
@@ -118,7 +116,6 @@ def build_v2_model(hidden: int = HIDDEN, clamp_cp: int = CLAMP_CP) -> Any:
 
         def clip_weights(self) -> None:
             """Keep the first layer inside the int8 range the quantizer assumes."""
-            import torch
 
             with torch.no_grad():
                 self.embed.weight.clamp_(-1.0, 1.0)
