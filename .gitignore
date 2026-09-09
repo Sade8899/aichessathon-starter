@@ -21,3 +21,8 @@ tests/external_engines/
 tests/results/nnue/games/
 tests/results/nnue/labels/
 tests/results/nnue/dataset/
+
+# The trained weight file sits at the repo root only so the candidate can load it
+# during measurement. The candidate was rejected, so nothing ships; the weights are
+# preserved under tests/results/nnue/model_*/quantized.npz with their hashes recorded.
+nnue_weights.npz
