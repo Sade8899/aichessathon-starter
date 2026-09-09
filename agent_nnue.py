@@ -541,9 +541,13 @@ def nnue_accumulate(
         base_them = (piece_index * 2 + 1) * 64
         remaining = board_bb
         while remaining:
-            low = remaining & (~remaining + np.uint64(1))
-            remaining ^= low
-            square = _NNUE_INDEX[(low * _NNUE_DEBRUIJN) >> np.uint64(58)]
+            # _NNUE_INDEX is the classic de Bruijn table, which indexes on the FOLDED
+            # low bits, bb ^ (bb - 1), not on the isolated low bit bb & -bb. Pairing the
+            # table with the isolated bit mis-scanned 63 of 64 squares, so every feature
+            # row was wrong. tests/nnue_invariants.py pins both halves of this.
+            folded = remaining ^ (remaining - np.uint64(1))
+            square = _NNUE_INDEX[(folded * _NNUE_DEBRUIJN) >> np.uint64(58)]
+            remaining &= remaining - np.uint64(1)
             is_white = ((white >> np.uint64(square)) & np.uint64(1)) == np.uint64(1)
             oriented = (square ^ 56) if flip else square
             row = (base_us if is_white == turn else base_them) + oriented

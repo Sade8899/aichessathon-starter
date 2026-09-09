@@ -1,0 +1,149 @@
+{
+  "checks": [
+    {
+      "check": "one feature per piece, no more",
+      "passed": true,
+      "detail": "0 mismatched"
+    },
+    {
+      "check": "feature indices inside [0, 768)",
+      "passed": true,
+      "detail": "0 out of range"
+    },
+    {
+      "check": "colour swap produces identical features",
+      "passed": true,
+      "detail": "0/400 differ"
+    },
+    {
+      "check": "castling rights change the auxiliary vector",
+      "passed": true,
+      "detail": "[1.0, 1.0, 1.0, 1.0, 1.0, 1.0] vs [1.0, 0.0, 0.0, 0.0, 0.0, 1.0]"
+    },
+    {
+      "check": "material phase orders full > endgame",
+      "passed": true,
+      "detail": "24 vs 2"
+    },
+    {
+      "check": "de Bruijn table matches the folded low bits",
+      "passed": true,
+      "detail": "0/64 mis-scanned"
+    },
+    {
+      "check": "the isolated-low-bit pairing really is wrong (pins the fix)",
+      "passed": true,
+      "detail": "63/64 mis-scanned, as expected"
+    },
+    {
+      "check": "reference feature index for a lone rook is the rook plane",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "check": "hidden units mostly alive at init",
+      "passed": true,
+      "detail": "alive fraction 0.828"
+    },
+    {
+      "check": "hidden units mostly unsaturated at init",
+      "passed": true,
+      "detail": "unsaturated fraction 0.701"
+    },
+    {
+      "check": "every parameter receives gradient",
+      "passed": true,
+      "detail": "zero-grad: []"
+    },
+    {
+      "check": "parameter count near the declared 50k",
+      "passed": true,
+      "detail": 49730
+    },
+    {
+      "check": "float and quantized agree within 10 cp (median)",
+      "passed": true,
+      "detail": "median 2.352 cp, p95 6.133, max 9.508"
+    },
+    {
+      "check": "no NaN or inf in quantized output",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "agent Numba kernel matches the reference integer path",
+      "passed": true,
+      "detail": "max 0.992 cp, mean 0.1939"
+    },
+    {
+      "check": "deployed correction is exactly colour-symmetric",
+      "passed": true,
+      "detail": "0 asymmetric"
+    },
+    {
+      "check": "correction never exceeds the clamp",
+      "passed": true,
+      "detail": "0 over"
+    },
+    {
+      "check": "fallback is byte-for-byte the control's evaluation",
+      "passed": true,
+      "detail": "0/300 differ"
+    },
+    {
+      "check": "checkmate found in one: legal reply",
+      "passed": true,
+      "detail": "a1a8"
+    },
+    {
+      "check": "stalemate position is a draw",
+      "passed": true,
+      "detail": "rules, not the network"
+    },
+    {
+      "check": "insufficient material",
+      "passed": true,
+      "detail": "rules, not the network"
+    },
+    {
+      "check": "legal game, candidate as white",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "legal game, candidate as black",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "mate score dwarfs the maximum correction",
+      "passed": true,
+      "detail": "MATE 30000 vs clamp 250"
+    },
+    {
+      "check": "no position appears in two splits",
+      "passed": true,
+      "detail": {
+        "train&validation": 0,
+        "train&test": 0,
+        "validation&test": 0
+      }
+    },
+    {
+      "check": "no game lineage spans two splits",
+      "passed": true,
+      "detail": {
+        "train&validation": 0,
+        "train&test": 0,
+        "validation&test": 0
+      }
+    },
+    {
+      "check": "no RATED_V5 fixture position is in training",
+      "passed": true,
+      "detail": "0 leaked"
+    }
+  ],
+  "failed": 0,
+  "all_pass": true
+}

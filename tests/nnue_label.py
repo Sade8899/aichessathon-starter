@@ -227,12 +227,19 @@ def label_shard(args: tuple[int, int, str]) -> dict:
                 entries.append(json.loads(line))
 
     out = LABELS / f"shard-{shard:02d}.jsonl"
+    # The cache is the union of EVERY shard file, not just this shard's. Corpus growth
+    # changes which shard a position lands in, and keying the resume to one shard would
+    # silently re-pay Stockfish time for positions already labelled under the identical
+    # engine configuration. Positions are addressed by canonical key (placement, side to
+    # move, castling rights, en passant), which is the whole evaluation-relevant state.
     done: set[str] = set()
-    if out.exists():
-        with out.open(encoding="utf-8") as handle:
+    for existing in sorted(LABELS.glob("shard-*.jsonl")):
+        with existing.open(encoding="utf-8") as handle:
             for line in handle:
                 with contextlib.suppress(Exception):
-                    done.add(json.loads(line)["fen_key"])
+                    row = json.loads(line)
+                    if row.get("label_nodes") == NODES:
+                        done.add(row["fen_key"])
 
     todo = [e for e in entries if e["fen_key"] not in done]
     if not todo:
@@ -259,6 +266,11 @@ def label_shard(args: tuple[int, int, str]) -> dict:
                 row["stockfish_mate"] = mate
                 row["stockfish_depth"] = info.get("depth")
                 row["residual_target"] = clamped - entry["control_static_cp"]
+                row["label_nodes"] = NODES
+                row["label_threads"] = 1
+                row["label_hash_mb"] = 64
+                row["label_engine"] = "Stockfish 19 sf_19"
+                row["label_perspective"] = "side_to_move"
                 handle.write(json.dumps(row) + "\n")
                 written += 1
                 if written % 500 == 0:

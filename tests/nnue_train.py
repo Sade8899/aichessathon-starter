@@ -25,6 +25,9 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
 import nnue_model as nn_features
 
+M = nn_features
+M_PHASE_MAX = nn_features.PHASE_MAX
+
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DATASET = REPO / "tests" / "results" / "nnue" / "dataset"
 MODELDIR = REPO / "tests" / "results" / "nnue" / "model"
@@ -197,8 +200,22 @@ def quant_forward(q: dict, indices: np.ndarray, mask: np.ndarray, aux: np.ndarra
         active = indices[i][mask[i] > 0]
         if active.size:
             acc[i] = q["embed_q"][active].astype(np.int32).sum(axis=0)
-    aux_contrib = np.rint(aux @ q["aux_w_q"].T.astype(np.float32)).astype(np.int32)
-    acc += aux_contrib + q["aux_b_q"]
+    # The auxiliary contribution is computed exactly as the agent computes it, in
+    # integers, not as a rounded float dot product. Five of the six features are 0/1 and
+    # only the phase term needs a multiply, which the agent rounds as
+    # (phase * w + 12) // 24. Rounding the summed float instead disagreed with the
+    # deployed kernel by up to 2.2 cp, which would make every offline metric describe a
+    # slightly different evaluator from the one that actually plays.
+    aux_w = q["aux_w_q"].astype(np.int64)
+    phase_units = np.rint(aux[:, 5] * M_PHASE_MAX).astype(np.int64)
+    bits = np.rint(aux[:, 1:5]).astype(np.int64)
+    aux_contrib = np.zeros((n, M.HIDDEN), dtype=np.int64)
+    aux_contrib += aux_w[:, 0][None, :]
+    for slot in range(4):
+        aux_contrib += bits[:, slot][:, None] * aux_w[:, slot + 1][None, :]
+    term = phase_units[:, None] * aux_w[:, 5][None, :]
+    aux_contrib += np.where(term >= 0, (term + 12) // 24, -((-term + 12) // 24))
+    acc += aux_contrib.astype(np.int32) + q["aux_b_q"]
     hidden = np.clip(acc, 0, 127).astype(np.int32)
     mg = hidden @ q["mg_q"].astype(np.int32)
     eg = hidden @ q["eg_q"].astype(np.int32)
