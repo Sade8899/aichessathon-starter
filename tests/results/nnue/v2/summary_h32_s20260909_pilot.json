@@ -1,0 +1,52 @@
+[
+  {
+    "tag": "A_h32_s20260909_pilot",
+    "variant": "A",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 6,
+    "best_composite": 12.1296,
+    "train_seconds": 42.4,
+    "parameters": 24899
+  },
+  {
+    "tag": "B_h32_s20260909_pilot",
+    "variant": "B",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 9,
+    "best_composite": 22.1848,
+    "train_seconds": 40.0,
+    "parameters": 24899
+  },
+  {
+    "tag": "C_h32_s20260909_pilot",
+    "variant": "C",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 8,
+    "best_composite": 16.7867,
+    "train_seconds": 40.8,
+    "parameters": 24899
+  },
+  {
+    "tag": "D_h32_s20260909_pilot",
+    "variant": "D",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 8,
+    "best_composite": 8.6261,
+    "train_seconds": 43.5,
+    "parameters": 24899
+  },
+  {
+    "tag": "E_h32_s20260909_pilot",
+    "variant": "E",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 6,
+    "best_composite": 11.8136,
+    "train_seconds": 46.7,
+    "parameters": 24899
+  }
+]

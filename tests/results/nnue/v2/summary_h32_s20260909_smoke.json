@@ -1,0 +1,22 @@
+[
+  {
+    "tag": "C_h32_s20260909_smoke",
+    "variant": "C",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 2,
+    "best_composite": 8.7471,
+    "train_seconds": 5.9,
+    "parameters": 24899
+  },
+  {
+    "tag": "D_h32_s20260909_smoke",
+    "variant": "D",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 1,
+    "best_composite": -3.2692,
+    "train_seconds": 5.8,
+    "parameters": 24899
+  }
+]

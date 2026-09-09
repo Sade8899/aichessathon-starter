@@ -1,0 +1,14 @@
+[
+  {
+    "tag": "F_h32_s20260909_q020",
+    "variant": "F",
+    "hidden": 32,
+    "seed": 20260909,
+    "best_epoch": 10,
+    "best_composite": -0.672,
+    "eligible": true,
+    "best_preserved_rate": 0.9885,
+    "train_seconds": 47.3,
+    "parameters": 24899
+  }
+]
