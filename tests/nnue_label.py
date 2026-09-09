@@ -399,13 +399,13 @@ def label(shards: int) -> dict:
 
 
 def main() -> None:
+    global NODES
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=["collect", "label"])
     ap.add_argument("--target", type=int, default=200_000)
     ap.add_argument("--shards", type=int, default=6)
     ap.add_argument("--nodes", type=int, default=NODES)
     args = ap.parse_args()
-    global NODES
     NODES = args.nodes
     if args.step == "collect":
         collect(args.target)

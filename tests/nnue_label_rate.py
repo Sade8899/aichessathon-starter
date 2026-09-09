@@ -42,7 +42,9 @@ def worker(args):
 
 
 def main() -> None:
-    rows = [json.loads(l) for l in (REPO / "tests/results/nnue/dataset/positions.jsonl").open(encoding="utf-8")]
+    source = REPO / "tests" / "results" / "nnue" / "dataset" / "positions.jsonl"
+    with source.open(encoding="utf-8") as handle:
+        rows = [json.loads(line) for line in handle]
     rng = random.Random(4242)
     rng.shuffle(rows)
     pool_fens = [r["fen"] for r in rows[: SAMPLE * 6 * 4]]
