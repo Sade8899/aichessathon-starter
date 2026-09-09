@@ -1,0 +1,8 @@
+{
+  "checked": 2000,
+  "identical_features": 2000,
+  "identical_aux": 2000,
+  "label_preserving": true,
+  "mismatch_examples": [],
+  "conclusion": "canonical orientation already folds colour symmetry into the features, so colour-swap augmentation adds no information and is NOT applied"
+}

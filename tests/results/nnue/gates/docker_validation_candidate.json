@@ -1,0 +1,77 @@
+{
+  "zip": "tests\\results\\nnue\\candidate_package\\agent_REJECTED.zip",
+  "zip_sha256": "873c61fc5c1635fc63929013fb97f618e728507565cffd77e67a0cfac60c201c",
+  "zip_bytes": 54541,
+  "members": [
+    {
+      "name": "agent.py",
+      "bytes": 55422,
+      "sha256": "4ecb3d92e2254314cdcf4fa404425419396cbaeb5e8da776f260f3d91fd5114b"
+    },
+    {
+      "name": "nnue_weights.npz",
+      "bytes": 51680,
+      "sha256": "411fa3e94a0662842af77aa9e2409b4b67cb41930e6070dd9140470e42bd2a49"
+    }
+  ],
+  "uncompressed_bytes": 107102,
+  "under_50mb": true,
+  "image": "chessathon-nnue:platform",
+  "image_id": "sha256:8fc6496546d344aa147ed9ee5379b6ca17413c9d8c227ba226ddea0b546b0819",
+  "docker_version": "Docker version 29.7.2, build a7dcaa6",
+  "dockerfile_sha256": "b65b9c9c459bb2c22416a64f62c0b842551cf12527b0ef74d36c8eafadd9d01b",
+  "constraints": {
+    "cpus": 1,
+    "memory": "2g",
+    "network": "none",
+    "root_filesystem": "read-only",
+    "tmpfs": "/tmp size=256m",
+    "repository_mounted": false
+  },
+  "container": {
+    "import_seconds": 3.587,
+    "import_under_90s": true,
+    "has_get_move": true,
+    "nnue_status": "loaded 411fa3e94a066284",
+    "nnue_ready": true,
+    "numba_warm_at_import": [
+      {
+        "function": "numeric_evaluate",
+        "compiled_signatures": 1
+      },
+      {
+        "function": "numeric_evaluate_nnue",
+        "compiled_signatures": 1
+      }
+    ],
+    "smoke_white": {
+      "result": "1-0",
+      "plies": 31,
+      "legal": true,
+      "agent_moves": 16,
+      "move_ms_mean": 2777.7,
+      "move_ms_max": 3539.1,
+      "first_move_ms": null
+    },
+    "smoke_black": {
+      "result": "0-1",
+      "plies": 20,
+      "legal": true,
+      "agent_moves": 10,
+      "move_ms_mean": 2701.2,
+      "move_ms_max": 3531.7,
+      "first_move_ms": null
+    },
+    "all_legal": true,
+    "no_flags": true,
+    "peak_memory_bytes": 224411648,
+    "peak_memory_mb": 214.0,
+    "peak_under_2gb": true,
+    "files_visible": [
+      "agent.py",
+      "nnue_weights.npz"
+    ]
+  },
+  "exit_code": 0,
+  "passes": true
+}

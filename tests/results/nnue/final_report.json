@@ -1,85 +1,238 @@
 {
-  "artifacts": {
-    "control": {
-      "label": "pre-neural control agent.py",
-      "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
-      "bytes": 39396,
-      "lines": 1046
-    },
-    "submission_0609v4": {
-      "label": "submission 0609v4 agent.py",
-      "sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
-      "bytes": 38673,
-      "lines": 1034
-    },
-    "candidate": {
-      "label": "post-training candidate agent_nnue.py",
-      "sha256": "638e40ded69aca75fe84652f8dd411cdd394cc7410a6e119e4fd2326ea7c4e57",
-      "bytes": 54511,
-      "lines": 1389
-    }
-  },
-  "v4_vs_control_diff_lines": 29,
-  "candidate_vs_control_function_changes": [
+  "verdict": "REJECT - RETAIN CONTROL",
+  "gates": [
     {
-      "function": "_nnue_bias_table",
-      "change": "added"
+      "gate": "pipeline invariants",
+      "measured": "30/30",
+      "requirement": "all pass",
+      "passes": true
     },
     {
-      "function": "_nnue_blend",
-      "change": "added"
+      "gate": "no train/test leakage",
+      "measured": {
+        "train&validation": 0,
+        "train&test": 0,
+        "train&holdout": 0,
+        "validation&test": 0,
+        "validation&holdout": 0,
+        "test&holdout": 0
+      },
+      "requirement": "all zero",
+      "passes": true
     },
     {
-      "function": "_nnue_weights_path",
-      "change": "added"
+      "gate": "deployed clamped MAE improvement (test)",
+      "measured": "+27.85 cp (+9.14%), 304.57 -> 276.72",
+      "requirement": "materially better than the handcrafted evaluator",
+      "passes": true
     },
     {
-      "function": "cached_evaluate",
-      "change": "modified"
+      "gate": "quantized retains the float gain (test)",
+      "measured": "100.1%",
+      "requirement": ">= 90%",
+      "passes": true
     },
     {
-      "function": "compiled_evaluate_nnue",
-      "change": "added"
+      "gate": "middlegame not regressed (test)",
+      "measured": "+29.67 cp (334.36 -> 304.69)",
+      "requirement": "no material regression",
+      "passes": true
     },
     {
-      "function": "load_nnue",
-      "change": "added"
+      "gate": "endgame not regressed (test)",
+      "measured": "+10.17 cp (245.27 -> 235.1)",
+      "requirement": "no material regression",
+      "passes": true
     },
     {
-      "function": "nnue_accumulate",
-      "change": "added"
+      "gate": "float->quant median drift (test)",
+      "measured": "1.391 cp",
+      "requirement": "<= 10 cp",
+      "passes": true
     },
     {
-      "function": "nnue_correction",
-      "change": "added"
+      "gate": "no NaN or inf (test)",
+      "measured": {
+        "nan": false,
+        "inf": false
+      },
+      "requirement": "none",
+      "passes": true
     },
     {
-      "function": "nnue_popcount",
-      "change": "added"
+      "gate": "deployed clamped MAE improvement (holdout)",
+      "measured": "+48.67 cp (+13.13%), 370.56 -> 321.89",
+      "requirement": "materially better than the handcrafted evaluator",
+      "passes": true
     },
     {
-      "function": "numeric_evaluate_nnue",
-      "change": "added"
+      "gate": "quantized retains the float gain (holdout)",
+      "measured": "100.0%",
+      "requirement": ">= 90%",
+      "passes": true
+    },
+    {
+      "gate": "middlegame not regressed (holdout)",
+      "measured": "+43.78 cp (397.37 -> 353.59)",
+      "requirement": "no material regression",
+      "passes": true
+    },
+    {
+      "gate": "endgame not regressed (holdout)",
+      "measured": "+24.62 cp (281.19 -> 256.57)",
+      "requirement": "no material regression",
+      "passes": true
+    },
+    {
+      "gate": "float->quant median drift (holdout)",
+      "measured": "1.461 cp",
+      "requirement": "<= 10 cp",
+      "passes": true
+    },
+    {
+      "gate": "no NaN or inf (holdout)",
+      "measured": {
+        "nan": false,
+        "inf": false
+      },
+      "requirement": "none",
+      "passes": true
+    },
+    {
+      "gate": "full-search NPS loss",
+      "measured": "4.05% (21,929 -> 21,042 nps)",
+      "requirement": "<= 10%",
+      "passes": true
+    },
+    {
+      "gate": "RATED_V5 enforced fixtures (repository rule)",
+      "measured": "control 16/16, candidate 11/16; newly failing: ['r57-33-Rc3', 'r58-84-Bd4', 'r66-49-e5', 'r66-55-Kf6', 'r78-55-Be4']",
+      "requirement": "candidate must not fail a fixture the control passes",
+      "passes": false
+    },
+    {
+      "gate": "class-A corrections (depth sweep)",
+      "measured": 5,
+      "requirement": ">= 3",
+      "passes": true
+    },
+    {
+      "gate": "solved-control breaks",
+      "measured": 3,
+      "requirement": "0",
+      "passes": false
+    },
+    {
+      "gate": "new fixture regressions",
+      "measured": 5,
+      "requirement": "0",
+      "passes": false
+    },
+    {
+      "gate": "round 80 24.Rd4 rejected at depth 2",
+      "measured": true,
+      "requirement": "true",
+      "passes": true
+    },
+    {
+      "gate": "round 80 generalises (not a memorised FEN)",
+      "measured": "12/12 siblings moved",
+      "requirement": "not zero",
+      "passes": true
+    },
+    {
+      "gate": "arena paired score difference vs control",
+      "measured": "-0.0288 95% CI [-0.0575, +0.0000], Elo -10.0 [-20.0, 0.0]",
+      "requirement": "confidence interval excluding zero, in the candidate's favour",
+      "passes": false
+    },
+    {
+      "gate": "arena at deeper clock (confirmation)",
+      "measured": "-0.0417 95% CI [-0.1015, +0.0181], depth 3.34 vs 3.47",
+      "requirement": "candidate not worse",
+      "passes": false
+    },
+    {
+      "gate": "arena time losses (candidate)",
+      "measured": 0,
+      "requirement": "0",
+      "passes": true
+    },
+    {
+      "gate": "arena illegal moves (candidate)",
+      "measured": 0,
+      "requirement": "0",
+      "passes": true
+    },
+    {
+      "gate": "candidate package uncompressed size",
+      "measured": "107,102 bytes",
+      "requirement": "< 50,000,000",
+      "passes": true
     }
   ],
-  "gates": [],
-  "gates_decided": 0,
-  "gates_failed": 0,
-  "all_gates_pass": false,
-  "stages_present": {
-    "baseline_proof": true,
-    "pgn_inventory": true,
-    "benchmark_engines": true,
-    "stockfish_probe": true,
-    "concurrency_calibration": true,
-    "generation": false,
-    "collect": false,
-    "labels": false,
-    "training": false,
-    "packed_weights": false,
-    "throughput": false,
-    "rated_v5_gate": false,
-    "arena": false,
-    "docker_validation": false
+  "gates_decided": 26,
+  "gates_failed": 5,
+  "control": {
+    "path": "agent.py",
+    "present": true,
+    "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+    "bytes": 39396,
+    "lines": 1046
+  },
+  "candidate": {
+    "path": "agent_nnue.py",
+    "present": true,
+    "sha256": "4ecb3d92e2254314cdcf4fa404425419396cbaeb5e8da776f260f3d91fd5114b",
+    "bytes": 55422,
+    "lines": 1401
+  },
+  "weights": {
+    "path": "nnue_weights.npz",
+    "present": true,
+    "sha256": "411fa3e94a0662842af77aa9e2409b4b67cb41930e6070dd9140470e42bd2a49",
+    "bytes": 51680
+  },
+  "submission_0609v4_inner": {
+    "sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+    "bytes": 38673,
+    "lines": 1034
+  },
+  "winner": {
+    "tag": "h64_s20260910",
+    "hidden": 64,
+    "seed": 20260910,
+    "ok": true,
+    "parameters": 49730,
+    "epochs_run": 11,
+    "train_seconds": 40.1,
+    "model_dir": "tests\\results\\nnue\\model_h64_s20260910",
+    "validation_baseline_mae": 298.41,
+    "validation_mae": 271.32,
+    "validation_improvement_cp": 27.09,
+    "validation_improvement_pct": 9.08,
+    "validation_sign_acc": 0.6569,
+    "validation_saturated": 0.0582,
+    "validation_middlegame_improvement_cp": 35.69,
+    "validation_endgame_improvement_cp": 2.42,
+    "validation_quant_drift_median_cp": 1.388,
+    "test_baseline_mae": 304.57,
+    "test_mae": 276.72,
+    "test_improvement_cp": 27.85,
+    "test_improvement_pct": 9.14,
+    "test_sign_acc": 0.6637,
+    "test_saturated": 0.0677,
+    "test_middlegame_improvement_cp": 29.67,
+    "test_endgame_improvement_cp": 10.17,
+    "test_quant_drift_median_cp": 1.391,
+    "holdout_baseline_mae": 370.56,
+    "holdout_mae": 321.89,
+    "holdout_improvement_cp": 48.67,
+    "holdout_improvement_pct": 13.13,
+    "holdout_sign_acc": 0.7067,
+    "holdout_saturated": 0.0823,
+    "holdout_middlegame_improvement_cp": 43.78,
+    "holdout_endgame_improvement_cp": 24.62,
+    "holdout_quant_drift_median_cp": 1.461
   }
 }

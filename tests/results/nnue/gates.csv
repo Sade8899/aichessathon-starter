@@ -1,1 +1,27 @@
 gate,measured,requirement,passes
+pipeline invariants,30/30,all pass,True
+no train/test leakage,"{'train&validation': 0, 'train&test': 0, 'train&holdout': 0, 'validation&test': 0, 'validation&holdout': 0, 'test&holdout': 0}",all zero,True
+deployed clamped MAE improvement (test),"+27.85 cp (+9.14%), 304.57 -> 276.72",materially better than the handcrafted evaluator,True
+quantized retains the float gain (test),100.1%,>= 90%,True
+middlegame not regressed (test),+29.67 cp (334.36 -> 304.69),no material regression,True
+endgame not regressed (test),+10.17 cp (245.27 -> 235.1),no material regression,True
+float->quant median drift (test),1.391 cp,<= 10 cp,True
+no NaN or inf (test),"{'nan': False, 'inf': False}",none,True
+deployed clamped MAE improvement (holdout),"+48.67 cp (+13.13%), 370.56 -> 321.89",materially better than the handcrafted evaluator,True
+quantized retains the float gain (holdout),100.0%,>= 90%,True
+middlegame not regressed (holdout),+43.78 cp (397.37 -> 353.59),no material regression,True
+endgame not regressed (holdout),+24.62 cp (281.19 -> 256.57),no material regression,True
+float->quant median drift (holdout),1.461 cp,<= 10 cp,True
+no NaN or inf (holdout),"{'nan': False, 'inf': False}",none,True
+full-search NPS loss,"4.05% (21,929 -> 21,042 nps)",<= 10%,True
+RATED_V5 enforced fixtures (repository rule),"control 16/16, candidate 11/16; newly failing: ['r57-33-Rc3', 'r58-84-Bd4', 'r66-49-e5', 'r66-55-Kf6', 'r78-55-Be4']",candidate must not fail a fixture the control passes,False
+class-A corrections (depth sweep),5,>= 3,True
+solved-control breaks,3,0,False
+new fixture regressions,5,0,False
+round 80 24.Rd4 rejected at depth 2,True,true,True
+round 80 generalises (not a memorised FEN),12/12 siblings moved,not zero,True
+arena paired score difference vs control,"-0.0288 95% CI [-0.0575, +0.0000], Elo -10.0 [-20.0, 0.0]","confidence interval excluding zero, in the candidate's favour",False
+arena at deeper clock (confirmation),"-0.0417 95% CI [-0.1015, +0.0181], depth 3.34 vs 3.47",candidate not worse,False
+arena time losses (candidate),0,0,True
+arena illegal moves (candidate),0,0,True
+candidate package uncompressed size,"107,102 bytes","< 50,000,000",True

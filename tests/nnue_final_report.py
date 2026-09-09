@@ -71,6 +71,7 @@ def main() -> None:
     fx_control = read(NNUE / "gates" / "fixtures_control.json") or {}
     fx_candidate = read(NNUE / "gates" / "fixtures_candidate.json") or {}
     arena = read(NNUE / "gates" / "arena.json") or {}
+    arena_deep = read(NNUE / "gates" / "arena_deep.json") or {}
     calib = read(NNUE / "docker_calibration" / "concurrency.json") or {}
     nvd = read(NNUE / "docker_calibration" / "native_vs_docker.json") or {}
     pre_docker = read(NNUE / "pre_training" / "docker_validation.json") or {}
@@ -199,6 +200,18 @@ def main() -> None:
             "confidence interval excluding zero, in the candidate's favour",
             pd["ci_excludes_zero"] and pd["mean_score_diff"] > 0,
         )
+    if arena_deep:
+        pdd = arena_deep["paired_difference"]
+        add(
+            "arena at deeper clock (confirmation)",
+            f"{pdd['mean_score_diff']:+.4f} "
+            f"95% CI [{pdd['ci95_low']:+.4f}, {pdd['ci95_high']:+.4f}], "
+            f"depth {arena_deep['control'].get('mean_depth')} vs "
+            f"{arena_deep['candidate'].get('mean_depth')}",
+            "candidate not worse",
+            pdd["mean_score_diff"] >= 0,
+        )
+    if arena:
         add(
             "arena time losses (candidate)",
             arena["candidate"].get("time_losses"),
@@ -227,9 +240,9 @@ def main() -> None:
     if accept:
         verdict = "ACCEPT AND PROPOSE PACKAGE"
     elif failed and arena:
-        verdict = "REJECT — RETAIN CONTROL"
+        verdict = "REJECT - RETAIN CONTROL"
     else:
-        verdict = "INCONCLUSIVE — RETAIN CONTROL"
+        verdict = "INCONCLUSIVE - RETAIN CONTROL"
 
     # ------------------------------------------------------------------- markdown
     lines: list[str] = []
@@ -527,6 +540,29 @@ def main() -> None:
         w("")
     else:
         w("_Arena did not complete; no strength claim is made._")
+        w("")
+    if arena_deep:
+        pdd = arena_deep["paired_difference"]
+        w("### Confirmation at a deeper time control")
+        w("")
+        w(f"The primary arena ran at a {arena.get('clock_ms', '?')} ms clock where both "
+          f"agents reach only about "
+          f"{arena.get('control', {}).get('mean_depth', '?')} ply, which is not "
+          f"representative of rated play at 120 s + 0.5 s. Repeated at "
+          f"{arena_deep['clock_ms']} ms over {arena_deep['openings']} openings "
+          f"({arena_deep['games_played']} games):")
+        w("")
+        w("| side | games | W-D-L | score % | mean depth | nps |")
+        w("| --- | ---: | --- | ---: | ---: | ---: |")
+        for name in ("control", "candidate"):
+            s = arena_deep[name]
+            w(f"| {name} | {s.get('games')} | {s.get('W-D-L')} | {s.get('score_pct')} | "
+              f"{s.get('mean_depth')} | {s.get('nps_mean')} |")
+        w("")
+        w(f"**Paired difference {pdd['mean_score_diff']:+.4f}** "
+          f"(95% CI [{pdd['ci95_low']:+.4f}, {pdd['ci95_high']:+.4f}], excludes zero: "
+          f"{pdd['ci_excludes_zero']}), Elo {pdd['elo_estimate']:+.1f} "
+          f"{pdd['elo_ci95']}.")
         w("")
 
     w("## 8. Docker and reproducibility")
