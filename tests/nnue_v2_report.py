@@ -179,6 +179,8 @@ def main() -> None:
     for directory in sorted(V2.iterdir()):
         if not directory.is_dir():
             continue
+        if any(k in directory.name for k in ("pilot", "probe", "smoke")):
+            continue  # partial-corpus runs; see the note on the training table
         cg = load(directory / "gates.json")
         cs = load(directory / "arena_screen.json")
         if not cg and not cs:
@@ -490,6 +492,21 @@ def main() -> None:
         "with real reach breaks solved controls, and every checkpoint that keeps 16/16 "
         "corrects the evaluation by only 5-14 cp on average. No setting in this family "
         "is both safe and large.\n"
+    )
+    add(
+        "The **order** in which fixtures break is the most diagnostic thing in the "
+        "table. The first to go, alone, at the smallest correction that breaks anything "
+        "at all, is `r77-33-Rc7+` -- a repetition defence. Only when the correction grows "
+        "further do `r78-48-Kf6` (a passed-pawn defence) and `r79-12-Nxd3` follow.\n"
+    )
+    add(
+        "That is a mechanism for V1's draw collapse, not just a correlate of it. Holding "
+        "a draw means keeping an evaluation *at* zero across a repetition, which is the "
+        "most fragile thing a bounded additive correction can disturb: the two sides of "
+        "the comparison are equal, so an arbitrarily small nudge flips it. Winning "
+        "positions have margin and absorb the same nudge unchanged. A residual trained "
+        "on unconditioned error therefore damages held draws first and hardest -- which "
+        "is exactly what V1 did when its draws fell from 15 to 3.\n"
     )
 
     # --------------------------------------------------------------------- arenas
