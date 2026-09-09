@@ -1,0 +1,53 @@
+{
+  "tag": "F_h32_s20260909_q005",
+  "label": "h2h_null",
+  "candidate_path": "agent.py",
+  "openings": 500,
+  "games": 1000,
+  "scored_games": 1000,
+  "infrastructure_failures": 0,
+  "clock_ms": 1000,
+  "increment_ms": 100,
+  "workers": 6,
+  "seed": 20260914,
+  "wall_seconds": 657.7,
+  "candidate_W-D-L": "416-175-409",
+  "candidate_score_pct": 50.35,
+  "score_ci95_pct": [
+    47.55,
+    53.25
+  ],
+  "elo": 2.4,
+  "elo_ci95": [
+    -17.0,
+    22.6
+  ],
+  "beats_control": false,
+  "worse_than_control": false,
+  "paired_by_opening_mean": 0.5035,
+  "paired_ci95": [
+    0.482,
+    0.525
+  ],
+  "draw_pct": 17.5,
+  "by_colour": {
+    "candidate_white": {
+      "games": 500,
+      "score_pct": 29.6,
+      "wins": 108,
+      "draws": 80,
+      "losses": 312
+    },
+    "candidate_black": {
+      "games": 500,
+      "score_pct": 71.1,
+      "wins": 308,
+      "draws": 95,
+      "losses": 97
+    }
+  },
+  "candidate_mean_depth": 1.2,
+  "control_mean_depth": 1.2,
+  "flags": 0,
+  "illegal": 0
+}

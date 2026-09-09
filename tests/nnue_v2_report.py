@@ -171,6 +171,7 @@ def main() -> None:
     frontier = load(V2 / "frontier_fixtures.json")
     h2h = load(tagdir / "h2h.json")
     h2h_pilot = load(tagdir / "h2h_pilot.json")
+    h2h_null = load(tagdir / "h2h_null.json")
     fire = load(V2 / "fire_rate.json")
 
     # Every candidate that reached a gate run or a screening arena, so the report shows
@@ -626,7 +627,15 @@ def main() -> None:
         )
         add("")
 
-    runs = [(n, r) for n, r in (("pilot", h2h_pilot), ("confirmation", h2h)) if r]
+    runs = [
+        (n, r)
+        for n, r in (
+            ("null (control vs control)", h2h_null),
+            ("pilot", h2h_pilot),
+            ("confirmation", h2h),
+        )
+        if r
+    ]
     if runs:
         add("### head to head against the control\n")
         add(
@@ -665,13 +674,30 @@ def main() -> None:
             )
         )
         add("")
+        if h2h_null:
+            add(
+                f"The **null run is the control playing itself** through the same "
+                f"harness, in the same slot the candidate occupies, at the same seed. "
+                f"It returns {h2h_null['candidate_score_pct']}% "
+                f"[{h2h_null['score_ci95_pct'][0]}%, {h2h_null['score_ci95_pct'][1]}%], "
+                "centred on parity. The harness therefore does not disadvantage the "
+                "candidate slot, and the confirmation's shortfall is a property of the "
+                "candidate rather than of the measurement.\n"
+            )
+            add(
+                f"The null run also reproduces the colour split almost exactly "
+                f"({h2h_null['by_colour']['candidate_white']['score_pct']}% as White, "
+                f"{h2h_null['by_colour']['candidate_black']['score_pct']}% as Black), "
+                "which settles what that split means: it is the random-play opening "
+                "book being unbalanced, not either agent preferring a colour. The "
+                "pairing cancels it exactly, which is why it is played both ways.\n"
+            )
         final = runs[-1][1]
         add(
-            f"- as White {final['by_colour']['candidate_white']['score_pct']}%, "
-            f"as Black {final['by_colour']['candidate_black']['score_pct']}%, "
-            f"draws {final['draw_pct']}% "
-            "(the colour split reflects the random-play opening book, which is not "
-            "balanced; the pairing cancels it exactly)"
+            f"- confirmation: as White "
+            f"{final['by_colour']['candidate_white']['score_pct']}%, as Black "
+            f"{final['by_colour']['candidate_black']['score_pct']}%, "
+            f"draws {final['draw_pct']}%"
         )
         add(
             f"- mean depth candidate {final['candidate_mean_depth']} vs control "
@@ -723,7 +749,19 @@ def main() -> None:
     add(
         "- *One architecture, one seed.* Width 32, a single training seed per "
         "configuration. The frontier was mapped along the correction-magnitude axis, "
-        "not across capacity or seeds.\n"
+        "not across capacity or seeds."
+    )
+    add(
+        "- *The NPS gate is at the edge of what this harness can resolve.* Repeated "
+        "runs of the identical q005 candidate on an otherwise idle machine returned "
+        "4.49% and 0.57%, and the **control's own** throughput moved between 17,367 "
+        "and 19,122 nps -- about 9% -- across runs. Three interleaved repeats with "
+        "best-of taken per side reduced that but did not remove it. The gate's own "
+        "noise is therefore comparable to the 5% threshold it enforces, so it should "
+        "be read as 'no large regression' rather than as a number good to a point. "
+        "The one comparison it does support is the relative one, because it is taken "
+        "within a single run: t85 needed 99,032 nodes to reach the same depth the "
+        "control reached in 92,396, and q005 needed 88,235.\n"
     )
 
     # ------------------------------------------------------------ reproduction

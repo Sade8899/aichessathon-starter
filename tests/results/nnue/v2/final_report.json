@@ -5,13 +5,13 @@
   "criteria": [
     {
       "criterion": "1. RATED_V5 remains 16/16",
-      "measured": "not run",
-      "passes": false
+      "measured": "control 16/16, candidate 16/16",
+      "passes": true
     },
     {
       "criterion": "2. no solved draw or passed-pawn defence regresses",
-      "measured": "not run",
-      "passes": false
+      "measured": "broken: none",
+      "passes": true
     },
     {
       "criterion": "3. quantized inference works in the platform container",
@@ -20,7 +20,7 @@
     },
     {
       "criterion": "4. NPS and time management remain acceptable",
-      "measured": "4.49% (18,699 -> 17,860 nps)",
+      "measured": "0.57% (17,367 -> 17,269 nps)",
       "passes": true
     },
     {
