@@ -98,9 +98,23 @@ def build_torch_model():  # pragma: no cover - imported lazily by the trainer
             self.aux = nn.Linear(NUM_AUX, HIDDEN, bias=True)
             self.head_mg = nn.Linear(HIDDEN, 1, bias=True)
             self.head_eg = nn.Linear(HIDDEN, 1, bias=True)
-            nn.init.normal_(self.embed.weight, std=0.01)
-            nn.init.zeros_(self.head_mg.weight)
-            nn.init.zeros_(self.head_eg.weight)
+            # Initialisation has to respect the clipped ReLU, or the network cannot
+            # train at all. A first attempt used std=0.01 with both heads zeroed; the
+            # accumulator then sat near 0, roughly half the units were clamped dead at
+            # zero with no gradient, and the head gradients were the error times a
+            # hidden activation of about 0.03. Over six epochs the training loss moved
+            # from 292.318 to 292.275 and the quantized model was exactly as good as
+            # predicting zero.
+            #
+            # A position activates about 32 embedding rows, so std = 0.5/sqrt(32) puts
+            # the accumulator around 0.5 -- the middle of the [0, 1] clipped range,
+            # where every unit has gradient. The auxiliary bias starts at 0.5 for the
+            # same reason, and the heads start small but non-zero.
+            nn.init.normal_(self.embed.weight, std=0.5 / (32 ** 0.5))
+            nn.init.normal_(self.aux.weight, std=0.05)
+            nn.init.constant_(self.aux.bias, 0.5)
+            nn.init.normal_(self.head_mg.weight, std=0.1)
+            nn.init.normal_(self.head_eg.weight, std=0.1)
             nn.init.zeros_(self.head_mg.bias)
             nn.init.zeros_(self.head_eg.bias)
 

@@ -31,6 +31,17 @@ MODELDIR = REPO / "tests" / "results" / "nnue" / "model"
 MAX_PIECES = 32
 SEED = 20260909
 
+# The network is trained in units of OUTPUT_SCALE centipawns, not in raw centipawns.
+# Trained directly on a +/-300 cp target the heads start at about 0.4 cp of output and
+# would need roughly ten thousand optimiser steps to reach a useful magnitude; the first
+# run moved the training loss from 292.39 to 291.64 over twenty epochs and predicted
+# nothing. Working in O(1) units makes ordinary learning rates apply.
+#
+# The scale equals the inference clamp, so a saturated model output of 1.0 corresponds
+# exactly to the largest correction the engine will accept.
+OUTPUT_SCALE = 250.0
+CORRECTION_CLAMP = 250
+
 
 def set_seeds(seed: int) -> None:
     import torch
@@ -156,6 +167,13 @@ def quantize(model) -> dict:
 
     mg_q, mg_scale = head_scale(mg_w)
     eg_q, eg_scale = head_scale(eg_w)
+    # The model was trained in units of OUTPUT_SCALE centipawns, so the scale that
+    # leaves the quantizer is the head scale times OUTPUT_SCALE. The agent then needs no
+    # knowledge of the training parameterisation at all.
+    mg_scale *= OUTPUT_SCALE
+    eg_scale *= OUTPUT_SCALE
+    mg_b *= OUTPUT_SCALE
+    eg_b *= OUTPUT_SCALE
 
     return {
         "embed_q": embed_q,
@@ -192,12 +210,27 @@ def quant_forward(q: dict, indices: np.ndarray, mask: np.ndarray, aux: np.ndarra
 # --------------------------------------------------------------------------- metrics
 
 
-def metrics(pred: np.ndarray, truth: np.ndarray, rows: list[dict], band: int = 25) -> dict:
-    err = pred - truth
-    absolute = np.abs(err)
-    outside = np.abs(truth) > band
+def metrics(pred_cp: np.ndarray, truth: np.ndarray, rows: list[dict], band: int = 25) -> dict:
+    """Score the residual the way the engine will use it.
+
+    `pred_cp` is the raw network output in centipawns. The engine clamps the correction
+    to +/-250 before adding it, so the gate compares
+
+        corrected error = truth - clamp(prediction)      against
+        baseline error  = truth                          (the handcrafted evaluator alone)
+
+    Both are measured against the UNCLIPPED Stockfish residual, so the improvement
+    claimed is the improvement the evaluation actually gets, not an improvement on a
+    convenient restatement of the target.
+    """
+    applied = np.clip(pred_cp, -CORRECTION_CLAMP, CORRECTION_CLAMP)
+    corrected = truth - applied
+    baseline_abs = np.abs(truth)
+    corrected_abs = np.abs(corrected)
+
+    outside = baseline_abs > band
     sign_ok = (
-        float(np.mean(np.sign(pred[outside]) == np.sign(truth[outside])))
+        float(np.mean(np.sign(applied[outside]) == np.sign(truth[outside])))
         if outside.any()
         else None
     )
@@ -207,18 +240,28 @@ def metrics(pred: np.ndarray, truth: np.ndarray, rows: list[dict], band: int = 2
         if sel.any():
             by_phase[name] = {
                 "n": int(sel.sum()),
-                "mae": round(float(np.mean(absolute[sel])), 2),
-                "median_ae": round(float(np.median(absolute[sel])), 2),
+                "baseline_mae": round(float(np.mean(baseline_abs[sel])), 2),
+                "corrected_mae": round(float(np.mean(corrected_abs[sel])), 2),
+                "corrected_median_ae": round(float(np.median(corrected_abs[sel])), 2),
             }
+    improvement = float(np.mean(baseline_abs) - np.mean(corrected_abs))
     return {
         "n": len(truth),
-        "mae": round(float(np.mean(absolute)), 2),
-        "median_ae": round(float(np.median(absolute)), 2),
-        "rmse": round(float(np.sqrt(np.mean(err**2))), 2),
+        "baseline_mae": round(float(np.mean(baseline_abs)), 2),
+        "mae": round(float(np.mean(corrected_abs)), 2),
+        "median_ae": round(float(np.median(corrected_abs)), 2),
+        "rmse": round(float(np.sqrt(np.mean(corrected**2))), 2),
+        "mae_improvement_cp": round(improvement, 2),
+        "mae_improvement_pct": round(
+            improvement / max(1e-9, float(np.mean(baseline_abs))) * 100, 2
+        ),
         "sign_accuracy_outside_band": round(sign_ok, 4) if sign_ok is not None else None,
         "band_cp": band,
         "by_phase": by_phase,
-        "target_mae_of_zero_predictor": round(float(np.mean(np.abs(truth))), 2),
+        "target_mae_of_zero_predictor": round(float(np.mean(baseline_abs)), 2),
+        "mean_applied_correction_cp": round(float(np.mean(applied)), 2),
+        "mean_abs_applied_correction_cp": round(float(np.mean(np.abs(applied))), 2),
+        "saturated_fraction": round(float(np.mean(np.abs(pred_cp) >= CORRECTION_CLAMP)), 4),
     }
 
 
@@ -261,7 +304,8 @@ def main() -> None:
 
     optimiser = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-5)
     schedule = torch.optim.lr_scheduler.CosineAnnealingLR(optimiser, T_max=args.epochs)
-    loss_fn = nn.SmoothL1Loss(beta=50.0)
+    # beta is 50 cp expressed in the scaled units the network works in
+    loss_fn = nn.SmoothL1Loss(beta=50.0 / OUTPUT_SCALE)
 
     def tensors(pack: dict) -> tuple:
         return (
@@ -275,6 +319,12 @@ def main() -> None:
     tr = tensors(data["train"])
     va = tensors(data["validation"])
     n_train = tr[0].shape[0]
+
+    # Targets are clipped to the correction clamp before scaling: the engine will never
+    # apply more than CORRECTION_CLAMP, so asking the network to predict beyond it only
+    # spends capacity on values it cannot express. Every metric below is still measured
+    # against the UNCLIPPED residual.
+    tr_target_scaled = torch.clamp(tr[4], -CORRECTION_CLAMP, CORRECTION_CLAMP) / OUTPUT_SCALE
 
     history: list[dict] = []
     best = float("inf")
@@ -290,7 +340,7 @@ def main() -> None:
             sel = order[start : start + args.batch]
             optimiser.zero_grad()
             out = model(tr[0][sel], tr[1][sel], tr[2][sel], tr[3][sel])
-            loss = loss_fn(out, tr[4][sel])
+            loss = loss_fn(out, tr_target_scaled[sel])
             loss.backward()
             optimiser.step()
             model.clip_weights()
@@ -300,12 +350,14 @@ def main() -> None:
 
         model.eval()
         with torch.no_grad():
-            vp = model(va[0], va[1], va[2], va[3]).numpy()
+            vp = model(va[0], va[1], va[2], va[3]).numpy() * OUTPUT_SCALE
         vm = metrics(vp, data["validation"]["target"], data["validation"]["rows"])
         row = {
             "epoch": epoch,
             "train_loss": round(total / seen, 4),
             "val_mae": vm["mae"],
+            "val_baseline_mae": vm["baseline_mae"],
+            "val_improvement_cp": vm["mae_improvement_cp"],
             "val_median_ae": vm["median_ae"],
             "val_sign_acc": vm["sign_accuracy_outside_band"],
             "seconds": round(time.perf_counter() - started, 1),
@@ -332,6 +384,10 @@ def main() -> None:
 
     report: dict = {
         "seed": SEED,
+        "output_scale_cp": OUTPUT_SCALE,
+        "correction_clamp_cp": CORRECTION_CLAMP,
+        "target_clipped_for_training": True,
+        "metrics_measured_against_unclipped_residual": True,
         "epochs_run": len(history),
         "best_val_mae": best,
         "history": history,
@@ -346,7 +402,7 @@ def main() -> None:
         pack = data[name]
         with torch.no_grad():
             args_t = [torch.from_numpy(pack[k]) for k in ("indices", "mask", "aux", "phase")]
-            fp = model(*args_t).numpy()
+            fp = model(*args_t).numpy() * OUTPUT_SCALE
         qp = quant_forward(q, pack["indices"], pack["mask"], pack["aux"], pack["phase"])
         report[f"{name}_float"] = metrics(fp, pack["target"], pack["rows"])
         report[f"{name}_quant"] = metrics(qp, pack["target"], pack["rows"])
