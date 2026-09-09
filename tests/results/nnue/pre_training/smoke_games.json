@@ -1,0 +1,37 @@
+{
+  "agent_dir": "C:\\Users\\44740\\AppData\\Local\\Temp\\claude\\c--Users-44740-Desktop-Comp2526-Personal-project-Chessatohon-optiver-aichessathon-starter\\601fe1c2-7c27-4004-8262-3201d2aca922\\scratchpad\\prevalidate",
+  "baseline": "baselines\\greedy\\agent.py",
+  "import_seconds": 1.489,
+  "import_under_90s": true,
+  "time_control": "120000ms + 500ms",
+  "games": [
+    {
+      "agent_colour": "white",
+      "seed": 20260909,
+      "plies": 63,
+      "result": "1-0",
+      "agent_moves": 32,
+      "agent_move_ms_mean": 2336.6,
+      "agent_move_ms_max": 3524.5,
+      "agent_clock_left_ms": 61228.2,
+      "illegal_or_malformed": false,
+      "flagged": false,
+      "final_fen": "1R6/4k3/4R3/4N3/2B1P3/P1P4p/P2K1PPP/8 b - - 3 32"
+    },
+    {
+      "agent_colour": "black",
+      "seed": 20260910,
+      "plies": 10,
+      "result": "0-1",
+      "agent_moves": 5,
+      "agent_move_ms_mean": 2685.7,
+      "agent_move_ms_max": 3521.6,
+      "agent_clock_left_ms": 109071.6,
+      "illegal_or_malformed": false,
+      "flagged": false,
+      "final_fen": "r1b1kb1r/ppp1pppp/2n2n2/3p4/8/P4PqP/1PPPP1P1/RNBQKBNR w KQkq - 1 6"
+    }
+  ],
+  "all_legal": true,
+  "no_flags": true
+}

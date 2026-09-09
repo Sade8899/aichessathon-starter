@@ -1,0 +1,22 @@
+{
+  "zip_path": "submissions\\pre_nn_20260909\\agent.zip",
+  "zip_sha256": "d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5",
+  "zip_bytes": 9946,
+  "members": [
+    {
+      "name": "agent.py",
+      "bytes": 39396,
+      "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda"
+    }
+  ],
+  "uncompressed_bytes": 39396,
+  "under_50mb": true,
+  "root_only": true,
+  "agent_py_at_root": true,
+  "pycache_present": false,
+  "native_binaries": [],
+  "extensions": [
+    ".py"
+  ],
+  "forbidden_payloads": []
+}

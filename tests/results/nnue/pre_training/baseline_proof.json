@@ -1,0 +1,93 @@
+{
+  "repo_path": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter",
+  "branch": "main",
+  "head": "78c03b0d266a027c5e47ffa3a1b5af0c435da1b6",
+  "git_status_short": "?? submissions/\n?? tests/results/nnue/",
+  "branches": [
+    "2026-09-09 14:53:10 +0100 refs/heads/main 78c03b0",
+    "2026-09-09 14:53:10 +0100 refs/remotes/origin/HEAD 78c03b0",
+    "2026-09-09 14:53:10 +0100 refs/remotes/origin/main 78c03b0"
+  ],
+  "tag": {
+    "name": "pre-nnue-control-20260909",
+    "commit": "78c03b0d266a027c5e47ffa3a1b5af0c435da1b6"
+  },
+  "expected_control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+  "control_matches_expected": true,
+  "not_comp2321_file": true,
+  "files": {
+    "control": {
+      "label": "working-tree agent.py (control)",
+      "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+      "bytes": 39396,
+      "lines": 1046,
+      "ast_sha256": "4333e3c93ee3190ea05456a7e91215c4824a0bc84add351749f246d4dcbd4088"
+    },
+    "v4_inner_agent": {
+      "label": "agent.py inside submission 0609v4/agent.zip",
+      "sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+      "bytes": 38673,
+      "lines": 1034,
+      "ast_sha256": "e09f344a82f7b16e2eb0b2d7bd3a70bbcfee7c5e2879fbae99510f171e572d82"
+    },
+    "pre_nn_inner_agent": {
+      "label": "agent.py inside submissions/pre_nn_20260909/agent.zip",
+      "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+      "bytes": 39396,
+      "lines": 1046,
+      "ast_sha256": "4333e3c93ee3190ea05456a7e91215c4824a0bc84add351749f246d4dcbd4088"
+    },
+    "v4_zip": {
+      "path": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter\\submission 0609v4\\agent.zip",
+      "sha256": "267400857f19b0c5ca9d5a4d6640f42201db1f42be9ba8cafae5e8bd63c6a74b",
+      "bytes": 9837,
+      "members": [
+        "agent.py"
+      ]
+    },
+    "pre_nn_zip": {
+      "path": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter\\submissions\\pre_nn_20260909\\agent.zip",
+      "sha256": "d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5",
+      "bytes": 9946,
+      "members": [
+        "agent.py"
+      ]
+    }
+  },
+  "answers": {
+    "working_tree_tracked": true,
+    "working_tree_identical_to_head": true,
+    "byte_identical_to_v4": false,
+    "ast_identical_to_v4": false,
+    "newer_branch_with_different_agent": "none - only main exists locally and remotely",
+    "commits_after_a9612f1": [
+      "78c03b0 Ingest rounds 79-80; reject throughput candidate as DIAGNOSIS ONLY",
+      "adc0714 Add v5 fixtures control and validation JSON files for rated games",
+      "f80341c Add measurement logs and trace data for platform reproduction tests",
+      "304b983 Add root order probe for move quality and iterative deepening diagnosis",
+      "2094e65 Add per_fixture.csv to store detailed chess engine analysis results",
+      "04ba28a Add per_fixture.csv to track null move test results"
+    ],
+    "agent_py_changed_after_a9612f1": false,
+    "difference_class": "BEHAVIOURAL (search pruning), not formatting/docs/packaging"
+  },
+  "v4_vs_control_diff": {
+    "hunks": 2,
+    "lines_added": 12,
+    "lines_removed": 0,
+    "unified_diff": "--- v4/agent.py\n+++ control/agent.py\n@@ -28,6 +28,7 @@\n WINNING_MARGIN = 8\n SWINDLE_MARGIN = 25\n ROOT_WINDOW_MARGIN = 60\n+DELTA_MARGIN = 200\n EXPLOIT_WEIGHT = 0.20\n MAX_BONUS = 12.0\n MIN_OBSERVATIONS = 6\n@@ -789,7 +790,18 @@\n             else:\n                 moves = captures_and_promotions(board)\n         assert moves is not None\n+        # A capture can lift this node by at most the piece it wins, plus a margin for\n+        # the positional terms material does not see. One that still cannot reach alpha\n+        # cannot change the value here, so it is skipped; the result stays a lower\n+        # bound. Evasions, promotions, quiet checks and endgames are never skipped.\n+        pruning = not check and not self.pattern.endgame\n         for move in self.order(board, moves, None, ply):\n+            if pruning and not move.promotion:\n+                victim = board.piece_type_at(move.to_square) or (\n+                    chess.PAWN if board.is_en_passant(move) else 0\n+                )\n+                if victim and stand + VALUES[victim] + DELTA_MARGIN <= alpha:\n+                    continue\n             board.push(move)\n             key = self.enter(board)\n             try:\n",
+    "defs_changed": [
+      "Engine",
+      "quiesce"
+    ],
+    "defs_only_in_control": [],
+    "defs_only_in_v4": [],
+    "module_constants_added_in_control": {
+      "DELTA_MARGIN": "200"
+    }
+  },
+  "pre_nn_vs_v4": {
+    "agent_source_identical": false,
+    "verdict": "NOT identical - the pre-neural package ships the newer control revision"
+  }
+}
