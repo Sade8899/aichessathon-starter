@@ -130,11 +130,16 @@ def encode(rows: list[dict]) -> dict:
 
 
 def load_split(path: pathlib.Path) -> dict[str, list[dict]]:
-    splits: dict[str, list[dict]] = {"train": [], "validation": [], "test": []}
+    splits: dict[str, list[dict]] = {
+        "train": [],
+        "validation": [],
+        "test": [],
+        "holdout": [],  # the held-out opponent family, never trained on
+    }
     with path.open(encoding="utf-8") as handle:
         for line in handle:
             row = json.loads(line)
-            splits[row["split"]].append(row)
+            splits.setdefault(row["split"], []).append(row)
     return splits
 
 
@@ -421,7 +426,7 @@ def main() -> None:
         "splits": {k: len(v) for k, v in splits.items()},
     }
 
-    for name in ("train", "validation", "test"):
+    for name in ("train", "validation", "test", "holdout"):
         if name not in data:
             continue
         pack = data[name]

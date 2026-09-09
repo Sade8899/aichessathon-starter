@@ -73,7 +73,10 @@ def collect(target: int) -> dict:
     for path in sorted(GAMES.glob("*.json")):
         record = json.loads(path.read_text(encoding="utf-8"))
         games_read += 1
-        split = record["split"]
+        # The declared opponent-generalisation holdout: every game against the held-out
+        # engine family leaves train/validation/test entirely, so a gain measured on it
+        # is a gain against an opponent the network never saw.
+        split = "holdout" if record.get("held_out_family") else record["split"]
         game_id = record["game_id"]
         previous: int | None = None
         for pos in record["positions"]:
@@ -173,9 +176,16 @@ def collect(target: int) -> dict:
     by_split: dict[str, set[str]] = {}
     for entry in capped:
         by_split.setdefault(entry["split"], set()).add(entry["fen_key"])
+    pairs = (
+        ("train", "validation"),
+        ("train", "test"),
+        ("train", "holdout"),
+        ("validation", "test"),
+        ("validation", "holdout"),
+        ("test", "holdout"),
+    )
     overlaps = {
-        f"{a}&{b}": len(by_split.get(a, set()) & by_split.get(b, set()))
-        for a, b in (("train", "validation"), ("train", "test"), ("validation", "test"))
+        f"{a}&{b}": len(by_split.get(a, set()) & by_split.get(b, set())) for a, b in pairs
     }
 
     DATASET.mkdir(parents=True, exist_ok=True)
@@ -303,17 +313,42 @@ def label(shards: int) -> dict:
     elapsed = time.perf_counter() - started
 
     # merge and validate: every expected position exactly once, nothing unexpected
-    expected = {json.loads(line)["fen_key"] for line in source.open(encoding="utf-8")}
+    # Labels are keyed by canonical position and cost Stockfish time; split assignment is
+    # cheap and may be revised. The merge therefore takes the LABEL from the cache and
+    # everything else from the current manifest, so re-splitting never means re-labelling
+    # and a stale split can never ride along inside a cached row.
+    current: dict[str, dict] = {}
+    with source.open(encoding="utf-8") as handle:
+        for line in handle:
+            row = json.loads(line)
+            current[row["fen_key"]] = row
+    expected = set(current)
+
+    label_fields = (
+        "stockfish_cp_raw", "stockfish_cp", "stockfish_mate", "stockfish_depth",
+        "label_nodes", "label_threads", "label_hash_mb", "label_engine",
+        "label_perspective",
+    )
     merged: dict[str, dict] = {}
     duplicates = 0
     for path in sorted(LABELS.glob("shard-*.jsonl")):
         with path.open(encoding="utf-8") as handle:
             for line in handle:
                 row = json.loads(line)
-                if row["fen_key"] in merged:
+                key = row["fen_key"]
+                if key in merged:
                     duplicates += 1
                     continue
-                merged[row["fen_key"]] = row
+                if key not in current:
+                    continue
+                fresh = dict(current[key])
+                for field in label_fields:
+                    if field in row:
+                        fresh[field] = row[field]
+                fresh["residual_target"] = (
+                    fresh["stockfish_cp"] - fresh["control_static_cp"]
+                )
+                merged[key] = fresh
 
     missing = expected - set(merged)
     unexpected = set(merged) - expected
