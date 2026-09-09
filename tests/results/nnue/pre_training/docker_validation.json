@@ -1,0 +1,67 @@
+{
+  "zip": "submissions\\pre_nn_20260909\\agent.zip",
+  "zip_sha256": "d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5",
+  "zip_bytes": 9946,
+  "members": [
+    {
+      "name": "agent.py",
+      "bytes": 39396,
+      "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda"
+    }
+  ],
+  "uncompressed_bytes": 39396,
+  "under_50mb": true,
+  "image": "chessathon-nnue:platform",
+  "image_id": "sha256:8fc6496546d344aa147ed9ee5379b6ca17413c9d8c227ba226ddea0b546b0819",
+  "docker_version": "Docker version 29.7.2, build a7dcaa6",
+  "dockerfile_sha256": "b65b9c9c459bb2c22416a64f62c0b842551cf12527b0ef74d36c8eafadd9d01b",
+  "constraints": {
+    "cpus": 1,
+    "memory": "2g",
+    "network": "none",
+    "root_filesystem": "read-only",
+    "tmpfs": "/tmp size=256m",
+    "repository_mounted": false
+  },
+  "container": {
+    "import_seconds": 2.412,
+    "import_under_90s": true,
+    "has_get_move": true,
+    "nnue_status": "n/a",
+    "nnue_ready": null,
+    "numba_warm_at_import": [
+      {
+        "function": "numeric_evaluate",
+        "compiled_signatures": 1
+      }
+    ],
+    "smoke_white": {
+      "result": "1-0",
+      "plies": 31,
+      "legal": true,
+      "agent_moves": 16,
+      "move_ms_mean": 2641.7,
+      "move_ms_max": 3600.7,
+      "first_move_ms": null
+    },
+    "smoke_black": {
+      "result": "0-1",
+      "plies": 30,
+      "legal": true,
+      "agent_moves": 15,
+      "move_ms_mean": 2607.1,
+      "move_ms_max": 3602.5,
+      "first_move_ms": null
+    },
+    "all_legal": true,
+    "no_flags": true,
+    "peak_memory_bytes": 203894784,
+    "peak_memory_mb": 194.4,
+    "peak_under_2gb": true,
+    "files_visible": [
+      "agent.py"
+    ]
+  },
+  "exit_code": 0,
+  "passes": true
+}
