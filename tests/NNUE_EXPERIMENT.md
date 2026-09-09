@@ -273,3 +273,107 @@ simultaneous games; the previously rejected 24-worker configuration is not repea
 
 200 paired games minimum (400 total), extending toward 400 paired (800 total) if the
 interval is inconclusive and time allows.
+
+---
+
+# Addendum — deviations found by measurement
+
+Appended during execution. The gates above are **not** edited; where reality differed
+from the plan, the difference is recorded here with what was measured and what was done.
+Nothing below relaxes a declared threshold.
+
+## 1. The RATED_V5 gate needed a depth sweep to mean anything
+
+Running the fixtures exactly as declared showed the control passing **all 16 enforced
+fixtures** at their minimum correcting depths. That form of the gate cannot discriminate
+between control and candidate, because the rated losses did not happen at those depths.
+They happened when the clock allowed only a shallower iteration.
+
+The gate therefore sweeps depths 2–5 and counts corrections and regressions per depth.
+Measured on the control, the class-A failures are:
+
+| fixture | plays | at depths |
+| --- | --- | --- |
+| r57-22-e6 | `e5e6` | 2, 3, 4 |
+| r57-24-Bxc7 | `f4c7` | 3 |
+| r57-33-Rc3 | `c1c3` | 3, 4 |
+| r58-55-Rh2 | `h8h2` | 2, 3 |
+| r58-56-e4+ | `e5e4` | 2, 3, 4 |
+| r66-49-e5 | `e6e5` | 4 |
+| r66-55-Kf6 | `e7f6` | 2, 3, 4 |
+| r79-12-Nxd3 | `e5d3` | 3 |
+| r80-24-Rd4 | `d1d4` | **2** |
+
+Nine, not five. The declared thresholds are unchanged: at least three corrected, zero
+solved-control breaks, zero new regressions.
+
+Note that round 79's `12...Nxd3` appears at depth **3**, not depth 2 — at depth 2 the
+control already plays `c8g4`. The declaration described it as a depth-2 case; the
+measurement says otherwise, and the measurement governs.
+
+## 2. Colour-swap augmentation was rejected on evidence
+
+Tested on 300 random legal positions before adoption: the canonical orientation produces
+**identical** features and auxiliaries for a position and its colour swap, 300/300. The
+augmentation is a no-op, so it is not applied. The same property makes the
+colour-symmetry gate true by construction rather than by training.
+
+## 3. Two dataset-composition bugs, both caught by inspecting the distribution
+
+**Swing detection had a sign error.** The control's static evaluation is side-to-move
+relative and flips sign every ply, so differencing consecutive plies made a quiet
+position read as a 100 cp swing every move. 86.1% of the corpus was labelled "tactical".
+Fixed by differencing in a White-relative frame.
+
+**The 40/40/20 phase target is not reachable from this corpus.** Endgames are about 11%
+of the unique positions these games produce; a 40% endgame corpus would have to be about
+a third of the size. Every non-opening position is now kept and openings are capped at
+15%. Achieved on a 981-game sample: opening 15.0%, tactical 39.6%, middlegame 31.1%,
+endgame 14.3%. The declared target and the achieved mix are both recorded in
+`collect_summary.json`.
+
+## 4. Docker cannot run the benchmark opponents
+
+The benchmark engines are Windows `.exe` binaries and cannot execute in a Linux
+container. Game generation and the arena therefore run natively. Docker is used for what
+it can honestly reproduce: the agent-only platform gates — initialization, memory,
+legality, submission validation — where no external engine is involved.
+
+Native and containerised runs were checked for equivalence rather than assumed to agree:
+fixed-depth searches return the same move, the same score and the same **236,153 nodes**
+in both. Docker is 11.7% slower in wall clock (ratio 0.883), which is Docker Desktop
+overhead on Windows.
+
+## 5. Concurrency calibration was wrong the first time
+
+The first calibration gave each worker level a *different* slice of the manifest, so
+opening variation showed up as contention and 4 and 6 workers appeared to breach the 10%
+degradation limit. Replaying the **same** 12 games at every level:
+
+| workers | games/h | positions/h | control move ms | inflation |
+| ---: | ---: | ---: | ---: | ---: |
+| 1 | 223 | 18,237 | 252.7 | 1.000 |
+| 2 | 412 | 34,806 | 252.8 | 1.000 |
+| 4 | 844 | 65,088 | 256.8 | 1.016 |
+| 6 | 1,072 | 81,675 | 259.6 | 1.027 |
+
+Six workers selected. The previously rejected 24-worker configuration was not retried.
+
+## 6. The integration is fused because the boundary crossing is the cost
+
+A first version called the accumulator as its own njit function: 17.4 µs per leaf. A
+de Bruijn bit scan and a SWAR popcount brought it to 9.7 µs. Folding the auxiliary layer
+into a lookup table did not help. Measuring a **trivial** njit function with the same
+argument list explained why: 7.6 µs, which is the entire cost of the control's own
+evaluation. The Python-to-Numba boundary was the whole expense.
+
+The accumulator is therefore evaluated inside the same compiled call as the handcrafted
+evaluation, reading weights from module globals. Measured with placeholder weights, the
+full-search NPS loss is **0.99%** against the 10% gate.
+
+## 7. Arena openings are held out
+
+The arena originally drew its openings from the training manifest, which would have
+handed the candidate positions it had trained on. Arena openings now come from a separate
+seeded book (seed 20260911) with every collision against the training book skipped:
+200 openings, 0 overlap, verified.
