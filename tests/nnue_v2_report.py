@@ -513,7 +513,24 @@ def main() -> None:
     add("## 6. Arenas\n")
     for label, report in (("screening", screen), ("confirmation", confirm)):
         if not report:
-            add(f"### {label}: not run\n")
+            if label == "confirmation":
+                add("### confirmation: not run, and deliberately so\n")
+                add(
+                    "The predeclared procedure takes **only the best surviving "
+                    "candidate** into an 800-1,200 game confirmation. Nothing survived "
+                    "screening: q005 returned a negative point estimate, which is a "
+                    "predeclared immediate rejection, and q010 returned exactly zero "
+                    "with an identical 7-5-98 record to the control. Running a "
+                    "confirmation arena anyway would have spent an hour dressing a "
+                    "rejection in a larger sample.\n"
+                )
+                add(
+                    "The head-to-head below is the large run that was worth doing "
+                    "instead, and it is reported as supplementary evidence rather than "
+                    "as a substitute for the criterion it does not satisfy.\n"
+                )
+            else:
+                add(f"### {label}: not run\n")
             continue
         add(f"### {label}\n")
         add(
