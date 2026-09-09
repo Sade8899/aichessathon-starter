@@ -330,7 +330,7 @@ compiled_evaluate(chess.Board())
 NNUE_HIDDEN = 64
 NNUE_CLAMP = 250  # the correction may never move the evaluation more than this
 NNUE_WEIGHTS = "nnue_weights.npz"
-NNUE_SHA256 = ""  # set by tests/nnue_pack.py when the shipped weights are packed
+NNUE_SHA256 = "411fa3e94a0662842af77aa9e2409b4b67cb41930e6070dd9140470e42bd2a49"  # set by tests/nnue_pack.py when the shipped weights are packed
 
 _NNUE_DEBRUIJN = np.uint64(0x03F79D71B4CB0A89)
 _NNUE_INDEX = np.array(
