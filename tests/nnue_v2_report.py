@@ -326,33 +326,48 @@ def main() -> None:
 
     # ------------------------------------------------------------------- training
     add("## 3. Training\n")
-    summaries = sorted(V2.glob("summary_*.json"))
+    # Built from the per-tag training.json files rather than the summary_*.json ones:
+    # each variant was launched as its own process with the same --tag, so the shared
+    # summary file was overwritten and kept only the last run. The per-tag records are
+    # complete.
     rows: list[list[str]] = []
-    for path in summaries:
-        for entry in load(path) or []:
-            # Pilot, probe and smoke runs were trained on a partial corpus while
-            # generation was still running. They shaped the design and are recorded in
-            # the commit history, but they are not comparable to the runs below and
-            # would only pad this table.
-            if any(k in entry["tag"] for k in ("pilot", "probe", "smoke")):
-                continue
+    for directory in sorted(V2.iterdir()):
+        if not directory.is_dir():
+            continue
+        # Pilot, probe and smoke runs were trained on a partial corpus while generation
+        # was still running. They shaped the design and are recorded in the commit
+        # history, but they are not comparable to the runs below.
+        if any(k in directory.name for k in ("pilot", "probe", "smoke")):
+            continue
+        entry = load(directory / "training.json")
+        if entry:
+            hist = entry["history"][entry["best_epoch"]]
             rows.append(
                 [
-                    f"`{entry['tag']}`",
+                    f"`{entry['tag'].replace('_h32_s20260909', '')}`",
                     entry["variant"],
-                    str(entry["hidden"]),
-                    f"{entry['parameters']:,}",
                     str(entry["best_epoch"]),
+                    f"{hist['preserved_rate']:.4f}",
+                    f"{hist['regret_reduction_cp']:+.2f}",
+                    f"{hist['pair_accuracy_gain']:+.4f}",
+                    f"{hist['mae_gain_cp']:+.2f}",
+                    f"{hist['mean_abs_correction']:.1f}",
                     f"{entry['best_composite']:.3f}",
                     f"{entry['train_seconds']:.0f}",
                 ]
             )
     if rows:
         add(
+            "All runs are width 32, 24,899 parameters, seed 20260909, 12 epochs, on the "
+            "full 28,640-group corpus. Validation metrics at the selected epoch:\n"
+        )
+        add(
             table(
                 rows,
-                ["tag", "variant", "hidden", "params", "best epoch", "composite", "s"],
-                ["---", "---", "---:", "---:", "---:", "---:", "---:"],
+                ["tag", "variant", "epoch", "preserved", "regret cp", "pair gain",
+                 "MAE cp", "|corr| cp", "composite", "s"],
+                ["---", "---", "---:", "---:", "---:", "---:", "---:", "---:", "---:",
+                 "---:"],
             )
         )
         add("")
@@ -362,6 +377,23 @@ def main() -> None:
         "per centipawn, sibling pair accuracy 40x, draw preservation 20x and residual "
         "MAE 0.02x. MAE is deliberately the smallest term: V1 was selected on MAE, "
         "improved MAE by 27.85 cp, and lost.\n"
+    )
+    add(
+        "**Which mechanism actually did the work, against expectation.** The confidence "
+        "gate on its own did nothing for preservation: C is B plus the gate and "
+        "preserves 0.8636 against B's 0.8679, a difference in the wrong direction and "
+        "inside the noise. Adding the ranking loss also *reduced* preservation, A's "
+        "0.8952 to B's 0.8679, because ranking rewards reordering siblings and some of "
+        "the orderings it reorders were already right.\n"
+    )
+    add(
+        "What moved preservation was the anchor weight and then the magnitude "
+        "penalty -- D triples the anchor and reaches 0.9267, and the F family adds a "
+        "penalty on the size of the correction and reaches 0.96-0.99. The gate only "
+        "became useful once it was made *hard* (the H family), where it decides "
+        "**where** to act rather than only how much. The honest reading is that the "
+        "headline idea of the plan, a calibrated confidence multiplier, was not the "
+        "effective ingredient; restraint on correction magnitude was.\n"
     )
     if training:
         hist = training["history"]
