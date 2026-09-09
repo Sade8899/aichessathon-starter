@@ -170,6 +170,7 @@ def main() -> None:
     generation = load(GROUPS / "generation_summary.json")
     frontier = load(V2 / "frontier_fixtures.json")
     h2h = load(tagdir / "h2h.json")
+    h2h_pilot = load(tagdir / "h2h_pilot.json")
     fire = load(V2 / "fire_rate.json")
 
     # Every candidate that reached a gate run or a screening arena, so the report shows
@@ -559,55 +560,145 @@ def main() -> None:
         )
         add("")
 
-    if h2h:
+    runs = [(n, r) for n, r in (("pilot", h2h_pilot), ("confirmation", h2h)) if r]
+    if runs:
         add("### head to head against the control\n")
         add(
             "The benchmark arena puts both agents against engines rated 1630-1721, where "
-            "both score near the floor and most paired differences are exactly zero. A "
-            "direct match has no floor: the same opening is played twice with colours "
-            "reversed, so the only thing that varies is the difference being measured.\n"
+            "both score near the floor -- control 7.27%, candidate 5.00% -- so almost "
+            "every paired difference is exactly zero and the test spends its games "
+            "re-proving that the benchmarks are stronger. A direct match has no floor: "
+            "the same opening is played twice with colours reversed, so the only thing "
+            "that varies is the difference being measured. 50% is parity.\n"
         )
         add(
-            f"- {h2h['scored_games']} scored games over {h2h['openings']} openings, "
-            f"{h2h['clock_ms']}ms + {h2h['increment_ms']}ms, seed {h2h['seed']}"
+            "This is supplementary evidence, not a substitute. Acceptance criterion 5 "
+            "stays keyed to the benchmark arena that was predeclared, because choosing "
+            "a different test after seeing a result is how a rejection becomes an "
+            "acceptance without any new evidence.\n"
         )
         add(
-            f"- **candidate scores {h2h['candidate_score_pct']}% "
-            f"95% CI [{h2h['score_ci95_pct'][0]}%, {h2h['score_ci95_pct'][1]}%]** "
-            f"({h2h['candidate_W-D-L']}), Elo {h2h['elo']:+.1f} "
-            f"[{h2h['elo_ci95'][0]:+.1f}, {h2h['elo_ci95'][1]:+.1f}]"
+            table(
+                [
+                    [
+                        name,
+                        str(r["scored_games"]),
+                        f"{r['clock_ms']}+{r['increment_ms']}ms",
+                        str(r["seed"]),
+                        r["candidate_W-D-L"],
+                        f"{r['candidate_score_pct']}%",
+                        f"[{r['score_ci95_pct'][0]}%, {r['score_ci95_pct'][1]}%]",
+                        f"{r['elo']:+.1f}",
+                        str(r["beats_control"]),
+                    ]
+                    for name, r in runs
+                ],
+                ["run", "games", "clock", "seed", "W-D-L", "score", "95% CI", "Elo",
+                 "beats control"],
+                ["---", "---:", "---:", "---:", "---:", "---:", "---:", "---:", "---:"],
+            )
+        )
+        add("")
+        final = runs[-1][1]
+        add(
+            f"- as White {final['by_colour']['candidate_white']['score_pct']}%, "
+            f"as Black {final['by_colour']['candidate_black']['score_pct']}%, "
+            f"draws {final['draw_pct']}% "
+            "(the colour split reflects the random-play opening book, which is not "
+            "balanced; the pairing cancels it exactly)"
         )
         add(
-            f"- 50% is parity. Beats the control: **{h2h['beats_control']}**; "
-            f"worse than the control: **{h2h['worse_than_control']}**"
-        )
-        add(
-            f"- as White {h2h['by_colour']['candidate_white']['score_pct']}%, "
-            f"as Black {h2h['by_colour']['candidate_black']['score_pct']}%, "
-            f"draws {h2h['draw_pct']}%"
-        )
-        add(
-            f"- mean depth candidate {h2h['candidate_mean_depth']} vs control "
-            f"{h2h['control_mean_depth']}; flags {h2h['flags']}, illegal {h2h['illegal']}, "
-            f"infrastructure {h2h['infrastructure_failures']}\n"
+            f"- mean depth candidate {final['candidate_mean_depth']} vs control "
+            f"{final['control_mean_depth']}; flags {final['flags']}, illegal "
+            f"{final['illegal']}, infrastructure {final['infrastructure_failures']}\n"
         )
 
+    # ------------------------------------------------------------- limitations
+    add("## 7. What this does and does not establish\n")
+    add(
+        "**Established.** A gated residual can be trained that keeps every solved "
+        "control: RATED_V5 stays 16/16, no draw or passed-pawn defence fixture "
+        "regresses, r80 24.Rd4 stays rejected, the quantized integer path matches the "
+        "reference exactly on 600/600 positions, and the package imports and plays "
+        "inside the platform container. V1 failed five of those. The preservation rate "
+        "measured during training predicts fixture breakage, which makes the expensive "
+        "gate cheap to anticipate.\n"
+    )
+    add(
+        "**Also established, and the reason for the verdict.** Nothing in this family "
+        "improved playing strength. The safe corrections are small by necessity, and "
+        "the arenas cannot distinguish them from the control.\n"
+    )
+    add("**Not established, and worth stating plainly:**\n")
+    add(
+        "- *Absence of evidence is not evidence of absence.* The head-to-head "
+        "confidence interval spans tens of Elo. A true effect of a few Elo -- which is "
+        "the size a 5-14 cp correction plausibly buys -- would not be visible at these "
+        "sample sizes. The claim is that no improvement was **demonstrated**, not that "
+        "none exists."
+    )
+    add(
+        "- *The benchmark arena is weakly powered here.* Both agents score near the "
+        "floor against engines several hundred points stronger, so most paired "
+        "differences are exactly zero by construction."
+    )
+    add(
+        "- *The opening book is random play, not curated openings.* Rated games start "
+        "from a curated set that is not published. Random-play openings are shared by "
+        "both agents and the pairing cancels them, but they are not the distribution "
+        "the platform actually uses."
+    )
+    add(
+        "- *The head-to-head ran at 1s+0.1s*, where the agents reach depth ~1.3. A "
+        "residual could matter more at the rated 120s+0.5s, where the search is deeper "
+        "and a static evaluation error survives further up the tree. That was not "
+        "affordable to test at a useful sample size on this hardware."
+    )
+    add(
+        "- *One architecture, one seed.* Width 32, a single training seed per "
+        "configuration. The frontier was mapped along the correction-magnitude axis, "
+        "not across capacity or seeds.\n"
+    )
+
     # ------------------------------------------------------------ reproduction
-    add("## 7. Reproduction\n")
+    add("## 8. Reproduction\n")
+    snapshot = f"tests/results/nnue/v2/snapshots/{args.tag}/agent_v2.py"
     add("```")
-    add("# sibling groups (Stockfish 19, MultiPV)")
+    add("# 1. sibling groups (Stockfish 19, MultiPV=8 at 250k nodes)")
     add("python tests/nnue_v2_data.py --parents 40000 --workers 8 --seed 20260909")
-    add("# training matrix")
-    add("python tests/nnue_v2_train.py --variants A,B,C,D,E --hidden 32 --seed 20260909")
-    add("# pack a checkpoint and rebuild the candidate from the control")
+    add("python tests/nnue_v2_provenance.py")
+    add("")
+    add("# 2. training matrix and the correction-magnitude frontier")
+    add("python tests/nnue_v2_train.py --variants A,B,C,D,E --hidden 32 --seed 20260909 \\")
+    add("       --epochs 12 --floor 0.0 --tag full")
+    add("python tests/nnue_v2_train.py --variants F --hidden 32 --seed 20260909 \\")
+    add("       --epochs 12 --floor 0.0 --override w_quiet=0.05 --tag q005")
+    add("python tests/nnue_v2_train.py --variants H --hidden 32 --seed 20260909 \\")
+    add("       --epochs 12 --floor 0.0 --override conf_min=0.85 --tag t85")
+    add("")
+    add("# 3. cheap fixture screen over a family of checkpoints, before any arena")
+    add("python tests/nnue_v2_fixture_screen.py <tag> [<tag> ...]")
+    add("")
+    add("# 4. pack a checkpoint (rebuilds the candidate from agent.py) and gate it")
     add(f"python tests/nnue_v2_pack.py {args.tag}")
-    add("# gates")
     add(f"python tests/nnue_v2_gates.py --tag {args.tag}")
-    add("# arenas")
-    add(f"python tests/nnue_v2_arena.py --tag {args.tag} --pairs 60 --label screen")
-    add(f"python tests/nnue_v2_arena.py --tag {args.tag} --pairs 250 --label confirm")
-    add("# platform container")
-    add("python tests/nnue_v2_docker.py")
+    add("")
+    add("# 5. snapshots, so several candidates can be arena-tested at once")
+    add(f"python tests/nnue_v2_materialize.py {args.tag}")
+    add("")
+    add("# 6. arenas")
+    add(f"python tests/nnue_v2_arena.py --tag {args.tag} \\")
+    add(f"       --candidate {snapshot} --pairs 60 --workers 6 --label screen")
+    add(f"python tests/nnue_v2_h2h.py --tag {args.tag} \\")
+    add(f"       --candidate {snapshot} \\")
+    add("       --pairs 1000 --workers 6 --clock-ms 1000 --increment-ms 100 \\")
+    add("       --seed 20260914 --label h2h")
+    add("")
+    add("# 7. platform container: 1 CPU, 2 GB, no network, read-only, 256 MB /tmp")
+    add(f"python tests/nnue_v2_docker.py --tag {args.tag}")
+    add("")
+    add("# 8. this report")
+    add(f"python tests/nnue_v2_report.py --tag {args.tag}")
     add("```\n")
 
     add(
