@@ -1,10 +1,12 @@
 {
-  "tag": "F_h32_s20260909_q005",
-  "gates_passed": 16,
+  "tag": "C_h32_s20260909_smoke",
+  "gates_passed": 15,
   "gates_total": 16,
-  "all_passed": true,
-  "failing": [],
-  "seconds": 38.3,
+  "all_passed": false,
+  "failing": [
+    "full-search NPS loss"
+  ],
+  "seconds": 30.3,
   "gates": [
     {
       "gate": "protected control agent.py unchanged",
@@ -38,19 +40,19 @@
     },
     {
       "gate": "agent integer path equals the reference integer path",
-      "measured": "600/600 exact, max |diff| 0 cp",
+      "measured": "300/300 exact, max |diff| 0 cp",
       "requirement": "every position exact",
       "passes": true
     },
     {
       "gate": "correction never exceeds the clamp",
-      "measured": "max |correction| 160 cp, clamp 250",
+      "measured": "max |correction| 201 cp, clamp 250",
       "requirement": "<= 250",
       "passes": true
     },
     {
       "gate": "colour-swap feature identity",
-      "measured": "600/600",
+      "measured": "300/300",
       "requirement": "all identical",
       "passes": true
     },
@@ -80,42 +82,32 @@
     },
     {
       "gate": "unseen Loki-family holdout static MAE (reported, not enforced)",
-      "measured": "366.84 -> 360.25 cp (+6.60)",
+      "measured": "366.84 -> 358.09 cp (+8.75)",
       "requirement": "reported only; MAE is not an acceptance criterion",
       "passes": true,
       "detail": {
         "n": 4000,
         "mae_control": 366.8435,
-        "mae_candidate": 360.247,
-        "mean_abs_correction": 27.5855,
-        "corrections_suppressed_pct": 3.9
+        "mae_candidate": 358.09425,
+        "mean_abs_correction": 86.07125,
+        "corrections_suppressed_pct": 0.525
       }
     },
     {
       "gate": "full-search NPS loss",
-      "measured": "4.49% (18,699 -> 17,860 nps)",
+      "measured": "6.63% (10,048 -> 9,382 nps)",
       "requirement": "<= 5.0%",
-      "passes": true,
+      "passes": false,
       "detail": {
-        "control_nps": 18698.915624293993,
-        "candidate_nps": 17860.180182084976,
+        "control_nps": 10047.837388788226,
+        "candidate_nps": 9381.961615842443,
         "control_nodes": 92396,
-        "candidate_nodes": 88235,
-        "control_runs": [
-          18642.3,
-          18638.9,
-          18698.9
-        ],
-        "candidate_runs": [
-          17560.8,
-          17845.7,
-          17860.2
-        ]
+        "candidate_nodes": 76877
       }
     },
     {
       "gate": "package uncompressed size",
-      "measured": "85,952 bytes (agent 58,698 + weights 27,254)",
+      "measured": "84,912 bytes (agent 57,658 + weights 27,254)",
       "requirement": "< 50,000,000",
       "passes": true
     },

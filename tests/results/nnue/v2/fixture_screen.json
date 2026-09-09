@@ -1,0 +1,68 @@
+{
+  "control_enforced": 16,
+  "rows": [
+    {
+      "tag": "H_h32_s20260909_t85",
+      "config": {
+        "w_value": 0.7,
+        "w_rank": 1.0,
+        "w_anchor": 3.0,
+        "w_draw": 2.0,
+        "w_conf": 1.0,
+        "w_quiet": 0.05,
+        "gate": true,
+        "phase_gate": false,
+        "conf_min": 0.85
+      },
+      "preserved": 0.9921,
+      "corr": 7.4438,
+      "regret": 3.4185,
+      "mae": 4.776,
+      "enforced": "16/16",
+      "passed": true,
+      "broke": []
+    },
+    {
+      "tag": "H_h32_s20260909_t90",
+      "config": {
+        "w_value": 0.7,
+        "w_rank": 1.0,
+        "w_anchor": 3.0,
+        "w_draw": 2.0,
+        "w_conf": 1.0,
+        "w_quiet": 0.05,
+        "gate": true,
+        "phase_gate": false,
+        "conf_min": 0.9
+      },
+      "preserved": 0.997,
+      "corr": 3.9959,
+      "regret": 1.189,
+      "mae": 2.8468,
+      "enforced": "16/16",
+      "passed": true,
+      "broke": []
+    },
+    {
+      "tag": "H_h32_s20260909_t95",
+      "config": {
+        "w_value": 0.7,
+        "w_rank": 1.0,
+        "w_anchor": 3.0,
+        "w_draw": 2.0,
+        "w_conf": 1.0,
+        "w_quiet": 0.05,
+        "gate": true,
+        "phase_gate": false,
+        "conf_min": 0.95
+      },
+      "preserved": 0.9994,
+      "corr": 0.9029,
+      "regret": 0.5385,
+      "mae": 0.7605,
+      "enforced": "16/16",
+      "passed": true,
+      "broke": []
+    }
+  ]
+}

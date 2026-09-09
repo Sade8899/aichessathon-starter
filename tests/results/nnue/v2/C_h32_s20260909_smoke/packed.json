@@ -1,0 +1,10 @@
+{
+  "tag": "C_h32_s20260909_smoke",
+  "weights": "nnue_v2_weights.npz",
+  "weight_sha256": "51a939297a866243581aa5a70bf6aadb5195c46c77230712378c69f81d795319",
+  "weight_bytes": 27254,
+  "agent": "agent_nnue_v2.py",
+  "agent_sha256": "c99e4c9fb40cd5e022527330885527ad219b2b48e4b4b0acf1fc6b5b5f5c7b92",
+  "agent_bytes": 57658,
+  "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda"
+}

@@ -1,0 +1,723 @@
+{
+  "tag": "H_h32_s20260909_t85",
+  "gates_passed": 19,
+  "gates_total": 20,
+  "all_passed": false,
+  "failing": [
+    "full-search NPS loss"
+  ],
+  "seconds": 86.3,
+  "gates": [
+    {
+      "gate": "protected control agent.py unchanged",
+      "measured": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+      "requirement": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+      "passes": true
+    },
+    {
+      "gate": "protected pre-neural package unchanged",
+      "measured": "d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5",
+      "requirement": "d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5",
+      "passes": true
+    },
+    {
+      "gate": "candidate strips back to the control exactly",
+      "measured": "identical",
+      "requirement": "identical",
+      "passes": true
+    },
+    {
+      "gate": "de Bruijn scan resolves every single-bit board",
+      "measured": "64/64",
+      "requirement": "64/64",
+      "passes": true
+    },
+    {
+      "gate": "de Bruijn scan enumerates multi-bit boards exactly",
+      "measured": "200/200",
+      "requirement": "200/200",
+      "passes": true
+    },
+    {
+      "gate": "agent integer path equals the reference integer path",
+      "measured": "600/600 exact, max |diff| 0 cp",
+      "requirement": "every position exact",
+      "passes": true
+    },
+    {
+      "gate": "correction never exceeds the clamp",
+      "measured": "max |correction| 230 cp, clamp 250",
+      "requirement": "<= 250",
+      "passes": true
+    },
+    {
+      "gate": "colour-swap feature identity",
+      "measured": "600/600",
+      "requirement": "all identical",
+      "passes": true
+    },
+    {
+      "gate": "inference is deterministic across calls",
+      "measured": "identical",
+      "requirement": "identical",
+      "passes": true
+    },
+    {
+      "gate": "inference depends only on the position, not on board history",
+      "measured": "identical",
+      "requirement": "identical",
+      "passes": true
+    },
+    {
+      "gate": "always returns a legal move",
+      "measured": "40/40 legal",
+      "requirement": "all legal",
+      "passes": true
+    },
+    {
+      "gate": "finds mate in one",
+      "measured": "3/3",
+      "requirement": "3/3",
+      "passes": true
+    },
+    {
+      "gate": "unseen Loki-family holdout static MAE (reported, not enforced)",
+      "measured": "366.84 -> 360.59 cp (+6.25)",
+      "requirement": "reported only; MAE is not an acceptance criterion",
+      "passes": true,
+      "detail": {
+        "n": 4000,
+        "mae_control": 366.8435,
+        "mae_candidate": 360.59375,
+        "mean_abs_correction": 15.68225,
+        "corrections_suppressed_pct": 92.825
+      }
+    },
+    {
+      "gate": "full-search NPS loss",
+      "measured": "6.33% (19,122 -> 17,913 nps)",
+      "requirement": "<= 5.0%",
+      "passes": false,
+      "detail": {
+        "control_nps": 19122.376545705203,
+        "candidate_nps": 17912.822947408782,
+        "control_nodes": 92396,
+        "candidate_nodes": 99032,
+        "control_runs": [
+          18638.2,
+          18537.7,
+          19122.4
+        ],
+        "candidate_runs": [
+          17912.8,
+          17637.3,
+          17099.2
+        ]
+      }
+    },
+    {
+      "gate": "package uncompressed size",
+      "measured": "85,960 bytes (agent 58,698 + weights 27,262)",
+      "requirement": "< 50,000,000",
+      "passes": true
+    },
+    {
+      "gate": "no dependency outside the preinstalled stack",
+      "measured": "chess, numpy, numba, stdlib only",
+      "requirement": "torch/numpy/chess/onnxruntime/numba only",
+      "passes": true
+    },
+    {
+      "gate": "RATED_V5 enforced fixtures",
+      "measured": "control 16/16, candidate 16/16",
+      "requirement": "candidate matches the control's 16/16",
+      "passes": true
+    },
+    {
+      "gate": "solved-control regressions",
+      "measured": "0 []",
+      "requirement": "0",
+      "passes": true
+    },
+    {
+      "gate": "draw and passed-pawn defence fixtures preserved",
+      "measured": "broken: none",
+      "requirement": "none broken",
+      "passes": true
+    },
+    {
+      "gate": "r80-24-Rd4 still rejected",
+      "measured": "g5f4",
+      "requirement": "not the rated move",
+      "passes": true
+    }
+  ],
+  "fixture_detail": {
+    "control": {
+      "source": "agent.py",
+      "enforced_total": 16,
+      "enforced_passed": 16,
+      "passed": true,
+      "failed": [],
+      "context_failed": [],
+      "results": [
+        {
+          "id": "r57-22-e6",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 5,
+          "chose": "f1c4",
+          "chose_san": "Bc4+",
+          "score": 336,
+          "acceptable": [],
+          "must_not_play": [
+            "e5e6"
+          ],
+          "passed": true,
+          "seconds": 9.771,
+          "nodes": 229180
+        },
+        {
+          "id": "r57-24-Bxc7",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "d2d4",
+          "chose_san": "Qxd4",
+          "score": 358,
+          "acceptable": [],
+          "must_not_play": [
+            "f4c7"
+          ],
+          "passed": true,
+          "seconds": 0.093,
+          "nodes": 995
+        },
+        {
+          "id": "r57-33-Rc3",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "b1b2",
+          "chose_san": "Kb2",
+          "score": -310,
+          "acceptable": [],
+          "must_not_play": [
+            "c1c3"
+          ],
+          "passed": true,
+          "seconds": 0.024,
+          "nodes": 560
+        },
+        {
+          "id": "r57-59-Kd3",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "d2c2",
+          "chose_san": "Kc2",
+          "score": -494,
+          "acceptable": [],
+          "must_not_play": [
+            "d2d3"
+          ],
+          "passed": true,
+          "seconds": 0.009,
+          "nodes": 194
+        },
+        {
+          "id": "r58-55-Rh2",
+          "round": 58,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 4,
+          "chose": "c3c4",
+          "chose_san": "Rc4",
+          "score": -20,
+          "acceptable": [],
+          "must_not_play": [
+            "h8h2"
+          ],
+          "passed": true,
+          "seconds": 2.425,
+          "nodes": 50937
+        },
+        {
+          "id": "r58-56-e4+",
+          "round": 58,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 5,
+          "chose": "h2d2",
+          "chose_san": "Rd2",
+          "score": -446,
+          "acceptable": [],
+          "must_not_play": [
+            "e5e4"
+          ],
+          "passed": true,
+          "seconds": 1.679,
+          "nodes": 32822
+        },
+        {
+          "id": "r58-84-Bd4",
+          "round": 58,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "b6c5",
+          "chose_san": "Kc5",
+          "score": -457,
+          "acceptable": [],
+          "must_not_play": [
+            "e5d4"
+          ],
+          "passed": true,
+          "seconds": 0.042,
+          "nodes": 626
+        },
+        {
+          "id": "r66-49-e5",
+          "round": 66,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "g8c8",
+          "chose_san": "Rc8",
+          "score": -129,
+          "acceptable": [],
+          "must_not_play": [
+            "e6e5"
+          ],
+          "passed": true,
+          "seconds": 0.022,
+          "nodes": 289
+        },
+        {
+          "id": "r66-55-Kf6",
+          "round": 66,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 5,
+          "chose": "e7d6",
+          "chose_san": "Kd6",
+          "score": -362,
+          "acceptable": [],
+          "must_not_play": [
+            "e7f6"
+          ],
+          "passed": true,
+          "seconds": 2.004,
+          "nodes": 47229
+        },
+        {
+          "id": "r77-33-Rc7+",
+          "round": 77,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "c8c7",
+          "chose_san": "Rc7+",
+          "score": -48,
+          "acceptable": [
+            "c8c7"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.088,
+          "nodes": 1586
+        },
+        {
+          "id": "r77-53-Rc7+",
+          "round": 77,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "d7c7",
+          "chose_san": "Rc7+",
+          "score": -111,
+          "acceptable": [
+            "d7c7"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.029,
+          "nodes": 510
+        },
+        {
+          "id": "r78-48-Kf6",
+          "round": 78,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 3,
+          "chose": "e7f6",
+          "chose_san": "Kf6",
+          "score": 1213,
+          "acceptable": [
+            "e7f6"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.183,
+          "nodes": 4690
+        },
+        {
+          "id": "r78-55-Be4",
+          "round": 78,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "g6e4",
+          "chose_san": "Be4",
+          "score": 1004,
+          "acceptable": [
+            "g6e4"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.009,
+          "nodes": 82
+        },
+        {
+          "id": "r78-60-b1=Q",
+          "round": 78,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "b2b1q",
+          "chose_san": "b1=Q",
+          "score": 2620,
+          "acceptable": [
+            "b2b1q"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.011,
+          "nodes": 258
+        },
+        {
+          "id": "r79-12-Nxd3",
+          "round": 79,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "c8g4",
+          "chose_san": "Bg4",
+          "score": 14,
+          "acceptable": [],
+          "must_not_play": [
+            "e5d3"
+          ],
+          "passed": true,
+          "seconds": 0.077,
+          "nodes": 1255
+        },
+        {
+          "id": "r80-24-Rd4",
+          "round": 80,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 3,
+          "chose": "h2h4",
+          "chose_san": "h4",
+          "score": 180,
+          "acceptable": [],
+          "must_not_play": [
+            "d1d4"
+          ],
+          "passed": true,
+          "seconds": 0.881,
+          "nodes": 18544
+        }
+      ]
+    },
+    "candidate": {
+      "source": "agent_nnue_v2.py",
+      "enforced_total": 16,
+      "enforced_passed": 16,
+      "passed": true,
+      "failed": [],
+      "context_failed": [],
+      "results": [
+        {
+          "id": "r57-22-e6",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 5,
+          "chose": "g4g5",
+          "chose_san": "g5",
+          "score": 285,
+          "acceptable": [],
+          "must_not_play": [
+            "e5e6"
+          ],
+          "passed": true,
+          "seconds": 16.356,
+          "nodes": 343038
+        },
+        {
+          "id": "r57-24-Bxc7",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "d2d4",
+          "chose_san": "Qxd4",
+          "score": 358,
+          "acceptable": [],
+          "must_not_play": [
+            "f4c7"
+          ],
+          "passed": true,
+          "seconds": 0.054,
+          "nodes": 484
+        },
+        {
+          "id": "r57-33-Rc3",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "b1b2",
+          "chose_san": "Kb2",
+          "score": -310,
+          "acceptable": [],
+          "must_not_play": [
+            "c1c3"
+          ],
+          "passed": true,
+          "seconds": 0.027,
+          "nodes": 560
+        },
+        {
+          "id": "r57-59-Kd3",
+          "round": 57,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "d2c2",
+          "chose_san": "Kc2",
+          "score": -494,
+          "acceptable": [],
+          "must_not_play": [
+            "d2d3"
+          ],
+          "passed": true,
+          "seconds": 0.01,
+          "nodes": 193
+        },
+        {
+          "id": "r58-55-Rh2",
+          "round": 58,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 4,
+          "chose": "c3c4",
+          "chose_san": "Rc4",
+          "score": -20,
+          "acceptable": [],
+          "must_not_play": [
+            "h8h2"
+          ],
+          "passed": true,
+          "seconds": 2.679,
+          "nodes": 50751
+        },
+        {
+          "id": "r58-56-e4+",
+          "round": 58,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 5,
+          "chose": "h2d2",
+          "chose_san": "Rd2",
+          "score": -446,
+          "acceptable": [],
+          "must_not_play": [
+            "e5e4"
+          ],
+          "passed": true,
+          "seconds": 1.785,
+          "nodes": 32702
+        },
+        {
+          "id": "r58-84-Bd4",
+          "round": 58,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "b6c5",
+          "chose_san": "Kc5",
+          "score": -457,
+          "acceptable": [],
+          "must_not_play": [
+            "e5d4"
+          ],
+          "passed": true,
+          "seconds": 0.047,
+          "nodes": 626
+        },
+        {
+          "id": "r66-49-e5",
+          "round": 66,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "g8c8",
+          "chose_san": "Rc8",
+          "score": -129,
+          "acceptable": [],
+          "must_not_play": [
+            "e6e5"
+          ],
+          "passed": true,
+          "seconds": 0.025,
+          "nodes": 289
+        },
+        {
+          "id": "r66-55-Kf6",
+          "round": 66,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 5,
+          "chose": "e7d6",
+          "chose_san": "Kd6",
+          "score": -362,
+          "acceptable": [],
+          "must_not_play": [
+            "e7f6"
+          ],
+          "passed": true,
+          "seconds": 2.009,
+          "nodes": 46661
+        },
+        {
+          "id": "r77-33-Rc7+",
+          "round": 77,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "c8c7",
+          "chose_san": "Rc7+",
+          "score": -48,
+          "acceptable": [
+            "c8c7"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.1,
+          "nodes": 1586
+        },
+        {
+          "id": "r77-53-Rc7+",
+          "round": 77,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "d7c7",
+          "chose_san": "Rc7+",
+          "score": -111,
+          "acceptable": [
+            "d7c7"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.03,
+          "nodes": 510
+        },
+        {
+          "id": "r78-48-Kf6",
+          "round": 78,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 3,
+          "chose": "e7f6",
+          "chose_san": "Kf6",
+          "score": 1213,
+          "acceptable": [
+            "e7f6"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.173,
+          "nodes": 4690
+        },
+        {
+          "id": "r78-55-Be4",
+          "round": 78,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "g6e4",
+          "chose_san": "Be4",
+          "score": 1004,
+          "acceptable": [
+            "g6e4"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.007,
+          "nodes": 82
+        },
+        {
+          "id": "r78-60-b1=Q",
+          "round": 78,
+          "kind": "solved_control",
+          "enforced": true,
+          "depth": 2,
+          "chose": "b2b1q",
+          "chose_san": "b1=Q",
+          "score": 2374,
+          "acceptable": [
+            "b2b1q"
+          ],
+          "must_not_play": [],
+          "passed": true,
+          "seconds": 0.012,
+          "nodes": 258
+        },
+        {
+          "id": "r79-12-Nxd3",
+          "round": 79,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 2,
+          "chose": "c8g4",
+          "chose_san": "Bg4",
+          "score": 14,
+          "acceptable": [],
+          "must_not_play": [
+            "e5d3"
+          ],
+          "passed": true,
+          "seconds": 0.055,
+          "nodes": 1012
+        },
+        {
+          "id": "r80-24-Rd4",
+          "round": 80,
+          "kind": "critical",
+          "enforced": true,
+          "depth": 3,
+          "chose": "g5f4",
+          "chose_san": "Bf4",
+          "score": 164,
+          "acceptable": [],
+          "must_not_play": [
+            "d1d4"
+          ],
+          "passed": true,
+          "seconds": 0.723,
+          "nodes": 14545
+        }
+      ]
+    },
+    "broke": [],
+    "repaired": []
+  }
+}

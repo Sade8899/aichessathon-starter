@@ -208,6 +208,13 @@ def gate_reference_equality(
         "conf_bias": float(blob["biases"][2]),
         "gate": bool(blob["flags"][0]),
         "phase_gate": bool(blob["flags"][1]),
+        # Fourth flag, in thousandths: the hard confidence threshold. Weight files
+        # written before it existed carry three flags and mean "no threshold". Omitting
+        # it here made the reference skip a suppression the agent applies, and the gate
+        # correctly reported 18/600 agreement rather than quietly passing.
+        "conf_min": (
+            float(blob["flags"][3]) / 1000.0 if blob["flags"].shape[0] > 3 else 0.0
+        ),
     }
     enc = encode_boards(boards)
     rows = np.arange(len(boards))
@@ -347,8 +354,19 @@ def gate_nps(
         elapsed = time.perf_counter() - started
         return nodes / elapsed, nodes
 
-    control_nps, control_nodes = measure(control)
-    candidate_nps, candidate_nodes = measure(candidate)
+    # Three interleaved repeats, best-of taken per side. A single sweep of 12 positions
+    # is noisy enough to move the reading by several points on a machine with background
+    # work, and this gate has a hard threshold, so the noise must not be the finding.
+    control_runs: list[float] = []
+    candidate_runs: list[float] = []
+    control_nodes = candidate_nodes = 0
+    for _ in range(3):
+        nps, control_nodes = measure(control)
+        control_runs.append(nps)
+        nps, candidate_nodes = measure(candidate)
+        candidate_runs.append(nps)
+    control_nps = max(control_runs)
+    candidate_nps = max(candidate_runs)
     loss = (control_nps - candidate_nps) / control_nps * 100.0
     return [
         {
@@ -361,6 +379,8 @@ def gate_nps(
                 "candidate_nps": candidate_nps,
                 "control_nodes": control_nodes,
                 "candidate_nodes": candidate_nodes,
+                "control_runs": [round(v, 1) for v in control_runs],
+                "candidate_runs": [round(v, 1) for v in candidate_runs],
             },
         }
     ]

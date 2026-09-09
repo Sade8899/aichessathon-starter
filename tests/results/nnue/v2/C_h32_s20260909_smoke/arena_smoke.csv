@@ -1,0 +1,17 @@
+pair_id,agent,agent_is_white,opponent,opponent_family,opening_id,result,score,failure,plies,nodes,wall_seconds,move_ms_mean,move_ms_p95,nps,mean_depth,time_loss,illegal
+a00000,control,True,rustic-alpha-1.5-win64.exe,rustic,arena-00000,0-1,0.0,,50,6134,5.26,190.6,288.1,1287.0,1.64,False,False
+a00000,control,False,rustic-alpha-1.5-win64.exe,rustic,arena-00000,1-0,0.0,,179,30498,32.08,345.1,479.2,993.0,3.38,False,False
+a00000,candidate,True,rustic-alpha-1.5-win64.exe,rustic,arena-00000,1-0,1.0,,149,26278,24.74,316.7,464.8,1106.5,3.07,False,False
+a00000,candidate,False,rustic-alpha-1.5-win64.exe,rustic,arena-00000,1-0,0.0,,63,8163,7.21,217.3,320.1,1211.9,2.42,False,False
+a00001,control,False,rustic-alpha-2.4-win64.exe,rustic,arena-00001,1-0,0.0,,19,1106,1.26,116.6,172.7,1054.0,0.67,False,False
+a00001,control,True,rustic-alpha-2.4-win64.exe,rustic,arena-00001,1/2-1/2,0.5,,97,13411,14.24,274.1,402.0,998.4,2.47,False,False
+a00001,candidate,True,rustic-alpha-2.4-win64.exe,rustic,arena-00001,0-1,0.0,,90,14858,11.51,240.9,379.7,1370.5,1.73,False,False
+a00002,control,True,rustic-alpha-3.0.6-win64.exe,rustic,arena-00002,0-1,0.0,,86,15417,11.56,250.5,387.6,1431.5,2.09,False,False
+a00002,control,False,rustic-alpha-3.0.6-win64.exe,rustic,arena-00002,1-0,0.0,,39,5308,3.21,152.1,248.7,1837.3,2.05,False,False
+a00001,candidate,False,rustic-alpha-2.4-win64.exe,rustic,arena-00001,1-0,0.0,,151,27524,24.85,316.6,457.7,1159.2,2.88,False,False
+a00002,candidate,True,rustic-alpha-3.0.6-win64.exe,rustic,arena-00002,0-1,0.0,,70,9142,8.57,230.8,350.2,1131.5,2.34,False,False
+a00002,candidate,False,rustic-alpha-3.0.6-win64.exe,rustic,arena-00002,1-0,0.0,,57,8320,6.17,202.2,316.3,1469.8,2.21,False,False
+a00003,control,True,shallowblue_x86-64.exe,shallowblue,arena-00003,1-0,1.0,,45,6190,5.95,179.3,277.1,1501.4,1.65,False,False
+a00003,control,False,shallowblue_x86-64.exe,shallowblue,arena-00003,1-0,0.0,,49,5419,6.04,190.4,287.3,1185.7,1.96,False,False
+a00003,candidate,True,shallowblue_x86-64.exe,shallowblue,arena-00003,0-1,0.0,,116,17381,19.86,282.8,429.2,1059.8,3.03,False,False
+a00003,candidate,False,shallowblue_x86-64.exe,shallowblue,arena-00003,1-0,0.0,,127,19805,22.17,294.5,444.9,1067.6,3.25,False,False

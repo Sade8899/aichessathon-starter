@@ -1,0 +1,10 @@
+{
+  "tag": "H_h32_s20260909_t85",
+  "weights": "nnue_v2_weights.npz",
+  "weight_sha256": "aa2ae4432ad62ad97684cdd832fc5c685e79fa09e079a1dcab17a69392d3aa32",
+  "weight_bytes": 27262,
+  "agent": "agent_nnue_v2.py",
+  "agent_sha256": "5e37d75c254ce68e495b5fac6a50b9813d0709e52690ee96a3a7223627afb20b",
+  "agent_bytes": 58698,
+  "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda"
+}

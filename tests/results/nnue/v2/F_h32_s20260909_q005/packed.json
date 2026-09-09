@@ -4,7 +4,7 @@
   "weight_sha256": "f2062a0483ad805b01dfee6c9d170652ed7051d8abc27c33c140e1d807353f66",
   "weight_bytes": 27254,
   "agent": "agent_nnue_v2.py",
-  "agent_sha256": "12b2bdc04bd01eb4069ca2c9198f1771c8ce61e775fbd70feab5bf265380cb55",
-  "agent_bytes": 57765,
+  "agent_sha256": "6bb80b6eea6ab78dee5f5f9a38f65e8aa9a9189f0ac3e2721a271b790d35cf18",
+  "agent_bytes": 58698,
   "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda"
 }

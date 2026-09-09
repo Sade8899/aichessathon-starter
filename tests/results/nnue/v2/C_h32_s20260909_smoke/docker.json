@@ -1,0 +1,86 @@
+{
+  "tag": "C_h32_s20260909_smoke",
+  "zip": "tests\\results\\nnue\\v2\\C_h32_s20260909_smoke\\candidate.zip",
+  "zip_sha256": "4fbaa05b83d10dc5545a0aacdd963282a1ca0189d0bf8b21982d8ecdf252df2d",
+  "zip_bytes": 33861,
+  "members": [
+    {
+      "name": "agent.py",
+      "bytes": 57765,
+      "sha256": "a9a6da21f8dcf9274b1a66a2ffecc2b11b03a84f7509a71ec293725ac9973868"
+    },
+    {
+      "name": "nnue_v2_weights.npz",
+      "bytes": 27254,
+      "sha256": "51a939297a866243581aa5a70bf6aadb5195c46c77230712378c69f81d795319"
+    }
+  ],
+  "uncompressed_bytes": 85019,
+  "under_50mb": true,
+  "agent_at_root": true,
+  "no_folders": true,
+  "image": "chessathon-nnue:platform",
+  "image_id": "sha256:8fc6496546d344aa147ed9ee5379b6ca17413c9d8c227ba226ddea0b546b0819",
+  "docker_version": "Docker version 29.7.2, build a7dcaa6",
+  "dockerfile_sha256": "b65b9c9c459bb2c22416a64f62c0b842551cf12527b0ef74d36c8eafadd9d01b",
+  "constraints": {
+    "cpus": 1,
+    "memory": "2g",
+    "network": "none",
+    "read_only": true,
+    "tmpfs": "/tmp:size=256m"
+  },
+  "container": {
+    "import_seconds": 8.361,
+    "import_under_90s": true,
+    "has_get_move": true,
+    "nnue_status": "loaded 51a939297a866243",
+    "nnue_ready": true,
+    "nnue_hidden": 32,
+    "nnue_gate": true,
+    "nnue_phase_gate": false,
+    "numba_warm_at_import": [
+      {
+        "function": "numeric_evaluate",
+        "compiled_signatures": 1
+      },
+      {
+        "function": "nnue_accumulate",
+        "compiled_signatures": 1
+      },
+      {
+        "function": "numeric_evaluate_v2",
+        "compiled_signatures": 1
+      }
+    ],
+    "fused_kernel_warm": true,
+    "correction_sample": 98,
+    "eval_differs_from_base": true,
+    "smoke_white": {
+      "result": "1-0",
+      "plies": 33,
+      "legal": true,
+      "agent_moves": 17,
+      "move_ms_mean": 2618.0,
+      "move_ms_max": 3603.5
+    },
+    "smoke_black": {
+      "result": "0-1",
+      "plies": 16,
+      "legal": true,
+      "agent_moves": 8,
+      "move_ms_mean": 2865.4,
+      "move_ms_max": 3602.1
+    },
+    "all_legal": true,
+    "no_flags": true,
+    "peak_memory_bytes": 211435520,
+    "peak_memory_mb": 201.6,
+    "peak_under_2gb": true,
+    "files_visible": [
+      "agent.py",
+      "nnue_v2_weights.npz"
+    ]
+  },
+  "passes": true
+}

@@ -363,6 +363,7 @@ _NNUE_CONF_BIAS = 0.0
 _NNUE_GATE = False
 _NNUE_PHASE_GATE = False
 _NNUE_PHASE_GATE_MAX = 24
+_NNUE_CONF_MIN = 0.0
 _nnue_ready = False
 _nnue_status = "not loaded"
 
@@ -417,7 +418,7 @@ def load_nnue() -> str:
     global _NNUE_EMBED, _NNUE_BIAS, _NNUE_MG, _NNUE_EG, _NNUE_CONF
     global _NNUE_MG_SCALE, _NNUE_EG_SCALE, _NNUE_CONF_SCALE
     global _NNUE_MG_BIAS, _NNUE_EG_BIAS, _NNUE_CONF_BIAS
-    global _NNUE_GATE, _NNUE_PHASE_GATE, _NNUE_PHASE_GATE_MAX
+    global _NNUE_GATE, _NNUE_PHASE_GATE, _NNUE_PHASE_GATE_MAX, _NNUE_CONF_MIN
     global _nnue_ready, _nnue_status, NNUE_HIDDEN
 
     path = _nnue_weights_path()
@@ -457,7 +458,7 @@ def load_nnue() -> str:
         if mg.shape != (width,) or eg.shape != (width,) or conf.shape != (width,):
             _nnue_status = "head shape mismatch; handcrafted evaluation only"
             return _nnue_status
-        if scales.shape != (3,) or biases.shape != (3,) or flags.shape != (3,):
+        if scales.shape != (3,) or biases.shape != (3,) or flags.shape[0] < 3:
             _nnue_status = "scale or flag shape mismatch; handcrafted only"
             return _nnue_status
         if not (np.isfinite(scales).all() and np.isfinite(biases).all()):
@@ -495,6 +496,10 @@ def load_nnue() -> str:
     _NNUE_GATE = bool(flags[0])
     _NNUE_PHASE_GATE = bool(flags[1])
     _NNUE_PHASE_GATE_MAX = int(flags[2])
+    # Fourth flag, in thousandths: a HARD confidence threshold. Below it the
+    # correction is exactly zero and the position evaluates bit-identically to
+    # the control. Older weight files carry three flags and mean "no threshold".
+    _NNUE_CONF_MIN = (float(flags[3]) / 1000.0) if flags.shape[0] > 3 else 0.0
     _nnue_ready = True
     _nnue_status = f"loaded {digest[:16]}"
     return _nnue_status
@@ -652,6 +657,14 @@ def _nnue_blend(mg_sum: int, eg_sum: int, conf_sum: int, phase_units: int) -> in
         else:
             scaled = math.exp(logit)
             confidence = scaled / (1.0 + scaled)
+        # The hard threshold is the point of the design. A soft gate still nudges every
+        # leaf by a little, and enough small nudges across a subtree flip a root choice
+        # the control had right -- measured, that is what caps the safe correction at
+        # about 14 cp. Below the threshold the correction is exactly zero, so the great
+        # majority of positions evaluate bit-identically to the control and the network
+        # spends its licence only where it claims to know something.
+        if confidence < _NNUE_CONF_MIN:
+            return 0
         residual *= confidence
     return int(residual)
 

@@ -1,0 +1,260 @@
+{
+  "tag": "C_h32_s20260909_smoke",
+  "label": "smoke",
+  "candidate_path": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter\\agent_nnue_v2.py",
+  "pairs": 4,
+  "games": 16,
+  "families": [
+    "rustic",
+    "shallowblue",
+    "zagreus",
+    "loki"
+  ],
+  "clock_ms": 3000,
+  "increment_ms": 500,
+  "engine_movetime_ms": 60,
+  "workers": 2,
+  "seed": 20260912,
+  "wall_seconds": 112.5,
+  "control": {
+    "games": 8,
+    "W-D-L": "1-1-6",
+    "wins": 1,
+    "draws": 1,
+    "losses": 6,
+    "draw_pct": 12.5,
+    "score_pct": 18.75,
+    "elo": -254.7,
+    "time_losses": 0,
+    "illegal_moves": 0,
+    "infrastructure_failures": 0,
+    "nps_mean": 1286.0,
+    "mean_depth": 1.99,
+    "move_ms_p95_mean": 317.8
+  },
+  "candidate": {
+    "games": 8,
+    "W-D-L": "1-0-7",
+    "wins": 1,
+    "draws": 0,
+    "losses": 7,
+    "draw_pct": 0.0,
+    "score_pct": 12.5,
+    "elo": -338.0,
+    "time_losses": 0,
+    "illegal_moves": 0,
+    "infrastructure_failures": 0,
+    "nps_mean": 1197.1,
+    "mean_depth": 2.62,
+    "move_ms_p95_mean": 395.4
+  },
+  "paired_mean_diff": -0.0625,
+  "paired_ci95": [
+    -0.4375,
+    0.3125
+  ],
+  "paired_pairs": 8,
+  "elo_diff": -21.7,
+  "elo_ci95": [
+    -163.0,
+    112.3
+  ],
+  "ci_excludes_zero": false,
+  "draw_delta_pct": -12.5,
+  "by_opponent": {
+    "rustic": {
+      "pairs": 6,
+      "mean_diff": 0.0833,
+      "ci95": [
+        -0.25,
+        0.5
+      ],
+      "held_out_opponent": false,
+      "control": {
+        "games": 6,
+        "W-D-L": "0-1-5",
+        "wins": 0,
+        "draws": 1,
+        "losses": 5,
+        "draw_pct": 16.67,
+        "score_pct": 8.33,
+        "elo": -416.6,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1266.9,
+        "mean_depth": 2.05,
+        "move_ms_p95_mean": 329.7
+      },
+      "candidate": {
+        "games": 6,
+        "W-D-L": "1-0-5",
+        "wins": 1,
+        "draws": 0,
+        "losses": 5,
+        "draw_pct": 0.0,
+        "score_pct": 16.67,
+        "elo": -279.6,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1241.6,
+        "mean_depth": 2.44,
+        "move_ms_p95_mean": 381.5
+      }
+    },
+    "shallowblue": {
+      "pairs": 2,
+      "mean_diff": -0.5,
+      "ci95": [
+        -1.0,
+        0.0
+      ],
+      "held_out_opponent": false,
+      "control": {
+        "games": 2,
+        "W-D-L": "1-0-1",
+        "wins": 1,
+        "draws": 0,
+        "losses": 1,
+        "draw_pct": 0.0,
+        "score_pct": 50.0,
+        "elo": -0.0,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1343.6,
+        "mean_depth": 1.8,
+        "move_ms_p95_mean": 282.2
+      },
+      "candidate": {
+        "games": 2,
+        "W-D-L": "0-0-2",
+        "wins": 0,
+        "draws": 0,
+        "losses": 2,
+        "draw_pct": 0.0,
+        "score_pct": 0.0,
+        "elo": -2400.0,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1063.7,
+        "mean_depth": 3.14,
+        "move_ms_p95_mean": 437.0
+      }
+    },
+    "zagreus": {
+      "pairs": 0,
+      "mean_diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "held_out_opponent": false,
+      "control": {
+        "games": 0
+      },
+      "candidate": {
+        "games": 0
+      }
+    },
+    "loki": {
+      "pairs": 0,
+      "mean_diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "held_out_opponent": true,
+      "control": {
+        "games": 0
+      },
+      "candidate": {
+        "games": 0
+      }
+    }
+  },
+  "by_colour": {
+    "white": {
+      "pairs": 4,
+      "mean_diff": -0.125,
+      "ci95": [
+        -0.75,
+        0.625
+      ],
+      "control": {
+        "games": 4,
+        "W-D-L": "1-1-2",
+        "wins": 1,
+        "draws": 1,
+        "losses": 2,
+        "draw_pct": 25.0,
+        "score_pct": 37.5,
+        "elo": -88.7,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1304.6,
+        "mean_depth": 1.96,
+        "move_ms_p95_mean": 338.7
+      },
+      "candidate": {
+        "games": 4,
+        "W-D-L": "1-0-3",
+        "wins": 1,
+        "draws": 0,
+        "losses": 3,
+        "draw_pct": 0.0,
+        "score_pct": 25.0,
+        "elo": -190.8,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1167.1,
+        "mean_depth": 2.54,
+        "move_ms_p95_mean": 406.0
+      }
+    },
+    "black": {
+      "pairs": 4,
+      "mean_diff": 0.0,
+      "ci95": [
+        0.0,
+        0.0
+      ],
+      "control": {
+        "games": 4,
+        "W-D-L": "0-0-4",
+        "wins": 0,
+        "draws": 0,
+        "losses": 4,
+        "draw_pct": 0.0,
+        "score_pct": 0.0,
+        "elo": -2400.0,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1267.5,
+        "mean_depth": 2.02,
+        "move_ms_p95_mean": 297.0
+      },
+      "candidate": {
+        "games": 4,
+        "W-D-L": "0-0-4",
+        "wins": 0,
+        "draws": 0,
+        "losses": 4,
+        "draw_pct": 0.0,
+        "score_pct": 0.0,
+        "elo": -2400.0,
+        "time_losses": 0,
+        "illegal_moves": 0,
+        "infrastructure_failures": 0,
+        "nps_mean": 1227.1,
+        "mean_depth": 2.69,
+        "move_ms_p95_mean": 384.8
+      }
+    }
+  }
+}

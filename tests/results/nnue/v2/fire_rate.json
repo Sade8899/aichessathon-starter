@@ -1,0 +1,30 @@
+{
+  "F_h32_s20260909_q005": {
+    "conf_min": 0.0,
+    "fires_pct": 91.44,
+    "mean_abs_all": 13.57,
+    "mean_abs_when_fires": 14.84,
+    "max_abs": 235.0
+  },
+  "H_h32_s20260909_t85": {
+    "conf_min": 0.85,
+    "fires_pct": 4.29,
+    "mean_abs_all": 9.46,
+    "mean_abs_when_fires": 220.82,
+    "max_abs": 247.0
+  },
+  "H_h32_s20260909_t90": {
+    "conf_min": 0.9,
+    "fires_pct": 2.03,
+    "mean_abs_all": 4.7,
+    "mean_abs_when_fires": 231.3,
+    "max_abs": 247.0
+  },
+  "H_h32_s20260909_t95": {
+    "conf_min": 0.95,
+    "fires_pct": 0.5,
+    "mean_abs_all": 1.19,
+    "mean_abs_when_fires": 240.23,
+    "max_abs": 247.0
+  }
+}

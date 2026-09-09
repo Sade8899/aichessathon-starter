@@ -66,6 +66,12 @@ PRESERVE_FLOOR = 0.97
 # changes the fewest root decisions and V1 nonetheless made its largest change.
 PHASE_GATE_MAX = 20
 
+# Hard confidence threshold. Below it the deployed correction is exactly zero, so the
+# position evaluates bit-identically to the control. A soft gate still perturbs every
+# leaf slightly and enough slight perturbations flip a root choice; this makes the
+# network choose *where* to act rather than only how much.
+CONF_MIN = 0.0
+
 
 def set_seeds(seed: int) -> None:
     import torch
@@ -355,13 +361,22 @@ VARIANTS: dict[str, dict[str, Any]] = {
     # G is F with the phase gate as well: corrections only where they were calibrated.
     "G": {"w_value": 0.3, "w_rank": 1.0, "w_anchor": 10.0, "w_draw": 4.0,
           "w_conf": 1.0, "w_quiet": 0.4, "gate": True, "phase_gate": True},
+    # H is the hard-threshold family. The frontier measured with a soft gate caps the
+    # safe correction at about 14 cp, because a soft gate nudges every leaf a little and
+    # enough little nudges flip a root choice. H keeps the moderate anchor of D but
+    # suppresses the correction entirely below a confidence threshold, so most positions
+    # evaluate bit-identically to the control and the licence is spent where the network
+    # claims to know something. `conf_min` is swept from the command line.
+    "H": {"w_value": 0.7, "w_rank": 1.0, "w_anchor": 3.0, "w_draw": 2.0,
+          "w_conf": 1.0, "w_quiet": 0.05, "gate": True, "phase_gate": False,
+          "conf_min": 0.9},
 }
 
 
 # ------------------------------------------------------------------------- quantizing
 
 
-def quantize(model: Any, gate: bool, phase_gate: bool) -> dict[str, Any]:
+def quantize(model: Any, gate: bool, phase_gate: bool, conf_min: float) -> dict[str, Any]:
     """int8 weights, int32 accumulators, per-tensor symmetric scales.
 
     Identical to V1 for the two value heads, so the residual half stays comparable. The
@@ -414,6 +429,7 @@ def quantize(model: Any, gate: bool, phase_gate: bool) -> dict[str, Any]:
         "conf_bias": cf_b,
         "gate": bool(gate),
         "phase_gate": bool(phase_gate),
+        "conf_min": float(conf_min),
     }
 
 
@@ -480,7 +496,10 @@ def quant_correction(
         logit = (acc @ q["conf_q"].astype(np.int32)) * q["conf_scale"] / 127.0 + q[
             "conf_bias"
         ]
-        residual = residual / (1.0 + np.exp(-logit))
+        confidence = 1.0 / (1.0 + np.exp(-logit))
+        residual = residual * confidence
+        if q.get("conf_min", 0.0) > 0.0:
+            residual = np.where(confidence < q["conf_min"], 0.0, residual)
     if q["phase_gate"]:
         residual = np.where(units <= PHASE_GATE_MAX, residual, 0.0)
     return np.trunc(residual).astype(np.float64)
@@ -552,6 +571,11 @@ def train_variant(
                 if cfg["gate"]:
                     residual = residual * conf
                 value = residual.numpy().astype(np.float64)
+                floor = cfg.get("conf_min", CONF_MIN)
+                if cfg["gate"] and floor > 0.0:
+                    # Selection metrics must see the deployed correction, threshold and
+                    # all, or a checkpoint is chosen on behaviour it will never exhibit.
+                    value = np.where(conf.numpy() < floor, 0.0, value)
                 if cfg["phase_gate"]:
                     value = np.where(
                         t_units[t].numpy() <= PHASE_GATE_MAX, value, 0.0
@@ -739,7 +763,7 @@ def train_variant(
 
     assert best_state is not None
     model.load_state_dict(best_state)
-    q = quantize(model, cfg["gate"], cfg["phase_gate"])
+    q = quantize(model, cfg["gate"], cfg["phase_gate"], cfg.get("conf_min", CONF_MIN))
 
     outdir.mkdir(parents=True, exist_ok=True)
     np.savez(
@@ -752,7 +776,11 @@ def train_variant(
         conf=q["conf_q"],
         scales=np.array([q["mg_scale"], q["eg_scale"], q["conf_scale"]], dtype=np.float64),
         biases=np.array([q["mg_bias"], q["eg_bias"], q["conf_bias"]], dtype=np.float64),
-        flags=np.array([int(q["gate"]), int(q["phase_gate"]), PHASE_GATE_MAX], dtype=np.int64),
+        flags=np.array(
+            [int(q["gate"]), int(q["phase_gate"]), PHASE_GATE_MAX,
+             round(q["conf_min"] * 1000)],
+            dtype=np.int64,
+        ),
     )
     import torch
 
