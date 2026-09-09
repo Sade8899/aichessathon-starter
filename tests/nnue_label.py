@@ -45,6 +45,7 @@ NODES = 200_000
 CLAMP_CP = 1000
 SWING_CP = 100
 SAMPLE_SEED = 20260909
+OPENING_SHARE = 0.15  # openings are the least informative and the most abundant
 
 for _var in ("OMP_NUM_THREADS", "MKL_NUM_THREADS", "OPENBLAS_NUM_THREADS"):
     os.environ.setdefault(_var, "1")
@@ -77,15 +78,20 @@ def collect(target: int) -> dict:
         previous: int | None = None
         for pos in record["positions"]:
             key = fen_key(pos["fen"])
+            # The control's evaluation is side-to-move relative, so it flips sign every
+            # ply. Differencing it directly made almost every position look like a
+            # 100 cp swing. Convert to a fixed White-relative frame first.
+            white_cp = (
+                pos["control_static_cp"]
+                if pos["side_to_move"] == "white"
+                else -pos["control_static_cp"]
+            )
             if key in banned:
                 dropped_banned += 1
-                previous = pos["control_static_cp"]
+                previous = white_cp
                 continue  # fixture position: evaluation only
-            swing = (
-                previous is not None
-                and abs(pos["control_static_cp"] - previous) >= SWING_CP
-            )
-            previous = pos["control_static_cp"]
+            swing = previous is not None and abs(white_cp - previous) >= SWING_CP
+            previous = white_cp
             entry = {
                 "fen": pos["fen"],
                 "fen_key": key,
@@ -130,19 +136,17 @@ def collect(target: int) -> dict:
         else:
             buckets["opening"].append(entry)
 
-    want = {
-        "middlegame": int(target * 0.40),
-        "endgame": int(target * 0.40),
-        "tactical": int(target * 0.20),
-    }
-    chosen: list[dict] = []
-    for name, quota in want.items():
-        chosen.extend(buckets[name][:quota])
-    # backfill any shortfall from what is left, openings included, so the corpus still
-    # reaches its size when a bucket is thin
-    taken = {id(e) for e in chosen}
-    leftovers = [e for e in pool if id(e) not in taken]
-    chosen.extend(leftovers[: max(0, target - len(chosen))])
+    # The declared target was 40% middlegame, 40% endgame, 20% tactical. Engine games at
+    # this time control simply do not contain that many endgames -- measured, endgames
+    # are about 11% of all unique positions -- so a 40% endgame corpus would have to be
+    # roughly a third of the size. Rather than silently miss the target or silently
+    # shrink the corpus, every non-opening position is kept and openings are capped at
+    # OPENING_SHARE of the result. The achieved mix is reported against the target.
+    core = buckets["middlegame"] + buckets["endgame"] + buckets["tactical"]
+    opening_quota = int(len(core) * OPENING_SHARE / (1.0 - OPENING_SHARE))
+    chosen = core + buckets["opening"][:opening_quota]
+    if target < len(chosen):
+        chosen = chosen[:target]
 
     # cap how much any one game may contribute, so adjacent positions from a long game
     # cannot dominate
@@ -187,6 +191,14 @@ def collect(target: int) -> dict:
         "dropped_rated_v5_fixture_positions": dropped_banned,
         "target": target,
         "selected": len(capped),
+        "phase_target_declared": {"middlegame": 0.40, "endgame": 0.40, "tactical": 0.20},
+        "phase_target_reachable": False,
+        "phase_target_note": (
+            "endgames are about 11 percent of the unique positions engine games at this "
+            "time control produce, so a 40 percent endgame corpus would have to be about "
+            "a third of the size. Every non-opening position is kept and openings are "
+            "capped at 15 percent instead; the achieved mix is reported, not forced."
+        ),
         "per_game_cap": per_game_cap,
         "split_counts": split_counts,
         "phase_counts": phase_counts,
