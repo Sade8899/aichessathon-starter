@@ -16,6 +16,7 @@ does not depend on file order or shard order.
 from __future__ import annotations
 
 import argparse
+import contextlib
 import hashlib
 import json
 import multiprocessing as mp
@@ -79,7 +80,7 @@ def collect(target: int) -> dict:
             if key in banned:
                 dropped_banned += 1
                 previous = pos["control_static_cp"]
-                continue
+                continue  # fixture position: evaluation only
             swing = (
                 previous is not None
                 and abs(pos["control_static_cp"] - previous) >= SWING_CP
@@ -116,7 +117,9 @@ def collect(target: int) -> dict:
 
     # Target mix: 40% middlegame, 40% endgame, 20% tactical/swing. Endgames are the
     # scarce class in engine games, so the achieved mix is reported rather than forced.
-    buckets: dict[str, list[dict]] = {"middlegame": [], "endgame": [], "tactical": [], "opening": []}
+    buckets: dict[str, list[dict]] = {
+        "middlegame": [], "endgame": [], "tactical": [], "opening": []
+    }
     for entry in pool:
         if entry["tactical"]:
             buckets["tactical"].append(entry)
@@ -216,10 +219,8 @@ def label_shard(args: tuple[int, int, str]) -> dict:
     if out.exists():
         with out.open(encoding="utf-8") as handle:
             for line in handle:
-                try:
+                with contextlib.suppress(Exception):
                     done.add(json.loads(line)["fen_key"])
-                except Exception:  # noqa: BLE001
-                    pass
 
     todo = [e for e in entries if e["fen_key"] not in done]
     if not todo:

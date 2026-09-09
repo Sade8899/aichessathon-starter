@@ -13,6 +13,7 @@ own static evaluation, which becomes the baseline the residual is measured again
 from __future__ import annotations
 
 import argparse
+import contextlib
 import json
 import multiprocessing as mp
 import os
@@ -101,11 +102,9 @@ class UciEngine:
         try:
             self.send("quit")
             self.proc.wait(timeout=2)
-        except Exception:  # noqa: BLE001
-            try:
+        except Exception:
+            with contextlib.suppress(Exception):
                 self.proc.kill()
-            except Exception:  # noqa: BLE001
-                pass
 
 
 def legal_uci(uci: str | None, board: chess.Board) -> bool:
@@ -223,7 +222,7 @@ def play_one(entry: dict) -> dict:
                 break
             board.push(move)
             played.append(uci)
-    except Exception as exc:  # noqa: BLE001
+    except Exception as exc:
         failure = f"exception:{type(exc).__name__}:{exc}"
     finally:
         if engine is not None:

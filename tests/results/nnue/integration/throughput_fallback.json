@@ -1,0 +1,119 @@
+{
+  "clock_ms": 8000,
+  "reps": 2,
+  "positions": 6,
+  "method": "alternating paired repetitions; cold pass reported separately",
+  "candidate_nnue_status": "weights missing; handcrafted evaluation only",
+  "candidate_uses_fused_path": false,
+  "cold": {
+    "control": {
+      "move": "g1f3",
+      "seconds": 0.24040180002339184,
+      "nodes": 3440,
+      "nps": 14309.377049861014
+    },
+    "candidate": {
+      "move": "g1f3",
+      "seconds": 0.18873829999938607,
+      "nodes": 2051,
+      "nps": 10866.898769389527
+    },
+    "note": "first search after import; includes any cache and branch warm-up"
+  },
+  "warm_control": {
+    "nps_mean": 12898.6,
+    "nps_median": 13120.4,
+    "nodes_total": 27833,
+    "seconds_total": 2.19
+  },
+  "warm_candidate": {
+    "nps_mean": 13304.6,
+    "nps_median": 13278.6,
+    "nodes_total": 30398,
+    "seconds_total": 2.31
+  },
+  "nps_ratio": 1.0315,
+  "nps_loss_pct": -3.15,
+  "gate_max_loss_pct": 10.0,
+  "throughput_gate_passes": true,
+  "per_position": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "control_nps": 12529.8,
+      "candidate_nps": 11083.9,
+      "nps_loss_pct": 11.54,
+      "same_move_reps": "2/2",
+      "control_moves": [
+        "g1f3"
+      ],
+      "candidate_moves": [
+        "g1f3"
+      ]
+    },
+    {
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "control_nps": 9792.8,
+      "candidate_nps": 12272.1,
+      "nps_loss_pct": -25.32,
+      "same_move_reps": "2/2",
+      "control_moves": [
+        "b1c3"
+      ],
+      "candidate_moves": [
+        "b1c3"
+      ]
+    },
+    {
+      "fen": "r4rk1/p1pq2pp/1np3p1/4P3/1P1p1BP1/1P3P2/P2Q4/2RK1B1R w - - 0 22",
+      "control_nps": 13222.1,
+      "candidate_nps": 12758.1,
+      "nps_loss_pct": 3.51,
+      "same_move_reps": "2/2",
+      "control_moves": [
+        "f1d3"
+      ],
+      "candidate_moves": [
+        "f1d3"
+      ]
+    },
+    {
+      "fen": "r2q1rk1/pp2ppbp/2np1np1/8/2PNP3/2N1B3/PP2BPPP/R2Q1RK1 b - - 0 10",
+      "control_nps": 13964.3,
+      "candidate_nps": 13887.2,
+      "nps_loss_pct": 0.55,
+      "same_move_reps": "2/2",
+      "control_moves": [
+        "d8a5"
+      ],
+      "candidate_moves": [
+        "d8a5"
+      ]
+    },
+    {
+      "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1",
+      "control_nps": 13977.6,
+      "candidate_nps": 15310.2,
+      "nps_loss_pct": -9.53,
+      "same_move_reps": "2/2",
+      "control_moves": [
+        "b4f4"
+      ],
+      "candidate_moves": [
+        "b4f4"
+      ]
+    },
+    {
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+      "control_nps": 13905.2,
+      "candidate_nps": 14516.0,
+      "nps_loss_pct": -4.39,
+      "same_move_reps": "2/2",
+      "control_moves": [
+        "d1d8"
+      ],
+      "candidate_moves": [
+        "d1d8"
+      ]
+    }
+  ]
+}

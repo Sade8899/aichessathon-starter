@@ -23,7 +23,7 @@ import numpy as np
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
-import nnue_model as M  # noqa: E402
+import nnue_model as nn_features
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DATASET = REPO / "tests" / "results" / "nnue" / "dataset"
@@ -62,8 +62,8 @@ def prove_augmentation_is_label_preserving(fens: list[str]) -> dict:
     for fen in fens:
         board = chess.Board(fen)
         mirrored = colour_swapped(board)
-        i1, a1 = M.active_features(board)
-        i2, a2 = M.active_features(mirrored)
+        i1, a1 = nn_features.active_features(board)
+        i2, a2 = nn_features.active_features(mirrored)
         checked += 1
         if np.array_equal(np.sort(i1), np.sort(i2)):
             same_features += 1
@@ -93,17 +93,17 @@ def encode(rows: list[dict]) -> dict:
     n = len(rows)
     indices = np.zeros((n, MAX_PIECES), dtype=np.int64)
     mask = np.zeros((n, MAX_PIECES), dtype=np.float32)
-    aux = np.zeros((n, M.NUM_AUX), dtype=np.float32)
+    aux = np.zeros((n, nn_features.NUM_AUX), dtype=np.float32)
     phase = np.zeros(n, dtype=np.float32)
     target = np.zeros(n, dtype=np.float32)
     for i, row in enumerate(rows):
         board = chess.Board(row["fen"])
-        idx, a = M.active_features(board)
+        idx, a = nn_features.active_features(board)
         k = min(len(idx), MAX_PIECES)
         indices[i, :k] = idx[:k]
         mask[i, :k] = 1.0
         aux[i] = a
-        phase[i] = M.phase_blend(board)
+        phase[i] = nn_features.phase_blend(board)
         target[i] = float(row["residual_target"])
     return {
         "indices": indices,
@@ -174,7 +174,7 @@ def quant_forward(q: dict, indices: np.ndarray, mask: np.ndarray, aux: np.ndarra
                   phase: np.ndarray) -> np.ndarray:
     """Reference integer inference, vectorised. The agent's Numba path must match this."""
     n = indices.shape[0]
-    acc = np.zeros((n, M.HIDDEN), dtype=np.int32)
+    acc = np.zeros((n, nn_features.HIDDEN), dtype=np.int32)
     for i in range(n):
         active = indices[i][mask[i] > 0]
         if active.size:
@@ -211,7 +211,7 @@ def metrics(pred: np.ndarray, truth: np.ndarray, rows: list[dict], band: int = 2
                 "median_ae": round(float(np.median(absolute[sel])), 2),
             }
     return {
-        "n": int(len(truth)),
+        "n": len(truth),
         "mae": round(float(np.mean(absolute)), 2),
         "median_ae": round(float(np.median(absolute)), 2),
         "rmse": round(float(np.sqrt(np.mean(err**2))), 2),
@@ -255,8 +255,8 @@ def main() -> None:
     print("encoding...")
     data = {name: encode(rows) for name, rows in splits.items() if rows}
 
-    Residual = M.build_torch_model()
-    model = Residual()
+    residual_class = nn_features.build_torch_model()
+    model = residual_class()
     print("parameters:", sum(p.numel() for p in model.parameters()))
 
     optimiser = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=1e-5)
@@ -345,7 +345,8 @@ def main() -> None:
             continue
         pack = data[name]
         with torch.no_grad():
-            fp = model(*[torch.from_numpy(pack[k]) for k in ("indices", "mask", "aux", "phase")]).numpy()
+            args_t = [torch.from_numpy(pack[k]) for k in ("indices", "mask", "aux", "phase")]
+            fp = model(*args_t).numpy()
         qp = quant_forward(q, pack["indices"], pack["mask"], pack["aux"], pack["phase"])
         report[f"{name}_float"] = metrics(fp, pack["target"], pack["rows"])
         report[f"{name}_quant"] = metrics(qp, pack["target"], pack["rows"])

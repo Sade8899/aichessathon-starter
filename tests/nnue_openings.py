@@ -218,7 +218,9 @@ def main() -> None:
     ap.add_argument("--increment-ms", type=int, default=500)
     ap.add_argument("--engine-movetime-ms", type=int, default=50)
     ap.add_argument(
-        "--out", type=pathlib.Path, default=REPO / "tests" / "results" / "nnue" / "game_manifest.json"
+        "--out",
+        type=pathlib.Path,
+        default=REPO / "tests" / "results" / "nnue" / "game_manifest.json",
     )
     args = ap.parse_args()
 
@@ -259,7 +261,10 @@ def main() -> None:
     args.out.parent.mkdir(parents=True, exist_ok=True)
     args.out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
-    print(f"openings: {len(openings)} ({len(from_pgn)} from eligible PGNs, {len(from_rng)} seeded random)")
+    print(
+        f"openings: {len(openings)} ({len(from_pgn)} from eligible PGNs, "
+        f"{len(from_rng)} seeded random)"
+    )
     print(f"banned fixture FENs: {len(banned)}")
     print(f"games in manifest: {len(entries)}")
     print(f"split counts: {counts}")

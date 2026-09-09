@@ -97,8 +97,9 @@ def main() -> None:
 
     baseline = next((r for r in rows if r.get("workers") == 1), None)
     for row in rows:
-        if baseline and row.get("control_move_ms_median") and baseline.get("control_move_ms_median"):
-            slow = row["control_move_ms_median"] / baseline["control_move_ms_median"]
+        base_ms = baseline.get("control_move_ms_median") if baseline else None
+        if base_ms and row.get("control_move_ms_median"):
+            slow = row["control_move_ms_median"] / base_ms
             row["move_time_inflation_vs_1worker"] = round(slow, 3)
             # a slower move at a fixed clock means fewer nodes, i.e. degraded search
             row["degradation_exceeds_10pct"] = slow > 1.10
@@ -128,12 +129,15 @@ def main() -> None:
         "calibration_offset": 100,
         "levels": rows,
         "selected_workers": best["workers"] if best else 1,
-        "selection_rule": "highest positions/hour among levels with <=10% control move-time inflation",
+        "selection_rule": (
+            "highest positions/hour among levels with <=10% move-time inflation"
+        ),
     }
     out.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
     print()
-    print(f"{'workers':>8} {'games/h':>10} {'pos/h':>10} {'move ms':>9} {'inflation':>10} {'fail':>5}")
+    header = f"{'workers':>8} {'games/h':>10} {'pos/h':>10} {'move ms':>9}"
+    print(header + f" {'inflation':>10} {'fail':>5}")
     for row in rows:
         print(
             f"{row.get('workers'):>8} {row.get('games_per_hour', 0):>10,.0f} "
