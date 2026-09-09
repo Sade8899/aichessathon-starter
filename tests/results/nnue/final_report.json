@@ -1,0 +1,85 @@
+{
+  "artifacts": {
+    "control": {
+      "label": "pre-neural control agent.py",
+      "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+      "bytes": 39396,
+      "lines": 1046
+    },
+    "submission_0609v4": {
+      "label": "submission 0609v4 agent.py",
+      "sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+      "bytes": 38673,
+      "lines": 1034
+    },
+    "candidate": {
+      "label": "post-training candidate agent_nnue.py",
+      "sha256": "638e40ded69aca75fe84652f8dd411cdd394cc7410a6e119e4fd2326ea7c4e57",
+      "bytes": 54511,
+      "lines": 1389
+    }
+  },
+  "v4_vs_control_diff_lines": 29,
+  "candidate_vs_control_function_changes": [
+    {
+      "function": "_nnue_bias_table",
+      "change": "added"
+    },
+    {
+      "function": "_nnue_blend",
+      "change": "added"
+    },
+    {
+      "function": "_nnue_weights_path",
+      "change": "added"
+    },
+    {
+      "function": "cached_evaluate",
+      "change": "modified"
+    },
+    {
+      "function": "compiled_evaluate_nnue",
+      "change": "added"
+    },
+    {
+      "function": "load_nnue",
+      "change": "added"
+    },
+    {
+      "function": "nnue_accumulate",
+      "change": "added"
+    },
+    {
+      "function": "nnue_correction",
+      "change": "added"
+    },
+    {
+      "function": "nnue_popcount",
+      "change": "added"
+    },
+    {
+      "function": "numeric_evaluate_nnue",
+      "change": "added"
+    }
+  ],
+  "gates": [],
+  "gates_decided": 0,
+  "gates_failed": 0,
+  "all_gates_pass": false,
+  "stages_present": {
+    "baseline_proof": true,
+    "pgn_inventory": true,
+    "benchmark_engines": true,
+    "stockfish_probe": true,
+    "concurrency_calibration": true,
+    "generation": false,
+    "collect": false,
+    "labels": false,
+    "training": false,
+    "packed_weights": false,
+    "throughput": false,
+    "rated_v5_gate": false,
+    "arena": false,
+    "docker_validation": false
+  }
+}
