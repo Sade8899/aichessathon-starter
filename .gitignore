@@ -33,3 +33,9 @@ nnue_weights.npz
 tests/results/nnue/groups/
 tests/results/nnue/v2/encoded.npz
 nnue_v2_weights.npz
+
+# Materialised candidate snapshots: an agent copy plus its weights per checkpoint,
+# all reproducible from the checkpoint via tests/nnue_v2_materialize.py. The
+# checkpoints, metrics and reports under tests/results/nnue/v2/ are tracked.
+tests/results/nnue/v2/snapshots/
+tests/results/nnue/v2/*/candidate.zip
