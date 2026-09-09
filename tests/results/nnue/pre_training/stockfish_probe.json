@@ -1,0 +1,108 @@
+{
+  "binary": {
+    "path": "tests\\external_engines\\stockfish\\stockfish\\stockfish-windows-x86-64-universal.exe",
+    "bytes": 103046300,
+    "sha256": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+    "release_tag": "sf_19",
+    "release_published": "2026-09-05T08:33:17Z",
+    "asset": "stockfish-windows-x86-64-universal.zip",
+    "asset_sha256": "3c8bf1f9ea66a09350a40df4f632288285ac206d99f33ab5842c408fc30b48a7",
+    "asset_url": "https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-windows-x86-64-universal.zip",
+    "licence": "GPL-3.0",
+    "packaged_into_submission": false,
+    "role": "offline label oracle only"
+  },
+  "id": {
+    "name": "Stockfish 19",
+    "author": "the Stockfish developers (see AUTHORS file)"
+  },
+  "determinism": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "score_a": 29,
+      "score_b": 29,
+      "pv_a": "e2e4",
+      "pv_b": "e2e4",
+      "score_fresh_process": 29,
+      "pv_fresh_process": "e2e4",
+      "deterministic": true
+    },
+    {
+      "fen": "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+      "score_a": 15,
+      "score_b": 15,
+      "pv_a": "d2d3",
+      "pv_b": "d2d3",
+      "score_fresh_process": 15,
+      "pv_fresh_process": "d2d3",
+      "deterministic": true
+    },
+    {
+      "fen": "r4rk1/p1pq2pp/1np3p1/4P3/1P1p1BP1/1P3P2/P2Q4/2RK1B1R w - - 0 22",
+      "score_a": 494,
+      "score_b": 494,
+      "pv_a": "h1h3",
+      "pv_b": "h1h3",
+      "score_fresh_process": 494,
+      "pv_fresh_process": "h1h3",
+      "deterministic": true
+    },
+    {
+      "fen": "8/8/4k3/8/2p5/2P5/4K3/8 w - - 0 1",
+      "score_a": 0,
+      "score_b": 0,
+      "pv_a": "e2f2",
+      "pv_b": "e2f2",
+      "score_fresh_process": 0,
+      "pv_fresh_process": "e2f2",
+      "deterministic": true
+    },
+    {
+      "fen": "r2q1rk1/pp2ppbp/2np1np1/8/2PNP3/2N1B3/PP2BPPP/R2Q1RK1 b - - 0 10",
+      "score_a": -756,
+      "score_b": -756,
+      "pv_a": "c6d4",
+      "pv_b": "c6d4",
+      "score_fresh_process": -756,
+      "pv_fresh_process": "c6d4",
+      "deterministic": true
+    },
+    {
+      "fen": "6k1/5ppp/8/8/8/8/5PPP/3R2K1 w - - 0 1",
+      "score_a": 99999,
+      "score_b": 99999,
+      "pv_a": "d1d8",
+      "pv_b": "d1d8",
+      "score_fresh_process": 99999,
+      "pv_fresh_process": "d1d8",
+      "deterministic": true
+    }
+  ],
+  "deterministic_at_200k_nodes": true,
+  "labelling_rate": {
+    "50000": {
+      "mean_seconds": 0.0841,
+      "positions_per_second_1proc": 11.9,
+      "positions_per_hour_6proc": 256988,
+      "hours_for_200k_positions_6proc": 0.78
+    },
+    "200000": {
+      "mean_seconds": 0.2347,
+      "positions_per_second_1proc": 4.26,
+      "positions_per_hour_6proc": 92033,
+      "hours_for_200k_positions_6proc": 2.17
+    },
+    "500000": {
+      "mean_seconds": 0.5626,
+      "positions_per_second_1proc": 1.78,
+      "positions_per_hour_6proc": 38396,
+      "hours_for_200k_positions_6proc": 5.21
+    },
+    "1000000": {
+      "mean_seconds": 1.1464,
+      "positions_per_second_1proc": 0.87,
+      "positions_per_hour_6proc": 18842,
+      "hours_for_200k_positions_6proc": 10.61
+    }
+  }
+}

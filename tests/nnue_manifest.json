@@ -1,0 +1,269 @@
+{
+  "schema": 1,
+  "experiment": "quantized-nnue-residual",
+  "declared_on": "2026-09-09",
+  "declared_before_any_data_generated": true,
+  "hypothesis": "A tiny quantized residual network can improve shallow leaf evaluation sufficiently to correct search-boundary errors without sacrificing enough throughput to weaken the engine overall.",
+  "network_presumed_superior": false,
+  "control": {
+    "path": "agent.py",
+    "sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
+    "bytes": 39396,
+    "lines": 1046,
+    "git_tag": "pre-nnue-control-20260909",
+    "git_commit": "78c03b0d266a027c5e47ffa3a1b5af0c435da1b6",
+    "package": "submissions/pre_nn_20260909/agent.zip",
+    "package_sha256": "d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5",
+    "is_same_as_submission_0609v4": false,
+    "submission_0609v4_inner_agent_sha256": "e5f63625a30f23ef7f1d625fbb5830f2bdbbed1b5480142a6e31b83cf731325b",
+    "difference_from_0609v4": "12 added lines, 0 removed: DELTA_MARGIN = 200 and a delta-pruning block in Engine.quiesce, added at commit 2ed8811"
+  },
+  "architecture": {
+    "trained_from_random_initialization": true,
+    "sparse_features": {"piece_square": [12, 64], "total": 768},
+    "auxiliary_features": ["side_to_move", "castle_wk", "castle_wq", "castle_bk", "castle_bq", "phase"],
+    "orientation": "canonical player-relative",
+    "accumulator_units": 64,
+    "activation": "clipped ReLU, [0, 127] quantized",
+    "output_heads": ["middlegame_residual", "endgame_residual"],
+    "blend": "material phase interpolation",
+    "approx_parameters": 49600,
+    "first_layer_is_embedding_table": true,
+    "dense_768_vector_materialised_at_leaf": false
+  },
+  "quantization": {
+    "weights": "int8",
+    "accumulators": "int32",
+    "scheme": "per-tensor symmetric",
+    "correction_clamp_cp": 250
+  },
+  "data_sources": {
+    "source_a_fresh_games": {
+      "opponents_dir": "tests/external_engines/bin",
+      "clock": "declared at generation time in the game manifest",
+      "colours": "paired",
+      "seed": 20260909
+    },
+    "source_b_stored_pgns": {
+      "files": 53,
+      "games_parsed": 53,
+      "unique_games": 40,
+      "duplicates": 13,
+      "illegal_games": 0,
+      "parse_errors": 0,
+      "eligible_training_games": 16,
+      "eligible_plies": 1424,
+      "eligible_by_phase": {"opening": 527, "middlegame": 649, "endgame": 248},
+      "note": "About 1 percent of the position target. Source A must supply the rest. Measured, not assumed."
+    }
+  },
+  "contamination_rule": {
+    "evaluation_only_rounds": [57, 81],
+    "evaluation_only_fixtures": "every position in tests/rated_v5_positions.json, matched on the first four FEN fields",
+    "arena_openings_excluded_from_training": true,
+    "opening_seeds_drawn_from": ["eligible pre-round-57 PGNs", "seeded random-ply positions"]
+  },
+  "split_rules": {
+    "level": "game",
+    "immutable": true,
+    "fixed_before_labelling": true,
+    "train": 0.70,
+    "validation": 0.15,
+    "test": 0.15,
+    "assignment": "sha256(game_id) modulo 100, independent of generation, file and shard order",
+    "positions_from_one_game_split_across_sets": false,
+    "opponent_holdout": {
+      "applied": true,
+      "level": "engine family",
+      "reason": "four binaries run but only three families exist (Rustic x3, Shallow Blue, Loki)",
+      "limitation_reported": true
+    }
+  },
+  "seeds": {
+    "opening_sampling": 20260909,
+    "game_manifest": 20260909,
+    "training": 20260909,
+    "arena_pairing": 20260909
+  },
+  "label_oracle": {
+    "engine": "Stockfish 19",
+    "release_tag": "sf_19",
+    "release_published": "2026-09-05T08:33:17Z",
+    "asset": "stockfish-windows-x86-64-universal.zip",
+    "asset_sha256": "3c8bf1f9ea66a09350a40df4f632288285ac206d99f33ab5842c408fc30b48a7",
+    "asset_url": "https://github.com/official-stockfish/Stockfish/releases/download/sf_19/stockfish-windows-x86-64-universal.zip",
+    "binary_path": "tests/external_engines/stockfish/stockfish/stockfish-windows-x86-64-universal.exe",
+    "binary_sha256": "45bc8e4969147db9c2eb533810637994619bff0eacc81ccfd9854394901bcbd0",
+    "binary_bytes": 103046300,
+    "licence": "GPL-3.0",
+    "packaged_into_submission": false,
+    "invoked_at_play_time": false,
+    "gitignored": true
+  },
+  "labelling": {
+    "limit_type": "fixed nodes",
+    "nodes": 200000,
+    "threads": 1,
+    "hash_mb": 64,
+    "determinism_verified": true,
+    "determinism_evidence": "tests/results/nnue/pre_training/stockfish_probe.json",
+    "measured_rate": {
+      "50000": {"ms_per_position": 84.1, "positions_per_hour_6proc": 256988},
+      "200000": {"ms_per_position": 234.7, "positions_per_hour_6proc": 92033},
+      "500000": {"ms_per_position": 562.6, "positions_per_hour_6proc": 38396},
+      "1000000": {"ms_per_position": 1146.4, "positions_per_hour_6proc": 18842}
+    },
+    "selection_rule": "strongest setting that lets the corpus finish inside today's budget",
+    "clamp_cp": 1000,
+    "stored_fields": ["fen", "side_to_move", "game_id", "ply", "phase", "stockfish_cp", "wdl", "control_static_cp", "residual_target"],
+    "principal_label_is_game_result": false,
+    "augmentation": {
+      "colour_swap": "applied only after a unit test proves it legal and label-preserving",
+      "left_right_mirror": "not applied - castling rights are not mirror-symmetric"
+    },
+    "data_kept_out_of_submission": true
+  },
+  "target_positions": {"min": 150000, "max": 300000, "prefer": "clean smaller over rushed duplicated"},
+  "phase_distribution_target": {"middlegame": 0.40, "endgame": 0.40, "tactical_or_swing": 0.20},
+  "integration": {
+    "branch": "experiment/quantized-nnue-residual",
+    "candidate_source": "agent_nnue.py",
+    "control_modified": false,
+    "mode": "residual correction added to the handcrafted evaluation",
+    "replaces_terminal_material_legality_repetition_mate": false,
+    "correction_clamp_cp": 250,
+    "mate_score_ordering_preserved": true,
+    "weights_loaded_at_import": true,
+    "weight_hash_validated_at_init": true,
+    "deterministic_fallback_on_validation_failure": true,
+    "numba_warmed_at_import": true,
+    "inference_preference": "sparse Numba integer, ONNX only if measured faster end to end",
+    "network_call_for_terminal_positions": false,
+    "obfuscated": false
+  },
+  "gates": {
+    "model": {
+      "no_train_test_leakage": true,
+      "float_to_quant_median_deviation_cp_max": 10,
+      "colour_symmetry_disagreement": "effectively zero",
+      "held_out_better_than_handcrafted": "materially",
+      "no_nan_overflow_or_perspective_inversion": true
+    },
+    "engine": {
+      "import_and_api": true,
+      "legal_moves_all_games": true,
+      "deterministic_under_fixed_seeds": true,
+      "no_clock_failures": true,
+      "no_mate_score_corruption": true,
+      "solved_control_regressions_max": 0,
+      "uncompressed_bytes_max": 50000000,
+      "init_seconds_max": 90,
+      "peak_memory_bytes_max": 2147483648
+    },
+    "throughput": {
+      "max_nps_loss_fraction": 0.10,
+      "unless": "strength results clearly compensate",
+      "method": "alternating paired repetitions, warm and cold reported separately"
+    },
+    "rated_v5": {
+      "fixtures_total": 16,
+      "enforced_critical": 11,
+      "enforced_solved_controls": 5,
+      "rounds": [57, 58, 66, 77, 78, 79, 80],
+      "min_class_a_corrections": 3,
+      "max_solved_control_breaks": 0,
+      "boundary_test": {
+        "id": "r80-24-Rd4",
+        "unacceptable_uci": "d1d4",
+        "minimum_correcting_depth": 3,
+        "score_margin_cp": 372,
+        "control_reproduction_rate": "1/5",
+        "requirement": "reject d1d4 at depth 2 without memorising the exact FEN; verified on perturbed siblings"
+      },
+      "also_required": {"id": "r79-12-Nxd3", "unacceptable_uci": "e5d3", "minimum_correcting_depth": 2, "score_margin_cp": 201}
+    },
+    "arena": {
+      "paired_games_min": 200,
+      "paired_games_extended": 400,
+      "identical_seeds_openings_colours": true,
+      "opponents": ["every runnable benchmark engine", "the immutable control"],
+      "approval_requires": "a confidence interval excluding zero, OR overwhelming fixture improvement with zero control breakage, labelled provisional",
+      "positive_point_estimate_alone_is_insufficient": true
+    }
+  },
+  "rejection_criteria": [
+    "any model gate fails",
+    "any engine gate fails",
+    "NPS loss exceeds 10 percent without compensating strength evidence",
+    "fewer than three class-A corrections",
+    "any solved control broken",
+    "arena confidence interval includes zero and fixture evidence is not overwhelming",
+    "the residual is found to have memorised fixture FENs rather than generalised"
+  ],
+  "platform_environment": {
+    "target": {
+      "os": "Linux",
+      "python": "3.12",
+      "cores_per_worker": 1,
+      "memory_gb_final_validation": 2,
+      "gpu": false,
+      "network_during_agent_execution": false,
+      "packages": {
+        "torch": "2.13.0+cpu",
+        "numpy": "2.5.2",
+        "python-chess": "1.11.2",
+        "onnxruntime": "1.29.0",
+        "numba": "0.67.0"
+      }
+    },
+    "host_venv": {
+      "python": "3.14.4",
+      "packages": {
+        "torch": "2.13.0+cpu",
+        "numpy": "2.5.2",
+        "chess": "1.11.2",
+        "onnxruntime": "1.29.0",
+        "numba": "0.67.0"
+      },
+      "usable_for": ["exploration", "training"],
+      "usable_for_final_performance_numbers": false,
+      "reason": "Python 3.14 is not the platform interpreter"
+    },
+    "host": {
+      "cpu": "Intel Core i7-8700 @ 3.20GHz",
+      "physical_cores": 6,
+      "logical_processors": 12,
+      "memory_gb": 15.9
+    },
+    "docker": {
+      "version": "29.7.2",
+      "daemon_cpus": 12,
+      "daemon_memory_bytes": 8291299328,
+      "operating_system": "Docker Desktop",
+      "calibration_levels": [1, 2, 4, 6],
+      "max_simultaneous_games": 6,
+      "rejected_configuration": "24 workers",
+      "thread_env": {
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "NUMEXPR_NUM_THREADS": "1",
+        "TORCH_NUM_THREADS": "1"
+      }
+    }
+  },
+  "benchmark_engines": {
+    "evidence": "tests/results/nnue/pre_training/benchmark_engines.json",
+    "probed": 6,
+    "runnable": ["Loki3.0.0-x64.exe", "rustic-alpha-1.5-win64.exe", "rustic-alpha-2.4-win64.exe", "rustic-alpha-3.0.6-win64.exe", "shallowblue_x86-64.exe", "Zagreus-v5.0-Windows-x86-64.exe"],
+    "distinct_families": 3,
+    "notes": {
+      "Loki3.0.0-x64.exe": "requires a movetime limit; does not answer 'go nodes 50000' within 30 s",
+      "Zagreus-v5.0-Windows-x86-64.exe": "answered two consecutive searches here, contradicting the second-search EOF defect recorded in tests/external_engines.json; treated as contested"
+    },
+    "used_as": "opponents and data generators only",
+    "code_or_weights_copied": false,
+    "shipped": false
+  },
+  "planned_arena_size": {"paired_games": 200, "extend_to": 400}
+}
