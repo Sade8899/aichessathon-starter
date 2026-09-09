@@ -26,3 +26,10 @@ tests/results/nnue/dataset/
 # during measurement. The candidate was rejected, so nothing ships; the weights are
 # preserved under tests/results/nnue/model_*/quantized.npz with their hashes recorded.
 nnue_weights.npz
+
+# V2 sibling groups and encoded tensors: large, reproducible from parents.jsonl and the
+# manifests, and must never reach a submission. Reports under tests/results/nnue/v2/ are
+# tracked; the group shards, the parent plan and the encoded cache are not.
+tests/results/nnue/groups/
+tests/results/nnue/v2/encoded.npz
+nnue_v2_weights.npz
