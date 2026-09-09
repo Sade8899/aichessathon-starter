@@ -135,10 +135,21 @@ def acceptance(
 
 
 def table(rows: list[list[str]], header: list[str], align: list[str] | None = None) -> str:
+    """Render a markdown table, escaping pipes so a cell cannot split its own row.
+
+    Measured values contain them -- "max |diff| 0 cp" silently became three columns.
+    """
     align = align or ["---"] * len(header)
-    out = ["| " + " | ".join(header) + " |", "| " + " | ".join(align) + " |"]
+
+    def cell(text: str) -> str:
+        return str(text).replace("|", r"\|")
+
+    out = [
+        "| " + " | ".join(cell(h) for h in header) + " |",
+        "| " + " | ".join(align) + " |",
+    ]
     for row in rows:
-        out.append("| " + " | ".join(row) + " |")
+        out.append("| " + " | ".join(cell(c) for c in row) + " |")
     return "\n".join(out)
 
 
@@ -159,6 +170,46 @@ def main() -> None:
     generation = load(GROUPS / "generation_summary.json")
     frontier = load(V2 / "frontier_fixtures.json")
     h2h = load(tagdir / "h2h.json")
+    fire = load(V2 / "fire_rate.json")
+
+    # Every candidate that reached a gate run or a screening arena, so the report shows
+    # the whole search rather than only the checkpoint that got furthest.
+    candidates: list[dict[str, Any]] = []
+    for directory in sorted(V2.iterdir()):
+        if not directory.is_dir():
+            continue
+        cg = load(directory / "gates.json")
+        cs = load(directory / "arena_screen.json")
+        if not cg and not cs:
+            continue
+
+        def named(report: dict[str, Any] | None, fragment: str) -> str:
+            if not report:
+                return "-"
+            for g in report["gates"]:
+                if fragment in g["gate"]:
+                    return str(g["measured"])
+            return "-"
+
+        candidates.append(
+            {
+                "tag": directory.name,
+                "gates": f"{cg['gates_passed']}/{cg['gates_total']}" if cg else "-",
+                "fixtures": named(cg, "RATED_V5 enforced"),
+                "nps": named(cg, "NPS loss"),
+                "screen": (
+                    f"{cs['paired_mean_diff']:+.4f} "
+                    f"[{cs['paired_ci95'][0]:+.4f}, {cs['paired_ci95'][1]:+.4f}]"
+                    if cs
+                    else "not screened"
+                ),
+                "draws": (
+                    f"{cs['control']['draw_pct']}% -> {cs['candidate']['draw_pct']}%"
+                    if cs
+                    else "-"
+                ),
+            }
+        )
 
     criteria = acceptance(gates, screen, confirm)
     accepted = all(c["passes"] for c in criteria)
@@ -276,6 +327,12 @@ def main() -> None:
     rows: list[list[str]] = []
     for path in summaries:
         for entry in load(path) or []:
+            # Pilot, probe and smoke runs were trained on a partial corpus while
+            # generation was still running. They shaped the design and are recorded in
+            # the commit history, but they are not comparable to the runs below and
+            # would only pad this table.
+            if any(k in entry["tag"] for k in ("pilot", "probe", "smoke")):
+                continue
             rows.append(
                 [
                     f"`{entry['tag']}`",
@@ -347,6 +404,57 @@ def main() -> None:
         add(f"{gates['gates_passed']}/{gates['gates_total']} gates pass.\n")
     else:
         add("Gates were not run.\n")
+
+    if candidates:
+        add("### every candidate that reached a gate run or an arena\n")
+        add(
+            table(
+                [
+                    [
+                        f"`{c['tag'].replace('_h32_s20260909', '')}`",
+                        c["gates"],
+                        c["fixtures"].replace("control 16/16, candidate ", ""),
+                        c["nps"].split(" (")[0],
+                        c["screen"],
+                        c["draws"],
+                    ]
+                    for c in candidates
+                ],
+                ["candidate", "gates", "RATED_V5", "NPS loss",
+                 "screen paired diff (95% CI)", "draw share"],
+                ["---", "---:", "---:", "---:", "---:", "---:"],
+            )
+        )
+        add("")
+
+    if fire:
+        add("### where the correction actually fires\n")
+        add(
+            "The soft gate and the hard threshold are different animals, and the mean "
+            "correction hides it. Measured over 40,000 held-out children:\n"
+        )
+        add(
+            table(
+                [
+                    [
+                        f"`{tag.replace('_h32_s20260909', '')}`",
+                        f"{info['conf_min']:.2f}",
+                        f"{info['fires_pct']}%",
+                        f"{info['mean_abs_when_fires']} cp",
+                        f"{info['mean_abs_all']} cp",
+                    ]
+                    for tag, info in fire.items()
+                ],
+                ["candidate", "conf threshold", "fires on", "size when it fires",
+                 "mean over all"],
+                ["---", "---:", "---:", "---:", "---:"],
+            )
+        )
+        add(
+            "\nThe hard threshold leaves ~96% of positions evaluating bit-identically to "
+            "the control and spends its whole licence, near the clamp, on the few it "
+            "claims to read. That is the design working. It still did not buy strength.\n"
+        )
 
     # ------------------------------------------------------------------ frontier
     add("## 5. The preservation/reach frontier\n")

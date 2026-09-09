@@ -1,0 +1,53 @@
+{
+  "tag": "F_h32_s20260909_q005",
+  "label": "h2h",
+  "candidate_path": "tests\\results\\nnue\\v2\\snapshots\\F_h32_s20260909_q005\\agent_v2.py",
+  "openings": 150,
+  "games": 300,
+  "scored_games": 300,
+  "infrastructure_failures": 0,
+  "clock_ms": 1000,
+  "increment_ms": 100,
+  "workers": 6,
+  "seed": 20260913,
+  "wall_seconds": 213.9,
+  "candidate_W-D-L": "127-44-129",
+  "candidate_score_pct": 49.67,
+  "score_ci95_pct": [
+    44.5,
+    54.83
+  ],
+  "elo": -2.3,
+  "elo_ci95": [
+    -38.4,
+    33.7
+  ],
+  "beats_control": false,
+  "worse_than_control": false,
+  "paired_by_opening_mean": 0.4967,
+  "paired_ci95": [
+    0.4517,
+    0.5417
+  ],
+  "draw_pct": 14.67,
+  "by_colour": {
+    "candidate_white": {
+      "games": 150,
+      "score_pct": 32.33,
+      "wins": 36,
+      "draws": 25,
+      "losses": 89
+    },
+    "candidate_black": {
+      "games": 150,
+      "score_pct": 67.0,
+      "wins": 91,
+      "draws": 19,
+      "losses": 40
+    }
+  },
+  "candidate_mean_depth": 1.31,
+  "control_mean_depth": 1.31,
+  "flags": 0,
+  "illegal": 0
+}

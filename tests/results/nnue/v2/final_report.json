@@ -1,0 +1,42 @@
+{
+  "tag": "F_h32_s20260909_q005",
+  "verdict": "REJECT - RETAIN THE PRE-NEURAL CONTROL",
+  "accepted": false,
+  "criteria": [
+    {
+      "criterion": "1. RATED_V5 remains 16/16",
+      "measured": "not run",
+      "passes": false
+    },
+    {
+      "criterion": "2. no solved draw or passed-pawn defence regresses",
+      "measured": "not run",
+      "passes": false
+    },
+    {
+      "criterion": "3. quantized inference works in the platform container",
+      "measured": "600/600 exact, max |diff| 0 cp",
+      "passes": true
+    },
+    {
+      "criterion": "4. NPS and time management remain acceptable",
+      "measured": "4.49% (18,699 -> 17,860 nps)",
+      "passes": true
+    },
+    {
+      "criterion": "5. large paired arena positive, 95% CI excluding zero",
+      "measured": "-0.0227 CI [-0.0727, +0.0227] over 240 games",
+      "passes": false
+    },
+    {
+      "criterion": "6. not dependent on one opponent, colour or time control",
+      "measured": "per-opponent ok: False, per-colour ok: False",
+      "passes": false
+    },
+    {
+      "criterion": "7. draw conversion does not deteriorate",
+      "measured": "draw share +0.91 pp (control 3.64% -> candidate 4.55%)",
+      "passes": true
+    }
+  ]
+}
