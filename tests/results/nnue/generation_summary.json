@@ -1,0 +1,11 @@
+{
+  "workers": 6,
+  "games_requested": 2600,
+  "games_done": 2600,
+  "positions": 187338,
+  "elapsed_seconds": 5978.38,
+  "games_per_hour": 1565.6,
+  "positions_per_hour": 112809.2,
+  "failures": [],
+  "failure_count": 0
+}
