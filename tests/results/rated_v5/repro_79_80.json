@@ -1,0 +1,189 @@
+{
+  "source": "working",
+  "repeats": 5,
+  "results": [
+    {
+      "id": "r79-12-Nxd3",
+      "round": 79,
+      "kind": "critical",
+      "fen": "r1b2rk1/ppb1qppp/2p2n2/2Ppn3/PP6/2NBPN2/5PPP/R1BQ1RK1 b - - 0 12",
+      "side_to_move": "black",
+      "clock_ms": 108141,
+      "rated_move_uci": "e5d3",
+      "rated_move_san": "Nxd3",
+      "acceptable_uci": [],
+      "unacceptable_uci": [
+        "e5d3"
+      ],
+      "repeats": 5,
+      "chosen": [
+        "e5d3",
+        "e5d3",
+        "e5d3",
+        "e5d3",
+        "e5d3"
+      ],
+      "distinct": [
+        "e5d3"
+      ],
+      "deterministic": true,
+      "reproduced": 5,
+      "depths": [
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "seconds": [
+        3.245,
+        3.245,
+        3.245,
+        3.245,
+        3.245
+      ],
+      "nodes": [
+        65536,
+        61344,
+        64864,
+        61296,
+        63024
+      ],
+      "classification": "A_reliably_reproduces",
+      "runs": [
+        {
+          "clock_ms": 108141,
+          "move": "e5d3",
+          "san": "Nxd3",
+          "completed_depth": 3,
+          "seconds": 3.245,
+          "nodes": 65536
+        },
+        {
+          "clock_ms": 108141,
+          "move": "e5d3",
+          "san": "Nxd3",
+          "completed_depth": 3,
+          "seconds": 3.245,
+          "nodes": 61344
+        },
+        {
+          "clock_ms": 108141,
+          "move": "e5d3",
+          "san": "Nxd3",
+          "completed_depth": 3,
+          "seconds": 3.245,
+          "nodes": 64864
+        },
+        {
+          "clock_ms": 108141,
+          "move": "e5d3",
+          "san": "Nxd3",
+          "completed_depth": 3,
+          "seconds": 3.245,
+          "nodes": 61296
+        },
+        {
+          "clock_ms": 108141,
+          "move": "e5d3",
+          "san": "Nxd3",
+          "completed_depth": 3,
+          "seconds": 3.245,
+          "nodes": 63024
+        }
+      ]
+    },
+    {
+      "id": "r80-24-Rd4",
+      "round": 80,
+      "kind": "critical",
+      "fen": "1r2r1k1/6p1/2p1b3/p1qnQpBp/P1B5/1PP5/5PPP/3RR1K1 w - - 1 24",
+      "side_to_move": "white",
+      "clock_ms": 82210,
+      "rated_move_uci": "d1d4",
+      "rated_move_san": "Rd4",
+      "acceptable_uci": [],
+      "unacceptable_uci": [
+        "d1d4"
+      ],
+      "repeats": 5,
+      "chosen": [
+        "h2h4",
+        "d1d4",
+        "h2h4",
+        "h2h4",
+        "h2h4"
+      ],
+      "distinct": [
+        "d1d4",
+        "h2h4"
+      ],
+      "deterministic": false,
+      "reproduced": 1,
+      "depths": [
+        3,
+        2,
+        3,
+        3,
+        3
+      ],
+      "seconds": [
+        2.184,
+        2.467,
+        2.189,
+        2.227,
+        2.461
+      ],
+      "nodes": [
+        40341,
+        40272,
+        40341,
+        40341,
+        40341
+      ],
+      "classification": "B_intermittently_reproduces",
+      "runs": [
+        {
+          "clock_ms": 82210,
+          "move": "h2h4",
+          "san": "h4",
+          "completed_depth": 3,
+          "seconds": 2.184,
+          "nodes": 40341
+        },
+        {
+          "clock_ms": 82210,
+          "move": "d1d4",
+          "san": "Rd4",
+          "completed_depth": 2,
+          "seconds": 2.467,
+          "nodes": 40272
+        },
+        {
+          "clock_ms": 82210,
+          "move": "h2h4",
+          "san": "h4",
+          "completed_depth": 3,
+          "seconds": 2.189,
+          "nodes": 40341
+        },
+        {
+          "clock_ms": 82210,
+          "move": "h2h4",
+          "san": "h4",
+          "completed_depth": 3,
+          "seconds": 2.227,
+          "nodes": 40341
+        },
+        {
+          "clock_ms": 82210,
+          "move": "h2h4",
+          "san": "h4",
+          "completed_depth": 3,
+          "seconds": 2.461,
+          "nodes": 40341
+        }
+      ]
+    }
+  ]
+}

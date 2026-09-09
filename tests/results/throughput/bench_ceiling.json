@@ -1,0 +1,35 @@
+{
+  "candidate": "C:\\Users\\44740\\AppData\\Local\\Temp\\claude\\c--Users-44740-Desktop-Comp2526-Personal-project-Chessatohon-optiver-aichessathon-starter\\1934ab3b-a750-4737-9fd6-df22ade71746\\scratchpad\\agent_ceiling.py",
+  "candidate_sha256": "08ed5e927ddaa821bdd29887bec93b141af5063d560d13e5d01f52f44a3f8d02",
+  "groups": [
+    "rated",
+    "quiet"
+  ],
+  "depth": 4,
+  "positions": 61,
+  "repeats": 3,
+  "control_seconds": [
+    106.9992,
+    105.1706,
+    104.9416
+  ],
+  "candidate_seconds": [
+    90.3591,
+    89.5326,
+    89.661
+  ],
+  "control_median_s": 105.1706,
+  "candidate_median_s": 89.661,
+  "control_nodes": 1889079,
+  "candidate_nodes": 1889808,
+  "nodes_identical": false,
+  "control_nps": 17962,
+  "candidate_nps": 21077,
+  "speedup": 1.173,
+  "improvement_pct": 17.3,
+  "per_rep_speedup": [
+    1.1842,
+    1.1747,
+    1.1704
+  ]
+}

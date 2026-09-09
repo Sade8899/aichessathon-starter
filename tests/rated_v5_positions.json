@@ -1,5 +1,5 @@
 {
-  "description": "Regression fixtures from rated rounds 57-78, all played by the working agent.py 65ec40ce.... Critical fixtures are moves the control's own deeper fixed-depth search rejects by at least 100 cp; solved controls are moves actually played in games the engine won or correctly drew, including round 78's passed-pawn defence and conversion and round 77's accurate threefold draw.",
+  "description": "Regression fixtures from rated rounds 57-80, all played by the working agent.py 65ec40ce.... Critical fixtures are moves the control's own deeper fixed-depth search rejects by at least 100 cp; solved controls are moves actually played in games the engine won or correctly drew, including round 78's passed-pawn defence and conversion and round 77's accurate threefold draw.",
   "subject": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda",
   "method": "Every FEN, clock and played move is taken from the validated PGN corpus via tests/rated_v5.py scan; none is hand-typed. clock_ms is the platform clock remaining before that move, so repro reproduces the real decision.",
   "rule": "A critical fixture with enforced=true is satisfied when, at minimum_correcting_depth, the source's fixed-depth choice is anything other than unacceptable_uci -- the rated move. The alternative the control prefers varies with depth and is recorded in control_prefers_by_depth as context, not asserted. A solved_control with enforced=true must keep acceptable_uci, the move actually played in a game the engine won or correctly drew. Fixtures with enforced=false are context and never gate a candidate; where a solved control is context at fixed depth it is still asserted by the five cold repetitions at the real clock in repro_5x.json.",
@@ -489,6 +489,64 @@
         "5": "e5f4",
         "6": "e5f4"
       }
+    },
+    {
+      "id": "r79-12-Nxd3",
+      "round": 79,
+      "kind": "critical",
+      "move": "12...Nxd3",
+      "fen": "r1b2rk1/ppb1qppp/2p2n2/2Ppn3/PP6/2NBPN2/5PPP/R1BQ1RK1 b - - 0 12",
+      "side_to_move": "black",
+      "clock_ms": 108141,
+      "seconds_used_rated": 3.246,
+      "rated_move_uci": "e5d3",
+      "rated_move_san": "Nxd3",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "e5d3"
+      ],
+      "control_prefers_by_depth": {
+        "2": "c8g4",
+        "3": "e5d3",
+        "4": "e5f3",
+        "5": "e5f3",
+        "6": "e5f3"
+      },
+      "minimum_correcting_depth": 2,
+      "score_margin_cp": 201,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "recaptures with the wrong piece; Nxf3+ wins a clean tempo and pawn",
+      "enforced": true
+    },
+    {
+      "id": "r80-24-Rd4",
+      "round": 80,
+      "kind": "critical",
+      "move": "24.Rd4",
+      "fen": "1r2r1k1/6p1/2p1b3/p1qnQpBp/P1B5/1PP5/5PPP/3RR1K1 w - - 1 24",
+      "side_to_move": "white",
+      "clock_ms": 82210,
+      "seconds_used_rated": 2.467,
+      "rated_move_uci": "d1d4",
+      "rated_move_san": "Rd4",
+      "acceptable_uci": [],
+      "acceptable_san": [],
+      "unacceptable_uci": [
+        "d1d4"
+      ],
+      "control_prefers_by_depth": {
+        "2": "d1d4",
+        "3": "h2h4",
+        "4": "e5g3",
+        "5": "e5g3",
+        "6": "e5g3"
+      },
+      "minimum_correcting_depth": 3,
+      "score_margin_cp": 372,
+      "proof_type": "control's own deeper fixed-depth search",
+      "note": "abandons the d-file blockade and the e5 queen's grip; Qg3 keeps both",
+      "enforced": true
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "source": "working",
-  "enforced_total": 14,
-  "enforced_passed": 14,
+  "enforced_total": 16,
+  "enforced_passed": 16,
   "passed": true,
   "failed": [],
   "context_failed": [],
@@ -20,7 +20,7 @@
         "e5e6"
       ],
       "passed": true,
-      "seconds": 9.981,
+      "seconds": 9.571,
       "nodes": 229180
     },
     {
@@ -37,7 +37,7 @@
         "f4c7"
       ],
       "passed": true,
-      "seconds": 0.088,
+      "seconds": 0.087,
       "nodes": 995
     },
     {
@@ -88,7 +88,7 @@
         "h8h2"
       ],
       "passed": true,
-      "seconds": 2.589,
+      "seconds": 2.433,
       "nodes": 50937
     },
     {
@@ -105,7 +105,7 @@
         "e5e4"
       ],
       "passed": true,
-      "seconds": 1.837,
+      "seconds": 1.821,
       "nodes": 32822
     },
     {
@@ -122,7 +122,7 @@
         "e5d4"
       ],
       "passed": true,
-      "seconds": 0.052,
+      "seconds": 0.041,
       "nodes": 626
     },
     {
@@ -156,7 +156,7 @@
         "e7f6"
       ],
       "passed": true,
-      "seconds": 1.975,
+      "seconds": 1.937,
       "nodes": 47229
     },
     {
@@ -173,7 +173,7 @@
       ],
       "must_not_play": [],
       "passed": true,
-      "seconds": 0.094,
+      "seconds": 0.087,
       "nodes": 1586
     },
     {
@@ -207,7 +207,7 @@
       ],
       "must_not_play": [],
       "passed": true,
-      "seconds": 0.165,
+      "seconds": 0.188,
       "nodes": 4690
     },
     {
@@ -243,6 +243,40 @@
       "passed": true,
       "seconds": 0.01,
       "nodes": 258
+    },
+    {
+      "id": "r79-12-Nxd3",
+      "round": 79,
+      "kind": "critical",
+      "enforced": true,
+      "depth": 2,
+      "chose": "c8g4",
+      "chose_san": "Bg4",
+      "score": 14,
+      "acceptable": [],
+      "must_not_play": [
+        "e5d3"
+      ],
+      "passed": true,
+      "seconds": 0.066,
+      "nodes": 1255
+    },
+    {
+      "id": "r80-24-Rd4",
+      "round": 80,
+      "kind": "critical",
+      "enforced": true,
+      "depth": 3,
+      "chose": "h2h4",
+      "chose_san": "h4",
+      "score": 180,
+      "acceptable": [],
+      "must_not_play": [
+        "d1d4"
+      ],
+      "passed": true,
+      "seconds": 0.857,
+      "nodes": 18544
     }
   ]
 }

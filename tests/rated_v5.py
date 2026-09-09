@@ -1,4 +1,4 @@
-"""Rated rounds 57-78: corpus completion, historical-clock reproduction, diagnosis.
+"""Rated rounds 57-80: corpus completion, historical-clock reproduction, diagnosis.
 
 Rounds 44-56 are handled by `rated_v4.py` and are not re-litigated here. This module
 reuses that file's loaders, PGN reader and fixed-depth probes verbatim -- it imports it
@@ -11,7 +11,7 @@ file that is currently on disk.
 
 Modes:
 
-    validate    headers, legality, clocks and team-page agreement for rounds 57-78
+    validate    headers, legality, clocks and team-page agreement for rounds 57-80
     scan        fixed-depth ladder over every Sassori move, to locate the swings
     repro       N cold repetitions of one fixture set at the exact historical clock
     fixtures    run `rated_v5_positions.json` against a nominated source
@@ -37,9 +37,9 @@ GAMES = ROOT / "submission 0609v4"
 RESULTS = ROOT / "tests" / "results" / "rated_v5"
 POSITIONS = HERE / "rated_v5_positions.json"
 SASSORI = "Sassori"
-ROUNDS = tuple(range(57, 79))
+ROUNDS = tuple(range(57, 81))
 
-# Colour, outcome and termination for every round 57-78, transcribed from the team page
+# Colour, outcome and termination for every round 57-80, transcribed from the team page
 # at https://aichessathon.com/team/daf4188f-c437-4905-92a1-3935ff41c690 on 2026-09-09.
 # `validate` asserts each PGN against this table, so a mis-downloaded or mis-transcribed
 # game fails loudly instead of quietly becoming a fixture.
@@ -66,6 +66,8 @@ EXPECTED: dict[int, tuple[str, str, str]] = {
     76: ("White", "Loss", "checkmate"),
     77: ("White", "Draw", "threefold_repetition"),
     78: ("Black", "Win", "checkmate"),
+    79: ("Black", "Win", "checkmate"),
+    80: ("White", "Loss", "checkmate"),
 }
 # Round 73 ended when the opponent emitted an illegal move, so the final position is an
 # ordinary middlegame and no board-level termination condition can be asserted for it.
@@ -106,7 +108,7 @@ def games(rounds: tuple[int, ...] = ROUNDS) -> list[Any]:
 
 
 def validate() -> dict[str, Any]:
-    """Assert every round 57-78 PGN against the team page and against chess itself."""
+    """Assert every round 57-80 PGN against the team page and against chess itself."""
     reports = []
     for game in games():
         rnd = game.round
@@ -158,7 +160,7 @@ def validate() -> dict[str, Any]:
             "clock_never_negative": all(c >= 0 for c in after),
             "no_move_exceeded_budget": all(s <= BUDGET_CEILING_S for s in seconds),
             "round_header_matches_filename": f"-round-{rnd}-" in game.path.name,
-            "round_in_range": 57 <= rnd <= 78,
+            "round_in_range": 57 <= rnd <= 80,
         }
         failed = [k for k, v in checks.items() if v is False]
         reports.append(
@@ -399,7 +401,7 @@ def probe(weights: tuple[int, ...], depths: tuple[int, ...]) -> dict[str, Any]:
 
 
 def fixtures(role: str) -> dict[str, Any]:
-    """Run every round 57-78 fixture against one source at its correcting depth."""
+    """Run every round 57-80 fixture against one source at its correcting depth."""
     module = V4.source(role)
     record = json.loads(POSITIONS.read_text(encoding="utf-8"))
     results = []

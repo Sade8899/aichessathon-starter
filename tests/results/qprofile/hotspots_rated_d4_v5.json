@@ -1,0 +1,211 @@
+{
+  "group": "rated",
+  "depth": 4,
+  "positions": 31,
+  "profiled_wall_s": 126.153,
+  "clean_wall_s": 53.115,
+  "profiler_overhead_ratio": 2.38,
+  "total_tottime_s": 124.785,
+  "hotspots": [
+    {
+      "function": "__init__.py:1819:generate_pseudo_legal_moves",
+      "calls": 6778825,
+      "tottime_s": 15.3806,
+      "cumtime_s": 31.2604,
+      "share_of_tottime": 0.1233,
+      "max_speedup_if_removed": 1.141
+    },
+    {
+      "function": "__init__.py:414:scan_reversed",
+      "calls": 29396041,
+      "tottime_s": 7.6532,
+      "cumtime_s": 9.6676,
+      "share_of_tottime": 0.0613,
+      "max_speedup_if_removed": 1.065
+    },
+    {
+      "function": "__init__.py:3702:generate_legal_moves",
+      "calls": 6726644,
+      "tottime_s": 7.4964,
+      "cumtime_s": 53.5993,
+      "share_of_tottime": 0.0601,
+      "max_speedup_if_removed": 1.064
+    },
+    {
+      "function": "qprofile_hot:767:quiesce",
+      "calls": 229506,
+      "tottime_s": 7.4061,
+      "cumtime_s": 97.1966,
+      "share_of_tottime": 0.0594,
+      "max_speedup_if_removed": 1.063
+    },
+    {
+      "function": "qprofile_hot:737:priority",
+      "calls": 4192447,
+      "tottime_s": 6.8404,
+      "cumtime_s": 11.9812,
+      "share_of_tottime": 0.0548,
+      "max_speedup_if_removed": 1.058
+    },
+    {
+      "function": "__init__.py:2310:push",
+      "calls": 1033213,
+      "tottime_s": 6.7823,
+      "cumtime_s": 15.2096,
+      "share_of_tottime": 0.0544,
+      "max_speedup_if_removed": 1.058
+    },
+    {
+      "function": "__init__.py:905:attackers_mask",
+      "calls": 3342238,
+      "tottime_s": 5.5968,
+      "cumtime_s": 5.5968,
+      "share_of_tottime": 0.0449,
+      "max_speedup_if_removed": 1.047
+    },
+    {
+      "function": "qprofile_hot:288:compiled_evaluate",
+      "calls": 620843,
+      "tottime_s": 4.9997,
+      "cumtime_s": 4.9997,
+      "share_of_tottime": 0.0401,
+      "max_speedup_if_removed": 1.042
+    },
+    {
+      "function": "__init__.py:835:piece_type_at",
+      "calls": 12487114,
+      "tottime_s": 4.2664,
+      "cumtime_s": 4.2664,
+      "share_of_tottime": 0.0342,
+      "max_speedup_if_removed": 1.035
+    },
+    {
+      "function": "__init__.py:875:attacks_mask",
+      "calls": 4608136,
+      "tottime_s": 3.8629,
+      "cumtime_s": 3.8629,
+      "share_of_tottime": 0.031,
+      "max_speedup_if_removed": 1.032
+    },
+    {
+      "function": "__init__.py:3664:_is_safe",
+      "calls": 5297991,
+      "tottime_s": 3.5367,
+      "cumtime_s": 7.7451,
+      "share_of_tottime": 0.0283,
+      "max_speedup_if_removed": 1.029
+    },
+    {
+      "function": "qprofile_hot:694:enter",
+      "calls": 1022453,
+      "tottime_s": 3.0432,
+      "cumtime_s": 5.0772,
+      "share_of_tottime": 0.0244,
+      "max_speedup_if_removed": 1.025
+    },
+    {
+      "function": "__init__.py:1014:_remove_piece_at",
+      "calls": 2070594,
+      "tottime_s": 2.6043,
+      "cumtime_s": 3.3617,
+      "share_of_tottime": 0.0209,
+      "max_speedup_if_removed": 1.021
+    },
+    {
+      "function": "__init__.py:3645:_slider_blockers",
+      "calls": 1601780,
+      "tottime_s": 2.5475,
+      "cumtime_s": 3.2516,
+      "share_of_tottime": 0.0204,
+      "max_speedup_if_removed": 1.021
+    },
+    {
+      "function": "qprofile_hot:817:search",
+      "calls": 815,
+      "tottime_s": 2.5129,
+      "cumtime_s": 126.0778,
+      "share_of_tottime": 0.0201,
+      "max_speedup_if_removed": 1.021
+    },
+    {
+      "function": "~:0:<method 'bit_length' of 'int' objects>",
+      "calls": 17418948,
+      "tottime_s": 2.499,
+      "cumtime_s": 2.499,
+      "share_of_tottime": 0.02,
+      "max_speedup_if_removed": 1.02
+    },
+    {
+      "function": "qprofile_hot:702:leave",
+      "calls": 1022422,
+      "tottime_s": 2.0959,
+      "cumtime_s": 3.4519,
+      "share_of_tottime": 0.0168,
+      "max_speedup_if_removed": 1.017
+    },
+    {
+      "function": "qprofile_hot:40:position_key",
+      "calls": 2122480,
+      "tottime_s": 1.9488,
+      "cumtime_s": 2.8223,
+      "share_of_tottime": 0.0156,
+      "max_speedup_if_removed": 1.016
+    },
+    {
+      "function": "__init__.py:2110:is_insufficient_material",
+      "calls": 1024468,
+      "tottime_s": 1.7994,
+      "cumtime_s": 3.2717,
+      "share_of_tottime": 0.0144,
+      "max_speedup_if_removed": 1.015
+    },
+    {
+      "function": "~:0:<built-in method builtins.sorted>",
+      "calls": 677924,
+      "tottime_s": 1.778,
+      "cumtime_s": 13.7592,
+      "share_of_tottime": 0.0142,
+      "max_speedup_if_removed": 1.014
+    },
+    {
+      "function": "qprofile_hot:312:cached_evaluate",
+      "calls": 914496,
+      "tottime_s": 1.7539,
+      "cumtime_s": 7.1752,
+      "share_of_tottime": 0.0141,
+      "max_speedup_if_removed": 1.014
+    },
+    {
+      "function": "<string>:10:__eq__",
+      "calls": 8421717,
+      "tottime_s": 1.5164,
+      "cumtime_s": 1.5164,
+      "share_of_tottime": 0.0122,
+      "max_speedup_if_removed": 1.012
+    },
+    {
+      "function": "qprofile_hot:710:drawn",
+      "calls": 1024468,
+      "tottime_s": 1.4534,
+      "cumtime_s": 6.2703,
+      "share_of_tottime": 0.0116,
+      "max_speedup_if_removed": 1.012
+    },
+    {
+      "function": "qprofile_hot:644:captures_and_promotions",
+      "calls": 568925,
+      "tottime_s": 1.4236,
+      "cumtime_s": 26.9022,
+      "share_of_tottime": 0.0114,
+      "max_speedup_if_removed": 1.012
+    },
+    {
+      "function": "__init__.py:3738:generate_castling_moves",
+      "calls": 640169,
+      "tottime_s": 1.389,
+      "cumtime_s": 1.7709,
+      "share_of_tottime": 0.0111,
+      "max_speedup_if_removed": 1.011
+    }
+  ]
+}

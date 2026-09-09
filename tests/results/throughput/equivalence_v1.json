@@ -1,0 +1,17 @@
+{
+  "candidate": "C:\\Users\\44740\\AppData\\Local\\Temp\\claude\\c--Users-44740-Desktop-Comp2526-Personal-project-Chessatohon-optiver-aichessathon-starter\\1934ab3b-a750-4737-9fd6-df22ade71746\\scratchpad\\agent_candidate.py",
+  "candidate_sha256": "fa749fb156d35f500af458b07e2fef2ebe729de1d1fff557267b7056ffdfc769",
+  "groups": [
+    "rated",
+    "quiet"
+  ],
+  "depths": [
+    2,
+    3,
+    4
+  ],
+  "comparisons": 183,
+  "mismatches": 0,
+  "passed": true,
+  "detail": []
+}

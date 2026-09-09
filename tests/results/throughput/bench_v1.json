@@ -1,0 +1,41 @@
+{
+  "candidate": "C:\\Users\\44740\\AppData\\Local\\Temp\\claude\\c--Users-44740-Desktop-Comp2526-Personal-project-Chessatohon-optiver-aichessathon-starter\\1934ab3b-a750-4737-9fd6-df22ade71746\\scratchpad\\agent_candidate.py",
+  "candidate_sha256": "fa749fb156d35f500af458b07e2fef2ebe729de1d1fff557267b7056ffdfc769",
+  "groups": [
+    "rated",
+    "quiet"
+  ],
+  "depth": 4,
+  "positions": 61,
+  "repeats": 5,
+  "control_seconds": [
+    105.6122,
+    102.87,
+    101.8086,
+    101.4227,
+    101.7623
+  ],
+  "candidate_seconds": [
+    96.9576,
+    94.7408,
+    93.1668,
+    94.0697,
+    94.7124
+  ],
+  "control_median_s": 101.8086,
+  "candidate_median_s": 94.7124,
+  "control_nodes": 1889079,
+  "candidate_nodes": 1889079,
+  "nodes_identical": true,
+  "control_nps": 18555,
+  "candidate_nps": 19945,
+  "speedup": 1.0749,
+  "improvement_pct": 7.49,
+  "per_rep_speedup": [
+    1.0893,
+    1.0858,
+    1.0928,
+    1.0782,
+    1.0744
+  ]
+}
