@@ -494,7 +494,7 @@ def nnue_accumulate(
     Only the rows of the embedding table named by the pieces actually on the board are
     summed. No dense 768-element vector is ever built or multiplied.
     """
-    phase_units = (
+    phase_units = int(
         nnue_popcount(knights)
         + nnue_popcount(bishops)
         + 2 * nnue_popcount(rooks)
