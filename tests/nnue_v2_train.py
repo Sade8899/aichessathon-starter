@@ -55,6 +55,12 @@ CORRECTION_CLAMP = 250
 NEAR_BEST_CP = 25
 # Stockfish calls the position equal within this band.
 DRAW_BAND_CP = 40
+# A checkpoint is eligible only if it preserves at least this share of the control's
+# already-correct sibling choices. This is a hard floor, not a weight: V1's whole failure
+# was that a good enough gain elsewhere could always buy a preservation loss, and a
+# weighted sum can always be talked into that trade. A floor cannot.
+PRESERVE_FLOOR = 0.97
+
 # Corrections are suppressed above this material phase in the phase-gated variant.
 # 24 is a full board; rated games start from curated openings, where a static residual
 # changes the fewest root decisions and V1 nonetheless made its largest change.
@@ -74,13 +80,27 @@ def set_seeds(seed: int) -> None:
 
 
 def load_groups() -> list[dict[str, Any]]:
+    """Read every shard, tolerating a shard still being appended to.
+
+    Training on a partial corpus while generation continues is deliberate -- it gets the
+    variant ranking early -- so the last line of a live shard may be half written. That
+    line is skipped rather than crashing the run; a truncated record is never silently
+    repaired into a valid one, because json.loads has to succeed for it to be kept.
+    """
     groups: list[dict[str, Any]] = []
+    partial = 0
     for path in sorted(GROUPS.glob("groups-*.jsonl")):
         with path.open(encoding="utf-8") as handle:
             for line in handle:
                 line = line.strip()
-                if line:
+                if not line:
+                    continue
+                try:
                     groups.append(json.loads(line))
+                except json.JSONDecodeError:
+                    partial += 1
+    if partial:
+        print(f"skipped {partial} partially written record(s) from live shards")
     return groups
 
 
@@ -312,17 +332,29 @@ def composite(metrics: dict[str, float]) -> float:
 # --------------------------------------------------------------------------- variants
 
 VARIANTS: dict[str, dict[str, Any]] = {
-    # value, ranking, anchor, draw, confidence-calibration weights; gate and phase-gate
+    # value, ranking, anchor, draw, confidence-calibration and quiet weights, plus the
+    # confidence gate and the phase gate. `w_quiet` penalises the mean magnitude of the
+    # correction: it is the dial that most directly buys preservation, because a
+    # correction the network does not make cannot overturn an ordering.
     "A": {"w_value": 1.0, "w_rank": 0.0, "w_anchor": 1.0, "w_draw": 0.5,
-          "w_conf": 0.0, "gate": False, "phase_gate": False},
+          "w_conf": 0.0, "w_quiet": 0.0, "gate": False, "phase_gate": False},
     "B": {"w_value": 1.0, "w_rank": 1.0, "w_anchor": 1.0, "w_draw": 0.5,
-          "w_conf": 0.0, "gate": False, "phase_gate": False},
+          "w_conf": 0.0, "w_quiet": 0.0, "gate": False, "phase_gate": False},
     "C": {"w_value": 1.0, "w_rank": 1.0, "w_anchor": 1.0, "w_draw": 0.5,
-          "w_conf": 0.5, "gate": True, "phase_gate": False},
+          "w_conf": 0.5, "w_quiet": 0.0, "gate": True, "phase_gate": False},
     "D": {"w_value": 0.7, "w_rank": 1.0, "w_anchor": 3.0, "w_draw": 2.0,
-          "w_conf": 0.5, "gate": True, "phase_gate": False},
+          "w_conf": 0.5, "w_quiet": 0.1, "gate": True, "phase_gate": False},
     "E": {"w_value": 1.0, "w_rank": 1.0, "w_anchor": 1.0, "w_draw": 0.5,
-          "w_conf": 0.5, "gate": True, "phase_gate": True},
+          "w_conf": 0.5, "w_quiet": 0.0, "gate": True, "phase_gate": True},
+    # F is the conservative setting the pilot said was missing. Every variant A-E traded
+    # preservation away as training proceeded -- the best reached 0.957 and fell -- so F
+    # weights the anchor an order of magnitude above the value term and adds a magnitude
+    # penalty, aiming at the 0.97 floor rather than at the largest regret reduction.
+    "F": {"w_value": 0.3, "w_rank": 1.0, "w_anchor": 10.0, "w_draw": 4.0,
+          "w_conf": 1.0, "w_quiet": 0.4, "gate": True, "phase_gate": False},
+    # G is F with the phase gate as well: corrections only where they were calibrated.
+    "G": {"w_value": 0.3, "w_rank": 1.0, "w_anchor": 10.0, "w_draw": 4.0,
+          "w_conf": 1.0, "w_quiet": 0.4, "gate": True, "phase_gate": True},
 }
 
 
@@ -499,6 +531,8 @@ def train_variant(
           flush=True)
     history: list[dict[str, Any]] = []
     best_score = -1e18
+    best_preserved = -1.0
+    any_eligible = False
     best_state: dict[str, Any] | None = None
     best_epoch = -1
     rng = np.random.default_rng(seed)
@@ -532,7 +566,8 @@ def train_variant(
     for epoch in range(epochs):
         model.train()
         order = rng.permutation(train_ids)
-        totals = {"value": 0.0, "rank": 0.0, "anchor": 0.0, "draw": 0.0, "conf": 0.0}
+        totals = {"value": 0.0, "rank": 0.0, "anchor": 0.0, "draw": 0.0,
+                  "conf": 0.0, "quiet": 0.0}
         batches = 0
         for start in range(0, len(order), batch_groups):
             gids = order[start : start + batch_groups]
@@ -606,15 +641,31 @@ def train_variant(
             # 5. confidence calibration. The indicator is computed from the *ungated*
             #    bounded residual and detached, which breaks the circularity: the gate
             #    is trained to predict whether the raw residual would help here.
+            #
+            #    "Helps" is not enough on its own, and the pilot proved it: every
+            #    variant whose gate was trained on value improvement alone traded
+            #    preservation away epoch by epoch. A correction that reduces this
+            #    position's error while overturning a sibling ordering the control
+            #    already had right is exactly the move V1 kept making. So the target is
+            #    helps AND does not damage an already-correct ordering.
             if cfg["gate"]:
                 with torch.no_grad():
                     full = bounded.detach() * OUTPUT_SCALE
-                    helps = (
-                        torch.abs(base + full - sf) < torch.abs(base - sf)
-                    ).float()
-                loss_conf = bce(conf.clamp(1e-6, 1 - 1e-6), helps).mean()
+                    helps = (torch.abs(base + full - sf) < torch.abs(base - sf)).float()
+                    ungated = base + full
+                    flipped = (ungated[pb] >= ungated[pw]).float() * anchor_mask
+                    damaged = torch.zeros_like(helps)
+                    damaged.index_add_(0, pb, flipped)
+                    damaged.index_add_(0, pw, flipped)
+                    target_conf = helps * (damaged == 0).float()
+                loss_conf = bce(conf.clamp(1e-6, 1 - 1e-6), target_conf).mean()
             else:
                 loss_conf = torch.zeros(())
+
+            # 6. quiet: the mean magnitude of the correction. A correction the network
+            #    does not make cannot overturn an ordering, so this is the most direct
+            #    dial between preservation and reach.
+            loss_quiet = torch.abs(correction).mean()
 
             loss = (
                 cfg["w_value"] * loss_value
@@ -622,6 +673,7 @@ def train_variant(
                 + cfg["w_anchor"] * loss_anchor / OUTPUT_SCALE
                 + cfg["w_draw"] * loss_draw / OUTPUT_SCALE
                 + cfg["w_conf"] * loss_conf
+                + cfg["w_quiet"] * loss_quiet
             )
 
             opt.zero_grad()
@@ -634,6 +686,7 @@ def train_variant(
             totals["anchor"] += float(loss_anchor.detach())
             totals["draw"] += float(loss_draw.detach())
             totals["conf"] += float(loss_conf.detach())
+            totals["quiet"] += float(loss_quiet.detach())
             batches += 1
 
         corr = np.zeros(enc["base"].shape[0], dtype=np.float64)
@@ -655,11 +708,29 @@ def train_variant(
             f"regret_red={gm['regret_reduction_cp']:+7.2f} "
             f"pair_gain={gm['pair_accuracy_gain']:+.4f} "
             f"mae_gain={vm['mae_gain_cp']:+7.2f} "
-            f"|corr|={vm['mean_abs_correction']:6.2f}",
+            f"|corr|={vm['mean_abs_correction']:6.2f}"
+            f"{'  ELIGIBLE' if gm['preserved_rate'] >= PRESERVE_FLOOR else ''}",
             flush=True,
         )
 
-        if record["composite"] > best_score:
+        # Checkpoint selection: the preservation floor is a hard eligibility test, and
+        # only among eligible checkpoints does the composite decide. A checkpoint that
+        # breaks more than 1 - PRESERVE_FLOOR of the control's already-correct choices
+        # is never selected, however much regret it reduces. If no epoch is eligible the
+        # run keeps the most preserving one and is reported as ineligible, rather than
+        # quietly promoting the best of a bad set.
+        eligible = gm["preserved_rate"] >= PRESERVE_FLOOR
+        record["eligible"] = eligible
+        if eligible:
+            if not any_eligible or record["composite"] > best_score:
+                any_eligible = True
+                best_score = record["composite"]
+                best_epoch = epoch
+                best_state = {
+                    k: v.detach().clone() for k, v in model.state_dict().items()
+                }
+        elif not any_eligible and gm["preserved_rate"] > best_preserved:
+            best_preserved = gm["preserved_rate"]
             best_score = record["composite"]
             best_epoch = epoch
             best_state = {
@@ -695,6 +766,9 @@ def train_variant(
         "epochs_run": epochs,
         "best_epoch": best_epoch,
         "best_composite": best_score,
+        "preserve_floor": PRESERVE_FLOOR,
+        "eligible": any_eligible,
+        "best_preserved_rate": max(h["preserved_rate"] for h in history),
         "train_seconds": round(time.perf_counter() - started, 1),
         "parameters": nn_features.parameter_count(hidden),
         "history": history,
@@ -703,6 +777,8 @@ def train_variant(
 
 
 def main() -> None:
+    global PRESERVE_FLOOR
+
     ap = argparse.ArgumentParser()
     ap.add_argument("--variants", default="A,B,C,D,E")
     ap.add_argument("--hidden", type=int, default=32)
@@ -711,7 +787,25 @@ def main() -> None:
     ap.add_argument("--batch-groups", type=int, default=96)
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--tag", default="")
+    ap.add_argument(
+        "--floor",
+        type=float,
+        default=PRESERVE_FLOOR,
+        help="preservation eligibility floor for checkpoint selection",
+    )
+    ap.add_argument(
+        "--override",
+        default="",
+        help="comma-separated weight overrides, e.g. w_quiet=0.1,w_anchor=6",
+    )
     args = ap.parse_args()
+
+    PRESERVE_FLOOR = args.floor
+    overrides: dict[str, float] = {}
+    for item in args.override.split(","):
+        if item.strip():
+            key, value = item.split("=")
+            overrides[key.strip()] = float(value)
 
     groups = load_groups()
     print(f"loaded {len(groups)} groups")
@@ -731,6 +825,9 @@ def main() -> None:
             continue
         tag = f"{variant}_h{args.hidden}_s{args.seed}" + (f"_{args.tag}" if args.tag else "")
         outdir = OUTROOT / tag
+        if overrides:
+            VARIANTS[variant] = {**VARIANTS[variant], **overrides}
+            print(f"  overrides applied: {overrides}")
         print(f"=== training variant {tag} ===", flush=True)
         result = train_variant(
             variant,
@@ -753,7 +850,8 @@ def main() -> None:
         {
             k: r[k]
             for k in ("tag", "variant", "hidden", "seed", "best_epoch",
-                      "best_composite", "train_seconds", "parameters")
+                      "best_composite", "eligible", "best_preserved_rate",
+                      "train_seconds", "parameters")
         }
         for r in results
     ]
