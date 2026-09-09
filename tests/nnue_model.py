@@ -85,7 +85,7 @@ def phase_blend(board: chess.Board) -> float:
     return material_phase(board) / PHASE_MAX
 
 
-def build_torch_model():  # pragma: no cover - imported lazily by the trainer
+def build_torch_model(hidden: int = HIDDEN):  # pragma: no cover - lazy import
     import torch
     from torch import nn
 
@@ -94,10 +94,11 @@ def build_torch_model():  # pragma: no cover - imported lazily by the trainer
 
         def __init__(self) -> None:
             super().__init__()
-            self.embed = nn.Embedding(NUM_FEATURES, HIDDEN)
-            self.aux = nn.Linear(NUM_AUX, HIDDEN, bias=True)
-            self.head_mg = nn.Linear(HIDDEN, 1, bias=True)
-            self.head_eg = nn.Linear(HIDDEN, 1, bias=True)
+            self.hidden = hidden
+            self.embed = nn.Embedding(NUM_FEATURES, hidden)
+            self.aux = nn.Linear(NUM_AUX, hidden, bias=True)
+            self.head_mg = nn.Linear(hidden, 1, bias=True)
+            self.head_eg = nn.Linear(hidden, 1, bias=True)
             # Initialisation has to respect the clipped ReLU, or the network cannot
             # train at all. A first attempt used std=0.01 with both heads zeroed; the
             # accumulator then sat near 0, roughly half the units were clamped dead at
@@ -139,11 +140,11 @@ def build_torch_model():  # pragma: no cover - imported lazily by the trainer
     return Residual
 
 
-def parameter_count() -> int:
+def parameter_count(hidden: int = HIDDEN) -> int:
     return (
-        NUM_FEATURES * HIDDEN  # embedding
-        + NUM_AUX * HIDDEN  # auxiliary projection
-        + HIDDEN  # auxiliary bias
-        + 2 * HIDDEN  # two heads
+        NUM_FEATURES * hidden  # embedding
+        + NUM_AUX * hidden  # auxiliary projection
+        + hidden  # auxiliary bias
+        + 2 * hidden  # two heads
         + 2  # two head biases
     )

@@ -195,7 +195,8 @@ def quant_forward(q: dict, indices: np.ndarray, mask: np.ndarray, aux: np.ndarra
                   phase: np.ndarray) -> np.ndarray:
     """Reference integer inference, vectorised. The agent's Numba path must match this."""
     n = indices.shape[0]
-    acc = np.zeros((n, nn_features.HIDDEN), dtype=np.int32)
+    hidden_width = q["embed_q"].shape[1]
+    acc = np.zeros((n, hidden_width), dtype=np.int32)
     for i in range(n):
         active = indices[i][mask[i] > 0]
         if active.size:
@@ -209,7 +210,7 @@ def quant_forward(q: dict, indices: np.ndarray, mask: np.ndarray, aux: np.ndarra
     aux_w = q["aux_w_q"].astype(np.int64)
     phase_units = np.rint(aux[:, 5] * M_PHASE_MAX).astype(np.int64)
     bits = np.rint(aux[:, 1:5]).astype(np.int64)
-    aux_contrib = np.zeros((n, M.HIDDEN), dtype=np.int64)
+    aux_contrib = np.zeros((n, hidden_width), dtype=np.int64)
     aux_contrib += aux_w[:, 0][None, :]
     for slot in range(4):
         aux_contrib += bits[:, slot][:, None] * aux_w[:, slot + 1][None, :]
@@ -291,6 +292,8 @@ def main() -> None:
     ap.add_argument("--batch", type=int, default=2048)
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--patience", type=int, default=6)
+    ap.add_argument("--hidden", type=int, default=nn_features.HIDDEN)
+    ap.add_argument("--tag", default="", help="name this architecture in the outputs")
     ap.add_argument("--data", type=pathlib.Path, default=DATASET / "labelled.jsonl")
     args = ap.parse_args()
 
@@ -299,6 +302,9 @@ def main() -> None:
 
     torch.set_num_threads(6)  # training only; inference is pinned to one thread
     set_seeds(SEED)
+    global MODELDIR
+    if args.tag:
+        MODELDIR = MODELDIR.parent / f"model_{args.tag}"
     MODELDIR.mkdir(parents=True, exist_ok=True)
 
     splits = load_split(args.data)
@@ -315,7 +321,7 @@ def main() -> None:
     print("encoding...")
     data = {name: encode(rows) for name, rows in splits.items() if rows}
 
-    residual_class = nn_features.build_torch_model()
+    residual_class = nn_features.build_torch_model(args.hidden)
     model = residual_class()
     print("parameters:", sum(p.numel() for p in model.parameters()))
 
@@ -409,6 +415,8 @@ def main() -> None:
         "best_val_mae": best,
         "history": history,
         "parameters": int(sum(p.numel() for p in model.parameters())),
+        "hidden": args.hidden,
+        "tag": args.tag or "base",
         "augmentation": aug,
         "splits": {k: len(v) for k, v in splits.items()},
     }

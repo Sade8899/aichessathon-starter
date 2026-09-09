@@ -406,7 +406,7 @@ def load_nnue() -> str:
     """Load and validate the weights. Any failure keeps the control's exact behaviour."""
     global _NNUE_EMBED, _NNUE_BIAS, _NNUE_MG, _NNUE_EG
     global _NNUE_MG_SCALE, _NNUE_EG_SCALE, _NNUE_MG_BIAS, _NNUE_EG_BIAS
-    global _nnue_ready, _nnue_status
+    global _nnue_ready, _nnue_status, NNUE_HIDDEN
 
     path = _nnue_weights_path()
     if path is None:
@@ -427,14 +427,21 @@ def load_nnue() -> str:
             eg = data["eg_q"]
             scales = data["scales"]
             biases = data["biases"]
-        if embed.shape != (768, NNUE_HIDDEN) or aux_w.shape != (NNUE_HIDDEN, 6):
-            _nnue_status = "weight shape mismatch; handcrafted evaluation only"
+        # The accumulator width comes from the file, not from a constant, so a narrower
+        # or wider trained network ships without editing this source. It is fixed before
+        # the kernel is compiled below, and Numba freezes it there.
+        if embed.ndim != 2 or embed.shape[0] != 768:
+            _nnue_status = "embedding shape mismatch; handcrafted evaluation only"
             return _nnue_status
-        if mg.shape != (NNUE_HIDDEN,) or eg.shape != (NNUE_HIDDEN,):
+        width = int(embed.shape[1])
+        if not 8 <= width <= 256:
+            _nnue_status = f"implausible accumulator width {width}; handcrafted only"
+            return _nnue_status
+        if aux_w.shape != (width, 6) or aux_b.shape != (width,):
+            _nnue_status = "auxiliary shape mismatch; handcrafted evaluation only"
+            return _nnue_status
+        if mg.shape != (width,) or eg.shape != (width,):
             _nnue_status = "head shape mismatch; handcrafted evaluation only"
-            return _nnue_status
-        if aux_b.shape != (NNUE_HIDDEN,):
-            _nnue_status = "auxiliary bias shape mismatch; handcrafted only"
             return _nnue_status
         if not (np.isfinite(scales).all() and np.isfinite(biases).all()):
             _nnue_status = "non-finite scales; handcrafted evaluation only"
@@ -448,6 +455,7 @@ def load_nnue() -> str:
 
     # int8 on disk and int8 in value; widened to int32 in memory only so the
     # accumulator loop compiles to wider integer adds. No value changes.
+    NNUE_HIDDEN = width
     _NNUE_EMBED = np.ascontiguousarray(embed, dtype=np.int32)
     _NNUE_BIAS = _nnue_bias_table(
         np.asarray(aux_w, dtype=np.int64), np.asarray(aux_b, dtype=np.int64)
