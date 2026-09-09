@@ -84,8 +84,14 @@ def main() -> None:
     gen = read(NNUE / "generation_summary.json")
     collect = read(NNUE / "dataset" / "collect_summary.json")
     labels = read(NNUE / "dataset" / "label_summary.json")
-    training = read(NNUE / "model" / "training_report.json")
+    screening = read(NNUE / "model" / "screening.json")
+    winner = (screening or {}).get("winner") or {}
+    winner_dir = NNUE / pathlib.Path(winner["model_dir"]).name if winner.get("model_dir") else None
+    training = read((winner_dir or (NNUE / "model")) / "training_report.json")
     packed = read(NNUE / "model" / "packed_weights.json")
+    invariants = read(NNUE / "gates" / "invariants.json")
+    label_summary = read(NNUE / "label_summary.json")
+    collect_summary = read(NNUE / "collect_summary.json")
     throughput = read(NNUE / "gates" / "throughput.json")
     gate = read(NNUE / "gates" / "rated_v5_gate.json")
     arena = read(NNUE / "gates" / "arena.json")
@@ -112,8 +118,15 @@ def main() -> None:
             {"gate": name, "measured": value, "requirement": requirement, "passes": ok}
         )
 
+    if invariants:
+        add(
+            "pipeline invariants",
+            f"{len(invariants['checks']) - invariants['failed']}/{len(invariants['checks'])}",
+            "all pass",
+            invariants["all_pass"],
+        )
     if training:
-        for split in ("test", "validation"):
+        for split in ("test", "holdout"):
             q = training.get(f"{split}_quant")
             f = training.get(f"{split}_float")
             qe = training.get(f"{split}_quantization_error")
@@ -125,11 +138,23 @@ def main() -> None:
                     qe["median_cp"] <= 10,
                 )
                 add(
-                    f"held-out MAE vs zero-residual baseline ({split})",
-                    f"{q['mae']} vs {q['target_mae_of_zero_predictor']}",
-                    "materially lower",
-                    q["mae"] < q["target_mae_of_zero_predictor"],
+                    f"deployed clamped MAE improvement ({split})",
+                    f"{q['mae_improvement_cp']:+.2f} cp "
+                    f"({q['mae_improvement_pct']:+.2f}%), "
+                    f"{q['baseline_mae']} -> {q['mae']}",
+                    "materially better than the handcrafted evaluator",
+                    q["mae_improvement_cp"] > 0,
                 )
+                for phase in ("middlegame", "endgame"):
+                    ph = q.get("by_phase", {}).get(phase)
+                    if ph:
+                        gain = ph["baseline_mae"] - ph["corrected_mae"]
+                        add(
+                            f"{phase} not regressed ({split})",
+                            f"{gain:+.2f} cp ({ph['baseline_mae']} -> {ph['corrected_mae']})",
+                            "no material regression",
+                            gain > -1.0,
+                        )
             health = training.get(f"{split}_health")
             if health:
                 add(
@@ -327,7 +352,71 @@ def main() -> None:
             add_line(f"| `{row['function']}` | {row['change']} |")
         add_line("")
 
-    add_line("## 2. Gate results")
+    if collect_summary:
+        add_line("## 2. Dataset")
+        add_line("")
+        add_line(f"- games read: {collect_summary.get('games_read'):,}")
+        add_line(
+            f"- unique positions available: "
+            f"{collect_summary.get('unique_positions_available', 0):,}; "
+            f"duplicates collapsed: "
+            f"{collect_summary.get('duplicate_positions_collapsed', 0):,}"
+        )
+        add_line(f"- selected: {collect_summary.get('selected', 0):,}")
+        add_line(f"- splits: `{collect_summary.get('split_counts')}`")
+        add_line(f"- phase mix: `{collect_summary.get('phase_fractions')}`")
+        add_line(
+            f"- RATED_V5 fixture positions dropped: "
+            f"{collect_summary.get('dropped_rated_v5_fixture_positions', 0)}"
+        )
+        add_line(
+            f"- split FEN overlaps: `{collect_summary.get('split_fen_overlaps')}` "
+            f"(leakage free: {collect_summary.get('leakage_free')})"
+        )
+        add_line("")
+    if label_summary:
+        add_line("### Labelling")
+        add_line("")
+        add_line("- engine: Stockfish 19 (`sf_19`), 1 thread, 64 MB hash")
+        add_line(f"- node limit: {label_summary.get('nodes'):,}")
+        add_line(
+            f"- label strengths: `{label_summary.get('label_strength_distribution')}` "
+            f"(stronger labels retained rather than weakened)"
+        )
+        add_line(
+            f"- depth reached: median {label_summary.get('median_depth_reached')}, "
+            f"minimum {label_summary.get('min_depth_reached')}"
+        )
+        add_line(
+            f"- completeness: {label_summary.get('labelled'):,}/"
+            f"{label_summary.get('expected'):,}, missing "
+            f"{label_summary.get('missing')}, unexpected {label_summary.get('unexpected')}"
+        )
+        add_line(
+            f"- rate: {label_summary.get('positions_per_hour'):,}/h at "
+            f"{label_summary.get('shards')} workers"
+        )
+        add_line("")
+    if screening:
+        add_line("### Architecture screening")
+        add_line("")
+        add_line("Ranked on " + screening.get("ranking_rule", ""))
+        add_line("")
+        add_line("| tag | params | test cp | test % | holdout cp | sign acc |")
+        add_line("| --- | ---: | ---: | ---: | ---: | ---: |")
+        for row in screening.get("results", []):
+            if not row.get("ok"):
+                continue
+            add_line(
+                f"| `{row['tag']}` | {row['parameters']:,} | "
+                f"{row.get('test_improvement_cp', 0):+.2f} | "
+                f"{row.get('test_improvement_pct', 0):+.2f} | "
+                f"{row.get('holdout_improvement_cp', 0):+.2f} | "
+                f"{row.get('test_sign_acc', 0):.3f} |"
+            )
+        add_line("")
+
+    add_line("## 3. Gate results")
     add_line("")
     add_line("| gate | measured | requirement | verdict |")
     add_line("| --- | --- | --- | --- |")
@@ -338,7 +427,7 @@ def main() -> None:
     add_line(f"**{len(decided) - len(failed)} of {len(decided)} decided gates pass.**")
     add_line("")
 
-    add_line("## 3. Recommendation")
+    add_line("## 4. Recommendation")
     add_line("")
     if all_pass:
         add_line("Every declared gate passes. The neural candidate is recommended.")
