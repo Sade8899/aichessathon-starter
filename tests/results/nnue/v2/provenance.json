@@ -1,0 +1,75 @@
+{
+  "groups": 28640,
+  "children": 226364,
+  "children_per_group": {
+    "median": 8.0,
+    "mean": 7.9,
+    "min": 2,
+    "max": 9
+  },
+  "label_depth": {
+    "median": 14.0,
+    "min": 9,
+    "max": 245
+  },
+  "split_hashes": {
+    "train": {
+      "groups": 20135,
+      "sha256": "c0dede99aab6a1704a8670f79f79b519cf60b3c93f73a6034df1a0486cd0c7d8"
+    },
+    "validation": {
+      "groups": 4423,
+      "sha256": "4d636837f6d1c48782d4cbfbece130cd32879b7f61b0112d1b5c05feadda9d99"
+    },
+    "test": {
+      "groups": 4082,
+      "sha256": "00ec25fdd17725c8b1fd65b5922146c19cc65cad40efa06c7996185e0c6668ae"
+    }
+  },
+  "split_parent_overlaps": {
+    "test&train": 0,
+    "test&validation": 0,
+    "train&validation": 0
+  },
+  "leakage_free": true,
+  "exclusions": {
+    "loki_family_groups_present": 0,
+    "rated_v5_ball_groups_present": 0,
+    "rated_v5_ball_size": 492,
+    "exclusions_held": true
+  },
+  "hard_negatives": {
+    "control_static_best_added_by_second_search": 12524,
+    "control_static_best_share_pct": 43.73,
+    "groups_where_control_static_best_is_sf_best": 5655,
+    "control_static_best_agreement_pct": 19.75,
+    "control_static_best_regret_median_cp": 98.0,
+    "control_static_best_regret_mean_cp": 246.5
+  },
+  "regret_distribution_cp": {
+    "zero": 41381,
+    "1_to_25": 43253,
+    "26_to_100": 62952,
+    "101_to_300": 48948,
+    "over_300": 29830,
+    "median": 51.0
+  },
+  "position_classes": {
+    "drawish_groups": 3520,
+    "passer_defence_groups": 17067,
+    "tactical_groups": 8352,
+    "quiet_children": 191377,
+    "queen_trade_children": 368,
+    "check_children": 16998,
+    "capture_children": 21565
+  },
+  "phase_counts": {
+    "endgame": 17357,
+    "middlegame": 8380,
+    "opening": 2903
+  },
+  "opponent_family_counts": {
+    "shallowblue": 7214,
+    "rustic": 21426
+  }
+}
