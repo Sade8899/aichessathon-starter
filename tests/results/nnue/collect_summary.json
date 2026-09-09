@@ -1,0 +1,50 @@
+{
+  "games_read": 2600,
+  "unique_positions_available": 153534,
+  "duplicate_positions_collapsed": 33804,
+  "dropped_rated_v5_fixture_positions": 0,
+  "target": 200000,
+  "selected": 128950,
+  "phase_target_declared": {
+    "middlegame": 0.4,
+    "endgame": 0.4,
+    "tactical": 0.2
+  },
+  "phase_target_reachable": false,
+  "phase_target_note": "endgames are about 11 percent of the unique positions engine games at this time control produce, so a 40 percent endgame corpus would have to be about a third of the size. Every non-opening position is kept and openings are capped at 15 percent instead; the achieved mix is reported, not forced.",
+  "per_game_cap": 228,
+  "split_counts": {
+    "train": 77589,
+    "holdout": 19101,
+    "validation": 17035,
+    "test": 15225
+  },
+  "phase_counts": {
+    "middlegame": 40340,
+    "endgame": 20739,
+    "opening": 19335,
+    "tactical": 48536
+  },
+  "phase_fractions": {
+    "middlegame": 0.3128,
+    "endgame": 0.1608,
+    "opening": 0.1499,
+    "tactical": 0.3764
+  },
+  "split_fen_overlaps": {
+    "train&validation": 0,
+    "train&test": 0,
+    "train&holdout": 0,
+    "validation&test": 0,
+    "validation&holdout": 0,
+    "test&holdout": 0
+  },
+  "leakage_free": true,
+  "bucket_sizes_available": {
+    "middlegame": 40340,
+    "endgame": 20739,
+    "tactical": 48602,
+    "opening": 43853
+  },
+  "output": "tests\\results\\nnue\\dataset\\positions.jsonl"
+}

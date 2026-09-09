@@ -1,0 +1,71 @@
+{
+  "nodes": 100000,
+  "label_strength_distribution": {
+    "200000": 6078,
+    "100000": 122872
+  },
+  "median_depth_reached": 16.0,
+  "min_depth_reached": 8,
+  "threads_per_process": 1,
+  "hash_mb": 64,
+  "shards": 6,
+  "expected": 128950,
+  "labelled": 128950,
+  "missing": 0,
+  "unexpected": 0,
+  "duplicate_rows_ignored": 0,
+  "complete": true,
+  "elapsed_seconds": 4525.3,
+  "positions_per_hour": 102583,
+  "shard_results": [
+    {
+      "shard": 0,
+      "labelled": 20455,
+      "already": 6078,
+      "total": 21492,
+      "seconds": 4492.2,
+      "positions_per_second": 4.55
+    },
+    {
+      "shard": 1,
+      "labelled": 20498,
+      "already": 6078,
+      "total": 21492,
+      "seconds": 4523.3,
+      "positions_per_second": 4.53
+    },
+    {
+      "shard": 2,
+      "labelled": 20505,
+      "already": 6078,
+      "total": 21492,
+      "seconds": 4507.4,
+      "positions_per_second": 4.55
+    },
+    {
+      "shard": 3,
+      "labelled": 20464,
+      "already": 6078,
+      "total": 21492,
+      "seconds": 4500.9,
+      "positions_per_second": 4.55
+    },
+    {
+      "shard": 4,
+      "labelled": 20488,
+      "already": 6078,
+      "total": 21491,
+      "seconds": 4520.3,
+      "positions_per_second": 4.53
+    },
+    {
+      "shard": 5,
+      "labelled": 20462,
+      "already": 6078,
+      "total": 21491,
+      "seconds": 4510.2,
+      "positions_per_second": 4.54
+    }
+  ],
+  "output": "tests\\results\\nnue\\dataset\\labelled.jsonl"
+}
