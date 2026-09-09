@@ -157,6 +157,8 @@ def main() -> None:
     screen = load(tagdir / f"arena_{args.screen_label}.json")
     confirm = load(tagdir / f"arena_{args.confirm_label}.json")
     generation = load(GROUPS / "generation_summary.json")
+    frontier = load(V2 / "frontier_fixtures.json")
+    h2h = load(tagdir / "h2h.json")
 
     criteria = acceptance(gates, screen, confirm)
     accepted = all(c["passes"] for c in criteria)
@@ -346,8 +348,43 @@ def main() -> None:
     else:
         add("Gates were not run.\n")
 
+    # ------------------------------------------------------------------ frontier
+    add("## 5. The preservation/reach frontier\n")
+    add(
+        "The single most useful measurement of this session. Seven checkpoints spanning "
+        "the trade-off, each screened on the 16 enforced RATED_V5 fixtures:\n"
+    )
+    if frontier:
+        add(
+            table(
+                [
+                    [
+                        f"`{r['tag'].replace('_h32_s20260909', '')}`",
+                        f"{r['preserved']:.4f}",
+                        f"{r['corr']:.1f}",
+                        f"{r['regret']:+.2f}",
+                        f"{r['mae']:+.2f}",
+                        r["enforced"],
+                        ", ".join(r["broke"]) or "-",
+                    ]
+                    for r in frontier["rows"]
+                ],
+                ["checkpoint", "preserved", "|corr| cp", "regret cp", "MAE cp",
+                 "RATED_V5", "broke"],
+                ["---", "---:", "---:", "---:", "---:", "---:", "---"],
+            )
+        )
+        add("")
+    add(
+        "The boundary sits between 0.969 and 0.972 preserved: the cheap training-time "
+        "proxy predicts the expensive gate. It also prices the trade. Every checkpoint "
+        "with real reach breaks solved controls, and every checkpoint that keeps 16/16 "
+        "corrects the evaluation by only 5-14 cp on average. No setting in this family "
+        "is both safe and large.\n"
+    )
+
     # --------------------------------------------------------------------- arenas
-    add("## 5. Arenas\n")
+    add("## 6. Arenas\n")
     for label, report in (("screening", screen), ("confirmation", confirm)):
         if not report:
             add(f"### {label}: not run\n")
@@ -414,8 +451,41 @@ def main() -> None:
         )
         add("")
 
+    if h2h:
+        add("### head to head against the control\n")
+        add(
+            "The benchmark arena puts both agents against engines rated 1630-1721, where "
+            "both score near the floor and most paired differences are exactly zero. A "
+            "direct match has no floor: the same opening is played twice with colours "
+            "reversed, so the only thing that varies is the difference being measured.\n"
+        )
+        add(
+            f"- {h2h['scored_games']} scored games over {h2h['openings']} openings, "
+            f"{h2h['clock_ms']}ms + {h2h['increment_ms']}ms, seed {h2h['seed']}"
+        )
+        add(
+            f"- **candidate scores {h2h['candidate_score_pct']}% "
+            f"95% CI [{h2h['score_ci95_pct'][0]}%, {h2h['score_ci95_pct'][1]}%]** "
+            f"({h2h['candidate_W-D-L']}), Elo {h2h['elo']:+.1f} "
+            f"[{h2h['elo_ci95'][0]:+.1f}, {h2h['elo_ci95'][1]:+.1f}]"
+        )
+        add(
+            f"- 50% is parity. Beats the control: **{h2h['beats_control']}**; "
+            f"worse than the control: **{h2h['worse_than_control']}**"
+        )
+        add(
+            f"- as White {h2h['by_colour']['candidate_white']['score_pct']}%, "
+            f"as Black {h2h['by_colour']['candidate_black']['score_pct']}%, "
+            f"draws {h2h['draw_pct']}%"
+        )
+        add(
+            f"- mean depth candidate {h2h['candidate_mean_depth']} vs control "
+            f"{h2h['control_mean_depth']}; flags {h2h['flags']}, illegal {h2h['illegal']}, "
+            f"infrastructure {h2h['infrastructure_failures']}\n"
+        )
+
     # ------------------------------------------------------------ reproduction
-    add("## 6. Reproduction\n")
+    add("## 7. Reproduction\n")
     add("```")
     add("# sibling groups (Stockfish 19, MultiPV)")
     add("python tests/nnue_v2_data.py --parents 40000 --workers 8 --seed 20260909")
