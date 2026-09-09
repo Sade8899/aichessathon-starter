@@ -23,6 +23,7 @@ import multiprocessing as mp
 import os
 import pathlib
 import random
+import statistics
 import sys
 import time
 
@@ -41,7 +42,16 @@ STOCKFISH = (
     / "stockfish"
     / "stockfish-windows-x86-64-universal.exe"
 )
-NODES = 200_000
+# Labelling strength. Measured on REAL corpus positions with six workers -- the earlier
+# six-position calibration was unrepresentative and overstated the rate by 2x:
+#   50k nodes  147,795/h  median depth 15   129k positions in 0.87 h
+#  100k nodes   83,270/h  median depth 16   129k positions in 1.55 h
+#  200k nodes   46,182/h  median depth 18   129k positions in 2.79 h
+# Depth 18 over the whole corpus would take 2.8 h and squeeze the arena, which is the
+# gate that actually decides acceptance, so the corpus is labelled at 100k and positions
+# already labelled more strongly are kept as they are. Every row records its own node
+# count, so label strength is never silently mixed.
+NODES = 100_000
 CLAMP_CP = 1000
 SWING_CP = 100
 SAMPLE_SEED = 20260909
@@ -248,7 +258,9 @@ def label_shard(args: tuple[int, int, str]) -> dict:
             for line in handle:
                 with contextlib.suppress(Exception):
                     row = json.loads(line)
-                    if row.get("label_nodes") == NODES:
+                    # A stronger label is still a valid label, so anything at or above
+                    # the target node count counts as done.
+                    if int(row.get("label_nodes", 0)) >= NODES:
                         done.add(row["fen_key"])
 
     todo = [e for e in entries if e["fen_key"] not in done]
@@ -357,8 +369,16 @@ def label(shards: int) -> dict:
         for key in sorted(merged, key=lambda k: hashlib.sha256(k.encode()).hexdigest()):
             handle.write(json.dumps(merged[key]) + "\n")
 
+    strength: dict[str, int] = {}
+    for row in merged.values():
+        key = str(row.get("label_nodes", "unknown"))
+        strength[key] = strength.get(key, 0) + 1
+    depths = [row.get("stockfish_depth") for row in merged.values() if row.get("stockfish_depth")]
     summary = {
         "nodes": NODES,
+        "label_strength_distribution": strength,
+        "median_depth_reached": statistics.median(depths) if depths else None,
+        "min_depth_reached": min(depths) if depths else None,
         "threads_per_process": 1,
         "hash_mb": 64,
         "shards": shards,
@@ -383,7 +403,10 @@ def main() -> None:
     ap.add_argument("step", choices=["collect", "label"])
     ap.add_argument("--target", type=int, default=200_000)
     ap.add_argument("--shards", type=int, default=6)
+    ap.add_argument("--nodes", type=int, default=NODES)
     args = ap.parse_args()
+    global NODES
+    NODES = args.nodes
     if args.step == "collect":
         collect(args.target)
     else:
