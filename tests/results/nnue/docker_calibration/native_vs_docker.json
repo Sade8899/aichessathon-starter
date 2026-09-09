@@ -1,0 +1,23 @@
+{
+  "agent": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter\\agent.py",
+  "image": "chessathon-nnue:platform",
+  "native": {
+    "python": "3.14.4",
+    "nps": 11870.2,
+    "nodes": 236153,
+    "seconds": 19.895,
+    "nnue_status": "n/a"
+  },
+  "docker": {
+    "python": "3.12.13",
+    "nps": 10486.7,
+    "nodes": 236153,
+    "seconds": 22.519,
+    "nnue_status": "n/a"
+  },
+  "fixed_depth_decisions_identical": true,
+  "mismatches": [],
+  "nps_ratio_docker_over_native": 0.8834,
+  "native_stderr": "",
+  "docker_stderr": ""
+}
