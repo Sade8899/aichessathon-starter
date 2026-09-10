@@ -1,0 +1,13 @@
+{
+  "gate": "unseen Loki-family holdout static MAE (reported, not enforced)",
+  "measured": "366.84 -> 362.78 cp (+4.06)",
+  "requirement": "reported only; MAE is not an acceptance criterion",
+  "passes": true,
+  "detail": {
+    "n": 4000,
+    "mae_control": 366.8435,
+    "mae_candidate": 362.78025,
+    "mean_abs_correction": 19.84325,
+    "corrections_suppressed_pct": 40.575
+  }
+}

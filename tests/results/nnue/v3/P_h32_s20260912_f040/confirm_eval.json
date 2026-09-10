@@ -1,24 +1,3 @@
-500 openings -> 1000 head-to-head games, 4 workers, 8000ms+500ms
-  50/1000 games  eta 122.1 min
-  100/1000 games  eta 123.2 min
-  150/1000 games  eta 116.3 min
-  200/1000 games  eta 105.8 min
-  250/1000 games  eta 96.6 min
-  300/1000 games  eta 90.6 min
-  350/1000 games  eta 84.9 min
-  400/1000 games  eta 77.0 min
-  450/1000 games  eta 70.7 min
-  500/1000 games  eta 64.5 min
-  550/1000 games  eta 57.6 min
-  600/1000 games  eta 51.5 min
-  650/1000 games  eta 44.8 min
-  700/1000 games  eta 38.5 min
-  750/1000 games  eta 32.0 min
-  800/1000 games  eta 25.5 min
-  850/1000 games  eta 19.1 min
-  900/1000 games  eta 12.7 min
-  950/1000 games  eta 6.4 min
-  1000/1000 games  eta 0.0 min
 {
   "tag": "P_h32_s20260912_f040",
   "label": "confirm_eval",
