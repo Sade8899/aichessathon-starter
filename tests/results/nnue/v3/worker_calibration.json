@@ -1,0 +1,49 @@
+{
+  "clock_ms": 8000,
+  "increment_ms": 500,
+  "games_per_setting": 8,
+  "seed": 20260910,
+  "rows": [
+    {
+      "workers": 1,
+      "games": 8,
+      "wall_seconds": 282.8,
+      "games_per_hour": 101.8,
+      "mean_depth": 3.128,
+      "depth_vs_1_worker_pct": 0.0,
+      "mean_plies": 101.5,
+      "flags": 0
+    },
+    {
+      "workers": 2,
+      "games": 8,
+      "wall_seconds": 137.0,
+      "games_per_hour": 210.3,
+      "mean_depth": 3.137,
+      "depth_vs_1_worker_pct": 0.28,
+      "mean_plies": 93.8,
+      "flags": 0
+    },
+    {
+      "workers": 4,
+      "games": 8,
+      "wall_seconds": 71.8,
+      "games_per_hour": 401.2,
+      "mean_depth": 3.009,
+      "depth_vs_1_worker_pct": -3.79,
+      "mean_plies": 84.6,
+      "flags": 0
+    },
+    {
+      "workers": 6,
+      "games": 8,
+      "wall_seconds": 46.9,
+      "games_per_hour": 613.8,
+      "mean_depth": 2.482,
+      "depth_vs_1_worker_pct": -20.66,
+      "mean_plies": 80.1,
+      "flags": 0
+    }
+  ],
+  "note": "depth_vs_1_worker_pct is the clock-distortion measure; throughput without it is meaningless"
+}
