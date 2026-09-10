@@ -457,7 +457,9 @@ def main() -> None:
         "by_colour": by_colour,
     }
 
-    outdir = REPO / "tests" / "results" / "nnue" / "v2" / args.tag
+    outdir = pathlib.Path(
+        os.environ.get("NNUE_RESULT_ROOT", str(REPO / "tests" / "results" / "nnue" / "v2"))
+    ) / args.tag
     outdir.mkdir(parents=True, exist_ok=True)
     stem = f"arena_{args.label}"
     (outdir / f"{stem}.json").write_text(json.dumps(report, indent=2), encoding="utf-8")

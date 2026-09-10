@@ -323,7 +323,9 @@ def main() -> None:
         ),
     }
 
-    outdir = REPO / "tests" / "results" / "nnue" / "v2" / args.tag
+    outdir = pathlib.Path(
+        os.environ.get("NNUE_RESULT_ROOT", str(REPO / "tests" / "results" / "nnue" / "v2"))
+    ) / args.tag
     outdir.mkdir(parents=True, exist_ok=True)
     (outdir / f"{args.label}.json").write_text(json.dumps(report, indent=2), encoding="utf-8")
 
