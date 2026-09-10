@@ -26,11 +26,24 @@ family — it points the wrong way.
 | candidate weights `P_h32_s20260912_f040` | `08da2c0764de3ad4…` | 27,270 bytes |
 | candidate agent (EVAL, relative) | built from `agent.py`, 60,729 bytes | strips back to the control byte for byte |
 
+| candidate agent EVAL at the repo root | `989e6811a4e6a8af4481b5f695eb73fd227d1726793105281070ad4582e98fc1` | 60,729 bytes |
+| candidate agent ORDER at the repo root | `d071bf62a83b2897aa8017546dc8755968b6010fbdb57982d90e262ca81b8825` | 61,847 bytes |
+| candidate weight file `nnue_v2_weights.npz` | `08da2c0764de3ad4585dcdec65118ef2cb140b3d6f1cff0b33c1af0254baddd2` | 27,270 bytes, untracked |
+
 - branch `experiment/nnue-v3-final`, forked from `experiment/nnue-v2-ranked` at `6deb15f`
 - the plan was committed at `a00a198` **before any V3 result existed**
 - every candidate is *generated* from `agent.py`; `strip(build(agent.py)) == agent.py` is
   gate 1 and it passes in all four combinations of integration mode and correction form.
   No code path in this pipeline writes `agent.py`.
+
+**Repository state.** `nnue_v2_weights.npz` at the repo root is gitignored scratch and
+now holds the V3 candidate's weights, because the fixture harness resolves an agent's
+weight file from the working directory (section 11). V2's `q005` weights are preserved
+untouched at `tests/results/nnue/v2/F_h32_s20260909_q005/quantized.npz`, and every
+candidate in this experiment is reproducible from its own `quantized.npz` through
+`nnue_v3_materialize.py`, which writes a self-contained snapshot directory carrying its
+own weights. The arenas and probes were all run against those snapshots, not against the
+repo root.
 
 ## 2. What V3 set out to test, and what actually happened
 
