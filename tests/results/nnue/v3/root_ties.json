@@ -1,0 +1,13 @@
+{
+  "positions_scored": 200,
+  "clock_ms": 8000,
+  "seed": 20260910,
+  "mean_root_tie_size": 1.17,
+  "tied_root_rate": 0.115,
+  "tie_holds_better_move_rate": 0.045,
+  "mean_recoverable_cp_per_position": 0.77,
+  "mean_played_regret_cp": 38.52,
+  "played_equals_control_static_best_rate": 0.305,
+  "elapsed_seconds": 45.1,
+  "note": "tie_holds_better_move_rate is the ceiling for a root hook that only breaks ties; mean_recoverable_cp_per_position is the regret such a hook could recover if it broke every tie perfectly"
+}
