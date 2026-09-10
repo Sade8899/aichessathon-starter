@@ -52,7 +52,8 @@ def apply_relative(base: np.ndarray, gain: np.ndarray, clamp: int) -> np.ndarray
     rather than approximating it.
     """
     value = np.trunc(base * gain / RELATIVE_UNIT)
-    return np.clip(value, -clamp, clamp)
+    clipped: np.ndarray = np.clip(value, -clamp, clamp)
+    return clipped
 
 
 def relative_torch(base, gain, clamp: int):  # type: ignore[no-untyped-def]

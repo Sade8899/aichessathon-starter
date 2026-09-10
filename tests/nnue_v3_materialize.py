@@ -74,7 +74,10 @@ def main() -> None:
     for tag in args.tags:
         for mode in args.modes.split(","):
             info = materialise(tag, mode, args.form)
-            print(f"{tag} [{mode}/{args.form}]: {info['agent']}  weights {info['weight_sha256'][:16]}")
+            print(
+                f"{tag} [{mode}/{args.form}]: {info['agent']}  "
+                f"weights {info['weight_sha256'][:16]}"
+            )
 
 
 if __name__ == "__main__":

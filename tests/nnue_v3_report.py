@@ -49,7 +49,7 @@ def identities() -> list[str]:
     ):
         value = subprocess.run(cmd, capture_output=True, text=True, cwd=REPO).stdout.strip()
         out.append(f"{label}: {value}")
-    return out + [""]
+    return [*out, ""]
 
 
 def calibrations() -> list[str]:
@@ -94,7 +94,7 @@ def calibrations() -> list[str]:
             out.append(f"  {key}: {ties[key]}")
     else:
         out.append("root-tie measurement: NOT RUN")
-    return out + [""]
+    return [*out, ""]
 
 
 def checkpoints() -> list[str]:
@@ -121,7 +121,10 @@ def checkpoints() -> list[str]:
         "| checkpoint | form | ep | composite | preserved | top-move gain | "
         "regret cp | p95 harm | p99 harm | zero flips | draw pres | fire | \\|corr\\| | eligible |"
     )
-    out.append("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | :-: |")
+    out.append(
+        "| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: "
+        "| ---: | ---: | ---: | :-: |"
+    )
     for r in rows:
         out.append(
             f"| `{r['name']}` | {r['form']} | {r['epoch']} | {r['composite']:.3f} "
@@ -133,7 +136,7 @@ def checkpoints() -> list[str]:
         )
     out.append("")
     out.append(f"{len(rows)} checkpoints trained")
-    return out + [""]
+    return [*out, ""]
 
 
 def gate_tables() -> list[str]:
@@ -161,45 +164,82 @@ def gate_tables() -> list[str]:
         out.append("")
     if not found:
         out.append("no gate run recorded")
-    return out + [""]
+    return [*out, ""]
 
 
 def arenas() -> list[str]:
+    """Every head-to-head and benchmark arena recorded, in whichever tree wrote it.
+
+    Keys are read as the arena scripts actually write them rather than guessed: the
+    head-to-head writes candidate_W-D-L, candidate_score_pct and score_ci95_pct, and the
+    benchmark arena writes a paired difference instead of a score.
+    """
     out = ["## arenas", ""]
     out.append(
-        "| run | tag | games | clock | workers | W-D-L | score | 95% CI | Elo | "
-        "cand depth | ctl depth | flags | illegal |"
+        "| run | tag | games | clock | workers | W-D-L | score % | 95% CI % | Elo | "
+        "Elo CI | draws % | cand depth | ctl depth | flags | illegal |"
     )
-    out.append("| --- | --- | ---: | --- | ---: | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: |")
+    out.append(
+        "| --- | --- | ---: | --- | ---: | --- | ---: | --- | ---: | --- | ---: "
+        "| ---: | ---: | ---: | ---: |"
+    )
     found = False
+    seen: set[str] = set()
     for root in (V3, V2):
-        for path in sorted(root.glob("*/*.json")):
+        for path in sorted(root.glob("**/*.json")):
             data = load(path)
-            if not isinstance(data, dict) or "candidate_score_mean" not in data and "score" not in data:
+            if not isinstance(data, dict) or "candidate_W-D-L" not in data:
                 continue
-            if "wins" not in data and "record" not in data:
+            key = f"{path.parent.name}/{path.stem}"
+            if key in seen:
                 continue
+            seen.add(key)
             found = True
-            rec = data.get("record", {})
-            wdl = (
-                f"{rec.get('wins', data.get('wins'))}-"
-                f"{rec.get('draws', data.get('draws'))}-"
-                f"{rec.get('losses', data.get('losses'))}"
-            )
-            ci = data.get("score_ci") or data.get("ci") or []
-            ci_txt = f"[{ci[0]:.4f}, {ci[1]:.4f}]" if len(ci) == 2 else "-"
+            ci = data.get("score_ci95_pct") or []
+            ci_txt = f"[{ci[0]:.2f}, {ci[1]:.2f}]" if len(ci) == 2 else "-"
+            eci = data.get("elo_ci95") or []
+            eci_txt = f"[{eci[0]:.1f}, {eci[1]:.1f}]" if len(eci) == 2 else "-"
             out.append(
                 f"| {path.stem} | `{path.parent.name}` | {data.get('games', '-')} "
                 f"| {data.get('clock_ms', '-')}+{data.get('increment_ms', '-')} "
-                f"| {data.get('workers', '-')} | {wdl} "
-                f"| {data.get('score', data.get('candidate_score_mean', 0)):.4f} | {ci_txt} "
-                f"| {data.get('elo', '-')} | {data.get('candidate_mean_depth', '-')} "
+                f"| {data.get('workers', '-')} | {data['candidate_W-D-L']} "
+                f"| {data.get('candidate_score_pct', '-')} | {ci_txt} "
+                f"| {data.get('elo', '-')} | {eci_txt} | {data.get('draw_pct', '-')} "
+                f"| {data.get('candidate_mean_depth', '-')} "
                 f"| {data.get('control_mean_depth', '-')} | {data.get('flags', '-')} "
                 f"| {data.get('illegal', '-')} |"
             )
     if not found:
-        out.append("| no arena result recorded | | | | | | | | | | | | |")
-    return out + [""]
+        out.append("| no arena result recorded | | | | | | | | | | | | | | |")
+    out.append("")
+
+    # Colour and opponent-family splits decide gate 15, so they are printed in full
+    # rather than summarised into a single pass/fail.
+    for root in (V3, V2):
+        for path in sorted(root.glob("**/*.json")):
+            data = load(path)
+            if not isinstance(data, dict) or "by_colour" not in data:
+                continue
+            out.append(f"### {path.parent.name}/{path.stem} by colour")
+            out.append("")
+            out.append("| candidate colour | games | score % | W | D | L |")
+            out.append("| --- | ---: | ---: | ---: | ---: | ---: |")
+            for colour, row in data["by_colour"].items():
+                out.append(
+                    f"| {colour} | {row['games']} | {row['score_pct']} | {row['wins']} "
+                    f"| {row['draws']} | {row['losses']} |"
+                )
+            out.append("")
+            if "by_family" in data:
+                out.append("| opponent family | pairs | paired diff | 95% CI |")
+                out.append("| --- | ---: | ---: | --- |")
+                for fam, row in data["by_family"].items():
+                    out.append(
+                        f"| {fam} | {row.get('pairs', '-')} | "
+                        f"{row.get('paired_diff', '-')} | {row.get('ci95', '-')} |"
+                    )
+                out.append("")
+    return [*out, ""]
 
 
 def probes() -> list[str]:
@@ -228,7 +268,7 @@ def probes() -> list[str]:
         out.append("")
     if not found:
         out.append("no search probe recorded")
-    return out + [""]
+    return [*out, ""]
 
 
 def docker() -> list[str]:
@@ -244,7 +284,10 @@ def docker() -> list[str]:
         out.append(f"### `{data['tag']}` mode={data['mode']}")
         out.append("")
         out.append(f"  image: {data['image']} ({data['image_id'][:19]})")
-        out.append(f"  zip: {pack['zip_bytes']:,} bytes, uncompressed {pack['uncompressed_bytes']:,}")
+        out.append(
+            f"  zip: {pack['zip_bytes']:,} bytes, "
+            f"uncompressed {pack['uncompressed_bytes']:,}"
+        )
         out.append(f"  agent at root: {pack['agent_at_root']}, no folders: {pack['no_folders']}")
         for member in pack["members"]:
             out.append(f"    {member['name']}  {member['bytes']:,} bytes  {member['sha256'][:16]}")
@@ -254,7 +297,7 @@ def docker() -> list[str]:
         out.append("")
     if not found:
         out.append("no container validation recorded")
-    return out + [""]
+    return [*out, ""]
 
 
 def data_provenance() -> list[str]:
@@ -282,7 +325,7 @@ def data_provenance() -> list[str]:
     else:
         out.append("")
         out.append("split overlap check: NOT RUN")
-    return out + [""]
+    return [*out, ""]
 
 
 def main() -> None:

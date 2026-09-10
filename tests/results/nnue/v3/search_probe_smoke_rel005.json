@@ -1,0 +1,40 @@
+{
+  "tag": "smoke_rel005",
+  "candidate": "tests\\results\\nnue\\v3\\snapshots\\P_h16_s20260910_rel005_eval_relative\\agent_v3_eval.py",
+  "clock_ms": 4000,
+  "split": "validation",
+  "seed": 20260911,
+  "control": {
+    "scored": 54,
+    "unlabelled_moves": 6,
+    "mean_regret_cp": 55.926,
+    "median_regret_cp": 6.0,
+    "p90_regret_cp": 150.0,
+    "p99_regret_cp": 706.0,
+    "top_move_rate": 0.463,
+    "mean_depth": 2.315,
+    "mean_nodes": 1111.6,
+    "mean_seconds": 0.1123
+  },
+  "candidate_metrics": {
+    "scored": 55,
+    "unlabelled_moves": 5,
+    "mean_regret_cp": 50.164,
+    "median_regret_cp": 0.0,
+    "p90_regret_cp": 150.0,
+    "p99_regret_cp": 706.0,
+    "top_move_rate": 0.5091,
+    "mean_depth": 2.127,
+    "mean_nodes": 1074.6,
+    "mean_seconds": 0.1146
+  },
+  "paired_positions": 53,
+  "moves_changed": 11,
+  "moves_changed_rate": 0.2075,
+  "paired_mean_regret_delta_cp": -5.113,
+  "paired_improved": 5,
+  "paired_worsened": 6,
+  "paired_worst_regression_cp": 137.0,
+  "paired_best_improvement_cp": -309.0,
+  "note": "negative paired_mean_regret_delta_cp means the candidate plays better moves; moves_changed_rate bounds how much any of this can matter"
+}

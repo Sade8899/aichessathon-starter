@@ -11,6 +11,7 @@ convenient. Control only -- no candidate is involved.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import importlib.util
 import json
 import statistics
@@ -107,7 +108,7 @@ def main() -> int:
     payload = {
         "positions": args.positions,
         "seed": args.seed,
-        "control_sha256": __import__("hashlib").sha256((ROOT / "agent.py").read_bytes()).hexdigest(),
+        "control_sha256": hashlib.sha256((ROOT / "agent.py").read_bytes()).hexdigest(),
         "rows": rows,
     }
     (OUT / "depth_calibration.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")

@@ -231,7 +231,9 @@ def train_variant(
             #       fixing a broken one gains. This is what V2 measured as the effective
             #       preservation mechanism.
             ctrl_gap = torch.from_numpy(all_pairs["ctrl_gap"][pair_rows])
-            erosion = torch.relu(0.5 * torch.clamp(ctrl_gap, min=0.0) - (deployed[pw] - deployed[pb]))
+            erosion = torch.relu(
+                0.5 * torch.clamp(ctrl_gap, min=0.0) - (deployed[pw] - deployed[pb])
+            )
             loss_anchor = (
                 (erosion * anchor_mask).sum() / anchor_mask.sum()
                 if anchor_mask.sum() > 0
@@ -254,7 +256,9 @@ def train_variant(
             neg_inf = torch.finfo(torch.float32).min
             # The engine minimises the child's evaluation (it is the opponent's score),
             # so the preference score is the negated deployment.
-            student = torch.where(gmask > 0, -gdep / STUDENT_TEMP_CP, torch.full_like(gdep, neg_inf))
+            student = torch.where(
+                gmask > 0, -gdep / STUDENT_TEMP_CP, torch.full_like(gdep, neg_inf)
+            )
             teacher = torch.where(
                 gmask > 0, -gregret / TEACHER_TEMP_CP, torch.full_like(gregret, neg_inf)
             )
@@ -449,7 +453,11 @@ def main() -> None:
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--tag", default="v3")
     ap.add_argument("--threads", type=int, default=2)
-    ap.add_argument("--relative", action="store_true", help="scale the correction by the control's own evaluation")
+    ap.add_argument(
+        "--relative",
+        action="store_true",
+        help="scale the correction by the control's own evaluation",
+    )
     ap.add_argument(
         "--override",
         action="append",

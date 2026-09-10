@@ -161,7 +161,10 @@ def main() -> int:
         "games_per_setting": args.games,
         "seed": args.seed,
         "rows": rows,
-        "note": "depth_vs_1_worker_pct is the clock-distortion measure; throughput without it is meaningless",
+        "note": (
+            "depth_vs_1_worker_pct is the clock-distortion measure; "
+            "throughput without it is meaningless"
+        ),
     }
     (OUT / "worker_calibration.json").write_text(json.dumps(payload, indent=2), encoding="utf-8")
     print(f"\nwrote {OUT / 'worker_calibration.json'}")

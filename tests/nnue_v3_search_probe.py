@@ -26,7 +26,6 @@ import pathlib
 import random
 import statistics
 import sys
-import time
 from typing import Any
 
 import chess

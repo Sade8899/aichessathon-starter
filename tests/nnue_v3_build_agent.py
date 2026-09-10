@@ -137,7 +137,9 @@ NEW_FORM_CHECK = """    _NNUE_CONF_MIN = (float(flags[3]) / 1000.0) if flags.sha
 OLD_CORR_UNPACK = "    _, mg_sum, eg_sum, conf_sum, phase_units = numeric_evaluate_v2("
 NEW_CORR_UNPACK = "    base, mg_sum, eg_sum, conf_sum, phase_units = numeric_evaluate_v2("
 OLD_CORR_RETURN = "    return _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)" + chr(10)
-NEW_CORR_RETURN = "    return _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)" + chr(10)
+NEW_CORR_RETURN = (
+    "    return _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)" + chr(10)
+)
 OLD_EVAL_RETURN = "    return int(base) + _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)"
 NEW_EVAL_RETURN = (
     "    return int(base) + _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)"
