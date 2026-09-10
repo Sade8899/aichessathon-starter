@@ -5,7 +5,7 @@ control agent.py bytes  39396
 control agent.py lines  1046
 pre-neural package sha256 d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5
 branch: experiment/nnue-v3-final
-commit: 8041707f80103ab33d747b11c913a38b97849ab3
+commit: 1611ee357c27175fb69299a6861c0bc9e3069195
 control tag commit: 78c03b0d266a027c5e47ffa3a1b5af0c435da1b6
 
 ## control-only calibrations
@@ -264,6 +264,7 @@ FAILING: paired NPS loss (median of repeated interleaved runs), RATED_V4 enforce
 | null_control | `P_h32_s20260912_f040` | 300 | 8000+500 | 4 | 141-42-117 | 54.0 | [48.67, 59.33] | 27.9 | [-9.3, 65.6] | 14.0 | 2.78 | 2.79 | 0 | 0 |
 | null_control2 | `P_h32_s20260912_f040` | 300 | 8000+500 | 4 | 132-42-126 | 51.0 | [45.83, 56.33] | 6.9 | [-29.0, 44.2] | 14.0 | 2.83 | 2.85 | 0 | 0 |
 | screen_eval | `P_h32_s20260912_f040` | 300 | 8000+500 | 4 | 122-47-131 | 48.5 | [43.33, 53.67] | -10.4 | [-46.6, 25.5] | 15.67 | 2.53 | 2.56 | 0 | 0 |
+| reach_diagnostic | `RAP_h16_s20260910_f002` | 300 | 8000+500 | 4 | 103-50-147 | 42.67 | [37.50, 47.67] | -51.3 | [-88.7, -16.2] | 16.67 | 2.78 | 2.88 | 0 | 0 |
 | regime8s | `regime` | 300 | 8000+500 | 4 | 104-63-133 | 45.17 | [40.33, 50.17] | -33.7 | [-68.0, 1.2] | 21.0 | 2.72 | 2.66 | 0 | 0 |
 | h2h | `F_h32_s20260909_q005` | 2000 | 1000+100 | 6 | 780-378-842 | 48.45 | [46.50, 50.45] | -10.8 | [-24.4, 3.1] | 18.9 | 1.24 | 1.23 | 0 | 0 |
 | h2h_null | `F_h32_s20260909_q005` | 1000 | 1000+100 | 6 | 416-175-409 | 50.35 | [47.55, 53.25] | 2.4 | [-17.0, 22.6] | 17.5 | 1.2 | 1.2 | 0 | 0 |
@@ -297,6 +298,13 @@ FAILING: paired NPS loss (median of repeated interleaved runs), RATED_V4 enforce
 | --- | ---: | ---: | ---: | ---: | ---: |
 | candidate_white | 24 | 150 | 58 | 53.33 | 68 |
 | candidate_black | 23 | 150 | 73 | 43.67 | 54 |
+
+### RAP_h16_s20260910_f002/reach_diagnostic by colour
+
+| candidate colour | draws | games | losses | score_pct | wins |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| candidate_white | 26 | 150 | 66 | 47.33 | 58 |
+| candidate_black | 24 | 150 | 81 | 38.0 | 45 |
 
 ### regime/regime8s by colour
 

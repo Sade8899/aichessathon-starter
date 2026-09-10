@@ -16,6 +16,10 @@ offline metric it was designed to improve, and played 30 Elo worse.** Across V1,
 V3 the offline selection score is not merely uninformative about playing strength in this
 family — it points the wrong way.
 
+And the deficit scales with how much the network is allowed to do. A thirteenfold larger
+correction of the same shape, played on the same book, loses 51.3 Elo. There is no
+setting in this family that is both safe and useful.
+
 ## 1. Identities
 
 | artifact | SHA-256 | status |
@@ -484,6 +488,27 @@ confirmation. That is the rule applied as written rather than a favourable readi
 300 games the interval was far too wide to separate a small real effect from none. The
 confirmation then settled it.
 
+### Does the damage scale with the licence? Yes
+
+The transition table says the correction loses points where it acts. If that is right, a
+correction allowed to act harder should lose more. `RAP_h16_s20260910_f002` is the same
+relative form trained with a thirteenfold larger deployed magnitude, played on the same
+opening book and seed as the confirmation:
+
+| candidate | mean \|correction\| | fires on | games | score | Elo | 95 % CI |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| control (pooled null) | 0 cp | — | 600 | 52.50 % | +17.4 | [−1.2, +36.0] |
+| `f040` (the gated candidate) | 5.9 cp | 42 % | 1,000 | 45.70 % | −30.0 | [−50.4, −9.7] |
+| `f002` (diagnostic only) | **78.6 cp** | 97 % | 300 | **42.67 %** | **−51.3** | [−88.7, −16.2] |
+
+The deficit is monotone in reach. `f002` is a **diagnostic, not a candidate** — it fails
+the fixture admission screen and was never eligible — but it answers the question the
+confirmation raises. There is no safe operating point in this family that also does
+anything: every centipawn of licence the network is given, it spends losing games. Its
+realised depth is 2.78 against the control's 2.88, so part of that extra loss is the 97 %
+fire rate costing search rather than the correction itself, which is why the comparison is
+reported as directional rather than as a coefficient.
+
 ### What was not run, and why
 
 - **The benchmark arena against Rustic, Shallow Blue, Zagreus and the held-out Loki.**
@@ -543,9 +568,12 @@ confirmation then settled it.
    transition table locates the loss: net −21 games through win → loss against net −9
    through draw → loss. The relative form did what it was built to do — draws are
    preserved, sign flips are impossible — and it lost the points somewhere else instead,
-   in exactly the positions it was aimed at. That is the most transferable result of the
-   day, because it applies to any bounded correction to this evaluation: the disturbance
-   travels with the licence.
+   in exactly the positions it was aimed at.
+10. **The damage scales with the licence.** A thirteenfold larger relative correction, on
+    the same book and seed, loses 51.3 Elo against the gated candidate's 30.0. Together
+    with (9) this is the most transferable result of the day: for this engine and this
+    feature set there is no setting that is both safe and useful, because the disturbance
+    travels with the licence rather than being separable from it.
 
 ### Not established, and worth stating plainly
 
