@@ -1,17 +1,18 @@
 {
-  "groups": 28640,
+  "groups": 39968,
   "directories": [
-    "tests\\results\\nnue\\groups"
+    "tests\\results\\nnue\\groups",
+    "tests\\results\\nnue\\v3\\groups"
   ],
   "parents_per_split": {
-    "train": 20135,
-    "validation": 4423,
-    "test": 4082
+    "train": 28117,
+    "validation": 6175,
+    "test": 5676
   },
   "children_per_split": {
-    "train": 157826,
-    "validation": 34232,
-    "test": 32353
+    "train": 220455,
+    "validation": 47955,
+    "test": 44989
   },
   "parent_key_overlap": {
     "train|validation": 0,
@@ -20,16 +21,16 @@
   },
   "child_key_overlap": {
     "train|validation": 3,
-    "train|test": 17,
-    "validation|test": 0
+    "train|test": 18,
+    "validation|test": 1
   },
   "parent_child_cross_split_overlap": {
-    "train_parents|validation_children": 6,
-    "train_parents|test_children": 5,
-    "validation_parents|train_children": 4,
-    "validation_parents|test_children": 2,
-    "test_parents|train_children": 8,
-    "test_parents|validation_children": 0
+    "train_parents|validation_children": 10,
+    "train_parents|test_children": 6,
+    "validation_parents|train_children": 6,
+    "validation_parents|test_children": 3,
+    "test_parents|train_children": 10,
+    "test_parents|validation_children": 2
   },
   "games_straddling_a_split": 0,
   "games_straddling_examples": [],
@@ -48,11 +49,11 @@
   "loki_family_groups": 0,
   "rated_v5_ball_hits": 0,
   "rated_v5_ball_examples": [],
-  "mirror_sample_size": 4092,
+  "mirror_sample_size": 4441,
   "mirror_cross_split_conflicts": 0,
-  "leaked_keys": 40,
-  "quarantined_groups": 41,
-  "groups_after_quarantine": 28599,
+  "leaked_keys": 53,
+  "quarantined_groups": 55,
+  "groups_after_quarantine": 39913,
   "parent_key_overlap_after_quarantine": {
     "train|validation": 0,
     "train|test": 0,

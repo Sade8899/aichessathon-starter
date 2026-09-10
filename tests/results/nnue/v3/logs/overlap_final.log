@@ -1,0 +1,80 @@
+39,968 groups from ['groups', 'groups']
+{
+  "groups": 39968,
+  "directories": [
+    "tests\\results\\nnue\\groups",
+    "tests\\results\\nnue\\v3\\groups"
+  ],
+  "parents_per_split": {
+    "train": 28117,
+    "validation": 6175,
+    "test": 5676
+  },
+  "children_per_split": {
+    "train": 220455,
+    "validation": 47955,
+    "test": 44989
+  },
+  "parent_key_overlap": {
+    "train|validation": 0,
+    "train|test": 0,
+    "validation|test": 0
+  },
+  "child_key_overlap": {
+    "train|validation": 3,
+    "train|test": 18,
+    "validation|test": 1
+  },
+  "parent_child_cross_split_overlap": {
+    "train_parents|validation_children": 10,
+    "train_parents|test_children": 6,
+    "validation_parents|train_children": 6,
+    "validation_parents|test_children": 3,
+    "test_parents|train_children": 10,
+    "test_parents|validation_children": 2
+  },
+  "games_straddling_a_split": 0,
+  "games_straddling_examples": [],
+  "families_straddling_a_split": {
+    "shallowblue": [
+      "test",
+      "train",
+      "validation"
+    ],
+    "rustic": [
+      "test",
+      "train",
+      "validation"
+    ]
+  },
+  "loki_family_groups": 0,
+  "rated_v5_ball_hits": 0,
+  "rated_v5_ball_examples": [],
+  "mirror_sample_size": 4441,
+  "mirror_cross_split_conflicts": 0,
+  "leaked_keys": 53,
+  "quarantined_groups": 55,
+  "groups_after_quarantine": 39913,
+  "parent_key_overlap_after_quarantine": {
+    "train|validation": 0,
+    "train|test": 0,
+    "validation|test": 0
+  },
+  "child_key_overlap_after_quarantine": {
+    "train|validation": 0,
+    "train|test": 0,
+    "validation|test": 0
+  },
+  "parent_child_cross_overlap_after_quarantine": {
+    "train_parents|validation_children": 0,
+    "train_parents|test_children": 0,
+    "validation_parents|train_children": 0,
+    "validation_parents|test_children": 0,
+    "test_parents|train_children": 0,
+    "test_parents|validation_children": 0
+  },
+  "clean_after_quarantine": true,
+  "clean": false
+}
+
+wrote C:\Users\44740\Desktop\Comp2526\Personal project\Chessatohon optiver\aichessathon-starter\tests\results\nnue\v3\overlap_report.json

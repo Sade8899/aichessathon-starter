@@ -1,0 +1,80 @@
+28640 parents already carry a group; they are skipped
+{
+  "available": 81209,
+  "dropped_loki_family": 19101,
+  "dropped_rated_v5_ball": 0,
+  "dropped_already_generated": 28640,
+  "selected": 14000,
+  "per_split": {
+    "test": 1921,
+    "train": 9905,
+    "validation": 2174
+  },
+  "per_phase": {
+    "endgame": 494,
+    "opening": 7234,
+    "middlegame": 6272
+  }
+}
+{
+  "parents_planned": 14000,
+  "groups_written": 11328,
+  "skipped_no_signal": 2672,
+  "workers": 6,
+  "nodes": 250000,
+  "multipv": 8,
+  "clamp_cp": 1000,
+  "label_engine": "Stockfish 19 sf_19",
+  "elapsed_seconds": 1722.4,
+  "groups_per_hour": 23676.1,
+  "shards": [
+    {
+      "shard": 0,
+      "written": 1899,
+      "skipped_no_signal": 435,
+      "already": 0,
+      "seconds": 1711.2,
+      "groups_per_second": 1.11
+    },
+    {
+      "shard": 1,
+      "written": 1885,
+      "skipped_no_signal": 449,
+      "already": 0,
+      "seconds": 1715.0,
+      "groups_per_second": 1.1
+    },
+    {
+      "shard": 2,
+      "written": 1890,
+      "skipped_no_signal": 443,
+      "already": 0,
+      "seconds": 1718.4,
+      "groups_per_second": 1.1
+    },
+    {
+      "shard": 3,
+      "written": 1901,
+      "skipped_no_signal": 432,
+      "already": 0,
+      "seconds": 1712.6,
+      "groups_per_second": 1.11
+    },
+    {
+      "shard": 4,
+      "written": 1893,
+      "skipped_no_signal": 440,
+      "already": 0,
+      "seconds": 1709.3,
+      "groups_per_second": 1.11
+    },
+    {
+      "shard": 5,
+      "written": 1860,
+      "skipped_no_signal": 473,
+      "already": 0,
+      "seconds": 1711.4,
+      "groups_per_second": 1.09
+    }
+  ]
+}

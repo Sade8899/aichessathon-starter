@@ -476,6 +476,23 @@ def main() -> None:
         overrides[key] = float(value)
 
     groups = v2.load_groups()
+    # The V3 targeted shards live in their own directory so the V2 corpus stays exactly
+    # as V2 recorded it. They are appended here rather than merged on disk.
+    v3_groups = REPO / "tests" / "results" / "nnue" / "v3" / "groups"
+    added = 0
+    for path in sorted(v3_groups.glob("groups-*.jsonl")):
+        with path.open(encoding="utf-8") as handle:
+            for line in handle:
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    groups.append(json.loads(line))
+                    added += 1
+                except json.JSONDecodeError:
+                    continue
+    if added:
+        print(f"added {added} targeted V3 groups")
     # Gate 6 is enforced here, not merely reported. nnue_v3_overlap.py found 40 keys
     # that were a parent in one split and a child in another -- a small leak V2's
     # provenance check could not see, because it compared parent keys with parent keys

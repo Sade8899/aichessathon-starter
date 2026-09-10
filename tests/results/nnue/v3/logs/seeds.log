@@ -1,0 +1,73 @@
+added 11328 targeted V3 groups
+quarantine: dropped 55 leaking groups
+39913 sibling groups
+reusing encoded cache encoded.npz
+padded group width K=9
+{'train': 28068, 'validation': 6175, 'test': 5670}
+  [P h32 s20260911] ep  0 comp=   0.442 pres=0.9912 top+=+0.0013 regret=  +1.48 p99harm=   0.0 zflip=0.0000 |corr|=  3.49  ELIGIBLE
+  [P h32 s20260911] ep  1 comp=   0.337 pres=0.9931 top+=+0.0011 regret=  +1.19 p99harm=   0.0 zflip=0.0000 |corr|=  1.61  ELIGIBLE
+  [P h32 s20260911] ep  2 comp=   1.081 pres=0.9959 top+=+0.0016 regret=  +1.54 p99harm=   0.0 zflip=0.0000 |corr|=  1.91  ELIGIBLE
+  [P h32 s20260911] ep  3 comp=   0.502 pres=0.9935 top+=+0.0006 regret=  +1.31 p99harm=   0.0 zflip=0.0000 |corr|=  1.90  ELIGIBLE
+  [P h32 s20260911] ep  4 comp=   1.898 pres=0.9931 top+=+0.0026 regret=  +2.61 p99harm=   0.0 zflip=0.0000 |corr|=  2.91  ELIGIBLE
+  [P h32 s20260911] ep  5 comp=   1.652 pres=0.9912 top+=+0.0029 regret=  +2.56 p99harm=   0.0 zflip=0.0000 |corr|=  5.00  ELIGIBLE
+  [P h32 s20260911] ep  6 comp=   2.729 pres=0.9935 top+=+0.0032 regret=  +3.35 p99harm=   0.0 zflip=0.0000 |corr|=  4.49  ELIGIBLE
+  [P h32 s20260911] ep  7 comp=   2.345 pres=0.9935 top+=+0.0037 regret=  +3.06 p99harm=   0.0 zflip=0.0000 |corr|=  4.49  ELIGIBLE
+  [P h32 s20260911] ep  8 comp=   3.259 pres=0.9926 top+=+0.0045 regret=  +3.95 p99harm=   0.0 zflip=0.0000 |corr|=  5.62  ELIGIBLE
+  [P h32 s20260911] ep  9 comp=   2.762 pres=0.9926 top+=+0.0050 regret=  +3.40 p99harm=   0.0 zflip=0.0000 |corr|=  6.29  ELIGIBLE
+  [P h32 s20260911] ep 10 comp=   2.927 pres=0.9931 top+=+0.0052 regret=  +3.52 p99harm=   0.0 zflip=0.0000 |corr|=  5.93  ELIGIBLE
+  [P h32 s20260911] ep 11 comp=   4.341 pres=0.9935 top+=+0.0062 regret=  +4.86 p99harm=   0.0 zflip=0.0000 |corr|=  6.18  ELIGIBLE
+  [P h32 s20260911] ep 12 comp=   4.424 pres=0.9917 top+=+0.0052 regret=  +5.23 p99harm=   0.0 zflip=0.0000 |corr|=  7.05  ELIGIBLE
+  [P h32 s20260911] ep 13 comp=   4.029 pres=0.9908 top+=+0.0057 regret=  +4.99 p99harm=   0.0 zflip=0.0000 |corr|=  6.20  ELIGIBLE
+  [P h32 s20260911] ep 14 comp=   3.963 pres=0.9889 top+=+0.0052 regret=  +5.22 p99harm=   0.0 zflip=0.0000 |corr|=  6.79  ELIGIBLE
+  [P h32 s20260911] ep 15 comp=   4.175 pres=0.9876 top+=+0.0053 regret=  +5.57 p99harm=   1.0 zflip=0.0000 |corr|=  7.11  ELIGIBLE
+  -> P_h32_s20260911_f040: best epoch 12 composite 4.424 eligible=True in 37.2s
+wrote C:\Users\44740\Desktop\Comp2526\Personal project\Chessatohon optiver\aichessathon-starter\tests\results\nnue\v3\training_summary_f040.json
+added 11328 targeted V3 groups
+quarantine: dropped 55 leaking groups
+39913 sibling groups
+reusing encoded cache encoded.npz
+padded group width K=9
+{'train': 28068, 'validation': 6175, 'test': 5670}
+  [P h32 s20260912] ep  0 comp=  -0.332 pres=0.9922 top+=+0.0003 regret=  +0.70 p99harm=   0.0 zflip=0.0000 |corr|=  1.17  ELIGIBLE
+  [P h32 s20260912] ep  1 comp=  -0.170 pres=0.9922 top+=-0.0006 regret=  +0.85 p99harm=   0.0 zflip=0.0000 |corr|=  1.20  ELIGIBLE
+  [P h32 s20260912] ep  2 comp=  -0.425 pres=0.9922 top+=-0.0006 regret=  +0.56 p99harm=   0.0 zflip=0.0000 |corr|=  1.22  ELIGIBLE
+  [P h32 s20260912] ep  3 comp=   0.406 pres=0.9922 top+=-0.0002 regret=  +1.37 p99harm=   0.0 zflip=0.0000 |corr|=  2.19  ELIGIBLE
+  [P h32 s20260912] ep  4 comp=   1.538 pres=0.9922 top+=+0.0023 regret=  +2.34 p99harm=   0.0 zflip=0.0000 |corr|=  2.90  ELIGIBLE
+  [P h32 s20260912] ep  5 comp=   1.390 pres=0.9917 top+=+0.0019 regret=  +2.28 p99harm=   0.0 zflip=0.0000 |corr|=  3.32  ELIGIBLE
+  [P h32 s20260912] ep  6 comp=   1.005 pres=0.9917 top+=+0.0023 regret=  +1.88 p99harm=   0.0 zflip=0.0000 |corr|=  4.13  ELIGIBLE
+  [P h32 s20260912] ep  7 comp=   0.747 pres=0.9889 top+=+0.0013 regret=  +2.00 p99harm=   0.0 zflip=0.0000 |corr|=  4.70  ELIGIBLE
+  [P h32 s20260912] ep  8 comp=   1.995 pres=0.9908 top+=+0.0028 regret=  +2.95 p99harm=   0.0 zflip=0.0000 |corr|=  5.55  ELIGIBLE
+  [P h32 s20260912] ep  9 comp=   0.466 pres=0.9871 top+=+0.0019 regret=  +1.93 p99harm=   0.0 zflip=0.0000 |corr|=  5.25  ELIGIBLE
+  [P h32 s20260912] ep 10 comp=   1.623 pres=0.9885 top+=+0.0024 regret=  +2.95 p99harm=   0.0 zflip=0.0000 |corr|=  5.40  ELIGIBLE
+  [P h32 s20260912] ep 11 comp=   1.490 pres=0.9894 top+=+0.0032 regret=  +2.69 p99harm=   0.0 zflip=0.0000 |corr|=  4.71  ELIGIBLE
+  [P h32 s20260912] ep 12 comp=   2.295 pres=0.9885 top+=+0.0039 regret=  +3.55 p99harm=   0.0 zflip=0.0000 |corr|=  5.09  ELIGIBLE
+  [P h32 s20260912] ep 13 comp=   2.913 pres=0.9885 top+=+0.0040 regret=  +4.15 p99harm=   0.0 zflip=0.0000 |corr|=  5.25  ELIGIBLE
+  [P h32 s20260912] ep 14 comp=   1.848 pres=0.9857 top+=+0.0024 regret=  +3.52 p99harm=   0.0 zflip=0.0000 |corr|=  5.96  ELIGIBLE
+  [P h32 s20260912] ep 15 comp=   3.364 pres=0.9885 top+=+0.0032 regret=  +4.68 p99harm=   0.0 zflip=0.0000 |corr|=  5.90  ELIGIBLE
+  -> P_h32_s20260912_f040: best epoch 15 composite 3.364 eligible=True in 36.2s
+wrote C:\Users\44740\Desktop\Comp2526\Personal project\Chessatohon optiver\aichessathon-starter\tests\results\nnue\v3\training_summary_f040.json
+added 11328 targeted V3 groups
+quarantine: dropped 55 leaking groups
+39913 sibling groups
+reusing encoded cache encoded.npz
+padded group width K=9
+{'train': 28068, 'validation': 6175, 'test': 5670}
+  [P h32 s20260913] ep  0 comp=   0.508 pres=0.9866 top+=-0.0002 regret=  +2.37 p99harm=   1.0 zflip=0.0000 |corr|=  2.17  ELIGIBLE
+  [P h32 s20260913] ep  1 comp=   0.829 pres=0.9912 top+=+0.0010 regret=  +1.86 p99harm=   0.0 zflip=0.0000 |corr|=  1.89  ELIGIBLE
+  [P h32 s20260913] ep  2 comp=   0.510 pres=0.9926 top+=+0.0010 regret=  +1.45 p99harm=   0.0 zflip=0.0000 |corr|=  0.84  ELIGIBLE
+  [P h32 s20260913] ep  3 comp=   0.059 pres=0.9912 top+=-0.0003 regret=  +1.21 p99harm=   0.0 zflip=0.0000 |corr|=  1.52  ELIGIBLE
+  [P h32 s20260913] ep  4 comp=   0.354 pres=0.9912 top+=+0.0010 regret=  +1.43 p99harm=   0.0 zflip=0.0000 |corr|=  1.51  ELIGIBLE
+  [P h32 s20260913] ep  5 comp=   0.356 pres=0.9908 top+=+0.0005 regret=  +1.52 p99harm=   0.0 zflip=0.0000 |corr|=  3.51  ELIGIBLE
+  [P h32 s20260913] ep  6 comp=   1.869 pres=0.9922 top+=+0.0016 regret=  +2.79 p99harm=   0.0 zflip=0.0000 |corr|=  5.19  ELIGIBLE
+  [P h32 s20260913] ep  7 comp=   1.804 pres=0.9912 top+=+0.0026 regret=  +2.81 p99harm=   0.0 zflip=0.0000 |corr|=  3.96  ELIGIBLE
+  [P h32 s20260913] ep  8 comp=   2.559 pres=0.9908 top+=+0.0021 regret=  +3.68 p99harm=   0.0 zflip=0.0000 |corr|=  4.90  ELIGIBLE
+  [P h32 s20260913] ep  9 comp=   1.948 pres=0.9903 top+=+0.0021 regret=  +3.14 p99harm=   0.0 zflip=0.0000 |corr|=  4.07  ELIGIBLE
+  [P h32 s20260913] ep 10 comp=   2.080 pres=0.9885 top+=+0.0026 regret=  +3.51 p99harm=   0.0 zflip=0.0000 |corr|=  4.83  ELIGIBLE
+  [P h32 s20260913] ep 11 comp=   2.523 pres=0.9894 top+=+0.0026 regret=  +3.75 p99harm=   0.0 zflip=0.0000 |corr|=  5.96  ELIGIBLE
+  [P h32 s20260913] ep 12 comp=   2.119 pres=0.9871 top+=+0.0019 regret=  +3.69 p99harm=   0.0 zflip=0.0000 |corr|=  5.87  ELIGIBLE
+  [P h32 s20260913] ep 13 comp=   2.287 pres=0.9876 top+=+0.0028 regret=  +3.77 p99harm=   0.0 zflip=0.0000 |corr|=  5.69  ELIGIBLE
+  [P h32 s20260913] ep 14 comp=   2.593 pres=0.9885 top+=+0.0026 regret=  +4.03 p99harm=   0.0 zflip=0.0000 |corr|=  6.61  ELIGIBLE
+  [P h32 s20260913] ep 15 comp=   1.680 pres=0.9871 top+=+0.0029 regret=  +3.41 p99harm=   1.0 zflip=0.0000 |corr|=  6.85  ELIGIBLE
+  -> P_h32_s20260913_f040: best epoch 14 composite 2.593 eligible=True in 36.5s
+wrote C:\Users\44740\Desktop\Comp2526\Personal project\Chessatohon optiver\aichessathon-starter\tests\results\nnue\v3\training_summary_f040.json
+SEEDS_DONE
