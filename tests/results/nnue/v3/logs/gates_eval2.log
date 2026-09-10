@@ -1,0 +1,24 @@
+candidate weight status: loaded 08da2c0764de3ad4
+PASS  protected control agent.py unchanged                          65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda
+PASS  protected pre-neural package unchanged                        d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5
+PASS  candidate strips back to the control exactly                  identical
+PASS  de Bruijn scan resolves every single-bit board                64/64
+PASS  de Bruijn scan enumerates multi-bit boards exactly            200/200
+PASS  agent integer path equals the reference integer path          1000/1000 exact, max |diff| 0 cp
+PASS  correction never exceeds the clamp                            max |correction| 250 cp, clamp 250
+PASS  colour-swap feature identity                                  1000/1000
+PASS  inference is deterministic across calls                       identical
+PASS  inference depends only on the position, not on board history  identical
+PASS  always returns a legal move                                   40/40 legal
+PASS  finds mate in one                                             3/3
+PASS  paired NPS loss (median of repeated interleaved runs)         4.70% median of [-3.41, 4.7, 1.19, 6.08, 8.44, 11.49, 2.48]; control 18,842 nps, candidate 17,933 nps
+PASS  package uncompressed size                                     87,999 bytes (agent 60,729 + weights 27,270)
+PASS  no network or subprocess import in the candidate              none
+PASS  fixture harness loads the candidate's own weights             ready=True status=loaded 08da2c0764de3ad4
+PASS  RATED_V5 enforced fixtures                                    control 16/16, candidate 16/16
+PASS  solved-control regressions (RATED_V5)                         0 []
+PASS  draw and passed-pawn defence fixtures preserved               broken: none
+PASS  r80-24-Rd4 still rejected                                     g5f4
+PASS  RATED_V4 enforced fixtures                                    control 19/19, candidate 19/19
+
+21/21 gates pass  (291.5s)

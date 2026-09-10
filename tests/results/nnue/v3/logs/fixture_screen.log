@@ -1,0 +1,9 @@
+control baseline: V5 16/16, V4 19/19
+P_h32_s20260910_f040           V5 16/16 V4 18/19 broke ['r54-53-Ke5'] -> EXCLUDED (99.7s)
+P_h32_s20260910_rel040         V5 16/16 V4 18/19 broke ['r54-53-Ke5'] -> EXCLUDED (99.0s)
+P_h32_s20260912_f040           V5 16/16 V4 19/19 broke none -> ADMITTED (103.5s)
+P_h16_s20260910_rel015         V5 16/16 V4 16/19 broke ['r51-53-Qc5', 'r54-53-Ke5', 'r55-20-Nxd4'] -> EXCLUDED (98.7s)
+P_h32_s20260913_f040           V5 16/16 V4 19/19 broke none -> ADMITTED (101.3s)
+P_h16_s20260910_f040           V5 16/16 V4 18/19 broke ['r55-20-Nxd4'] -> EXCLUDED (98.7s)
+
+wrote C:\Users\44740\Desktop\Comp2526\Personal project\Chessatohon optiver\aichessathon-starter\tests\results\nnue\v3\fixture_screen_eval.json

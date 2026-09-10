@@ -31,6 +31,21 @@ sys.path.insert(0, str(REPO / "tests"))
 import nnue_v2_docker as v2d  # noqa: E402
 
 IMAGE = v2d.IMAGE
+
+LIVENESS = """report["eval_differs_from_base"] = bool(report["correction_sample"])
+_probes = [
+    "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+    "8/2k1P3/5K2/5p2/4bPp1/8/8/6R1 w - - 3 61",
+    "r2q1rk1/pp2ppbp/2n2np1/2p5/3PP3/2N2N2/PP2BPPP/R1BQ1RK1 w - - 0 10",
+    "8/8/4kp2/3p4/p2P1P2/2PK4/8/8 w - - 0 45",
+    "rnbq1rk1/ppp1ppbp/3p1np1/8/2PPP3/2N2N2/PP2BPPP/R1BQK2R w KQ - 0 7",
+    "6k1/5ppp/8/8/8/8/1Q3PPP/6K1 w - - 0 40",
+]
+_vals = [int(agent.nnue_correction(chess.Board(f))) for f in _probes]
+report["correction_probe_values"] = _vals
+report["correction_probe_nonzero"] = sum(1 for v in _vals if v != 0)
+report["correction_is_live"] = report["correction_probe_nonzero"] > 0
+"""
 V3 = REPO / "tests" / "results" / "nnue" / "v3"
 
 
@@ -84,7 +99,15 @@ def main() -> None:
         agent_dir.mkdir()
         with zipfile.ZipFile(zip_path) as archive:
             archive.extractall(agent_dir)
-        (workdir / "validate.py").write_text(v2d.INNER, encoding="utf-8")
+        # V2's liveness probe samples one symmetric opening position. For the relative
+        # form that is precisely where the correction is designed to be zero, so a
+        # single zero there proves nothing either way. The probe is widened to a spread
+        # of positions, including unbalanced ones where the form must be live.
+        inner = v2d.INNER.replace(
+            'report["eval_differs_from_base"] = bool(report["correction_sample"])',
+            LIVENESS,
+        )
+        (workdir / "validate.py").write_text(inner, encoding="utf-8")
         command = [
             "docker", "run", "--rm",
             "--cpus=1", "--memory=2g", "--memory-swap=2g",
