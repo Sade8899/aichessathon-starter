@@ -222,13 +222,15 @@ def arenas() -> list[str]:
                 continue
             out.append(f"### {path.parent.name}/{path.stem} by colour")
             out.append("")
-            out.append("| candidate colour | games | score % | W | D | L |")
-            out.append("| --- | ---: | ---: | ---: | ---: | ---: |")
+            # The head-to-head and the benchmark arena describe a colour differently
+            # -- one by W/D/L, the other by a paired difference -- so the columns are
+            # taken from whatever the row actually carries rather than assumed.
+            keys = sorted({k for row in data["by_colour"].values() for k in row})
+            out.append("| candidate colour | " + " | ".join(keys) + " |")
+            out.append("| --- | " + " | ".join("---:" for _ in keys) + " |")
             for colour, row in data["by_colour"].items():
-                out.append(
-                    f"| {colour} | {row['games']} | {row['score_pct']} | {row['wins']} "
-                    f"| {row['draws']} | {row['losses']} |"
-                )
+                cells = " | ".join(str(row.get(k, "-")) for k in keys)
+                out.append(f"| {colour} | {cells} |")
             out.append("")
             if "by_family" in data:
                 out.append("| opponent family | pairs | paired diff | 95% CI |")
