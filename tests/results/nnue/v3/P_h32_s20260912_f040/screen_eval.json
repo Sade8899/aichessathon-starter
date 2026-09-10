@@ -1,10 +1,3 @@
-150 openings -> 300 head-to-head games, 4 workers, 8000ms+500ms
-  50/300 games  eta 29.9 min
-  100/300 games  eta 24.5 min
-  150/300 games  eta 18.3 min
-  200/300 games  eta 12.6 min
-  250/300 games  eta 6.2 min
-  300/300 games  eta 0.0 min
 {
   "tag": "P_h32_s20260912_f040",
   "label": "screen_eval",
