@@ -64,6 +64,16 @@ end, more useful set of facts. In the order they were found:
 6. **The static gain is diluted about fifteenfold by the search**, which is why even the
    improved frontier does not obviously convert into strength.
 7. **Gate 8 catches a regression V2 could not have seen**, because V2 never ran RATED_V4.
+8. **The candidate is 30 Elo weaker over 1,000 games**, with the interval on the wrong
+   side of zero.
+9. **Moving the correction away from the fragile region moved the damage with it.** The
+   relative form protects draws exactly as designed and loses won games instead.
+10. **The damage scales with the licence.** Thirteen times the correction loses 51.3 Elo.
+
+Findings 9 and 10 are the ones a successor should start from. Together they say that for
+this engine and this feature set the disturbance a correction causes is not separable
+from the correction itself, so no amount of restraint tuning reaches a setting that is
+both safe and useful.
 
 ## 3. The regime error (finding 1)
 
