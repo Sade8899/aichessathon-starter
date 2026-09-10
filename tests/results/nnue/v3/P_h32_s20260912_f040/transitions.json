@@ -1,0 +1,38 @@
+{
+  "tag": "P_h32_s20260912_f040",
+  "shared_games": 300,
+  "paired_score_delta_per_game": -0.095,
+  "transitions": {
+    "loss->loss": 65,
+    "win->win": 62,
+    "win->loss": 60,
+    "loss->win": 39,
+    "draw->loss": 22,
+    "win->draw": 19,
+    "draw->win": 13,
+    "loss->draw": 13,
+    "draw->draw": 7
+  },
+  "transitions_costing_points": 101,
+  "transitions_gaining_points": 65,
+  "draw_to_loss": 22,
+  "loss_to_draw": 13,
+  "win_to_draw": 19,
+  "draw_to_win": 13,
+  "win_to_loss": 60,
+  "loss_to_win": 39,
+  "mean_plies_by_transition": {
+    "draw->draw": 100.4,
+    "draw->loss": 77.0,
+    "draw->win": 100.6,
+    "loss->draw": 105.5,
+    "loss->loss": 86.2,
+    "loss->win": 88.3,
+    "win->draw": 100.5,
+    "win->loss": 90.6,
+    "win->win": 90.7
+  },
+  "mean_plies_candidate": 90.3,
+  "mean_plies_null": 92.0,
+  "note": "the null is the control playing itself on the same openings, so a transition is attributable to the candidate rather than to the book"
+}
