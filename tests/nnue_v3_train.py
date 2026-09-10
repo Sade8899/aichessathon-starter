@@ -35,6 +35,7 @@ sys.path.insert(0, str(REPO / "tests"))
 import nnue_v2_model as nn_features  # noqa: E402
 import nnue_v2_train as v2  # noqa: E402
 import nnue_v3_metrics as v3m  # noqa: E402
+import nnue_v3_relative as v3r  # noqa: E402
 
 OUTROOT = REPO / "tests" / "results" / "nnue" / "v3"
 OUTPUT_SCALE = v2.OUTPUT_SCALE
@@ -106,6 +107,7 @@ def train_variant(
     lr: float,
     outdir: pathlib.Path,
     overrides: dict[str, float],
+    relative: bool,
 ) -> dict[str, Any]:
     import torch
     from torch import nn
@@ -166,7 +168,16 @@ def train_variant(
                     value = np.where(conf.numpy() < floor, 0.0, value)
                 if cfg["phase_gate"]:
                     value = np.where(t_units[t].numpy() <= v2.PHASE_GATE_MAX, value, 0.0)
-                out[start : start + len(chunk)] = np.trunc(value)
+                gain = np.trunc(value)
+                if relative:
+                    # The deployed correction is trunc(base * gain / 1024): the gain is
+                    # truncated to an integer first, exactly as the agent does, and only
+                    # then scaled, so selection sees the shipped arithmetic.
+                    out[start : start + len(chunk)] = v3r.apply_relative(
+                        enc["base"][chunk].astype(np.float64), gain, CORRECTION_CLAMP
+                    )
+                else:
+                    out[start : start + len(chunk)] = gain
         return out
 
     val_rows = np.concatenate([np.arange(offsets[g], offsets[g + 1]) for g in val_ids])
@@ -198,10 +209,19 @@ def train_variant(
             base = t_base[t]
             sf = t_sf[t]
             target = torch.clamp(t_target[t], -CORRECTION_CLAMP, CORRECTION_CLAMP) / OUTPUT_SCALE
-            deployed = base + correction * OUTPUT_SCALE
+            if relative:
+                # correction * OUTPUT_SCALE is the same bounded, gated gain the additive
+                # form would deploy; here it scales the control's own evaluation instead
+                # of being added to it.
+                applied = v3r.relative_torch(
+                    base, correction * OUTPUT_SCALE, CORRECTION_CLAMP
+                )
+            else:
+                applied = correction * OUTPUT_SCALE
+            deployed = base + applied
 
             # -- 1. value (calibration only, small weight)
-            loss_value = huber(correction, target).mean()
+            loss_value = huber(applied / OUTPUT_SCALE, target).mean()
 
             # -- 2. pairwise ranking, V2's term, regret-scaled margins
             gap = torch.from_numpy(all_pairs["gap"][pair_rows])
@@ -283,6 +303,8 @@ def train_variant(
             if cfg["gate"]:
                 with torch.no_grad():
                     full = bounded.detach() * OUTPUT_SCALE
+                    if relative:
+                        full = v3r.relative_torch(base, full, CORRECTION_CLAMP)
                     ungated = base + full
                     ung = ungated[local]
                     pick_before = torch.argmin(
@@ -304,7 +326,7 @@ def train_variant(
                 loss_conf = torch.zeros(())
 
             # -- 9. magnitude restraint, the dial V2 measured as most effective
-            loss_quiet = torch.abs(correction).mean()
+            loss_quiet = torch.abs(applied / OUTPUT_SCALE).mean()
 
             loss = (
                 cfg["w_value"] * loss_value
@@ -390,7 +412,7 @@ def train_variant(
         biases=np.array([q["mg_bias"], q["eg_bias"], q["conf_bias"]], dtype=np.float64),
         flags=np.array(
             [int(q["gate"]), int(q["phase_gate"]), v2.PHASE_GATE_MAX,
-             round(float(cfg.get("conf_min", 0.0)) * 1000)],
+             round(float(cfg.get("conf_min", 0.0)) * 1000), int(relative)],
             dtype=np.int64,
         ),
     )
@@ -400,6 +422,7 @@ def train_variant(
 
     return {
         "variant": variant,
+        "form": "relative" if relative else "additive",
         "hidden": hidden,
         "seed": seed,
         "config": cfg,
@@ -426,6 +449,7 @@ def main() -> None:
     ap.add_argument("--lr", type=float, default=2e-3)
     ap.add_argument("--tag", default="v3")
     ap.add_argument("--threads", type=int, default=2)
+    ap.add_argument("--relative", action="store_true", help="scale the correction by the control's own evaluation")
     ap.add_argument(
         "--override",
         action="append",
@@ -476,6 +500,7 @@ def main() -> None:
             info = train_variant(
                 variant, hidden, args.seed, enc, pad, split_groups,
                 args.epochs, args.batch_groups, args.lr, outdir, overrides,
+                args.relative,
             )
             info["name"] = name
             (outdir / "training.json").write_text(

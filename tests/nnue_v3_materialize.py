@@ -30,12 +30,12 @@ V3 = REPO / "tests" / "results" / "nnue" / "v3"
 SNAPSHOTS = V3 / "snapshots"
 
 
-def materialise(tag: str, mode: str) -> dict[str, object]:
+def materialise(tag: str, mode: str, form: str) -> dict[str, object]:
     source = V3 / tag / "quantized.npz"
     if not source.exists():
         raise SystemExit(f"no checkpoint at {source}")
 
-    dest = SNAPSHOTS / f"{tag}_{mode}"
+    dest = SNAPSHOTS / f"{tag}_{mode}_{form}"
     dest.mkdir(parents=True, exist_ok=True)
     # The block's loader looks for this exact filename beside the agent; keeping V2's
     # name means the block itself needs no edit and cannot drift from the proved copy.
@@ -44,7 +44,7 @@ def materialise(tag: str, mode: str) -> dict[str, object]:
     digest = hashlib.sha256(weights.read_bytes()).hexdigest()
 
     agent = dest / f"agent_v3_{mode}.py"
-    text = builder.build(digest, mode)
+    text = builder.build(digest, mode, form)
     agent.write_text(text, encoding="utf-8")
     if builder.strip(text, mode) != (REPO / "agent.py").read_text(encoding="utf-8"):
         raise SystemExit(f"round trip to the control failed for {tag} in {mode} mode")
@@ -52,6 +52,7 @@ def materialise(tag: str, mode: str) -> dict[str, object]:
     info = {
         "tag": tag,
         "mode": mode,
+        "form": form,
         "agent": str(agent),
         "agent_sha256": hashlib.sha256(agent.read_bytes()).hexdigest(),
         "agent_bytes": agent.stat().st_size,
@@ -68,11 +69,12 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("tags", nargs="+")
     ap.add_argument("--modes", default="eval")
+    ap.add_argument("--form", default="additive")
     args = ap.parse_args()
     for tag in args.tags:
         for mode in args.modes.split(","):
-            info = materialise(tag, mode)
-            print(f"{tag} [{mode}]: {info['agent']}  weights {info['weight_sha256'][:16]}")
+            info = materialise(tag, mode, args.form)
+            print(f"{tag} [{mode}/{args.form}]: {info['agent']}  weights {info['weight_sha256'][:16]}")
 
 
 if __name__ == "__main__":

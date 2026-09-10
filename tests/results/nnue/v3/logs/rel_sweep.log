@@ -1,0 +1,34 @@
+28640 sibling groups
+reusing encoded cache encoded.npz
+padded group width K=9
+{'train': 20135, 'validation': 4423, 'test': 4082}
+  [P h16 s20260910] ep  0 comp=   0.552 pres=0.9921 top+=+0.0005 regret=  +1.64 p99harm=   0.0 zflip=0.0000 |corr|= 31.94  ELIGIBLE
+  [P h16 s20260910] ep  1 comp=   0.640 pres=0.9939 top+=+0.0002 regret=  +1.56 p99harm=   0.0 zflip=0.0000 |corr|= 36.18  ELIGIBLE
+  [P h16 s20260910] ep  2 comp=   0.789 pres=0.9939 top+=+0.0009 regret=  +1.68 p99harm=   0.0 zflip=0.0000 |corr|= 37.98  ELIGIBLE
+  [P h16 s20260910] ep  3 comp=  -0.155 pres=0.9915 top+=-0.0011 regret=  +1.16 p99harm=   0.0 zflip=0.0000 |corr|= 33.73  ELIGIBLE
+  [P h16 s20260910] ep  4 comp=  -0.266 pres=0.9897 top+=-0.0011 regret=  +1.23 p99harm=   0.0 zflip=0.0000 |corr|= 33.90  ELIGIBLE
+  [P h16 s20260910] ep  5 comp=   0.099 pres=0.9879 top+=+0.0002 regret=  +1.73 p99harm=   0.0 zflip=0.0000 |corr|= 32.07  ELIGIBLE
+  [P h16 s20260910] ep  6 comp=   0.733 pres=0.9897 top+=+0.0007 regret=  +2.13 p99harm=   0.0 zflip=0.0000 |corr|= 32.26  ELIGIBLE
+  [P h16 s20260910] ep  7 comp=   0.037 pres=0.9861 top+=+0.0014 regret=  +2.43 p99harm=   7.8 zflip=0.0000 |corr|= 31.38  ELIGIBLE
+  [P h16 s20260910] ep  8 comp=   3.105 pres=0.9885 top+=+0.0029 regret=  +4.55 p99harm=   1.0 zflip=0.0000 |corr|= 31.95  ELIGIBLE
+  [P h16 s20260910] ep  9 comp=   2.092 pres=0.9867 top+=+0.0029 regret=  +4.24 p99harm=   6.3 zflip=0.0000 |corr|= 28.32  ELIGIBLE
+  [P h16 s20260910] ep 10 comp=   0.622 pres=0.9830 top+=+0.0032 regret=  +4.09 p99harm=  18.8 zflip=0.0000 |corr|= 31.12  ELIGIBLE
+  [P h16 s20260910] ep 11 comp=   1.640 pres=0.9824 top+=+0.0038 regret=  +5.06 p99harm=  16.0 zflip=0.0000 |corr|= 27.20  ELIGIBLE
+  [P h16 s20260910] ep 12 comp=   3.149 pres=0.9836 top+=+0.0052 regret=  +6.51 p99harm=  15.3 zflip=0.0000 |corr|= 24.30  ELIGIBLE
+  [P h16 s20260910] ep 13 comp=   1.718 pres=0.9788 top+=+0.0045 regret=  +6.18 p99harm=  23.6 zflip=0.0000 |corr|= 23.60  ELIGIBLE
+  -> P_h16_s20260910_rel005: best epoch 12 composite 3.149 eligible=True in 29.9s
+  [P h32 s20260910] ep  0 comp=  -2.021 pres=0.9806 top+=-0.0009 regret=  +2.24 p99harm=  19.8 zflip=0.0000 |corr|= 33.04  ELIGIBLE
+  [P h32 s20260910] ep  1 comp=  -2.095 pres=0.9818 top+=-0.0005 regret=  +1.86 p99harm=  18.8 zflip=0.0000 |corr|= 37.86  ELIGIBLE
+  [P h32 s20260910] ep  2 comp=  -3.826 pres=0.9818 top+=+0.0002 regret=  +1.63 p99harm=  32.8 zflip=0.0000 |corr|= 34.58  ELIGIBLE
+  [P h32 s20260910] ep  3 comp=  -0.461 pres=0.9788 top+=+0.0016 regret=  +5.41 p99harm=  25.8 zflip=0.0000 |corr|= 36.77  ELIGIBLE
+  [P h32 s20260910] ep  4 comp=   0.245 pres=0.9812 top+=+0.0036 regret=  +5.90 p99harm=  25.0 zflip=0.0000 |corr|= 35.13  ELIGIBLE
+  [P h32 s20260910] ep  5 comp=  -0.296 pres=0.9764 top+=+0.0029 regret=  +6.05 p99harm=  30.3 zflip=0.0000 |corr|= 35.01  ELIGIBLE
+  [P h32 s20260910] ep  6 comp=  -1.738 pres=0.9782 top+=+0.0052 regret=  +5.26 p99harm=  32.6 zflip=0.0000 |corr|= 33.23  ELIGIBLE
+  [P h32 s20260910] ep  7 comp=  -2.683 pres=0.9752 top+=+0.0036 regret=  +4.56 p99harm=  39.8 zflip=0.0000 |corr|= 35.42  ELIGIBLE
+  [P h32 s20260910] ep  8 comp=   0.162 pres=0.9794 top+=+0.0061 regret=  +6.59 p99harm=  24.8 zflip=0.0000 |corr|= 27.17  ELIGIBLE
+  [P h32 s20260910] ep  9 comp=  -1.875 pres=0.9770 top+=+0.0061 regret=  +5.23 p99harm=  36.8 zflip=0.0000 |corr|= 31.14  ELIGIBLE
+  [P h32 s20260910] ep 10 comp=  -1.665 pres=0.9739 top+=+0.0050 regret=  +5.92 p99harm=  37.0 zflip=0.0000 |corr|= 31.46  ELIGIBLE
+  [P h32 s20260910] ep 11 comp=  -4.205 pres=0.9685 top+=+0.0043 regret=  +5.98 p99harm=  49.6 zflip=0.0000 |corr|= 27.94
+  [P h32 s20260910] ep 12 comp=  -2.144 pres=0.9733 top+=+0.0057 regret=  +5.84 p99harm=  41.6 zflip=0.0000 |corr|= 30.90  ELIGIBLE
+  [P h32 s20260910] ep 13 comp=  -2.042 pres=0.9703 top+=+0.0050 regret=  +6.31 p99harm=  43.8 zflip=0.0000 |corr|= 31.12  ELIGIBLE
+  -> P_h32_s20260910_rel005: best epoch 4 composite 0.245 eligible=True in 36.0s

@@ -78,7 +78,87 @@ def _nnue_root_order(board: chess.Board, moves: list[chess.Move]) -> list[chess.
 '''
 
 
-def build(weight_sha256: str, mode: str) -> str:
+
+RELATIVE_HOOK = """
+
+# ===== NNUE-V3 RELATIVE FORM BEGIN =====
+# The correction is scaled by the control's own evaluation instead of added to it:
+#
+#     correction = trunc(base * gain / NNUE_RELATIVE_UNIT), clamped to +/- NNUE_CLAMP
+#
+# `gain` is the same bounded, gated integer the additive form deploys. The point is the
+# behaviour at zero. V2 measured that the first solved fixture to break, at the smallest
+# correction that breaks anything at all, is always a repetition defence, because holding
+# a draw means holding an evaluation *at* zero and an additive nudge of any size flips a
+# comparison between two equal numbers. Here a control evaluation of zero yields a
+# correction of exactly zero -- not small, zero -- and while |gain| < 1024 the sign of an
+# evaluation can never change.
+#
+# It is also where the value is. Measured over the 28,640-group corpus, only 9% of the
+# control's total move regret sits in positions it evaluates within 50 cp of equal;
+# 91% sits where it already believes something, which is exactly where this form spends.
+NNUE_RELATIVE_UNIT = 1024
+
+
+def _nnue_relative(
+    base: int, mg_sum: int, eg_sum: int, conf_sum: int, phase_units: int
+) -> int:
+    gain = _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)
+    if gain == 0 or base == 0:
+        return 0
+    value = base * gain
+    # Truncation toward zero in integers, matching the reference exactly. Python's //
+    # floors toward negative infinity, so the sign is handled explicitly rather than
+    # relying on it.
+    scaled = (
+        value // NNUE_RELATIVE_UNIT
+        if value >= 0
+        else -((-value) // NNUE_RELATIVE_UNIT)
+    )
+    if scaled > NNUE_CLAMP:
+        return NNUE_CLAMP
+    if scaled < -NNUE_CLAMP:
+        return -NNUE_CLAMP
+    return int(scaled)
+# ===== NNUE-V3 RELATIVE FORM END =====
+"""
+
+# The weight file records the form in its fifth flag. A relative agent loaded with an
+# additive weight file would deploy a correction the checkpoint was never validated
+# under, so it refuses and falls back to the control's own evaluation instead.
+OLD_FORM_CHECK = """    _NNUE_CONF_MIN = (float(flags[3]) / 1000.0) if flags.shape[0] > 3 else 0.0
+    _nnue_ready = True"""
+NEW_FORM_CHECK = """    _NNUE_CONF_MIN = (float(flags[3]) / 1000.0) if flags.shape[0] > 3 else 0.0
+    if not (flags.shape[0] > 4 and int(flags[4]) == 1):
+        _nnue_status = "weight file is not the relative form; handcrafted only"
+        return _nnue_status
+    _nnue_ready = True"""
+
+OLD_CORR_UNPACK = "    _, mg_sum, eg_sum, conf_sum, phase_units = numeric_evaluate_v2("
+NEW_CORR_UNPACK = "    base, mg_sum, eg_sum, conf_sum, phase_units = numeric_evaluate_v2("
+OLD_CORR_RETURN = "    return _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)" + chr(10)
+NEW_CORR_RETURN = "    return _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)" + chr(10)
+OLD_EVAL_RETURN = "    return int(base) + _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)"
+NEW_EVAL_RETURN = (
+    "    return int(base) + _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)"
+)
+
+
+def _relative_block(block: str) -> str:
+    """Rewrite the proved V2 block into the relative form, in place."""
+    for old, new, count in (
+        (OLD_FORM_CHECK, NEW_FORM_CHECK, 1),
+        (OLD_CORR_UNPACK, NEW_CORR_UNPACK, 1),
+        (OLD_CORR_RETURN, NEW_CORR_RETURN, 1),
+        (OLD_EVAL_RETURN, NEW_EVAL_RETURN, 1),
+    ):
+        if block.count(old) != count:
+            raise SystemExit(f"relative rewrite expected {count} of {old!r}")
+        block = block.replace(old, new, count)
+    return block.replace(v2b.END, RELATIVE_HOOK.strip(chr(10)) + chr(10) + v2b.END)
+
+
+def build(weight_sha256: str, mode: str, form: str = "additive") -> str:
     source = CONTROL.read_text(encoding="utf-8")
     digest = hashlib.sha256(CONTROL.read_bytes()).hexdigest()
     if digest != CONTROL_SHA256:
@@ -92,6 +172,10 @@ def build(weight_sha256: str, mode: str) -> str:
         raise SystemExit("expected exactly one import block in agent.py")
 
     block = v2b.BLOCK.replace("__WEIGHT_SHA256__", weight_sha256)
+    if form == "relative":
+        block = _relative_block(block)
+    elif form != "additive":
+        raise SystemExit(f"unknown form {form!r}")
     if mode == "order":
         block = block.replace(v2b.END, ORDER_HOOK.lstrip("\n") + v2b.END)
 
@@ -133,11 +217,12 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--weight-sha256", default="")
     ap.add_argument("--mode", choices=("eval", "order"), default="eval")
+    ap.add_argument("--form", choices=("additive", "relative"), default="additive")
     ap.add_argument("--out", type=pathlib.Path, default=None)
     args = ap.parse_args()
 
-    out = args.out or REPO / f"agent_nnue_v3_{args.mode}.py"
-    text = build(args.weight_sha256, args.mode)
+    out = args.out or REPO / f"agent_nnue_v3_{args.mode}_{args.form}.py"
+    text = build(args.weight_sha256, args.mode, args.form)
     out.write_text(text, encoding="utf-8")
 
     restored = strip(text, args.mode)
@@ -146,7 +231,7 @@ def main() -> None:
         raise SystemExit(1)
 
     print(
-        f"wrote {out} mode={args.mode} "
+        f"wrote {out} mode={args.mode} form={args.form} "
         f"({len(text.splitlines())} lines, sha256 "
         f"{hashlib.sha256(text.encode()).hexdigest()[:16]}); "
         "round-trip to the control verified"

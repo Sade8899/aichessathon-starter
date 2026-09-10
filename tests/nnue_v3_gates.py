@@ -33,6 +33,7 @@ sys.path.insert(0, str(REPO / "tests"))
 
 import nnue_v2_gates as v2g  # noqa: E402
 import nnue_v2_train as trainer  # noqa: E402
+import nnue_v3_relative as v3r  # noqa: E402
 
 OUT = REPO / "tests" / "results" / "nnue" / "v3"
 DEFENCE_FIXTURES = v2g.DEFENCE_FIXTURES
@@ -71,6 +72,15 @@ def gate_reference_equality(
     enc = v2g.encode_boards(boards)
     rows = np.arange(len(boards))
     reference = trainer.quant_correction(q, enc, rows)
+    relative = bool(blob["flags"].shape[0] > 4 and int(blob["flags"][4]) == 1)
+    if relative:
+        # The shipped correction is trunc(base * gain / 1024). The reference must apply
+        # the same two steps in the same order -- truncate the gain, then scale -- or the
+        # gate would compare the agent against arithmetic nothing performs.
+        base = np.array(
+            [float(candidate.compiled_evaluate(b)) for b in boards], dtype=np.float64
+        )
+        reference = v3r.apply_relative(base, reference, candidate.NNUE_CLAMP)
     agent = np.array([candidate.nnue_correction(b) for b in boards], dtype=np.float64)
     diff = np.abs(agent - reference)
     exact = int((diff == 0).sum())
@@ -102,8 +112,11 @@ def gate_mode_isolation(
     """
     if mode != "order":
         return []
+    # Compare the functions the two engines actually call at a leaf, not a stand-in for
+    # them: which one that is depends on the control's own FAST_EVAL switch.
     same = sum(
-        1 for b in boards if control.compiled_evaluate(b) == candidate._uncached_evaluate(b)
+        1 for b in boards
+        if control._uncached_evaluate(b) == candidate._uncached_evaluate(b)
     )
     corrections = [candidate.nnue_correction(b) for b in boards]
     nonzero = sum(1 for c in corrections if c != 0)
