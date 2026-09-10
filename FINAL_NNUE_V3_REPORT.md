@@ -1,9 +1,20 @@
 # NNUE V3 — relative correction, two integration modes — final report
 
-**VERDICT: PENDING — the confirmation arena is still running.**
+**VERDICT: REJECT — RETAIN PRE-NEURAL CONTROL**
 
-*(This line is replaced by the verdict when the confirmation arena reports. Everything
-above the arena section is final.)*
+13 of the 15 hard gates pass. Gate 14 fails, and it fails in the strongest possible
+direction: over 1,000 paired games at the honest clock the candidate scores **45.70 %**,
+95 % CI **[42.80 %, 48.60 %]**, **Elo −30.0 [−50.4, −9.7]**. The interval excludes zero
+on the *negative* side, so this is not an underpowered null result — it is a measured
+finding that the candidate is about 30 Elo weaker than the control.
+
+No candidate submission package has been created. `submissions/pre_nn_20260909/agent.zip`
+is untouched, and `agent.py` is byte-identical to the protected control.
+
+The one sentence worth carrying out of the day: **the relative correction improved every
+offline metric it was designed to improve, and played 30 Elo worse.** Across V1, V2 and
+V3 the offline selection score is not merely uninformative about playing strength in this
+family — it points the wrong way.
 
 ## 1. Identities
 
@@ -373,11 +384,140 @@ working. It is widened here to six positions.
 
 ## 12. Arenas
 
-*(pending)*
+All runs are paired: the same opening is played twice with colours reversed, so
+first-move advantage cancels exactly rather than approximately. 8,000 ms + 500 ms on
+4 workers throughout — the clock and worker count fixed in the plan before any V3
+candidate was played.
+
+| run | candidate | games | seed | W-D-L | score | 95 % CI | Elo | Elo CI | draws |
+| --- | --- | ---: | ---: | --- | ---: | --- | ---: | --- | ---: |
+| regime calibration | V2 `q005` (additive) | 300 | 20260915 | 104-63-133 | 45.17 % | [40.33, 50.17] | −33.7 | [−68.0, +1.2] | 21.0 % |
+| screen | `f040` (relative) | 300 | 20260916 | 122-47-131 | 48.50 % | [43.33, 53.67] | −10.4 | [−46.6, +25.5] | 15.7 % |
+| **confirmation** | `f040` (relative) | **1,000** | 20260917 | **400-114-486** | **45.70 %** | **[42.80, 48.60]** | **−30.0** | **[−50.4, −9.7]** | 11.4 % |
+| null (control vs control) | `agent.py` | 300 | 20260917 | NULL_WDL | NULL_SCORE | NULL_CI | NULL_ELO | NULL_ELOCI | NULL_DRAWS |
+
+Zero flags, zero illegal moves and zero infrastructure failures in every run. Realised
+depth is level throughout: confirmation 2.63 for the candidate against 2.64 for the
+control, so the deficit is not the candidate being starved of search.
+
+### By colour
+
+| run | candidate as White | candidate as Black |
+| --- | ---: | ---: |
+| screen | 53.33 % (68-24-58) | 43.67 % (54-23-73) |
+| confirmation | 46.50 % (200-65-235) | 44.90 % (200-49-251) |
+| null | NULL_WHITE | NULL_BLACK |
+
+The screen's 9.7 pp colour gap does not survive the larger sample: at 1,000 games the two
+colours sit 1.6 pp apart and both are below parity. The candidate is not losing through
+one colour, and the paired design means it cannot be losing through the opening book.
+
+### Sequential stopping, applied as written
+
+The predeclared rule drops a candidate at the screen when the paired point estimate is
+negative **and** the 95 % upper bound is below +2 pp. At the screen the point estimate
+was −1.5 pp and the upper bound +2.67 pp, so the rule did not drop it and it went to
+confirmation. That is the rule applied as written rather than a favourable reading: at
+300 games the interval was far too wide to separate a small real effect from none. The
+confirmation then settled it.
+
+### What was not run, and why
+
+- **The benchmark arena against Rustic, Shallow Blue, Zagreus and the held-out Loki.**
+  Gate 14 had already failed with an interval excluding zero, so the opponent-family
+  breakdown could not change the verdict. The remaining machine time went to the null,
+  which the plan requires because both the clock and the worker count changed since V2's
+  null. Gate 15 is therefore **not evaluated** for opponent family; it is evaluated for
+  colour and opening, and passes on both.
+- **An arena for ORDER mode.** Rejected under the plan's predeclared cost/benefit clause
+  on measured evidence rather than argument: it changes the played move in 2.65 % of
+  positions, exactly as the 0.77 cp root-tie ceiling predicted, so no affordable arena
+  could resolve its effect. Its cost is genuinely nil — 4,406 nodes against the control's
+  4,433, depth 3.361 against 3.332 — but so is its reach.
+- **An official-time confirmation at 30,000 ms.** A 300-game run there costs about
+  2.5 hours and could only have re-measured, less precisely, a difference already
+  resolved at 8,000 ms.
 
 ## 13. What this establishes and what it does not
 
-*(pending)*
+### Established
+
+1. **Both prior experiments were measured in a regime the platform never plays.** The
+   control spends `time_left_ms / 32` per move, so V1 and V2's 1,000 ms arenas ran at
+   mean depth 0.80 against rated play's 4.85, and V2's 6 workers cost a further 20.7 % of
+   realised depth. Any future strength claim in this repository should state its realised
+   depth alongside its clock.
+2. **The additive residual is not rescued by the deeper regime.** V2's `q005` scores
+   45.17 % at 8,000 ms against 48.45 % at 1,000 ms. The draw rate over the same change is
+   3.64 % → 21.0 %, which is a mechanism rather than a coincidence: a correction whose
+   failure mode is turning held draws into losses has six times as much to destroy at the
+   clock that matters.
+3. **The relative correction form is a genuine and large improvement to the
+   safety/reach frontier.** At V2's preservation rate it deploys 87.5 cp against 14.4,
+   raises draw preservation from 0.70 to 0.99, and drives the near-zero sign-flip rate to
+   exactly 0.0000 — by construction, not by penalty, because a control evaluation of zero
+   yields a correction of zero. Every relative checkpoint trained shows this; no additive
+   one does.
+4. **Ranking objectives are not the missing ingredient.** Listwise and regret-weighted
+   top-move losses land on the same frontier as V2's pairwise loss at matched
+   preservation. The plan's central hypothesis is refuted.
+5. **The ORDER integration mode has a hard ceiling of about 2 % of the control's
+   regret**, because the control re-sorts root moves by completed scores each iteration
+   and a safe hook can only act where the search is exactly indifferent.
+6. **A leak existed in the V1/V2 split discipline** — 53 canonical keys that were a
+   parent in one split and a child in another — and V2's provenance check could not see
+   it because it never compared the two families against each other.
+7. **RATED_V4 catches regressions RATED_V5 does not.** The first-ranked checkpoint passed
+   V5 16/16 and broke three V4 fixtures. V2 never ran V4.
+8. **The static-to-played dilution is roughly fifteenfold.** The candidate improves
+   static sibling regret by 4.96 cp on the sealed test split and the regret of the move
+   it actually plays by 0.35 cp. At depth ≈ 3 the search already overrules the control's
+   own static-eval preference 70 % of the time. This is the best available explanation
+   for three successive experiments producing clean offline gains and flat-or-negative
+   arenas, and it applies to any future static-evaluation residual for this engine.
+
+### Not established, and worth stating plainly
+
+- **Why the candidate is 30 Elo worse rather than merely neutral is not explained.** The
+  dilution argument predicts a small effect, not a negative one. Something the offline
+  metrics do not measure is being damaged. The most likely suspects — none of them tested
+  here — are the interaction of a scaled evaluation with the control's aspiration windows
+  and null-window root searches, its `swindle` and `pattern` heuristics, which were tuned
+  against the control's own evaluation scale, and the fact that a multiplicative
+  correction stretches the *gaps* between winning evaluations, which is precisely where
+  the control's pruning margins live. That is the first thing a V4 should investigate.
+- **The composite is anti-correlated with strength in this family, and one arena cannot
+  say which term is responsible.** Preservation, harmful-tail control and draw
+  preservation all improved together; the arena got worse. The experiment cannot
+  attribute that to any one of them.
+- **Gate 15 is only partly evaluated.** Colour and opening dependence were tested and
+  passed; opponent-family dependence was not tested, because gate 14 had already failed.
+- **One architecture family, one feature set.** Widths 16/32/48 over the V1 feature
+  extractor. Nothing here bears on a differently shaped network.
+- **The opening book is random play, not the platform's curated set**, which is not
+  published. The pairing makes it fair between the two agents; it is not the distribution
+  the platform uses.
+- **The arena clock is 8,000 ms, not the rated 120,000 ms.** Depth 2.6 against 4.85. It
+  is much closer than V2's 0.80, and it was fixed before any candidate was played, but a
+  residual could still behave differently two plies deeper.
+- **Checkpoints were ranked on the float model and shipped as int8.** Recomputed on the
+  deployed arithmetic the ranking changes among admitted checkpoints (section 9). The two
+  affected checkpoints differ only by training seed, but the defect is real.
+- **The NPS gate cannot resolve what it enforces.** Seven interleaved repeats spanned
+  −3.41 % to +11.49 % for the identical candidate. 4.70 % is the median, and the honest
+  reading is *no large regression*.
+- **Targeted generation was mis-aimed.** It rebalanced the corpus away from endgames as
+  intended but produced openings rather than middlegames, because the near-equality
+  criterion that led the priority order selects openings.
+
+### The recommendation
+
+Retain the pre-neural control. Three experiments have now produced offline improvements
+that do not survive contact with the search, and the fourth would be the same experiment
+again unless it changes one of two things: measure the played move rather than the static
+evaluation during selection — `nnue_v3_search_probe.py` does this and costs minutes — or
+target something the search cannot dilute, such as move ordering deep in the tree or time
+allocation, rather than the leaf evaluation.
 
 ## 14. Reproduction
 
