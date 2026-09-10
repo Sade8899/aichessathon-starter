@@ -192,6 +192,32 @@ def gate_nps_repeated(
     ]
 
 
+def gate_fixture_harness_sees_the_weights(candidate_name: str) -> list[dict[str, Any]]:
+    """The fixture harness execs an agent's source without setting `__file__`.
+
+    That matters more than it looks. With no `__file__` the agent's weight lookup falls
+    back to sys.path[0] and then the working directory, so a fixture run picks up
+    whatever `nnue_v2_weights.npz` sits at the repo root -- not the candidate's own. If
+    that file belonged to a different checkpoint the agent would reject it on the
+    embedded hash, fall back to the control's evaluation, and every fixture would pass
+    while testing nothing. This gate makes that failure loud.
+    """
+    import nnue_v2_build_agent  # noqa: F401
+    import rated_v4 as v4
+
+    module = v4.source(candidate_name)
+    ready = bool(getattr(module, "_nnue_ready", False))
+    status = str(getattr(module, "_nnue_status", "missing"))
+    return [
+        {
+            "gate": "fixture harness loads the candidate's own weights",
+            "measured": f"ready={ready} status={status}",
+            "requirement": "ready, with the candidate's weight hash",
+            "passes": ready,
+        }
+    ]
+
+
 def _rated(script: str, source: str) -> dict[str, Any]:
     proc = subprocess.run(
         [sys.executable, str(REPO / "tests" / script), "fixtures", "--source", source],
@@ -336,6 +362,7 @@ def main() -> None:
 
     detail: dict[str, Any] = {}
     if not args.skip_fixtures:
+        gates += gate_fixture_harness_sees_the_weights(args.candidate.name)
         fixture_gates, detail = gate_fixtures(args.candidate.name)
         gates += fixture_gates
 

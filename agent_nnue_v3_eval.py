@@ -334,7 +334,7 @@ NNUE_CLAMP = 250  # the correction may never move the evaluation more than this
 NNUE_WEIGHTS = "nnue_v2_weights.npz"
 # Set by tests/nnue_v2_pack.py when the weights are packed. A mismatch degrades the
 # agent to the control rather than playing on weights it cannot vouch for.
-NNUE_SHA256 = ""
+NNUE_SHA256 = "638b63ebbfbfb8e0513ad829f3948dccf8bb11c58720581084103675fbad61a2"
 
 _NNUE_DEBRUIJN = np.uint64(0x03F79D71B4CB0A89)
 _NNUE_INDEX = np.array(
@@ -500,6 +500,9 @@ def load_nnue() -> str:
     # correction is exactly zero and the position evaluates bit-identically to
     # the control. Older weight files carry three flags and mean "no threshold".
     _NNUE_CONF_MIN = (float(flags[3]) / 1000.0) if flags.shape[0] > 3 else 0.0
+    if not (flags.shape[0] > 4 and int(flags[4]) == 1):
+        _nnue_status = "weight file is not the relative form; handcrafted only"
+        return _nnue_status
     _nnue_ready = True
     _nnue_status = f"loaded {digest[:16]}"
     return _nnue_status
@@ -673,7 +676,7 @@ def nnue_correction(board: chess.Board) -> int:
     """The gated correction alone, for tests and reporting. Not used in search."""
     if not _nnue_ready:
         return 0
-    _, mg_sum, eg_sum, conf_sum, phase_units = numeric_evaluate_v2(
+    base, mg_sum, eg_sum, conf_sum, phase_units = numeric_evaluate_v2(
         np.uint64(board.pawns),
         np.uint64(board.knights),
         np.uint64(board.bishops),
@@ -684,7 +687,7 @@ def nnue_correction(board: chess.Board) -> int:
         board.turn,
         np.uint64(board.castling_rights),
     )
-    return _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)
+    return _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)
 
 
 def compiled_evaluate_v2(board: chess.Board) -> int:
@@ -700,7 +703,7 @@ def compiled_evaluate_v2(board: chess.Board) -> int:
         board.turn,
         np.uint64(board.castling_rights),
     )
-    return int(base) + _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)
+    return int(base) + _nnue_relative(int(base), mg_sum, eg_sum, conf_sum, phase_units)
 
 
 # Compile the fused signature before the game clock starts, exactly as the handcrafted
@@ -716,6 +719,46 @@ numeric_evaluate_v2(
     True,
     np.uint64(chess.Board().castling_rights),
 )
+# ===== NNUE-V3 RELATIVE FORM BEGIN =====
+# The correction is scaled by the control's own evaluation instead of added to it:
+#
+#     correction = trunc(base * gain / NNUE_RELATIVE_UNIT), clamped to +/- NNUE_CLAMP
+#
+# `gain` is the same bounded, gated integer the additive form deploys. The point is the
+# behaviour at zero. V2 measured that the first solved fixture to break, at the smallest
+# correction that breaks anything at all, is always a repetition defence, because holding
+# a draw means holding an evaluation *at* zero and an additive nudge of any size flips a
+# comparison between two equal numbers. Here a control evaluation of zero yields a
+# correction of exactly zero -- not small, zero -- and while |gain| < 1024 the sign of an
+# evaluation can never change.
+#
+# It is also where the value is. Measured over the 28,640-group corpus, only 9% of the
+# control's total move regret sits in positions it evaluates within 50 cp of equal;
+# 91% sits where it already believes something, which is exactly where this form spends.
+NNUE_RELATIVE_UNIT = 1024
+
+
+def _nnue_relative(
+    base: int, mg_sum: int, eg_sum: int, conf_sum: int, phase_units: int
+) -> int:
+    gain = _nnue_blend(mg_sum, eg_sum, conf_sum, phase_units)
+    if gain == 0 or base == 0:
+        return 0
+    value = base * gain
+    # Truncation toward zero in integers, matching the reference exactly. Python's //
+    # floors toward negative infinity, so the sign is handled explicitly rather than
+    # relying on it.
+    scaled = (
+        value // NNUE_RELATIVE_UNIT
+        if value >= 0
+        else -((-value) // NNUE_RELATIVE_UNIT)
+    )
+    if scaled > NNUE_CLAMP:
+        return NNUE_CLAMP
+    if scaled < -NNUE_CLAMP:
+        return -NNUE_CLAMP
+    return int(scaled)
+# ===== NNUE-V3 RELATIVE FORM END =====
 # ===== NNUE-V2 BLOCK END =====
 
 # ===== NNUE-V2 TAIL BEGIN =====

@@ -1,0 +1,16 @@
+250 validation parents at 8000 ms
+  tag: f040_eval
+  candidate: tests\results\nnue\v3\snapshots\P_h32_s20260911_f040_eval_relative\agent_v3_eval.py
+  clock_ms: 8000
+  split: validation
+  seed: 20260911
+  control: {'scored': 226, 'unlabelled_moves': 24, 'mean_regret_cp': 32.916, 'median_regret_cp': 0.0, 'p90_regret_cp': 88.0, 'p99_regret_cp': 323.0, 'top_move_rate': 0.5044, 'mean_depth': 3.332, 'mean_nodes': 4472.8, 'mean_seconds': 0.2277}
+  candidate_metrics: {'scored': 223, 'unlabelled_moves': 27, 'mean_regret_cp': 31.753, 'median_regret_cp': 0.0, 'p90_regret_cp': 88.0, 'p99_regret_cp': 323.0, 'top_move_rate': 0.5202, 'mean_depth': 3.278, 'mean_nodes': 4179.5, 'mean_seconds': 0.2284}
+  paired_positions: 221
+  moves_changed: 21
+  moves_changed_rate: 0.095
+  paired_mean_regret_delta_cp: -0.348
+  paired_improved: 9
+  paired_worsened: 9
+  paired_worst_regression_cp: 80.0
+  paired_best_improvement_cp: -156.0
