@@ -1,0 +1,12 @@
+{
+  "tag": "RAP_h16_s20260910_f002",
+  "mode": "eval",
+  "form": "relative",
+  "agent": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter\\tests\\results\\nnue\\v3\\snapshots\\RAP_h16_s20260910_f002_eval_relative\\agent_v3_eval.py",
+  "agent_sha256": "d233ae55fb4ad086178cf25293b7b46e4227370e6eeed17d38e476bb605cfc0d",
+  "agent_bytes": 60729,
+  "weights": "C:\\Users\\44740\\Desktop\\Comp2526\\Personal project\\Chessatohon optiver\\aichessathon-starter\\tests\\results\\nnue\\v3\\snapshots\\RAP_h16_s20260910_f002_eval_relative\\nnue_v2_weights.npz",
+  "weight_sha256": "db366ad86919e5a4eea8145e20ade864af290a6c677581ab79bc4c6d44ef47c6",
+  "weight_bytes": 14774,
+  "control_sha256": "65ec40ceb29a8f6fe14a74ab2ed6ca446164f701e46d2b9d3fe8d5af94655bda"
+}

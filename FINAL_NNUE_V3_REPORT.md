@@ -24,10 +24,8 @@ family — it points the wrong way.
 | pre-neural package `submissions/pre_nn_20260909/agent.zip` | `d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5` | UNCHANGED |
 | tag `pre-nnue-control-20260909` | tag object `ba78a9f` -> commit `78c03b0d266a027c5e47ffa3a1b5af0c435da1b6` | UNCHANGED |
 | candidate weights `P_h32_s20260912_f040` | `08da2c0764de3ad4…` | 27,270 bytes |
-| candidate agent (EVAL, relative) | built from `agent.py`, 60,729 bytes | strips back to the control byte for byte |
-
-| candidate agent EVAL at the repo root | `989e6811a4e6a8af4481b5f695eb73fd227d1726793105281070ad4582e98fc1` | 60,729 bytes |
-| candidate agent ORDER at the repo root | `d071bf62a83b2897aa8017546dc8755968b6010fbdb57982d90e262ca81b8825` | 61,847 bytes |
+| candidate agent `agent_nnue_v3_eval.py` | `989e6811a4e6a8af4481b5f695eb73fd227d1726793105281070ad4582e98fc1` | 60,729 bytes, strips back to the control byte for byte |
+| candidate agent `agent_nnue_v3_order.py` | `d071bf62a83b2897aa8017546dc8755968b6010fbdb57982d90e262ca81b8825` | 61,847 bytes, strips back to the control byte for byte |
 | candidate weight file `nnue_v2_weights.npz` | `08da2c0764de3ad4585dcdec65118ef2cb140b3d6f1cff0b33c1af0254baddd2` | 27,270 bytes, untracked |
 
 - branch `experiment/nnue-v3-final`, forked from `experiment/nnue-v2-ranked` at `6deb15f`
@@ -407,11 +405,30 @@ candidate was played.
 | regime calibration | V2 `q005` (additive) | 300 | 20260915 | 104-63-133 | 45.17 % | [40.33, 50.17] | −33.7 | [−68.0, +1.2] | 21.0 % |
 | screen | `f040` (relative) | 300 | 20260916 | 122-47-131 | 48.50 % | [43.33, 53.67] | −10.4 | [−46.6, +25.5] | 15.7 % |
 | **confirmation** | `f040` (relative) | **1,000** | 20260917 | **400-114-486** | **45.70 %** | **[42.80, 48.60]** | **−30.0** | **[−50.4, −9.7]** | 11.4 % |
-| null (control vs control) | `agent.py` | 300 | 20260917 | NULL_WDL | NULL_SCORE | NULL_CI | NULL_ELO | NULL_ELOCI | NULL_DRAWS |
+| null (control vs control) | `agent.py` | 300 | 20260917 | 141-42-117 | 54.00 % | [48.67, 59.33] | +27.9 | [−9.3, +65.6] | 14.0 % |
+| null (control vs control) | `agent.py` | 300 | 20260919 | 132-42-126 | 51.00 % | [45.83, 56.33] | +6.9 | [−29.0, +44.2] | 14.0 % |
+| **null, pooled** | `agent.py` | **600** | both | 273-84-243 | **52.50 %** | **[49.83, 55.17]** | +17.4 | [−1.2, +36.0] | 14.0 % |
 
 Zero flags, zero illegal moves and zero infrastructure failures in every run. Realised
 depth is level throughout: confirmation 2.63 for the candidate against 2.64 for the
 control, so the deficit is not the candidate being starved of search.
+
+### The null is not quite centred on parity, and that matters in the candidate's disfavour
+
+The first null returned 54.0 % for the candidate *slot* with both agents being the
+control, and its paired interval excluded parity. A second null on a different seed
+returned 51.0 %. Pooled over 600 games the slot scores **52.50 %, 95 % CI [49.83 %,
+55.17 %]** — consistent with parity, but with a point estimate 2.5 pp above it and a
+lower bound only 0.17 pp below it. The control is not deterministic (its search is cut
+off by wall clock, so realised depth varies), which is what makes a slot difference
+possible at all.
+
+Whichever it is, it cannot rescue the candidate. The confirmation's 45.70 % is being
+compared against a slot that scores 52.50 % when the control plays itself, so correcting
+for the baseline gives a deficit of **−6.80 pp, about −47 Elo** rather than −30. The
+verdict is reported on the uncorrected number because that is the predeclared comparison;
+the correction is noted because it runs the wrong way for the candidate and should not be
+left out on that account.
 
 ### By colour
 
@@ -419,11 +436,44 @@ control, so the deficit is not the candidate being starved of search.
 | --- | ---: | ---: |
 | screen | 53.33 % (68-24-58) | 43.67 % (54-23-73) |
 | confirmation | 46.50 % (200-65-235) | 44.90 % (200-49-251) |
-| null | NULL_WHITE | NULL_BLACK |
+| null, seed 20260917 | 57.33 % (74-24-52) | 50.67 % (67-18-65) |
+| null, seed 20260919 | 47.67 % (62-19-69) | 54.33 % (70-23-57) |
 
 The screen's 9.7 pp colour gap does not survive the larger sample: at 1,000 games the two
-colours sit 1.6 pp apart and both are below parity. The candidate is not losing through
-one colour, and the paired design means it cannot be losing through the opening book.
+colours sit 1.6 pp apart and both are below parity. The two nulls disagree about which
+colour is favoured — +9.7 pp for White in one, −6.7 pp in the other — which is a direct
+measurement of how much colour-split noise a 300-game run carries, and a caution against
+reading the screen's colour gap as a real effect. The candidate is not losing through one
+colour, and the paired design means it cannot be losing through the opening book.
+
+### Where the points actually go
+
+The null at seed 20260917 was deliberately played on the confirmation's own book, so for
+each of 300 openings there is a control-vs-control outcome and a candidate-vs-control
+outcome and the two can be compared game for game:
+
+| transition | count | | transition | count | net |
+| --- | ---: | --- | --- | ---: | ---: |
+| win → loss | 60 | | loss → win | 39 | **−21** |
+| draw → loss | 22 | | loss → draw | 13 | **−9** |
+| win → draw | 19 | | draw → win | 13 | **−6** |
+
+The dominant channel is **win → loss**, not draw → loss. That is the opposite of V1's
+signature, and it is exactly what the relative form's design predicts. The correction is
+proportional to the control's own evaluation, so it is largest where that evaluation is
+largest. It was aimed deliberately at the positions holding 91 % of the static regret —
+which are winning positions — and that is where it does its damage. The additive form
+broke draws because equal evaluations are the fragile ones; the relative form protects
+draws (draw preservation 0.9921, sign flips 0.0000) and breaks wins instead.
+
+Both forms damage whatever they touch. Moving the correction away from the fragile region
+moved the damage with it rather than removing it.
+
+Two caveats. These transitions are measured against a null baseline that itself sits
+2.5 pp above parity, which inflates the apparent losses; and the engine is not
+deterministic, so some share of every cell is noise. The asymmetry between the win → loss
+and loss → win cells is about four standard errors, which is larger than that noise can
+comfortably explain, but the exact counts should not be over-read.
 
 ### Sequential stopping, applied as written
 
@@ -489,20 +539,32 @@ confirmation then settled it.
    for three successive experiments producing clean offline gains and flat-or-negative
    arenas, and it applies to any future static-evaluation residual for this engine.
 
+9. **Moving the correction away from the fragile region moved the damage with it.** The
+   transition table locates the loss: net −21 games through win → loss against net −9
+   through draw → loss. The relative form did what it was built to do — draws are
+   preserved, sign flips are impossible — and it lost the points somewhere else instead,
+   in exactly the positions it was aimed at. That is the most transferable result of the
+   day, because it applies to any bounded correction to this evaluation: the disturbance
+   travels with the licence.
+
 ### Not established, and worth stating plainly
 
-- **Why the candidate is 30 Elo worse rather than merely neutral is not explained.** The
-  dilution argument predicts a small effect, not a negative one. Something the offline
-  metrics do not measure is being damaged. The most likely suspects — none of them tested
-  here — are the interaction of a scaled evaluation with the control's aspiration windows
-  and null-window root searches, its `swindle` and `pattern` heuristics, which were tuned
-  against the control's own evaluation scale, and the fact that a multiplicative
-  correction stretches the *gaps* between winning evaluations, which is precisely where
-  the control's pruning margins live. That is the first thing a V4 should investigate.
+- **Why the damage is a net loss rather than a wash is not explained.** The transition
+  table says *where* the points go; it does not say why a correction that reduces
+  Stockfish-measured regret in winning positions loses won games. The untested suspects
+  are the control's null-window root search and its aspiration margins, which compare
+  evaluations against thresholds tuned to the control's own scale, and its `swindle` and
+  `pattern` heuristics, which do the same. A multiplicative correction stretches exactly
+  the gaps those margins live in. That is the first thing a successor should instrument.
 - **The composite is anti-correlated with strength in this family, and one arena cannot
   say which term is responsible.** Preservation, harmful-tail control and draw
   preservation all improved together; the arena got worse. The experiment cannot
   attribute that to any one of them.
+- **The harness slot is not proven neutral.** Two 300-game nulls returned 54.0 % and
+  51.0 % for the candidate slot with both agents being the control; pooled, 52.50 % with
+  a 95 % lower bound of 49.83 %. The tilt runs against the candidate, so it does not
+  threaten this verdict, but a future *positive* result at this clock would need a larger
+  null before it could be believed.
 - **Gate 15 is only partly evaluated.** Colour and opening dependence were tested and
   passed; opponent-family dependence was not tested, because gate 14 had already failed.
 - **One architecture family, one feature set.** Widths 16/32/48 over the V1 feature
@@ -580,6 +642,37 @@ python tests/nnue_v2_h2h.py --tag <tag> --candidate <snapshot>/agent_v3_eval.py 
     --pairs 500 --workers 4 --clock-ms 8000 --increment-ms 500 --seed 20260917 \
     --label confirm_eval
 
+# the null the plan requires, on the confirmation's own book, plus a second seed
+python tests/nnue_v2_h2h.py --tag <tag> --candidate agent.py --pairs 150 --workers 4     --clock-ms 8000 --increment-ms 500 --seed 20260917 --label null_control
+
+# where the points went
+python tests/nnue_v3_transitions.py --tag <tag>
+
 # every table in this report
 python tests/nnue_v3_report.py
 ```
+
+## 15. Deliverables
+
+| deliverable | location |
+| --- | --- |
+| predeclared plan, committed before any result | `NNUE_V3_FINAL_PLAN.md` (commit `a00a198`) |
+| this report | `FINAL_NNUE_V3_REPORT.md` |
+| sibling generation and training | `tests/nnue_v3_data.py`, `tests/nnue_v3_train.py` |
+| relative correction form and its reference | `tests/nnue_v3_relative.py` |
+| selection metrics, frozen composite | `tests/nnue_v3_metrics.py` |
+| dataset manifests and overlap report | `tests/results/nnue/v3/overlap_report.json`, `quarantine.json` |
+| all checkpoint metrics | `tests/results/nnue/v3/*/training.json`, `training_summary_*.json` |
+| calibration records | `depth_calibration.json`, `worker_calibration.json`, `root_ties.json` |
+| fixture admission screen | `tests/results/nnue/v3/fixture_screen_eval.json` |
+| gates | `tests/results/nnue/v3/P_h32_s20260912_f040/gates_eval.json` |
+| container validation | `.../docker_eval.json` |
+| staged arena results | `.../screen_eval.*`, `confirm_eval.*`, `null_control*.*` (json, csv, pgn) |
+| search-level probes | `tests/results/nnue/v3/search_probe_*.json` |
+| assembled tables | `tests/results/nnue/v3/report_tables.md` |
+| **candidate submission package** | **none — the verdict is REJECT** |
+
+The pre-neural package at `submissions/pre_nn_20260909/agent.zip` is byte-identical to
+the file verified at the start of the session. A zip does exist at
+`tests/results/nnue/v3/P_h32_s20260912_f040/candidate_eval.zip`; it is the artifact the
+container gate built in order to test the candidate, and it is not a submission.

@@ -1,0 +1,11 @@
+{
+  "pooled_null_games": 600,
+  "pooled_null_score_pct": 52.5,
+  "pooled_null_paired_ci95_pct": [
+    49.83,
+    55.17
+  ],
+  "pooled_null_elo": 17.4,
+  "candidate_confirmation_pct": 45.7,
+  "deficit_vs_null_baseline_pp": -6.8
+}

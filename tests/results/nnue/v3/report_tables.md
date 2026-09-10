@@ -5,7 +5,7 @@ control agent.py bytes  39396
 control agent.py lines  1046
 pre-neural package sha256 d9392c6b9c572790c838cc91e957c6eeaceecb706175d99cdfbf928a5e3b86a5
 branch: experiment/nnue-v3-final
-commit: 6ffe714330f88e55b1af66c084675638749ab8fb
+commit: 8041707f80103ab33d747b11c913a38b97849ab3
 control tag commit: 78c03b0d266a027c5e47ffa3a1b5af0c435da1b6
 
 ## control-only calibrations
@@ -260,12 +260,36 @@ FAILING: paired NPS loss (median of repeated interleaved runs), RATED_V4 enforce
 
 | run | tag | games | clock | workers | W-D-L | score % | 95% CI % | Elo | Elo CI | draws % | cand depth | ctl depth | flags | illegal |
 | --- | --- | ---: | --- | ---: | --- | ---: | --- | ---: | --- | ---: | ---: | ---: | ---: | ---: |
+| confirm_eval | `P_h32_s20260912_f040` | 1000 | 8000+500 | 4 | 400-114-486 | 45.7 | [42.80, 48.60] | -30.0 | [-50.4, -9.7] | 11.4 | 2.63 | 2.64 | 0 | 0 |
+| null_control | `P_h32_s20260912_f040` | 300 | 8000+500 | 4 | 141-42-117 | 54.0 | [48.67, 59.33] | 27.9 | [-9.3, 65.6] | 14.0 | 2.78 | 2.79 | 0 | 0 |
+| null_control2 | `P_h32_s20260912_f040` | 300 | 8000+500 | 4 | 132-42-126 | 51.0 | [45.83, 56.33] | 6.9 | [-29.0, 44.2] | 14.0 | 2.83 | 2.85 | 0 | 0 |
 | screen_eval | `P_h32_s20260912_f040` | 300 | 8000+500 | 4 | 122-47-131 | 48.5 | [43.33, 53.67] | -10.4 | [-46.6, 25.5] | 15.67 | 2.53 | 2.56 | 0 | 0 |
 | regime8s | `regime` | 300 | 8000+500 | 4 | 104-63-133 | 45.17 | [40.33, 50.17] | -33.7 | [-68.0, 1.2] | 21.0 | 2.72 | 2.66 | 0 | 0 |
 | h2h | `F_h32_s20260909_q005` | 2000 | 1000+100 | 6 | 780-378-842 | 48.45 | [46.50, 50.45] | -10.8 | [-24.4, 3.1] | 18.9 | 1.24 | 1.23 | 0 | 0 |
 | h2h_null | `F_h32_s20260909_q005` | 1000 | 1000+100 | 6 | 416-175-409 | 50.35 | [47.55, 53.25] | 2.4 | [-17.0, 22.6] | 17.5 | 1.2 | 1.2 | 0 | 0 |
 | h2h_pilot | `F_h32_s20260909_q005` | 300 | 1000+100 | 6 | 127-44-129 | 49.67 | [44.50, 54.83] | -2.3 | [-38.4, 33.7] | 14.67 | 1.31 | 1.31 | 0 | 0 |
 | regime8s | `F_h32_s20260909_q005` | 300 | 8000+500 | 4 | 104-63-133 | 45.17 | [40.33, 50.17] | -33.7 | [-68.0, 1.2] | 21.0 | 2.72 | 2.66 | 0 | 0 |
+
+### P_h32_s20260912_f040/confirm_eval by colour
+
+| candidate colour | draws | games | losses | score_pct | wins |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| candidate_white | 65 | 500 | 235 | 46.5 | 200 |
+| candidate_black | 49 | 500 | 251 | 44.9 | 200 |
+
+### P_h32_s20260912_f040/null_control by colour
+
+| candidate colour | draws | games | losses | score_pct | wins |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| candidate_white | 24 | 150 | 52 | 57.33 | 74 |
+| candidate_black | 18 | 150 | 65 | 50.67 | 67 |
+
+### P_h32_s20260912_f040/null_control2 by colour
+
+| candidate colour | draws | games | losses | score_pct | wins |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| candidate_white | 19 | 150 | 69 | 47.67 | 62 |
+| candidate_black | 23 | 150 | 57 | 54.33 | 70 |
 
 ### P_h32_s20260912_f040/screen_eval by colour
 
