@@ -468,6 +468,19 @@ def main() -> None:
         overrides[key] = float(value)
 
     groups = v2.load_groups()
+    # Gate 6 is enforced here, not merely reported. nnue_v3_overlap.py found 40 keys
+    # that were a parent in one split and a child in another -- a small leak V2's
+    # provenance check could not see, because it compared parent keys with parent keys
+    # and child keys with child keys but never across. The groups on the less protected
+    # side are dropped before anything is trained on them.
+    quarantine_path = OUTROOT / "quarantine.json"
+    if quarantine_path.exists():
+        blocked = set(json.loads(quarantine_path.read_text(encoding="utf-8"))["group_ids"])
+        before = len(groups)
+        groups = [g for g in groups if g["group_id"] not in blocked]
+        print(f"quarantine: dropped {before - len(groups)} leaking groups")
+    else:
+        print("WARNING: no quarantine list; run tests/nnue_v3_overlap.py first")
     print(f"{len(groups)} sibling groups")
     enc = v2.encode_groups(
         groups, REPO / "tests" / "results" / "nnue" / "v2" / "encoded.npz"
